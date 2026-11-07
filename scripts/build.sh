@@ -14,7 +14,7 @@ mv "$out/404/index.html" "$out/404.html"
 rm -r "$out/404" "$out/index.csr.html"
 # pages-theme loads the stylesheet from this fixed, unhashed URL.
 cp "$out/style.css" "$out/assets/style.css"
-cp _headers robots.txt "$out"/
+cp _headers robots.txt dist/apps/web/3rdpartylicenses.txt "$out"/
 
 mkdir -p "$out/.well-known"
 cat > "$out/.well-known/security.txt" <<EOF
