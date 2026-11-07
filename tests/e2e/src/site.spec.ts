@@ -114,6 +114,26 @@ test.describe('shared assets', () => {
     expect(await response.text()).toContain('--accent');
   });
 
+  test('caches the hashed bundles for a year', async ({ page, request }) => {
+    await page.goto('/');
+    const bundles = await page
+      .locator('script[src]')
+      .evaluateAll((scripts) => scripts.map((script) => script.getAttribute('src') ?? ''));
+
+    expect(bundles.length).toBeGreaterThan(0);
+    for (const bundle of bundles) {
+      const response = await request.get(`/${bundle}`);
+      expect(response.headers()['cache-control']).toBe('public, max-age=31536000, immutable');
+    }
+  });
+
+  test('serves the third-party licence notices', async ({ request }) => {
+    const response = await request.get('/3rdpartylicenses.txt');
+
+    expect(response.status()).toBe(200);
+    expect(await response.text()).toContain('Package: @angular/core');
+  });
+
   test('sends the security headers', async ({ request }) => {
     const response = await request.get('/');
 
