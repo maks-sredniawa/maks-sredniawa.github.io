@@ -333,6 +333,23 @@ h1 {
 
 .placeholder a:not(.btn) { color: var(--accent); }
 
+.ideas { margin: 0 0 20px; padding: 0; list-style: none; }
+
+.ideas:not(:has(li)) { display: none; }
+
+.ideas li {
+  padding: 18px 20px;
+  border: 1px dashed color-mix(in srgb, var(--idea) 25%, var(--border));
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.ideas h3 { margin: 0; font-size: 17px; }
+
+.ideas .kind { margin: 2px 0 6px; color: var(--idea); }
+
+.ideas p:last-child { margin: 0; color: var(--muted); font-size: 15px; }
+
 .spark {
   flex: none;
   width: 44px;
