@@ -6,6 +6,8 @@ owner=maks-sredniawa
 
 {
   git rev-parse HEAD
+  # A monthly redeploy keeps security.txt's Expires from lapsing.
+  date -u +%Y-%m
   gh api "repos/$owner/pages-theme/commits/HEAD" -q .sha
   for repo in "$@"; do
     echo "$repo $(gh api "repos/$owner/$repo/commits?path=docs&per_page=1" -q '.[0].sha')"
