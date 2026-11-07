@@ -3,3 +3,13 @@ _site/
 .jekyll-cache/
 vendor/
 .bundle/
+node_modules/
+dist/
+.angular/
+.nx/
+coverage/
+.vitest
+vitest.config.*.timestamp*
+.vscode/*
+!.vscode/extensions.json
+tmp/

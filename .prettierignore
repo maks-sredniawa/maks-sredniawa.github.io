@@ -1,0 +1,10 @@
+_site/
+vendor/
+dist/
+coverage/
+tmp/
+.angular/
+.nx/
+.wrangler/
+pnpm-lock.yaml
+Gemfile.lock

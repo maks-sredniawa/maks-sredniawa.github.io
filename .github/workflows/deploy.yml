@@ -5,7 +5,7 @@ on:
     branches: [main]
   pull_request:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: '*/15 * * * *'
   workflow_dispatch:
 
 concurrency:
@@ -20,11 +20,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
+      NX_NO_CLOUD: true
     defaults:
       run:
         shell: bash
     steps:
       - uses: actions/checkout@v7
+        with:
+          fetch-depth: ${{ github.event_name == 'schedule' && 1 || 0 }}
 
       # GitHub disables a public repo's schedule after 60 days without a commit; re-enabling resets that clock.
       - if: github.event_name != 'pull_request'
@@ -49,23 +52,69 @@ jobs:
           key: site-${{ steps.apps.outputs.fingerprint }}
           lookup-only: true
 
-      - if: steps.deployed.outputs.cache-hit != 'true' || github.event_name != 'schedule'
+      - id: work
+        run: |
+          echo "build=${{ steps.deployed.outputs.cache-hit != 'true' || github.event_name != 'schedule' }}" >> "$GITHUB_OUTPUT"
+          echo "check=${{ github.event_name != 'schedule' }}" >> "$GITHUB_OUTPUT"
+
+      - if: steps.work.outputs.build == 'true'
+        uses: pnpm/action-setup@v6
+
+      - if: steps.work.outputs.build == 'true'
+        uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - if: steps.work.outputs.build == 'true'
+        run: pnpm install --frozen-lockfile
+
+      - if: steps.work.outputs.check == 'true'
+        uses: nrwl/nx-set-shas@v5
+
+      - if: steps.work.outputs.check == 'true'
+        uses: actions/cache@v6
+        with:
+          path: .nx/cache
+          key: nx-${{ hashFiles('pnpm-lock.yaml') }}-${{ github.sha }}
+          restore-keys: nx-${{ hashFiles('pnpm-lock.yaml') }}-
+
+      - if: steps.work.outputs.check == 'true'
+        run: pnpm nx format:check
+
+      - if: steps.work.outputs.check == 'true'
+        run: pnpm nx affected -t lint typecheck test build build-storybook docker:build
+
+      - if: steps.work.outputs.check == 'true'
+        run: pnpm exec playwright install --with-deps chromium
+
+      - if: steps.work.outputs.check == 'true'
+        run: pnpm nx affected -t e2e visual --parallel=1
+
+      - if: failure() && steps.work.outputs.check == 'true'
+        uses: actions/upload-artifact@v7
+        with:
+          name: playwright
+          path: dist/.playwright
+          if-no-files-found: ignore
+
+      - if: steps.work.outputs.build == 'true'
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.3"
+          ruby-version: '3.3'
           bundler-cache: true
 
-      - if: steps.deployed.outputs.cache-hit != 'true' || github.event_name != 'schedule'
+      - if: steps.work.outputs.build == 'true'
         env:
           JEKYLL_GITHUB_TOKEN: ${{ github.token }}
         run: scripts/build.sh ${{ steps.apps.outputs.list }}
 
-      - if: github.event_name != 'pull_request' && (steps.deployed.outputs.cache-hit != 'true' || github.event_name != 'schedule')
+      - if: github.event_name != 'pull_request' && steps.work.outputs.build == 'true'
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          npx --yes wrangler@4.151.2 deploy
+          pnpm exec wrangler deploy
           touch .deployed
 
       - if: github.event_name != 'pull_request' && steps.deployed.outputs.cache-hit != 'true'

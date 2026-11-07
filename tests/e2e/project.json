@@ -1,0 +1,15 @@
+{
+  "name": "e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "tests/e2e/src",
+  "tags": ["type:test"],
+  "implicitDependencies": ["web"],
+  "targets": {
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": { "command": "tsc -p tests/e2e/tsconfig.json --noEmit" }
+    }
+  }
+}

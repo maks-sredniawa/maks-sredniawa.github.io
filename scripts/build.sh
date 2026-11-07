@@ -7,9 +7,18 @@ out=_site
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
+pnpm exec nx build web
+if [ ! -f dist/apps/web/browser/index.html ]; then
+  echo "build.sh handles one locale only; a second one builds into dist/apps/web/browser/<locale>/." >&2
+  exit 1
+fi
 rm -rf "$out"
-mkdir -p "$out"
-cp -r index.html 404.html assets _headers robots.txt "$out"/
+cp -r dist/apps/web/browser "$out"
+mv "$out/404/index.html" "$out/404.html"
+rm -r "$out/404" "$out/index.csr.html"
+# pages-theme loads the stylesheet from this fixed, unhashed URL.
+cp "$out/style.css" "$out/assets/style.css"
+cp _headers robots.txt dist/apps/web/3rdpartylicenses.txt "$out"/
 
 mkdir -p "$out/.well-known"
 cat > "$out/.well-known/security.txt" <<EOF

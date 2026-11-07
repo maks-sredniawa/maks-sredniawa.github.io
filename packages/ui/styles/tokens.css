@@ -1,0 +1,53 @@
+/*
+ * The brand palette. The app sites' pages-theme reads these names too, so rename none of them.
+ * The theme-color metas in apps/web/src/index.html repeat --bg; change them with it.
+ */
+:root {
+  --bg: #0f0d0b;
+  --bg-2: #17130f;
+  --surface: rgba(255, 244, 230, 0.04);
+  --surface-hover: rgba(255, 244, 230, 0.07);
+  --border: rgba(255, 236, 214, 0.1);
+  --text: #f6efe7;
+  --muted: #b3a798;
+  --accent: #ff8a3d;
+  --accent-2: #ffb347;
+  --accent-3: #ff5f3a;
+  --on-accent: #1a0f07;
+  --glow: rgba(255, 122, 61, 0.28);
+  --glow-page: rgba(255, 138, 61, 0.1);
+  --glow-page-2: rgba(192, 132, 252, 0.06);
+  --glow-support: rgba(255, 138, 61, 0.18);
+  --grad-text: linear-gradient(100deg, var(--accent-2), var(--accent-3));
+  --live: #4ade80;
+  --building: #fbbf24;
+  --oss: #60a5fa;
+  --idea: #c084fc;
+  --radius: 20px;
+  --shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.7);
+  --shadow-icon: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 10px 30px -10px rgba(255, 106, 51, 0.6);
+  --font-text:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg: #fbf8f4;
+    --bg-2: #f3ede5;
+    --surface: rgba(255, 255, 255, 0.75);
+    --surface-hover: #ffffff;
+    --border: rgba(60, 40, 20, 0.12);
+    --text: #1d1712;
+    --muted: #6b5e51;
+    --accent: #b4470c;
+    --grad-text: linear-gradient(100deg, #c2550a, #b3261e);
+    --live: #15803d;
+    --building: #b45309;
+    --oss: #1d4ed8;
+    --idea: #7e22ce;
+    --shadow: 0 20px 50px -28px rgba(80, 50, 20, 0.35);
+    color-scheme: light;
+  }
+}

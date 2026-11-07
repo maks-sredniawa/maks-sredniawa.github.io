@@ -1,0 +1,172 @@
+<header class="nav">
+  <a class="brand" href="#top" i18n-aria-label aria-label="MaksForge home">
+    <img src="/assets/logo-mark-128.webp" alt="" width="40" height="40" />
+    <span>MaksForge</span>
+  </a>
+  <nav i18n-aria-label aria-label="Sections">
+    <a href="#live" i18n>Apps</a>
+    <a href="#wot-mods" i18n>WoT mods</a>
+    <a href="#building" i18n>In development</a>
+    <a href="#ideas" i18n>Ideas</a>
+    <a href="#about" i18n>About</a>
+    <a class="nav-cta" href="#support" i18n>Support</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="glow" aria-hidden="true"></div>
+    <p class="eyebrow" i18n>Independent apps &amp; tools</p>
+    <h1 i18n>Small apps that do one thing <span class="grad">well</span>.</h1>
+    <p class="lede" i18n>
+      I build free Android apps, browser extensions and game mods that respect the people using
+      them. The Android apps keep your data on your device.
+    </p>
+    <ul class="pills" i18n-aria-label aria-label="Principles">
+      <li i18n>No ads</li>
+      <li i18n>No tracking</li>
+      <li i18n>No accounts</li>
+      <li i18n>Free</li>
+    </ul>
+    <div class="actions">
+      <a mfButton href="#live" i18n>See the apps</a>
+      <a mfButton variant="ghost" href="https://github.com/maks-sredniawa">GitHub</a>
+    </div>
+  </section>
+
+  <section id="live" class="section">
+    <div
+      mfSectionHead
+      status="live"
+      i18n-statusLabel
+      statusLabel="Live"
+      i18n-heading
+      heading="In production"
+      i18n
+    >
+      Available now on Google Play, the Chrome Web Store and GitHub.
+    </div>
+    <div id="android-apps" class="subsection-head">
+      <h3 i18n>Android apps</h3>
+      <p i18n>On Google Play. Your data stays on your device.</p>
+    </div>
+    <div mfProjectGrid [projects]="androidApps" [headingLevel]="4"></div>
+    <div id="chrome-extensions" class="subsection-head">
+      <h3 i18n>Chrome extensions</h3>
+      <p i18n>On the Chrome Web Store.</p>
+    </div>
+    <div mfProjectGrid [projects]="chromeExtensions" [headingLevel]="4"></div>
+    <div id="wot-mods" class="subsection-head">
+      <h3 i18n>World of Tanks mods</h3>
+      <p i18n>
+        Free mods for the game client. Download the .wotmod file and drop it into your mods/&lt;game
+        version&gt; folder.
+      </p>
+    </div>
+    <div mfProjectGrid [projects]="wotMods" [headingLevel]="4"></div>
+  </section>
+
+  <section id="building" class="section">
+    <div
+      mfSectionHead
+      status="building"
+      i18n-statusLabel
+      statusLabel="Building"
+      i18n-heading
+      heading="In development"
+      i18n
+    >
+      Being built and tested right now.
+    </div>
+    <div mfProjectGrid [projects]="building"></div>
+  </section>
+
+  <section id="open-source" class="section">
+    <div
+      mfSectionHead
+      status="oss"
+      i18n-statusLabel
+      statusLabel="Open source"
+      i18n-heading
+      heading="Tools"
+      i18n
+    >
+      Building blocks I use myself, free to reuse.
+    </div>
+    <div mfProjectGrid [projects]="openSource"></div>
+  </section>
+
+  <section id="ideas" class="section">
+    <div
+      mfSectionHead
+      status="idea"
+      i18n-statusLabel
+      statusLabel="Ideas"
+      i18n-heading
+      heading="What should I build next?"
+      i18n
+    >
+      Small things I might build next. Yours could join them.
+    </div>
+    <ul class="grid ideas" i18n-aria-label aria-label="Ideas">
+      @for (idea of ideas; track idea.name) {
+        <li
+          mfIdeaCard
+          [heading]="idea.name"
+          [kind]="ideaKindLabels[idea.kind]"
+          [added]="idea.added"
+        >
+          {{ idea.pitch }}
+        </li>
+      }
+    </ul>
+    <div class="placeholder">
+      <span class="spark" aria-hidden="true"></span>
+      <p i18n>
+        <strong>Got a small problem an app could fix?</strong> Tell me what it is and who it
+        affects. The best ideas end up on the workbench, and you'll see them here first. You can
+        also write to <a href="mailto:ideas@maksforge.com">ideas&#64;maksforge.com</a>.
+      </p>
+      <a mfButton [href]="ideaMailto" i18n>Send an idea</a>
+    </div>
+  </section>
+
+  <section id="about" class="section about">
+    <div class="about-text">
+      <p class="eyebrow" i18n>About me</p>
+      <h2 i18n>Hi, I'm Maksymilian.</h2>
+      <p i18n>
+        MaksForge is where I build the small tools I wish existed. Each one solves a single problem
+        and never asks for an account or shows an ad. The Android apps also work without an internet
+        connection.
+      </p>
+      <p i18n>
+        Every app is free. If one of them makes your day a little easier, a tip helps me keep
+        building, but it never unlocks anything.
+      </p>
+    </div>
+    <ul class="facts">
+      <li mfFact [value]="liveCount" i18n>
+        {liveCount, plural, =1 {app, extension or mod live} other {apps, extensions and mods live}}
+      </li>
+      <li mfFact [value]="buildingCount" i18n>
+        {buildingCount, plural, =1 {project in development} other {projects in development}}
+      </li>
+      <li mfFact [value]="0" i18n>ads or trackers</li>
+    </ul>
+  </section>
+
+  <section id="support" class="section support">
+    <h2 i18n>Like what I make?</h2>
+    <p i18n>The apps stay free. Tips are optional and very appreciated.</p>
+    <div class="actions">
+      <a mfButton href="https://buymeacoffee.com/maksforge" i18n>☕ Buy me a coffee</a>
+      <a mfButton variant="ghost" href="https://paypal.me/maksymiliansredniawa">PayPal</a>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© 2026 Maksymilian Średniawa · MaksForge</span>
+  <a href="https://github.com/maks-sredniawa">github.com/maks-sredniawa</a>
+</footer>
