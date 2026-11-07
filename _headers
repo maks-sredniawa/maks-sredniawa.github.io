@@ -6,3 +6,9 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
   Cross-Origin-Opener-Policy: same-origin
+
+/main-*
+  Cache-Control: public, max-age=31536000, immutable
+
+/polyfills-*
+  Cache-Control: public, max-age=31536000, immutable
