@@ -2,6 +2,12 @@ import type { Idea } from './idea';
 
 export const ideas: readonly Idea[] = [
   {
+    name: $localize`Brainstorm sticky notes`,
+    kind: 'android-app',
+    pitch: $localize`A simple sticky-notes board for brainstorming, where adding a note doesn't throw up pop-ups in your way. Free, no ads.`,
+    added: '2026-11-07',
+  },
+  {
     name: $localize`Gmail dark mode`,
     kind: 'chrome-extension',
     pitch: $localize`A proper dark mode for Gmail in the browser, for people who want the whole of it dark.`,
