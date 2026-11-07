@@ -1,7 +1,15 @@
 # maksforge.com
 
-The MaksForge home page: a static site served by GitHub Pages from `main`, at [maksforge.com](https://maksforge.com).
+The MaksForge site at [maksforge.com](https://maksforge.com), hosted on Cloudflare (Workers static assets).
 
-Because this is the organisation's Pages site, its custom domain also applies to every project site in the org, so `maksforge.com/<repo>/` serves that repo's own Pages.
+It is the home page here plus every app's site: each public `maks-sredniawa` repo (archived ones included) whose `docs/_config.yml` uses `remote_theme: maks-sredniawa/pages-theme` is built with Jekyll and published at `maksforge.com/<repo>/`. A new app needs nothing beyond that config.
 
-To preview locally, run `python3 -m http.server` here and open <http://localhost:8000>.
+`.github/workflows/deploy.yml` builds and deploys on every push to `main`, and every 15 minutes checks the app repos and the theme for changes. On a pull request it only builds. It needs the `CLOUDFLARE_API_TOKEN` secret and the `CLOUDFLARE_ACCOUNT_ID` variable.
+
+To preview the home page alone, run `python3 -m http.server` here and open <http://localhost:8000>. To build the whole site locally:
+
+```bash
+bundle install
+scripts/build.sh $(scripts/apps.sh)
+npx wrangler dev
+```
