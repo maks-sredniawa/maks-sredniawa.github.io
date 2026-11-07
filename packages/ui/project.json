@@ -1,0 +1,51 @@
+{
+  "name": "ui",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/ui/src",
+  "prefix": "mf",
+  "projectType": "library",
+  "tags": ["type:ui", "scope:shared"],
+  "targets": {
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "continuous": true,
+      "options": {
+        "port": 4400,
+        "configDir": "packages/ui/.storybook",
+        "browserTarget": "ui:build-storybook",
+        "compodoc": false,
+        "experimentalZoneless": true
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "cache": true,
+      "inputs": ["default", "^default"],
+      "options": {
+        "outputDir": "dist/storybook/ui",
+        "configDir": "packages/ui/.storybook",
+        "browserTarget": "ui:build-storybook",
+        "tsConfig": "packages/ui/.storybook/tsconfig.json",
+        "styles": ["packages/ui/styles/index.css"],
+        "compodoc": false,
+        "experimentalZoneless": true,
+        "quiet": true
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["default", "^default"],
+      "options": {
+        "cwd": "packages/ui",
+        "commands": [
+          "ngc -p tsconfig.lib.json --noEmit",
+          "tsc -p tsconfig.spec.json --noEmit",
+          "tsc -p .storybook/tsconfig.json --noEmit"
+        ],
+        "parallel": false
+      }
+    }
+  }
+}

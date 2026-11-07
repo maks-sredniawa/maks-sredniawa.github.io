@@ -7,9 +7,14 @@ out=_site
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
+pnpm exec nx build web
 rm -rf "$out"
-mkdir -p "$out"
-cp -r index.html 404.html assets _headers robots.txt "$out"/
+cp -r dist/apps/web/browser "$out"
+mv "$out/404/index.html" "$out/404.html"
+rm -r "$out/404" "$out/index.csr.html"
+# pages-theme loads the stylesheet from this fixed, unhashed URL.
+cp "$out/style.css" "$out/assets/style.css"
+cp _headers robots.txt "$out"/
 
 mkdir -p "$out/.well-known"
 cat > "$out/.well-known/security.txt" <<EOF

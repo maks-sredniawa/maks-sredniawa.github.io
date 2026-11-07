@@ -1,0 +1,73 @@
+{
+  "name": "api",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api/src",
+  "projectType": "application",
+  "tags": ["type:app", "scope:api"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "platform": "node",
+        "target": "node26",
+        "outputPath": "dist/apps/api",
+        "format": ["esm"],
+        "bundle": true,
+        "thirdParty": false,
+        "main": "apps/api/src/main.ts",
+        "tsConfig": "apps/api/tsconfig.app.json",
+        "generatePackageJson": true,
+        "esbuildOptions": {
+          "sourcemap": true,
+          "outExtension": {
+            ".js": ".js"
+          }
+        }
+      },
+      "configurations": {
+        "development": {},
+        "production": {
+          "generateLockfile": true,
+          "esbuildOptions": {
+            "sourcemap": false,
+            "outExtension": {
+              ".js": ".js"
+            }
+          }
+        }
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "tsx watch apps/api/src/main.ts"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "inputs": ["default", "^default"],
+      "options": {
+        "cwd": "apps/api",
+        "commands": ["tsc -p tsconfig.app.json --noEmit", "tsc -p tsconfig.spec.json --noEmit"],
+        "parallel": false
+      }
+    },
+    "docker:build": {
+      "dependsOn": ["build"],
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker build -f apps/api/Dockerfile -t maksforge-api ."
+      }
+    },
+    "docker:run": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker run --rm -p 3000:3000 maksforge-api"
+      }
+    }
+  }
+}

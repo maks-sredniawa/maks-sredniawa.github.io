@@ -1,0 +1,88 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(
+      1200px 600px at 85% -10%,
+      color-mix(in srgb, var(--glow) 10%, transparent),
+      transparent 60%
+    ),
+    radial-gradient(
+      900px 500px at -10% 30%,
+      color-mix(in srgb, var(--glow-2) 6%, transparent),
+      transparent 60%
+    ),
+    var(--bg);
+  color: var(--text);
+  font: 17px/1.6 var(--font-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  display: block;
+}
+
+main {
+  padding: 0 16px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+}
+
+h1 {
+  margin: 0 auto;
+  max-width: 14ch;
+  font-size: clamp(42px, 7vw, 76px);
+  font-weight: 800;
+}
+
+@keyframes breathe {
+  50% {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 760px) {
+  html {
+    scroll-padding-top: 124px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

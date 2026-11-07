@@ -1,0 +1,27 @@
+version: 2
+updates:
+  # Angular and Nx move together through `nx migrate`, which also rewrites config; Dependabot leaves them alone.
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: '@angular/*'
+      - dependency-name: '@angular-devkit/*'
+      - dependency-name: '@schematics/angular'
+      - dependency-name: 'nx'
+      - dependency-name: '@nx/*'
+    groups:
+      npm:
+        patterns: ['*']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      actions:
+        patterns: ['*']
+  - package-ecosystem: bundler
+    directory: /
+    schedule:
+      interval: weekly

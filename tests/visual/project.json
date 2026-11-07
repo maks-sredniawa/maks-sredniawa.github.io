@@ -1,0 +1,20 @@
+{
+  "name": "visual",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "tests/visual/src",
+  "tags": ["type:test"],
+  "implicitDependencies": ["web", "ui"],
+  "targets": {
+    "visual": {
+      "executor": "nx:run-commands",
+      "dependsOn": [{ "projects": ["ui"], "target": "build-storybook" }],
+      "options": { "command": "scripts/build.sh && scripts/visual.sh" }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "cache": true,
+      "options": { "command": "tsc -p tests/visual/tsconfig.json --noEmit" }
+    }
+  }
+}
