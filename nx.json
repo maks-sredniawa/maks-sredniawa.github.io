@@ -8,12 +8,29 @@
       "{workspaceRoot}/tsconfig.base.json",
       "{workspaceRoot}/tsconfig.angular.json",
       "{workspaceRoot}/.postcssrc.json",
-      "{workspaceRoot}/.nvmrc",
+      "{workspaceRoot}/.nvmrc"
+    ],
+    "site": [
       "{workspaceRoot}/_headers",
-      "{workspaceRoot}/scripts/build.sh"
+      "{workspaceRoot}/wrangler.jsonc",
+      "{workspaceRoot}/robots.txt",
+      "{workspaceRoot}/scripts/build.sh",
+      "{workspaceRoot}/scripts/visual.sh"
     ]
   },
   "targetDefaults": {
+    "e2e": {
+      "inputs": [
+        "default",
+        "^default",
+        "site",
+        { "externalDependencies": ["@playwright/test"] },
+        { "env": "CI" }
+      ]
+    },
+    "visual": {
+      "inputs": ["default", "^default", "site"]
+    },
     "@angular/build:application": {
       "cache": true,
       "dependsOn": ["^build"],
