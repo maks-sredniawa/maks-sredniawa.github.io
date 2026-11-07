@@ -14,8 +14,10 @@
   --accent-2: #ffb347;
   --accent-3: #ff5f3a;
   --on-accent: #1a0f07;
-  --glow: #ff8a3d;
-  --glow-2: #c084fc;
+  --glow: rgba(255, 122, 61, 0.28);
+  --glow-page: rgba(255, 138, 61, 0.1);
+  --glow-page-2: rgba(192, 132, 252, 0.06);
+  --glow-support: rgba(255, 138, 61, 0.18);
   --grad-text: linear-gradient(100deg, var(--accent-2), var(--accent-3));
   --live: #4ade80;
   --building: #fbbf24;
@@ -24,6 +26,7 @@
   --radius: 20px;
   --shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.7);
   --shadow-icon: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+  --shadow-accent: 0 10px 30px -10px rgba(255, 106, 51, 0.6);
   --font-text:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   color-scheme: dark;
