@@ -1,16 +1,24 @@
 version: 2
 updates:
-  # Angular and Nx move together through `nx migrate`, which also rewrites config; Dependabot leaves them alone.
+  # Angular, Nx and what follows Angular's majors move together through `nx migrate`, which also rewrites
+  # config; Dependabot leaves them alone. Angular's compiler pins TypeScript's minor.
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+    # pnpm refuses releases younger than its minimum release age.
+    cooldown:
+      default-days: 3
     ignore:
       - dependency-name: '@angular/*'
       - dependency-name: '@angular-devkit/*'
       - dependency-name: '@schematics/angular'
       - dependency-name: 'nx'
       - dependency-name: '@nx/*'
+      - dependency-name: 'angular-eslint'
+      - dependency-name: '@analogjs/*'
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major', 'version-update:semver-minor']
     groups:
       npm:
         patterns: ['*']
