@@ -335,7 +335,7 @@ h1 {
 
 .ideas { margin: 0 0 20px; padding: 0; list-style: none; }
 
-.ideas:empty { display: none; }
+.ideas:not(:has(li)) { display: none; }
 
 .ideas li {
   padding: 18px 20px;
