@@ -2,6 +2,18 @@ import type { Idea } from './idea';
 
 export const ideas: readonly Idea[] = [
   {
+    name: $localize`Monitor brightness presets`,
+    kind: 'tool',
+    pitch: $localize`A desktop app that keeps a few brightness presets for all your monitors, whatever their make, so you can switch every screen between them in a moment.`,
+    added: '2026-11-07',
+  },
+  {
+    name: $localize`Woodworking planner`,
+    kind: 'tool',
+    pitch: $localize`A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.`,
+    added: '2026-11-07',
+  },
+  {
     name: $localize`Garage filter extras`,
     kind: 'wot-mod',
     pitch: $localize`Adds the garage filters the game is missing: one to hide rented tanks, which always show today, and one to show only tanks that are not premium.`,
