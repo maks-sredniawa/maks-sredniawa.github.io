@@ -8,6 +8,10 @@ work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
 pnpm exec nx build web
+if [ ! -f dist/apps/web/browser/index.html ]; then
+  echo "build.sh handles one locale only; a second one builds into dist/apps/web/browser/<locale>/." >&2
+  exit 1
+fi
 rm -rf "$out"
 cp -r dist/apps/web/browser "$out"
 mv "$out/404/index.html" "$out/404.html"

@@ -26,7 +26,7 @@ pnpm e2e
 pnpm visual            # pnpm visual:update after an intended visual change
 ```
 
-All text on the page is marked for translation with `@angular/localize`. `pnpm i18n:extract` writes the messages to `apps/web/src/locale/`; adding a language means a translated copy there and a `locales` entry in `apps/web/project.json`.
+All text on the page is marked for translation with `@angular/localize`. `pnpm i18n:extract` writes the messages to `apps/web/src/locale/`; adding a language means a translated copy there, a `locales` entry in `apps/web/project.json`, and teaching `scripts/build.sh` the per-locale output (`browser/<locale>/`, with the fixed `/assets/style.css` and a 404 page per locale); until then it stops with an error.
 
 The colours are tokens in `packages/ui/styles/tokens.css`. `pages-theme` reads the same variable names, so change values freely but rename none. Tailwind's utilities carry a `tw:` prefix (`tw:flex`, `tw:text-accent`) and know only the brand colours.
 
