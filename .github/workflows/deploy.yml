@@ -27,7 +27,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          fetch-depth: 0
+          fetch-depth: ${{ github.event_name == 'schedule' && 1 || 0 }}
 
       # GitHub disables a public repo's schedule after 60 days without a commit; re-enabling resets that clock.
       - if: github.event_name != 'pull_request'
