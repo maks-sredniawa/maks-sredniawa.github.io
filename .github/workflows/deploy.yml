@@ -1,0 +1,61 @@
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v7
+
+      # GitHub disables a public repo's schedule after 60 days without a commit; re-enabling resets that clock.
+      - run: gh workflow enable deploy.yml --repo "$GITHUB_REPOSITORY"
+
+      - id: apps
+        run: |
+          apps=$(scripts/apps.sh | xargs)
+          echo "list=$apps" >> "$GITHUB_OUTPUT"
+          echo "fingerprint=$(scripts/fingerprint.sh $apps)" >> "$GITHUB_OUTPUT"
+
+      - id: deployed
+        uses: actions/cache/restore@v6
+        with:
+          path: .deployed
+          key: site-${{ steps.apps.outputs.fingerprint }}
+          lookup-only: true
+
+      - if: steps.deployed.outputs.cache-hit != 'true' || github.event_name != 'schedule'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3"
+          bundler-cache: true
+
+      - if: steps.deployed.outputs.cache-hit != 'true' || github.event_name != 'schedule'
+        env:
+          JEKYLL_GITHUB_TOKEN: ${{ github.token }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          scripts/build.sh ${{ steps.apps.outputs.list }}
+          npx --yes wrangler@4.151.2 deploy
+          touch .deployed
+
+      - if: steps.deployed.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v6
+        with:
+          path: .deployed
+          key: site-${{ steps.apps.outputs.fingerprint }}
