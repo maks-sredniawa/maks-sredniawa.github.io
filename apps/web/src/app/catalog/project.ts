@@ -15,7 +15,7 @@ export interface Project {
   readonly icon: string;
   readonly kind: ProjectKind;
   readonly section: ProjectSection;
-  /** Rendered as HTML, so it may hold an `<a href>` or a `<span lang>`. */
+  /** Rendered as HTML; markup goes in named `$localize` placeholders, out of translators' hands. */
   readonly summary: string;
   readonly links: readonly ProjectLink[];
 }

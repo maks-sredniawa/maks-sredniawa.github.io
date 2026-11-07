@@ -42,7 +42,7 @@ export const projects: readonly Project[] = [
     icon: 'wot-autoloader-timer',
     kind: 'wot-mod',
     section: 'wot-mods',
-    summary: $localize`Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs <a href="https://github.com/CH4MPi/GUIFlash">GUIFlash</a>, which most modpacks include.`,
+    summary: $localize`Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs ${'<a href="https://github.com/CH4MPi/GUIFlash">'}:START_LINK:GUIFlash${'</a>'}:CLOSE_LINK:, which most modpacks include.`,
     links: [latestRelease('wot-autoloader-timer'), source('wot-autoloader-timer')],
   },
   {
@@ -74,7 +74,7 @@ export const projects: readonly Project[] = [
     icon: 'darek',
     kind: 'android-app',
     section: 'building',
-    summary: $localize`A Polish voice assistant. Say <span lang="pl">"Darek, otwórz bramę"</span> and he calls your gate opener, with everything running offline on the phone.`,
+    summary: $localize`A Polish voice assistant. Say ${'<span lang="pl">'}:START_POLISH:"Darek, otwórz bramę"${'</span>'}:CLOSE_POLISH: and he calls your gate opener, with everything running offline on the phone.`,
     links: [website('darek')],
   },
   {
