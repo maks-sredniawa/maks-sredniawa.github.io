@@ -51,7 +51,12 @@
   --layout-label: 220px;
   --layout-gap: 36px;
   --layout-prose: 68ch;
+  --layout-bar: 60px;
+}
 
+/* A .mf-paper element keeps the light map in dark mode too, like the pins on the dark ideas band. */
+:root,
+.mf-paper {
   --color-bg: var(--mf-paper-1);
   --color-surface: var(--mf-paper-0);
   --color-surface-2: var(--mf-paper-2);
@@ -79,7 +84,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
+  :root {
     --color-bg: var(--mf-night-1);
     --color-surface: var(--mf-night-2);
     --color-surface-2: var(--mf-night-3);
@@ -104,30 +109,6 @@
   }
 }
 
-:root[data-theme='dark'] {
-  --color-bg: var(--mf-night-1);
-  --color-surface: var(--mf-night-2);
-  --color-surface-2: var(--mf-night-3);
-  --color-ink: var(--mf-moon-1);
-  --color-ink-2: var(--mf-moon-2);
-  --color-ink-3: var(--mf-moon-3);
-  --color-rule: var(--mf-night-4);
-  --color-rule-strong: var(--mf-moon-1);
-  --color-shade: var(--mf-night-0);
-  --color-brand: var(--mf-brand-bright);
-  --color-on-brand: var(--mf-brand-night);
-  --color-brand-tint: var(--mf-brand-shadow);
-  --color-band-tint: var(--mf-night-2);
-  --color-band-dark: var(--mf-night-0);
-  --color-on-band-dark: var(--mf-moon-1);
-  --color-live: var(--mf-green-bright);
-  --color-building: var(--mf-amber-bright);
-  --color-oss: var(--mf-blue-bright);
-  --color-idea: var(--mf-violet-bright);
-  --color-on-status: var(--mf-night-0);
-  color-scheme: dark;
-}
-
 @media (max-width: 1099px) {
   :root {
     --layout-gutter: 24px;
@@ -138,5 +119,6 @@
 @media (max-width: 759px) {
   :root {
     --layout-gutter: 16px;
+    --layout-bar: 52px;
   }
 }

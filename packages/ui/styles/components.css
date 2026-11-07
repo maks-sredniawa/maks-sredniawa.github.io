@@ -23,6 +23,15 @@
   text-transform: none;
 }
 
+.mf-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 .mf-display {
   font-family: var(--font-display);
   font-variation-settings:
@@ -186,8 +195,8 @@
   background: var(--color-band-tint);
 }
 
-/* The tiles and pins inside stay paper in both modes, so they keep their light tokens. */
 .mf-band--dark {
+  --color-bg: var(--color-band-dark);
   --color-ink: var(--color-on-band-dark);
   --color-ink-2: color-mix(in srgb, var(--color-on-band-dark) 80%, transparent);
   --color-ink-3: color-mix(in srgb, var(--color-on-band-dark) 66%, transparent);
@@ -197,19 +206,7 @@
   color: var(--color-on-band-dark);
 }
 
-.mf-band--dark .mf-pin,
-.mf-band--dark .mf-callout {
-  --color-bg: var(--mf-paper-1);
-  --color-surface: var(--mf-paper-0);
-  --color-surface-2: var(--mf-paper-2);
-  --color-ink: var(--mf-ink-1);
-  --color-ink-2: var(--mf-ink-2);
-  --color-ink-3: var(--mf-ink-3);
-  --color-rule: var(--mf-paper-3);
-  --color-rule-strong: var(--mf-ink-1);
-  --color-brand: var(--mf-brand-deep);
-  --color-on-brand: var(--mf-paper-0);
-  --color-idea: var(--mf-violet-deep);
+.mf-paper {
   color: var(--color-ink);
 }
 

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
   selector: 'li[mfPin]',
-  host: { class: 'mf-pin' },
+  host: { class: 'mf-pin mf-paper' },
   template: `
     <h3>{{ heading() }}</h3>
     <p class="mf-pin__meta">

@@ -59,6 +59,7 @@
               [iconSrc]="'/assets/icons/' + project.icon + '.webp'"
               [name]="project.name"
               [status]="sectionStatus(project.section)"
+              [statusLabel]="statusLabels[sectionStatus(project.section)]"
               [href]="'#' + project.icon"
             ></li>
           }
@@ -199,7 +200,7 @@
         </li>
       }
     </ul>
-    <div class="mf-callout">
+    <div class="mf-callout mf-paper">
       <p i18n>
         <strong>Got a small problem an app could fix?</strong> Tell me what it is and who it
         affects. The best ideas end up on the workbench, and you'll see them here first. You can

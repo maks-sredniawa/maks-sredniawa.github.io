@@ -20,7 +20,10 @@
         "outputMode": "static",
         "polyfills": ["@angular/localize/init"],
         "tsConfig": "apps/web/tsconfig.app.json",
-        "assets": [{ "glob": "**/*", "input": "apps/web/public" }],
+        "assets": [
+          { "glob": "**/*", "input": "apps/web/public" },
+          { "glob": "**/*", "input": "packages/ui/assets/fonts", "output": "assets/fonts" }
+        ],
         "styles": [{ "input": "apps/web/src/styles.css", "bundleName": "style", "inject": false }]
       },
       "configurations": {

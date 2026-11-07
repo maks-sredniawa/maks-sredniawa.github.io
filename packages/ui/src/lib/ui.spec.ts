@@ -40,7 +40,14 @@ import { Tile } from './tile/tile';
     <ul>
       <li mfPin heading="Idea" kind="Tool" added="2026-11-07">Pitch</li>
       <li mfFact [value]="5">apps live</li>
-      <li mfShelfItem iconSrc="icon.svg" name="Kozica" status="building" href="#kozica"></li>
+      <li
+        mfShelfItem
+        iconSrc="icon.svg"
+        name="Kozica"
+        status="building"
+        statusLabel="Building"
+        href="#kozica"
+      ></li>
       <li
         mfIndexEntry
         name="Gloam"
@@ -105,6 +112,7 @@ describe('ui', () => {
     const host = render();
 
     expect(host.querySelector('.mf-shelf-item--building')?.getAttribute('href')).toBe('#kozica');
+    expect(host.querySelector('.mf-shelf-item--building .mf-sr')?.textContent).toBe(', Building');
     expect(host.querySelector('.mf-index-entry--live .mf-index-entry__status')?.textContent).toBe(
       'Live',
     );

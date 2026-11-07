@@ -114,7 +114,7 @@
 }
 
 .principles li::before {
-  content: '— ';
+  content: '— ' / '';
   color: var(--color-brand);
 }
 

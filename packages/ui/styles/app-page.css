@@ -1,4 +1,8 @@
 /* The app sites' page (pages-theme): top bar, app header, fact strip, prose with contents. */
+html:has(.mf-topbar) {
+  scroll-padding-top: calc(var(--layout-bar) + 24px);
+}
+
 .mf-topbar {
   position: sticky;
   top: 0;
@@ -12,7 +16,7 @@
   align-items: stretch;
   justify-content: space-between;
   gap: 24px;
-  height: 60px;
+  height: var(--layout-bar);
 }
 
 .mf-topbar__brand {
@@ -114,6 +118,35 @@
   gap: 12px;
 }
 
+.mf-app-head--compact > .mf-wrap {
+  grid-template-columns: 64px minmax(0, 1fr) auto;
+  gap: 24px;
+  padding-top: 28px;
+  padding-bottom: 24px;
+}
+
+.mf-app-head--compact .mf-app-head__icon img {
+  width: 64px;
+  height: 64px;
+  border-radius: 10px;
+}
+
+.mf-app-head__name {
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.mf-app-head__name a:hover {
+  color: var(--color-brand);
+}
+
+.mf-app-head--compact + .mf-app-body > .mf-wrap {
+  border-top: 1px solid var(--color-rule-strong);
+}
+
 .mf-spec {
   border-top: 1px solid var(--color-rule-strong);
   border-bottom: 1px solid var(--color-rule-strong);
@@ -175,7 +208,7 @@
 
 .mf-app-side {
   position: sticky;
-  top: 84px;
+  top: calc(var(--layout-bar) + 24px);
   display: flex;
   flex-direction: column;
   align-self: start;
@@ -216,7 +249,7 @@
 
 .mf-toc li a::before {
   counter-increment: toc;
-  content: counter(toc, upper-roman);
+  content: counter(toc, upper-roman) / '';
   padding-top: 3px;
   color: var(--color-brand);
   font-family: var(--font-display);
@@ -241,12 +274,19 @@
   counter-reset: section;
 }
 
-.mf-prose > p:first-child {
+/* An app's home page hides the prose's h1 (pages-theme), so the paragraph after it opens the page. */
+.mf-prose > p:first-child,
+.mf-app-head:not(.mf-app-head--compact) ~ .mf-app-body .mf-prose > h1:first-child + p {
   font-size: 21px;
   line-height: 1.5;
 }
 
-.mf-prose > p:first-child::first-letter {
+.mf-prose > p:first-child::first-letter,
+.mf-app-head:not(.mf-app-head--compact)
+  ~ .mf-app-body
+  .mf-prose
+  > h1:first-child
+  + p::first-letter {
   float: left;
   padding: 8px 12px 0 0;
   color: var(--color-brand);
@@ -285,7 +325,7 @@
 
 .mf-prose h2::before {
   counter-increment: section;
-  content: counter(section, upper-roman);
+  content: counter(section, upper-roman) / '';
   flex: none;
   display: inline-flex;
   align-items: center;
@@ -340,7 +380,7 @@
 }
 
 .mf-prose ul > li::before {
-  content: '¶';
+  content: '¶' / '';
   margin: 0 0.5em 0 -1.2em;
   color: var(--color-brand);
   font-family: var(--font-display);
@@ -485,6 +525,10 @@
     flex-flow: row wrap;
   }
 
+  .mf-app-head--compact > .mf-wrap {
+    grid-template-columns: 64px minmax(0, 1fr);
+  }
+
   .mf-app-body > .mf-wrap {
     grid-template-columns: minmax(0, 1fr);
     gap: 32px;
@@ -505,10 +549,6 @@
 }
 
 @media (max-width: 759px) {
-  .mf-topbar > .mf-wrap {
-    height: 52px;
-  }
-
   .mf-topbar nav a:not(.mf-topbar__cta) {
     display: none;
   }
@@ -519,6 +559,11 @@
     gap: 16px;
     padding-top: 28px;
     padding-bottom: 24px;
+  }
+
+  .mf-app-head--compact > .mf-wrap {
+    grid-template-columns: 64px minmax(0, 1fr);
+    gap: 24px;
   }
 
   .mf-app-head__icon img {
@@ -562,7 +607,8 @@
     font-size: 26px;
   }
 
-  .mf-prose > p:first-child {
+  .mf-prose > p:first-child,
+  .mf-app-head:not(.mf-app-head--compact) ~ .mf-app-body .mf-prose > h1:first-child + p {
     font-size: 19px;
   }
 }
