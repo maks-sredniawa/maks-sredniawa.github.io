@@ -30,6 +30,9 @@ done
   echo '<?xml version="1.0" encoding="UTF-8"?>'
   echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
   (cd "$out" && find . -name '*.html' ! -name 404.html | sort) |
-    sed -E 's#^\./##; s#(^|/)index\.html$#\1#; s#\.html$##; s#.*#  <url><loc>https://maksforge.com/&</loc></url>#'
+    sed -E 's#^\./##; s#(^|/)index\.html$#\1#; s#\.html$##' |
+    python3 -c 'import html, sys, urllib.parse
+for path in sys.stdin.read().splitlines():
+    print(f"  <url><loc>https://maksforge.com/{html.escape(urllib.parse.quote(path))}</loc></url>")'
   echo '</urlset>'
 } > "$out/sitemap.xml"
