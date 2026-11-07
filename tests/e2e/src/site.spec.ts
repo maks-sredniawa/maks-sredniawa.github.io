@@ -22,7 +22,8 @@ test.describe('home page', () => {
     await expect(page.getByRole('heading', { level: 1 })).toHaveText(
       'Small apps that do one thing well.',
     );
-    await expect(page.locator('mf-root[ng-version]')).toBeAttached();
+    // The prerendered HTML already carries ng-version; only hydration strips the ngh markers.
+    await expect(page.locator('[ngh]')).toHaveCount(0);
     expect(errors).toEqual([]);
   });
 
