@@ -1,1 +1,14 @@
-export { default } from '../../eslint.angular.config.mjs';
+import baseConfig from '../../eslint.angular.config.mjs';
+
+export default [
+  ...baseConfig,
+  {
+    files: ['src/app/**/*.html'],
+    rules: {
+      '@angular-eslint/template/i18n': [
+        'error',
+        { checkId: false, ignoreAttributes: ['status', 'tone', 'variant'] },
+      ],
+    },
+  },
+];
