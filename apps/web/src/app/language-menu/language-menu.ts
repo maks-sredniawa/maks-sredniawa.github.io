@@ -5,31 +5,13 @@ import { languageFor, languages } from '../languages';
   selector: 'details[mfLanguageMenu]',
   template: `
     <summary class="lang-toggle mf-sc">
-      <svg
-        class="lang-glyph"
-        viewBox="0 0 16 16"
-        width="14"
+      <img
+        class="lang-flag"
+        [src]="'/assets/flags/' + current.code + '.svg'"
+        width="21"
         height="14"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.2" />
-        <ellipse
-          cx="8"
-          cy="8"
-          rx="2.6"
-          ry="6.5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.2"
-        />
-        <path
-          d="M1.5 8h13M2.3 5h11.4M2.3 11h11.4"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.2"
-        />
-      </svg>
+        alt=""
+      />
       <span class="mf-sr" i18n>Language:</span>
       <span [attr.lang]="current.code">{{ current.name }}</span>
     </summary>
@@ -42,8 +24,16 @@ import { languageFor, languages } from '../languages';
             [attr.lang]="language.code"
             [attr.data-language]="language.key"
             [attr.aria-current]="language === current ? 'page' : null"
-            >{{ language.name }}</a
           >
+            <img
+              class="lang-flag"
+              [src]="'/assets/flags/' + language.code + '.svg'"
+              width="21"
+              height="14"
+              alt=""
+            />
+            <span>{{ language.name }}</span>
+          </a>
         </li>
       }
     </ul>

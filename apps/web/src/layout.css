@@ -58,8 +58,13 @@
   color: var(--color-brand);
 }
 
-.lang-glyph {
+.lang-flag {
   flex: none;
+  align-self: center;
+  width: 21px;
+  height: 14px;
+  outline: 1px solid color-mix(in srgb, var(--color-ink) 25%, transparent);
+  outline-offset: -1px;
 }
 
 .lang-menu {
