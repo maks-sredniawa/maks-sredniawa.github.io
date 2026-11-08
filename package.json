@@ -19,7 +19,8 @@
     "e2e": "nx e2e e2e",
     "visual": "nx visual visual",
     "visual:update": "nx visual visual --update-snapshots",
-    "i18n:extract": "nx extract-i18n web"
+    "i18n:extract": "nx extract-i18n web",
+    "i18n:check": "nx run web:extract-i18n --outputPath=dist/i18n-check && node scripts/check-translations.mjs dist/i18n-check/messages.xlf"
   },
   "dependencies": {
     "@angular/common": "~22.2.5",
