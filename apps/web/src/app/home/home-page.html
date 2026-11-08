@@ -101,7 +101,7 @@
     i18n-heading
     heading="In production"
     i18n-blurb
-    blurb="Available now on Google Play, the Chrome Web Store and GitHub."
+    blurb="Available now on Google Play, the Chrome Web Store, GitHub and the web."
     i18n-statusLabel
     statusLabel="Live · {{ liveCount }}"
   >
@@ -114,6 +114,16 @@
       note="On Google Play. Your data stays on your device."
     >
       <ul mfProjectTiles [projects]="androidApps"></ul>
+    </div>
+    <div
+      id="web-apps"
+      mfAisle
+      i18n-heading
+      heading="Web apps"
+      i18n-note
+      note="Runs in your browser. Nothing to install."
+    >
+      <ul mfProjectTiles [projects]="webApps"></ul>
     </div>
     <div
       id="chrome-extensions"

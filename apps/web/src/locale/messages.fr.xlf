@@ -684,12 +684,48 @@
           <context context-type="linenumber">72,73</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3434750586635948124" datatype="html">
-        <source>Available now on Google Play, the Chrome Web Store and GitHub.</source>
-        <target>Disponible sur Google Play, le Chrome Web Store et GitHub.</target>
+      <trans-unit id="58291555423186355" datatype="html">
+        <source>Web app</source>
+        <target>Appli web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="8864489090004463452" datatype="html">
+        <source>A free music player in your browser, in the style of the early 2000s, with an equaliser and a two-deck DJ mode. Your songs stay on your device.</source>
+        <target>Un lecteur de musique gratuit dans ton navigateur, dans le style du début des années 2000, avec un égaliseur et un mode DJ à deux platines. Tes morceaux restent sur ton appareil.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4842094864524083069" datatype="html">
+        <source>Available now on Google Play, the Chrome Web Store, GitHub and the web.</source>
+        <target>Disponible sur Google Play, le Chrome Web Store, GitHub et le web.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">103,104</context>
+          <context context-type="linenumber">104,105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="3931659218868558753" datatype="html">
+        <source>Web apps</source>
+        <target>Applis web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">122,123</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6927912044623422874" datatype="html">
+        <source>Runs in your browser. Nothing to install.</source>
+        <target>Fonctionne dans ton navigateur. Rien à installer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">124,126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1118898549063080005" datatype="html">
