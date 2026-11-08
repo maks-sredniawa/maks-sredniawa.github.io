@@ -1,10 +1,4 @@
-/*
- * Three layers: primitives (--mf-*) hold raw values, semantic tokens (--color-*, --font-*, --layout-*)
- * are what components read, and only the semantic layer changes in dark mode.
- * The brand colour is the two --mf-brand-* numbers below.
- * The app sites' pages-theme reads the semantic names too, so rename none of them.
- * The theme-color metas in apps/web/src/index.html and pages-theme repeat --mf-paper-1 and --mf-night-1.
- */
+/* The theme-color metas in apps/web/src/index.html and pages-theme repeat --mf-paper-1 and --mf-night-1. */
 :root {
   --mf-brand-hue: 30;
   --mf-brand-chroma: 0.14;

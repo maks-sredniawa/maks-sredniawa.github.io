@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# Runs the screenshot tests inside the Playwright image, so the pixels match on every machine.
 # Usage: scripts/visual.sh [playwright test options, e.g. --update-snapshots]
 set -euo pipefail
 cd "$(dirname "$0")/.."

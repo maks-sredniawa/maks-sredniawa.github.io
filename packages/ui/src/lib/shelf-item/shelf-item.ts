@@ -7,7 +7,8 @@ import { type Status } from '../tag/tag';
     <a [class]="'mf-shelf-item mf-shelf-item--' + status()" [href]="href()">
       <img [src]="iconSrc()" alt="" width="60" height="60" />
       <b>{{ name() }}</b>
-      <span class="mf-sr">, {{ statusLabel() }}</span>
+      <span class="mf-sr">, </span>
+      <span class="mf-shelf-item__status">{{ statusLabel() }}</span>
     </a>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

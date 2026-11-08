@@ -664,9 +664,9 @@
           <context context-type="linenumber">54,55</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3024657559524253596" datatype="html">
-        <source> The dot says whether it is live, in development or open source. </source>
-        <target> Der Punkt zeigt, ob ein Projekt live ist, in Entwicklung oder Open Source. </target>
+      <trans-unit id="1000689893043874190" datatype="html">
+        <source> Each one says whether it is live, in development or open source. </source>
+        <target> Jedes Projekt zeigt, ob es live ist, in Entwicklung oder Open Source. </target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
           <context context-type="linenumber">68,69</context>

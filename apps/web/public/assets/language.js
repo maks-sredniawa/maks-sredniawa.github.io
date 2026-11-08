@@ -1,5 +1,6 @@
 (function () {
   const storageKey = 'mf-language';
+  const tabNamePrefix = 'mf-language:';
   const paths = {
     en: '/',
     pl: '/pl/',
@@ -13,6 +14,9 @@
   };
 
   function savedLanguage() {
+    if (window.name.startsWith(tabNamePrefix)) {
+      return window.name.slice(tabNamePrefix.length);
+    }
     try {
       return localStorage.getItem(storageKey);
     } catch {
@@ -23,8 +27,11 @@
   function saveLanguage(language) {
     try {
       localStorage.setItem(storageKey, language);
+      if (window.name.startsWith(tabNamePrefix)) {
+        window.name = '';
+      }
     } catch {
-      return;
+      window.name = tabNamePrefix + language;
     }
   }
 

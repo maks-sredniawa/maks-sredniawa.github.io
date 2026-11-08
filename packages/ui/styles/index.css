@@ -1,9 +1,6 @@
 @layer theme, base, components, utilities;
 
-/*
- * No preflight: the app sites load this file under their own markup and rely on browser defaults.
- * The tw: prefix keeps utilities (tw:flex, tw:bg-brand) apart from the existing class names.
- */
+/* No preflight: the app sites load this file under their own markup and rely on browser defaults. */
 @import 'tailwindcss/theme.css' layer(theme) prefix(tw);
 @import 'tailwindcss/utilities.css' layer(utilities) source(none) prefix(tw);
 
