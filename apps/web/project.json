@@ -6,7 +6,17 @@
   "sourceRoot": "apps/web/src",
   "tags": ["type:app", "scope:web"],
   "i18n": {
-    "sourceLocale": "en"
+    "sourceLocale": { "code": "en", "subPath": "" },
+    "locales": {
+      "pl": { "translation": "apps/web/src/locale/messages.pl.xlf", "subPath": "pl" },
+      "de": { "translation": "apps/web/src/locale/messages.de.xlf", "subPath": "de" },
+      "es": { "translation": "apps/web/src/locale/messages.es.xlf", "subPath": "es" },
+      "fr": { "translation": "apps/web/src/locale/messages.fr.xlf", "subPath": "fr" },
+      "it": { "translation": "apps/web/src/locale/messages.it.xlf", "subPath": "it" },
+      "pt-BR": { "translation": "apps/web/src/locale/messages.pt-BR.xlf", "subPath": "pt-br" },
+      "cs": { "translation": "apps/web/src/locale/messages.cs.xlf", "subPath": "cs" },
+      "uk": { "translation": "apps/web/src/locale/messages.uk.xlf", "subPath": "uk" }
+    }
   },
   "targets": {
     "build": {
@@ -28,6 +38,8 @@
       },
       "configurations": {
         "production": {
+          "localize": true,
+          "i18nMissingTranslation": "error",
           "budgets": [
             { "type": "initial", "maximumWarning": "320kb", "maximumError": "500kb" },
             { "type": "anyComponentStyle", "maximumWarning": "4kb", "maximumError": "8kb" }

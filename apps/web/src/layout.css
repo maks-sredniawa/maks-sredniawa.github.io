@@ -1,10 +1,121 @@
 .ears {
   display: flex;
-  justify-content: space-between;
-  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 24px;
   padding: 12px 0;
   border-bottom: 1px solid var(--color-rule);
   color: var(--color-ink-3);
+}
+
+.ears > span:nth-child(2) {
+  margin-left: auto;
+}
+
+.lang {
+  position: relative;
+  color: var(--color-ink);
+}
+
+.ears .lang {
+  padding-left: 24px;
+  border-left: 1px solid var(--color-rule);
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: -12px 0;
+  padding: 12px 0;
+  list-style: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lang-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.lang-toggle::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.15s;
+}
+
+.lang[open] > .lang-toggle::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.lang-toggle:hover,
+.lang[open] > .lang-toggle {
+  color: var(--color-brand);
+}
+
+.lang-glyph {
+  flex: none;
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10;
+  min-width: 220px;
+  max-width: calc(100vw - 2 * var(--layout-gutter));
+  margin: 0;
+  padding: 6px 0;
+  border: 1px solid var(--color-rule-strong);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-paper);
+  list-style: none;
+}
+
+.lang-menu a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 20px 7px 14px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.lang-menu a::before {
+  content: '—' / '';
+  color: var(--color-brand);
+  visibility: hidden;
+}
+
+.lang-menu a:hover {
+  background: var(--color-surface-2);
+  color: var(--color-brand);
+}
+
+.lang-menu a[aria-current='page'] {
+  color: var(--color-brand);
+}
+
+.lang-menu a[aria-current='page']::before {
+  visibility: visible;
+}
+
+.lang-menu a:focus-visible {
+  outline-offset: -3px;
+}
+
+.folio-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .ears b {
@@ -282,10 +393,27 @@
 }
 
 @media (max-width: 759px) {
-  .ears,
   .folio {
     flex-direction: column;
     gap: 2px;
+  }
+
+  .ears {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 16px;
+  }
+
+  .ears > span:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .ears .lang {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: start;
+    padding-left: 0;
+    border-left: 0;
   }
 
   .wordmark span {

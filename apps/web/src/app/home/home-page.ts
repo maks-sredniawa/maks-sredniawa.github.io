@@ -1,5 +1,5 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, LOCALE_ID } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import {
   Aisle,
@@ -21,6 +21,8 @@ import {
   sectionStatus,
 } from '../catalog/project';
 import { projects } from '../catalog/projects';
+import { LanguageMenu } from '../language-menu/language-menu';
+import { languageFor, languages } from '../languages';
 import { ProjectTiles } from './project-tiles';
 
 const siteUrl = 'https://maksforge.com/';
@@ -29,7 +31,19 @@ const projectsIn = (section: ProjectSection) => projects.filter((p) => p.section
 
 @Component({
   selector: 'mf-home-page',
-  imports: [Aisle, Band, Button, Fact, IndexEntry, Notice, Pin, ProjectTiles, ShelfItem, Stamp],
+  imports: [
+    Aisle,
+    Band,
+    Button,
+    Fact,
+    IndexEntry,
+    LanguageMenu,
+    Notice,
+    Pin,
+    ProjectTiles,
+    ShelfItem,
+    Stamp,
+  ],
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -72,6 +86,7 @@ export class HomePage {
     .replaceAll('+', '%20')}`;
 
   constructor() {
+    const pageUrl = new URL(languageFor(inject(LOCALE_ID)).path, siteUrl).href;
     inject(Meta).addTags([
       {
         name: 'description',
@@ -82,20 +97,30 @@ export class HomePage {
         property: 'og:description',
         content: $localize`Small, free Android apps and tools. No ads, no tracking.`,
       },
-      { property: 'og:url', content: siteUrl },
+      { property: 'og:url', content: pageUrl },
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: `${siteUrl}assets/logo-512.jpg` },
     ]);
-    addCanonicalLink(inject(DOCUMENT), siteUrl);
+    addLanguageLinks(inject(DOCUMENT), pageUrl);
   }
 }
 
-function addCanonicalLink(document: Document, href: string): void {
+function addLanguageLinks(document: Document, canonicalUrl: string): void {
   if (document.head.querySelector('link[rel="canonical"]')) {
     return;
   }
-  const link = document.createElement('link');
-  link.rel = 'canonical';
-  link.href = href;
-  document.head.appendChild(link);
+  const addLink = (rel: string, href: string, hreflang?: string) => {
+    const link = document.createElement('link');
+    link.rel = rel;
+    link.href = href;
+    if (hreflang) {
+      link.hreflang = hreflang;
+    }
+    document.head.appendChild(link);
+  };
+  addLink('canonical', canonicalUrl);
+  addLink('alternate', siteUrl, 'x-default');
+  for (const language of languages) {
+    addLink('alternate', new URL(language.path, siteUrl).href, language.code);
+  }
 }

@@ -78,8 +78,156 @@ test.describe('home page', () => {
   });
 });
 
+const translations = [
+  { path: '/pl/', lang: 'pl' },
+  { path: '/de/', lang: 'de' },
+  { path: '/es/', lang: 'es' },
+  { path: '/fr/', lang: 'fr' },
+  { path: '/it/', lang: 'it' },
+  { path: '/pt-br/', lang: 'pt-BR' },
+  { path: '/cs/', lang: 'cs' },
+  { path: '/uk/', lang: 'uk' },
+];
+
+async function chooseLanguage(page: Page, name: string): Promise<void> {
+  await page.locator('details.lang summary').click();
+  await page.getByRole('link', { name, exact: true }).click();
+}
+
+test.describe('translations', () => {
+  for (const { path, lang } of translations) {
+    test(`${path} is translated and hydrates without errors`, async ({ page }) => {
+      const errors = collectErrors(page);
+
+      await page.goto(path);
+
+      await expect(page.locator('html')).toHaveAttribute('lang', lang);
+      await expect(page.getByRole('heading', { level: 1 })).not.toHaveText(
+        'Small apps that do one thing well.',
+      );
+      await expect(page.locator('[ngh]')).toHaveCount(0);
+      expect(errors).toEqual([]);
+    });
+
+    test(`${path} does not overflow sideways`, async ({ page }) => {
+      await page.goto(path);
+
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+
+      expect(overflow).toBeLessThanOrEqual(0);
+    });
+  }
+
+  test('every page links to its translations for search engines', async ({ page }) => {
+    await page.goto('/pl/');
+
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      'href',
+      'https://maksforge.com/pl/',
+    );
+    await expect(page.locator('link[rel="alternate"][hreflang]')).toHaveCount(
+      translations.length + 2,
+    );
+  });
+
+  test('a 404 stays in its language', async ({ page }) => {
+    const response = await page.goto('/pl/no-such-page');
+
+    expect(response?.status()).toBe(404);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'pl');
+    await page.locator('.not-found .actions a').click();
+    await expect(page).toHaveURL('/pl/');
+  });
+});
+
+test.describe('language detection', () => {
+  test.describe('with a Polish browser', () => {
+    test.use({ locale: 'pl-PL' });
+
+    test('a first visit lands on the Polish page', async ({ page }) => {
+      await page.goto('/');
+
+      await expect(page).toHaveURL('/pl/');
+    });
+
+    test('keeps the section in the address', async ({ page }) => {
+      await page.goto('/#tools');
+
+      await expect(page).toHaveURL('/pl/#tools');
+    });
+
+    test('remembers a switch back to English', async ({ page }) => {
+      await page.goto('/');
+      await expect(page).toHaveURL('/pl/');
+
+      await chooseLanguage(page, 'English');
+      await expect(page).toHaveURL('/');
+
+      await page.goto('/');
+      await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+      await expect(page).toHaveURL('/');
+    });
+  });
+
+  test.describe('with a Portuguese browser from Portugal', () => {
+    test.use({ locale: 'pt-PT' });
+
+    test('lands on the only Portuguese page', async ({ page }) => {
+      await page.goto('/');
+
+      await expect(page).toHaveURL('/pt-br/');
+    });
+  });
+
+  test.describe('with a browser in a language the site does not have', () => {
+    test.use({ locale: 'ja-JP' });
+
+    test('stays on the English page', async ({ page }) => {
+      await page.goto('/');
+
+      await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+      await expect(page).toHaveURL('/');
+    });
+  });
+
+  test('a chosen language overrides the browser on later visits', async ({ page }) => {
+    await page.goto('/');
+
+    await chooseLanguage(page, 'Deutsch');
+    await expect(page).toHaveURL('/de/');
+
+    await page.goto('/');
+    await expect(page).toHaveURL('/de/');
+  });
+
+  test('the menu marks the current language and closes on Escape', async ({ page }) => {
+    await page.goto('/pl/');
+    await expect(page.locator('[ngh]')).toHaveCount(0);
+    const summary = page.locator('details.lang summary');
+
+    await summary.click();
+    await expect(page.locator('a[aria-current="page"]')).toHaveText('Polski');
+
+    await page.keyboard.press('Escape');
+    await expect(page.locator('.lang-menu')).toBeHidden();
+    await expect(summary).toBeFocused();
+  });
+
+  test('the menu closes on a click outside it', async ({ page }) => {
+    await page.goto('/pl/');
+
+    await page.locator('details.lang summary').click();
+    await expect(page.locator('.lang-menu')).toBeVisible();
+
+    await page.getByRole('heading', { level: 1 }).click();
+    await expect(page.locator('.lang-menu')).toBeHidden();
+  });
+});
+
 test.describe('accessibility', () => {
-  for (const path of ['/', '/no-such-page']) {
+  for (const path of ['/', '/no-such-page', ...translations.map(({ path: page }) => page)]) {
     test(`${path} has no axe violations`, async ({ page }) => {
       await page.goto(path);
 
@@ -132,18 +280,20 @@ test.describe('shared assets', () => {
     }
   });
 
-  test('caches the hashed bundles for a year', async ({ page, request }) => {
-    await page.goto('/');
-    const bundles = await page
-      .locator('script[src]')
-      .evaluateAll((scripts) => scripts.map((script) => script.getAttribute('src') ?? ''));
+  for (const path of ['/', '/pl/']) {
+    test(`caches the hashed bundles of ${path} for a year`, async ({ page, request }) => {
+      await page.goto(path);
+      const bundles = await page
+        .locator('script[type="module"][src]')
+        .evaluateAll((scripts) => scripts.map((script) => script.getAttribute('src') ?? ''));
 
-    expect(bundles.length).toBeGreaterThan(0);
-    for (const bundle of bundles) {
-      const response = await request.get(`/${bundle}`);
-      expect(response.headers()['cache-control']).toBe('public, max-age=31536000, immutable');
-    }
-  });
+      expect(bundles.length).toBeGreaterThan(0);
+      for (const bundle of bundles) {
+        const response = await request.get(`${path}${bundle}`);
+        expect(response.headers()['cache-control']).toBe('public, max-age=31536000, immutable');
+      }
+    });
+  }
 
   test('serves the third-party licence notices', async ({ request }) => {
     const response = await request.get('/3rdpartylicenses.txt');
