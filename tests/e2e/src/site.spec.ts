@@ -360,6 +360,23 @@ test.describe('shared assets', () => {
     });
   }
 
+  test('preloads the fonts of the first screen and lets browsers cache them', async ({
+    page,
+    request,
+  }) => {
+    await page.goto('/');
+    const fonts = await page
+      .locator('link[rel="preload"][as="font"]')
+      .evaluateAll((links) => links.map((link) => link.getAttribute('href') ?? ''));
+
+    expect(fonts.length).toBeGreaterThan(0);
+    for (const font of fonts) {
+      const response = await request.get(font);
+      expect(response.status(), font).toBe(200);
+      expect(response.headers()['cache-control'], font).toBe('public, max-age=2592000');
+    }
+  });
+
   test('serves the third-party licence notices', async ({ request }) => {
     const response = await request.get('/3rdpartylicenses.txt');
 
