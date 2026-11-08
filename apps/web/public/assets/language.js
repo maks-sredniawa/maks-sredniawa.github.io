@@ -42,18 +42,24 @@
     return document.querySelectorAll('details.lang[open]');
   }
 
-  document.addEventListener('click', (event) => {
-    const target = event.target instanceof Element ? event.target : null;
-    const link = target?.closest('a[data-language]');
-    if (link) {
-      saveLanguage(link.getAttribute('data-language'));
-    }
-    const clickedMenu = target?.closest('details.lang');
+  function closeMenusOutside(target) {
     for (const menu of openMenus()) {
-      if (menu !== clickedMenu) {
+      if (!menu.contains(target)) {
         menu.open = false;
       }
     }
+  }
+
+  document.addEventListener('click', (event) => {
+    const link = event.target instanceof Element && event.target.closest('a[data-language]');
+    if (link) {
+      saveLanguage(link.getAttribute('data-language'));
+    }
+    closeMenusOutside(event.target);
+  });
+
+  document.addEventListener('focusin', (event) => {
+    closeMenusOutside(event.target);
   });
 
   document.addEventListener('keydown', (event) => {

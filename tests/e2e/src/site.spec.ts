@@ -215,6 +215,41 @@ test.describe('language detection', () => {
     await expect(summary).toBeFocused();
   });
 
+  test('every language in the menu is detected from the browser', async ({
+    baseURL,
+    browser,
+    page,
+  }) => {
+    await page.goto('/');
+    const links = await page.locator('a[data-language]').evaluateAll((anchors) =>
+      anchors.map((anchor) => ({
+        language: anchor.getAttribute('data-language') ?? '',
+        path: anchor.getAttribute('href') ?? '',
+      })),
+    );
+
+    expect(links).toHaveLength(translations.length + 1);
+    for (const { language, path } of links) {
+      const context = await browser.newContext({ locale: language });
+      const visitor = await context.newPage();
+
+      await visitor.goto(new URL('/', baseURL).href);
+
+      await expect(visitor).toHaveURL(new URL(path, baseURL).href);
+      await context.close();
+    }
+  });
+
+  test('the menu closes when focus moves out of it', async ({ page }) => {
+    await page.goto('/pl/');
+
+    await page.locator('details.lang summary').click();
+    await page.locator('.lang-menu a').last().focus();
+    await page.keyboard.press('Tab');
+
+    await expect(page.locator('.lang-menu')).toBeHidden();
+  });
+
   test('the menu closes on a click outside it', async ({ page }) => {
     await page.goto('/pl/');
 
