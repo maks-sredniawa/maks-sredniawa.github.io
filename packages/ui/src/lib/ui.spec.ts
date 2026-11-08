@@ -115,6 +115,7 @@ describe('ui', () => {
     expect(host.querySelector('.mf-shelf-item--building .mf-shelf-item__status')?.textContent).toBe(
       'Building',
     );
+    expect(host.querySelector('.mf-shelf-item--building')?.textContent).toContain(', Building');
     expect(host.querySelector('.mf-index-entry--live .mf-index-entry__status')?.textContent).toBe(
       'Live',
     );
