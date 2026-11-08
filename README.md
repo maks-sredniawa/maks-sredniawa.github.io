@@ -28,7 +28,7 @@ pnpm visual            # pnpm visual:update after an intended visual change
 
 All text on the page is marked for translation with `@angular/localize`. `pnpm i18n:extract` writes the messages to `apps/web/src/locale/`; adding a language means a translated copy there, a `locales` entry in `apps/web/project.json`, and teaching `scripts/build.sh` the per-locale output (`browser/<locale>/`, with the fixed `/assets/style.css` and a 404 page per locale); until then it stops with an error.
 
-The colours are tokens in `packages/ui/styles/tokens.css`. `pages-theme` reads the same variable names, so change values freely but rename none. Tailwind's utilities carry a `tw:` prefix (`tw:flex`, `tw:text-accent`) and know only the brand colours.
+The design tokens are in `packages/ui/styles/tokens.css`, in two layers: primitives (`--mf-*`) and the semantic names the components read (`--color-*`, `--font-*`, `--layout-*`). Only the semantic layer changes in dark mode, and the brand colour is the two numbers `--mf-brand-hue` and `--mf-brand-chroma`. `pages-theme` uses the same semantic names and the `mf-*` component classes, so change values freely but rename none. The fonts (Fraunces, Newsreader, IBM Plex Mono) are self-hosted in `packages/ui/assets/fonts/`. Tailwind's utilities carry a `tw:` prefix (`tw:flex`, `tw:text-brand`) and know only the semantic colours.
 
 ## Build and deploy
 

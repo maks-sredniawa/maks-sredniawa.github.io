@@ -1,12 +1,27 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import { Button, Fact, IdeaCard, SectionHead } from '@maksforge/ui';
+import {
+  Aisle,
+  Band,
+  Button,
+  Fact,
+  IndexEntry,
+  Notice,
+  Pin,
+  ShelfItem,
+  Stamp,
+} from '@maksforge/ui';
 import { ideaKindLabels } from '../catalog/idea';
 import { ideas } from '../catalog/ideas';
-import { liveSections, type ProjectSection } from '../catalog/project';
+import {
+  liveSections,
+  projectKindShortLabels,
+  type ProjectSection,
+  sectionStatus,
+} from '../catalog/project';
 import { projects } from '../catalog/projects';
-import { ProjectGrid } from './project-grid';
+import { ProjectTiles } from './project-tiles';
 
 const siteUrl = 'https://maksforge.com/';
 
@@ -14,7 +29,7 @@ const projectsIn = (section: ProjectSection) => projects.filter((p) => p.section
 
 @Component({
   selector: 'mf-home-page',
-  imports: [Button, Fact, IdeaCard, ProjectGrid, SectionHead],
+  imports: [Aisle, Band, Button, Fact, IndexEntry, Notice, Pin, ProjectTiles, ShelfItem, Stamp],
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -26,9 +41,28 @@ export class HomePage {
   protected readonly openSource = projectsIn('open-source');
   protected readonly ideas = ideas;
   protected readonly ideaKindLabels = ideaKindLabels;
+  protected readonly projects = projects;
+  protected readonly kindShortLabels = projectKindShortLabels;
+  protected readonly sectionStatus = sectionStatus;
+  protected readonly indexGroups = [
+    {
+      heading: $localize`In production`,
+      projects: projects.filter((p) => liveSections.includes(p.section)),
+    },
+    { heading: $localize`In development`, projects: this.building },
+    { heading: $localize`Tools`, projects: this.openSource },
+  ];
+  protected readonly statusLabels = {
+    live: $localize`Live`,
+    building: $localize`Building`,
+    oss: $localize`Source`,
+    idea: $localize`Idea`,
+  };
 
   protected readonly liveCount = projects.filter((p) => liveSections.includes(p.section)).length;
   protected readonly buildingCount = this.building.length;
+  protected readonly openSourceCount = this.openSource.length;
+  protected readonly ideaCount = ideas.length;
 
   protected readonly ideaMailto = `mailto:ideas@maksforge.com?${new URLSearchParams({
     subject: $localize`App idea for MaksForge`,

@@ -1,53 +1,124 @@
 /*
- * The brand palette. The app sites' pages-theme reads these names too, so rename none of them.
- * The theme-color metas in apps/web/src/index.html repeat --bg; change them with it.
+ * Three layers: primitives (--mf-*) hold raw values, semantic tokens (--color-*, --font-*, --layout-*)
+ * are what components read, and only the semantic layer changes in dark mode.
+ * The brand colour is the two --mf-brand-* numbers below.
+ * The app sites' pages-theme reads the semantic names too, so rename none of them.
+ * The theme-color metas in apps/web/src/index.html and pages-theme repeat --mf-paper-1 and --mf-night-1.
  */
 :root {
-  --bg: #0f0d0b;
-  --bg-2: #17130f;
-  --surface: rgba(255, 244, 230, 0.04);
-  --surface-hover: rgba(255, 244, 230, 0.07);
-  --border: rgba(255, 236, 214, 0.1);
-  --text: #f6efe7;
-  --muted: #b3a798;
-  --accent: #ff8a3d;
-  --accent-2: #ffb347;
-  --accent-3: #ff5f3a;
-  --on-accent: #1a0f07;
-  --glow: rgba(255, 122, 61, 0.28);
-  --glow-page: rgba(255, 138, 61, 0.1);
-  --glow-page-2: rgba(192, 132, 252, 0.06);
-  --glow-support: rgba(255, 138, 61, 0.18);
-  --grad-text: linear-gradient(100deg, var(--accent-2), var(--accent-3));
-  --live: #4ade80;
-  --building: #fbbf24;
-  --oss: #60a5fa;
-  --idea: #c084fc;
-  --radius: 20px;
-  --shadow: 0 20px 50px -24px rgba(0, 0, 0, 0.7);
-  --shadow-icon: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
-  --shadow-accent: 0 10px 30px -10px rgba(255, 106, 51, 0.6);
-  --font-text:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  color-scheme: dark;
+  --mf-brand-hue: 30;
+  --mf-brand-chroma: 0.14;
+
+  --mf-brand-deep: oklch(0.44 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-bright: oklch(0.67 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-wash: oklch(0.92 calc(var(--mf-brand-chroma) * 0.14) var(--mf-brand-hue));
+  --mf-brand-shadow: oklch(0.27 calc(var(--mf-brand-chroma) * 0.32) var(--mf-brand-hue));
+  --mf-brand-night: oklch(0.17 calc(var(--mf-brand-chroma) * 0.2) var(--mf-brand-hue));
+
+  --mf-paper-0: #fbf8f2;
+  --mf-paper-1: #f6f1e8;
+  --mf-paper-2: #ede6d8;
+  --mf-paper-3: #d9d1c3;
+  --mf-paper-4: #cfc6b4;
+  --mf-ink-1: #1c1a17;
+  --mf-ink-2: #4b4640;
+  --mf-ink-3: #675f55;
+
+  --mf-night-0: #0e0c0a;
+  --mf-night-1: #171411;
+  --mf-night-2: #1f1b17;
+  --mf-night-3: #272219;
+  --mf-night-4: #352e27;
+  --mf-moon-1: #efe7d9;
+  --mf-moon-2: #c3b8a7;
+  --mf-moon-3: #9d9384;
+
+  --mf-green-deep: #2d6a3e;
+  --mf-green-bright: #6fbf85;
+  --mf-amber-deep: #9a5118;
+  --mf-amber-bright: #e39a57;
+  --mf-blue-deep: #2b4f9e;
+  --mf-blue-bright: #86a4e8;
+  --mf-violet-deep: #6d3f8f;
+  --mf-violet-bright: #bb93d8;
+
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-text: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --layout-max: 1760px;
+  --layout-gutter: 40px;
+  --layout-label: 220px;
+  --layout-gap: 36px;
+  --layout-prose: 68ch;
+  --layout-bar: 60px;
 }
 
-@media (prefers-color-scheme: light) {
+/* A .mf-paper element keeps the light map in dark mode too, like the pins on the dark ideas band. */
+:root,
+.mf-paper {
+  --color-bg: var(--mf-paper-1);
+  --color-surface: var(--mf-paper-0);
+  --color-surface-2: var(--mf-paper-2);
+  --color-ink: var(--mf-ink-1);
+  --color-ink-2: var(--mf-ink-2);
+  --color-ink-3: var(--mf-ink-3);
+  --color-rule: var(--mf-paper-3);
+  --color-rule-strong: var(--mf-ink-1);
+  --color-shade: var(--mf-paper-4);
+  --color-brand: var(--mf-brand-deep);
+  --color-on-brand: var(--mf-paper-0);
+  --color-brand-tint: var(--mf-brand-wash);
+  --color-band-tint: var(--mf-paper-2);
+  --color-band-dark: var(--mf-ink-1);
+  --color-on-band-dark: var(--mf-paper-1);
+  --color-live: var(--mf-green-deep);
+  --color-building: var(--mf-amber-deep);
+  --color-oss: var(--mf-blue-deep);
+  --color-idea: var(--mf-violet-deep);
+  --color-on-status: var(--mf-paper-0);
+
+  --shadow-paper: 3px 3px 0 var(--color-shade);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    --bg: #fbf8f4;
-    --bg-2: #f3ede5;
-    --surface: rgba(255, 255, 255, 0.75);
-    --surface-hover: #ffffff;
-    --border: rgba(60, 40, 20, 0.12);
-    --text: #1d1712;
-    --muted: #6b5e51;
-    --accent: #b4470c;
-    --grad-text: linear-gradient(100deg, #c2550a, #b3261e);
-    --live: #15803d;
-    --building: #b45309;
-    --oss: #1d4ed8;
-    --idea: #7e22ce;
-    --shadow: 0 20px 50px -28px rgba(80, 50, 20, 0.35);
-    color-scheme: light;
+    --color-bg: var(--mf-night-1);
+    --color-surface: var(--mf-night-2);
+    --color-surface-2: var(--mf-night-3);
+    --color-ink: var(--mf-moon-1);
+    --color-ink-2: var(--mf-moon-2);
+    --color-ink-3: var(--mf-moon-3);
+    --color-rule: var(--mf-night-4);
+    --color-rule-strong: var(--mf-moon-1);
+    --color-shade: var(--mf-night-0);
+    --color-brand: var(--mf-brand-bright);
+    --color-on-brand: var(--mf-brand-night);
+    --color-brand-tint: var(--mf-brand-shadow);
+    --color-band-tint: var(--mf-night-2);
+    --color-band-dark: var(--mf-night-0);
+    --color-on-band-dark: var(--mf-moon-1);
+    --color-live: var(--mf-green-bright);
+    --color-building: var(--mf-amber-bright);
+    --color-oss: var(--mf-blue-bright);
+    --color-idea: var(--mf-violet-bright);
+    --color-on-status: var(--mf-night-0);
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 1099px) {
+  :root {
+    --layout-gutter: 24px;
+    --layout-gap: 24px;
+  }
+}
+
+@media (max-width: 759px) {
+  :root {
+    --layout-gutter: 16px;
+    --layout-bar: 52px;
   }
 }

@@ -9,7 +9,7 @@ const meta: Meta<Args> = {
   args: { value: 5, label: 'apps, extensions and mods live' },
   render: (args) => ({
     props: args,
-    template: `<ul class="facts"><li mfFact [value]="value">{{ label }}</li></ul>`,
+    template: `<ul class="mf-facts"><li mfFact [value]="value">{{ label }}</li></ul>`,
   }),
 };
 

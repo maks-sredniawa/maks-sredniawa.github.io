@@ -1,5 +1,6 @@
 import AxeBuilder from '@axe-core/playwright';
 import { expect, type Page, test } from '@playwright/test';
+import { themeAssets, themeClasses } from './pages-theme';
 
 function collectErrors(page: Page): string[] {
   const errors: string[] = [];
@@ -44,9 +45,9 @@ test.describe('home page', () => {
   test('counts the live and in-development cards in About', async ({ page }) => {
     await page.goto('/');
 
-    const live = await page.locator('#live .card').count();
-    const building = await page.locator('#building .card').count();
-    const facts = page.locator('.facts strong');
+    const live = await page.locator('#live .mf-tile').count();
+    const building = await page.locator('#building .mf-tile').count();
+    const facts = page.locator('.mf-fact strong');
 
     await expect(facts.nth(0)).toHaveText(String(live));
     await expect(facts.nth(1)).toHaveText(String(building));
@@ -111,7 +112,24 @@ test.describe('shared assets', () => {
 
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toContain('text/css');
-    expect(await response.text()).toContain('--accent');
+    expect(await response.text()).toContain('--color-brand');
+  });
+
+  test('defines every class the app sites use', async ({ request }) => {
+    const css = await (await request.get('/assets/style.css')).text();
+
+    const missing = themeClasses.filter(
+      (name) => !new RegExp(String.raw`\.${name}(?![\w-])`).test(css),
+    );
+
+    expect(missing).toEqual([]);
+  });
+
+  test('serves every asset the app sites load', async ({ request }) => {
+    for (const path of themeAssets) {
+      const response = await request.get(path);
+      expect(response.status(), path).toBe(200);
+    }
   });
 
   test('caches the hashed bundles for a year', async ({ page, request }) => {

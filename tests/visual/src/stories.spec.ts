@@ -9,7 +9,10 @@ interface StoryIndex {
 const index = JSON.parse(
   readFileSync(new URL('../../../dist/storybook/ui/index.json', import.meta.url), 'utf8'),
 ) as StoryIndex;
-const stories = Object.values(index.entries).filter((entry) => entry.type === 'story');
+// app-page.spec.ts shoots the App page stories at every width.
+const stories = Object.values(index.entries).filter(
+  (entry) => entry.type === 'story' && !entry.id.startsWith('app-page--'),
+);
 
 test.describe('stories', () => {
   for (const { id } of stories) {
