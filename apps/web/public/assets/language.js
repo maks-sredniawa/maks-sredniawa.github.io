@@ -14,16 +14,22 @@
   };
 
   function savedLanguage() {
+    if (window.name.startsWith(tabNamePrefix)) {
+      return window.name.slice(tabNamePrefix.length);
+    }
     try {
       return localStorage.getItem(storageKey);
     } catch {
-      return window.name.startsWith(tabNamePrefix) ? window.name.slice(tabNamePrefix.length) : null;
+      return null;
     }
   }
 
   function saveLanguage(language) {
     try {
       localStorage.setItem(storageKey, language);
+      if (window.name.startsWith(tabNamePrefix)) {
+        window.name = '';
+      }
     } catch {
       window.name = tabNamePrefix + language;
     }

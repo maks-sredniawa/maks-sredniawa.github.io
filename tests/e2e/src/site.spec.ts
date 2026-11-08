@@ -175,6 +175,19 @@ test.describe('language detection', () => {
       });
     }
 
+    test('reaches English from the menu when site data is full', async ({ page }) => {
+      await page.addInitScript(() => {
+        Storage.prototype.setItem = () => {
+          throw new DOMException('full', 'QuotaExceededError');
+        };
+      });
+      await page.goto('/pl/');
+
+      await chooseLanguage(page, 'English');
+
+      await expect(page).toHaveURL('/');
+    });
+
     test('remembers a switch back to English', async ({ page }) => {
       await page.goto('/');
       await expect(page).toHaveURL('/pl/');
