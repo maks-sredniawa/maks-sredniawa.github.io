@@ -1,5 +1,6 @@
 (function () {
   const storageKey = 'mf-language';
+  const tabNamePrefix = 'mf-language:';
   const paths = {
     en: '/',
     pl: '/pl/',
@@ -16,7 +17,7 @@
     try {
       return localStorage.getItem(storageKey);
     } catch {
-      return null;
+      return window.name.startsWith(tabNamePrefix) ? window.name.slice(tabNamePrefix.length) : null;
     }
   }
 
@@ -24,7 +25,7 @@
     try {
       localStorage.setItem(storageKey, language);
     } catch {
-      return;
+      window.name = tabNamePrefix + language;
     }
   }
 
@@ -36,14 +37,6 @@
       }
     }
     return null;
-  }
-
-  function arrivedFromLanguagePage() {
-    if (!document.referrer) {
-      return false;
-    }
-    const from = new URL(document.referrer);
-    return from.origin === location.origin && Object.values(paths).includes(from.pathname);
   }
 
   function openMenus() {
@@ -83,7 +76,7 @@
   if (location.pathname !== '/') {
     return;
   }
-  const language = savedLanguage() || (arrivedFromLanguagePage() ? null : browserLanguage());
+  const language = savedLanguage() || browserLanguage();
   if (language && language !== 'en' && Object.hasOwn(paths, language)) {
     location.replace(paths[language] + location.search + location.hash);
   }
