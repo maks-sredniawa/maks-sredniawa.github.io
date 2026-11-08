@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Builds maksforge.com into _site: the home page at the root and each app's docs/ at /<repo>/.
+# Builds maksforge.com into _site: the English home page at the root, each translation at
+# /<language>/ and each app's docs/ at /<repo>/.
 # Usage: scripts/build.sh <repo>...
 set -euo pipefail
 owner=maks-sredniawa
@@ -8,14 +9,13 @@ work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
 pnpm exec nx build web
-if [ ! -f dist/apps/web/browser/index.html ]; then
-  echo "build.sh handles one locale only; a second one builds into dist/apps/web/browser/<locale>/." >&2
-  exit 1
-fi
 rm -rf "$out"
 cp -r dist/apps/web/browser "$out"
-mv "$out/404/index.html" "$out/404.html"
-rm -r "$out/404" "$out/index.csr.html"
+find "$out" -type f -path '*/404/index.html' | while read -r not_found; do
+  language_root=$(dirname "$(dirname "$not_found")")
+  mv "$not_found" "$language_root/404.html"
+  rm -r "$language_root/404" "$language_root/index.csr.html"
+done
 # pages-theme loads the stylesheet from this fixed, unhashed URL.
 cp "$out/style.css" "$out/assets/style.css"
 cp _headers robots.txt dist/apps/web/3rdpartylicenses.txt "$out"/
