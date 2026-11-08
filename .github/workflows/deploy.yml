@@ -10,6 +10,7 @@ on:
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
+  queue: max
 
 permissions:
   contents: read
