@@ -25,6 +25,14 @@ export const projects: readonly Project[] = [
     links: [googlePlay('io.github.srednimax.gloam'), website('gloam')],
   },
   {
+    name: 'Bevel',
+    icon: 'bevel',
+    kind: 'web-app',
+    section: 'web-apps',
+    summary: $localize`A free music player in your browser, in the style of the early 2000s, with an equaliser and a two-deck DJ mode. Your songs stay on your device.`,
+    links: [website('bevel'), source('bevel')],
+  },
+  {
     name: $localize`Dark Theme for Play Console`,
     icon: 'play-console-dark-theme',
     kind: 'chrome-extension',

@@ -49,6 +49,7 @@ const projectsIn = (section: ProjectSection) => projects.filter((p) => p.section
 })
 export class HomePage {
   protected readonly androidApps = projectsIn('android-apps');
+  protected readonly webApps = projectsIn('web-apps');
   protected readonly chromeExtensions = projectsIn('chrome-extensions');
   protected readonly wotMods = projectsIn('wot-mods');
   protected readonly building = projectsIn('building');

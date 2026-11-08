@@ -1,9 +1,10 @@
 import { type LinkVariant, type Status } from '@maksforge/ui';
 
 export type ProjectSection =
-  'android-apps' | 'chrome-extensions' | 'wot-mods' | 'building' | 'open-source';
+  'android-apps' | 'web-apps' | 'chrome-extensions' | 'wot-mods' | 'building' | 'open-source';
 
-export type ProjectKind = 'android-app' | 'chrome-extension' | 'wot-mod' | 'template' | 'cli';
+export type ProjectKind =
+  'android-app' | 'web-app' | 'chrome-extension' | 'wot-mod' | 'template' | 'cli';
 
 export interface ProjectLink {
   readonly label: string;
@@ -24,12 +25,14 @@ export interface Project {
 
 export const liveSections: readonly ProjectSection[] = [
   'android-apps',
+  'web-apps',
   'chrome-extensions',
   'wot-mods',
 ];
 
 export const projectKindLabels: Readonly<Record<ProjectKind, string>> = {
   'android-app': $localize`Android app`,
+  'web-app': $localize`Web app`,
   'chrome-extension': $localize`Chrome extension`,
   'wot-mod': $localize`World of Tanks mod`,
   template: $localize`Template`,
@@ -38,6 +41,7 @@ export const projectKindLabels: Readonly<Record<ProjectKind, string>> = {
 
 export const projectKindShortLabels: Readonly<Record<ProjectKind, string>> = {
   'android-app': $localize`Android app`,
+  'web-app': $localize`Web app`,
   'chrome-extension': $localize`:short project kind:Chrome`,
   'wot-mod': $localize`WoT mod`,
   template: $localize`Template`,
