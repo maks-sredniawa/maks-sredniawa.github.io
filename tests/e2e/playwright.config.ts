@@ -21,8 +21,6 @@ export default defineConfig({
     { name: 'desktop', use: { ...devices['Desktop Chrome'] } },
     { name: 'phone', use: { ...devices['Pixel 7'] } },
   ],
-  // Builds the home page into _site and serves it through wrangler, so _headers and the
-  // 404 handling behave as in production.
   webServer: {
     command: `scripts/build.sh && pnpm exec wrangler dev --ip 127.0.0.1 --port ${String(port)}`,
     cwd: '../..',

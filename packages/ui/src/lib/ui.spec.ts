@@ -112,7 +112,9 @@ describe('ui', () => {
     const host = render();
 
     expect(host.querySelector('.mf-shelf-item--building')?.getAttribute('href')).toBe('#kozica');
-    expect(host.querySelector('.mf-shelf-item--building .mf-sr')?.textContent).toBe(', Building');
+    expect(host.querySelector('.mf-shelf-item--building .mf-shelf-item__status')?.textContent).toBe(
+      'Building',
+    );
     expect(host.querySelector('.mf-index-entry--live .mf-index-entry__status')?.textContent).toBe(
       'Live',
     );

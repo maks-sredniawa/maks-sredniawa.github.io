@@ -38,6 +38,14 @@
     return null;
   }
 
+  function arrivedFromLanguagePage() {
+    if (!document.referrer) {
+      return false;
+    }
+    const from = new URL(document.referrer);
+    return from.origin === location.origin && Object.values(paths).includes(from.pathname);
+  }
+
   function openMenus() {
     return document.querySelectorAll('details.lang[open]');
   }
@@ -75,7 +83,7 @@
   if (location.pathname !== '/') {
     return;
   }
-  const language = savedLanguage() || browserLanguage();
+  const language = savedLanguage() || (arrivedFromLanguagePage() ? null : browserLanguage());
   if (language && language !== 'en' && Object.hasOwn(paths, language)) {
     location.replace(paths[language] + location.search + location.hash);
   }

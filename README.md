@@ -32,7 +32,7 @@ The design tokens are in `packages/ui/styles/tokens.css`, in two layers: primiti
 
 ## Build and deploy
 
-`.github/workflows/deploy.yml` checks what a change affects (`nx affected`), then builds and deploys on every push to `main`, and every 15 minutes checks the app repos and the theme for changes. On a pull request it only checks and builds. It needs the `CLOUDFLARE_API_TOKEN` secret and the `CLOUDFLARE_ACCOUNT_ID` variable.
+`.github/workflows/deploy.yml` checks what a change affects (`nx affected`), then builds and deploys on every push to `main`, and every 15 minutes checks the app repos and the theme for changes, deploying only a commit whose push run passed. Only `main` deploys. On a pull request it only checks and builds. It needs the `CLOUDFLARE_API_TOKEN` secret and the `CLOUDFLARE_ACCOUNT_ID` variable.
 
 To build the whole site locally:
 

@@ -158,6 +158,21 @@ test.describe('language detection', () => {
       await expect(page).toHaveURL('/pl/#tools');
     });
 
+    test('reaches English from the menu when site data is blocked', async ({ page }) => {
+      await page.addInitScript(() => {
+        Object.defineProperty(window, 'localStorage', {
+          get() {
+            throw new Error('blocked');
+          },
+        });
+      });
+      await page.goto('/pl/');
+
+      await chooseLanguage(page, 'English');
+
+      await expect(page).toHaveURL('/');
+    });
+
     test('remembers a switch back to English', async ({ page }) => {
       await page.goto('/');
       await expect(page).toHaveURL('/pl/');
