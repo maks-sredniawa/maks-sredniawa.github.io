@@ -147,8 +147,9 @@ test.describe('masthead top row', () => {
     page.evaluate(() => document.fonts.check('600 12px Fraunces'));
 
   for (const path of ['/', ...translations.map(({ path: page }) => page)]) {
-    test(`${path} fits on one row at 1200px in Fraunces`, async ({ page }) => {
-      await page.setViewportSize({ width: 1200, height: 800 });
+    test(`${path} fits on one row at 1220px beside a classic scrollbar`, async ({ page }) => {
+      const classicScrollbar = 15;
+      await page.setViewportSize({ width: 1220 - classicScrollbar, height: 800 });
       await page.goto(path);
       await page.evaluate(() => document.fonts.ready);
       expect(await frauncesLoaded(page)).toBe(true);
