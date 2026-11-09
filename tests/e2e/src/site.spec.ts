@@ -360,6 +360,20 @@ test.describe('shared assets', () => {
     });
   }
 
+  test('lets browsers cache the fonts', async ({ request }) => {
+    const fonts = [
+      '/assets/fonts/fraunces-latin-normal.woff2',
+      '/assets/fonts/fraunces-latin-italic.woff2',
+      '/assets/fonts/newsreader-latin-normal.woff2',
+    ];
+
+    for (const font of fonts) {
+      const response = await request.get(font);
+      expect(response.status(), font).toBe(200);
+      expect(response.headers()['cache-control'], font).toBe('public, max-age=2592000');
+    }
+  });
+
   test('serves the third-party licence notices', async ({ request }) => {
     const response = await request.get('/3rdpartylicenses.txt');
 

@@ -36,8 +36,10 @@
   --mf-violet-deep: #6d3f8f;
   --mf-violet-bright: #bb93d8;
 
-  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
-  --font-text: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --font-display:
+    'Fraunces', 'Fraunces Georgia', 'Fraunces Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-text:
+    'Newsreader', 'Newsreader Georgia', 'Newsreader Noto Serif', Georgia, 'Times New Roman', serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
 
   --layout-max: 1760px;

@@ -483,3 +483,10 @@
   color: var(--color-brand);
   font-weight: 400;
 }
+
+/* A ch cap follows whichever font is current and moves at the swap; 427px is 14ch of unhinted Fraunces at the 50px phone h1. */
+@media (max-width: 599px) {
+  .lead h1 {
+    max-width: 427px;
+  }
+}
