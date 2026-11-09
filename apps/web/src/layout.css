@@ -199,9 +199,9 @@
   grid-area: statement;
 }
 
-/* These caps are 14ch and 54ch of the real fonts; a ch cap follows whichever font is current and moves at the swap. */
+/* These caps are 14ch and 54ch of the real fonts in unhinted text; a ch cap follows whichever font is current and moves at the swap. */
 .lead h1 {
-  max-width: min(8.2em + 12px, 7em + 98px);
+  max-width: min(7.95em + 30px, max(6.3em + 148px, 7.5em + 47px));
   font-size: clamp(48px, 6vw, 104px);
   line-height: 0.98;
   text-wrap: balance;
@@ -213,7 +213,7 @@
 }
 
 .standfirst {
-  max-width: 648px;
+  max-width: 673px;
   margin-top: 24px;
   color: var(--color-ink-2);
   font-size: 22px;
@@ -440,12 +440,12 @@
   }
 
   .lead h1 {
-    max-width: 434px;
+    max-width: 427px;
     font-size: 50px;
   }
 
   .standfirst {
-    max-width: 594px;
+    max-width: 581px;
     font-size: 19px;
   }
 
