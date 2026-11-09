@@ -48,9 +48,9 @@ const pinned = (contents: string[][]): string => `
         <a class="mf-btn mf-btn--brand mf-btn--raised" href="#">Buy me a coffee</a>
       </div>
     </aside>
-    <p class="mf-dossier__links mf-sc">
+    <nav class="mf-dossier__links mf-sc" aria-label="Kozica">
       <a href="#">Privacy policy</a><a href="#">Source</a><a href="#">Support</a>
-    </p>
+    </nav>
   </div>
 `;
 

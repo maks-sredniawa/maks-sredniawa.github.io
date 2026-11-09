@@ -52,6 +52,7 @@ export const themeClasses = [
   'mf-tag--building',
   'mf-tag--live',
   'mf-tag--oss',
+  'mf-tag--plain',
   'mf-toc',
   'mf-topbar',
   'mf-topbar__brand',
