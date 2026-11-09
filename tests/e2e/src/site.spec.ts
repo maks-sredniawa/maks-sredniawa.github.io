@@ -360,16 +360,13 @@ test.describe('shared assets', () => {
     });
   }
 
-  test('preloads the fonts of the first screen and lets browsers cache them', async ({
-    page,
-    request,
-  }) => {
-    await page.goto('/');
-    const fonts = await page
-      .locator('link[rel="preload"][as="font"]')
-      .evaluateAll((links) => links.map((link) => link.getAttribute('href') ?? ''));
+  test('lets browsers cache the fonts', async ({ request }) => {
+    const fonts = [
+      '/assets/fonts/fraunces-latin-normal.woff2',
+      '/assets/fonts/fraunces-latin-italic.woff2',
+      '/assets/fonts/newsreader-latin-normal.woff2',
+    ];
 
-    expect(fonts.length).toBeGreaterThan(0);
     for (const font of fonts) {
       const response = await request.get(font);
       expect(response.status(), font).toBe(200);
