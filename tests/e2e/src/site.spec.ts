@@ -142,6 +142,61 @@ test.describe('translations', () => {
   });
 });
 
+test.describe('masthead top row', () => {
+  const frauncesLoaded = (page: Page): Promise<boolean> =>
+    page.evaluate(() => document.fonts.check('600 12px Fraunces'));
+
+  for (const path of ['/', ...translations.map(({ path: page }) => page)]) {
+    test(`${path} fits on one row at 1200px in Fraunces`, async ({ page }) => {
+      await page.setViewportSize({ width: 1200, height: 800 });
+      await page.goto(path);
+      await page.evaluate(() => document.fonts.ready);
+      expect(await frauncesLoaded(page)).toBe(true);
+
+      const midlines = await page.locator('.ears > *').evaluateAll((children) =>
+        children.map((child) => {
+          const { top, height } = child.getBoundingClientRect();
+          return top + height / 2;
+        }),
+      );
+
+      expect(Math.max(...midlines) - Math.min(...midlines)).toBeLessThanOrEqual(1);
+    });
+  }
+
+  test('keeps its height when the fonts land after first layout', async ({ page }) => {
+    let fontRequested = (): void => undefined;
+    const firstFontRequest = new Promise<void>((resolve) => {
+      fontRequested = resolve;
+    });
+    let releaseFonts = (): void => undefined;
+    const fontsReleased = new Promise<void>((resolve) => {
+      releaseFonts = resolve;
+    });
+    await page.route('**/*.woff2', async (route) => {
+      fontRequested();
+      await fontsReleased;
+      await route.continue();
+    });
+    await page.setViewportSize({ width: 1000, height: 800 });
+
+    await page.goto('/es/', { waitUntil: 'domcontentloaded' });
+    await firstFontRequest;
+    // A font-display: optional face still applies if it lands inside its 100 ms block period.
+    await page.waitForTimeout(300);
+    const row = page.locator('.ears');
+    const heightBeforeFonts = await row.evaluate((ears) => ears.getBoundingClientRect().height);
+
+    releaseFonts();
+    await expect.poll(() => frauncesLoaded(page)).toBe(true);
+    await page.evaluate(() => document.fonts.ready);
+
+    expect(await row.evaluate((ears) => ears.getBoundingClientRect().height)).toBe(
+      heightBeforeFonts,
+    );
+  });
+});
+
 test.describe('language detection', () => {
   test.describe('with a Polish browser', () => {
     test.use({ locale: 'pl-PL' });
