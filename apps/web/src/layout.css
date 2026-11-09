@@ -199,9 +199,8 @@
   grid-area: statement;
 }
 
-/* These caps are 14ch and 54ch of the real fonts in unhinted text; a ch cap follows whichever font is current and moves at the swap. */
 .lead h1 {
-  max-width: min(7.95em + 30px, max(6.3em + 148px, 7.5em + 47px));
+  max-width: 14ch;
   font-size: clamp(48px, 6vw, 104px);
   line-height: 0.98;
   text-wrap: balance;
@@ -213,7 +212,7 @@
 }
 
 .standfirst {
-  max-width: 673px;
+  max-width: 54ch;
   margin-top: 24px;
   color: var(--color-ink-2);
   font-size: 22px;
@@ -440,12 +439,10 @@
   }
 
   .lead h1 {
-    max-width: 427px;
     font-size: 50px;
   }
 
   .standfirst {
-    max-width: 581px;
     font-size: 19px;
   }
 
@@ -485,4 +482,11 @@
 .not-found h1 em {
   color: var(--color-brand);
   font-weight: 400;
+}
+
+/* A ch cap follows whichever font is current and moves at the swap; 427px is 14ch of unhinted Fraunces at the 50px phone h1. */
+@media (max-width: 599px) {
+  .lead h1 {
+    max-width: 427px;
+  }
 }
