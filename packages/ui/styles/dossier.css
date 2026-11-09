@@ -394,6 +394,22 @@
   }
 }
 
+@media (max-width: 1279px) {
+  .mf-dossier__row {
+    grid-template-columns: minmax(0, 66ch);
+    gap: 10px 0;
+  }
+
+  .mf-dossier__margin {
+    position: static;
+  }
+
+  .mf-dossier__num {
+    display: inline;
+    margin-right: 10px;
+  }
+}
+
 @media (max-width: 1099px) {
   .mf-dossier {
     grid-template-columns: minmax(0, 1fr);
@@ -450,20 +466,6 @@
   .mf-dossier__text {
     padding: 20px 0 32px;
     border-left: 0;
-  }
-
-  .mf-dossier__row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 10px 0;
-  }
-
-  .mf-dossier__margin {
-    position: static;
-  }
-
-  .mf-dossier__num {
-    display: inline;
-    margin-right: 10px;
   }
 
   .mf-dossier__pinned {
