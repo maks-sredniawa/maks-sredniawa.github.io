@@ -9,6 +9,7 @@
 @import './base.css' layer(base);
 @import './components.css' layer(components);
 @import './app-page.css' layer(components);
+@import './dossier.css' layer(components);
 
 @source '../src';
 
