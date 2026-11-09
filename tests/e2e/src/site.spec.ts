@@ -148,11 +148,17 @@ test.describe('masthead top row', () => {
 
   for (const path of ['/', ...translations.map(({ path: page }) => page)]) {
     test(`${path} fits on one row at 1220px beside a classic scrollbar`, async ({ page }) => {
+      const windowWidth = 1220;
       const classicScrollbar = 15;
-      await page.setViewportSize({ width: 1220 - classicScrollbar, height: 800 });
+      await page.setViewportSize({ width: windowWidth, height: 800 });
       await page.goto(path);
+      // A media query counts the scrollbar, so only the layout may narrow; a narrower viewport would switch the row to its optional face.
+      await page.addStyleTag({
+        content: `html { width: ${String(windowWidth - classicScrollbar)}px }`,
+      });
       await page.evaluate(() => document.fonts.ready);
       expect(await frauncesLoaded(page)).toBe(true);
+      await expect(page.locator('.ears .mf-sc').first()).toHaveCSS('font-family', /^Fraunces,/);
 
       const midlines = await page.locator('.ears > *').evaluateAll((children) =>
         children.map((child) => {
