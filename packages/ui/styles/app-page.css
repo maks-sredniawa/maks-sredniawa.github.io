@@ -275,13 +275,13 @@ html:has(.mf-topbar) {
 }
 
 /* An app's home page hides the prose's h1 (pages-theme), so the paragraph after it opens the page. */
-.mf-prose > p:first-child,
+.mf-app-body .mf-prose > p:first-child,
 .mf-app-head:not(.mf-app-head--compact) ~ .mf-app-body .mf-prose > h1:first-child + p {
   font-size: 21px;
   line-height: 1.5;
 }
 
-.mf-prose > p:first-child::first-letter,
+.mf-app-body .mf-prose > p:first-child::first-letter,
 .mf-app-head:not(.mf-app-head--compact)
   ~ .mf-app-body
   .mf-prose
@@ -607,7 +607,7 @@ html:has(.mf-topbar) {
     font-size: 26px;
   }
 
-  .mf-prose > p:first-child,
+  .mf-app-body .mf-prose > p:first-child,
   .mf-app-head:not(.mf-app-head--compact) ~ .mf-app-body .mf-prose > h1:first-child + p {
     font-size: 19px;
   }
