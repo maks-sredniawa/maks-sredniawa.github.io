@@ -528,7 +528,8 @@ test.describe('MaksForge Studio', () => {
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toMatch(/^text\/vcard/);
     const lines = (await response.text()).split('\r\n');
-    expect(lines).toContain('FN:MaksForge Studio');
+    expect(lines).toContain('FN:MaksForge Studio | Maksymilian Średniawa');
+    expect(lines).toContain('N:Średniawa;MaksForge Studio | Maksymilian;;;');
     expect(lines).toContain('TEL;TYPE=WORK,VOICE,CELL:+48720855945');
     expect(lines).toContain('ORG:MaksForge Studio');
   });
@@ -546,7 +547,7 @@ test.describe('MaksForge Studio', () => {
 
     expect(lines).toEqual(
       expect.arrayContaining([
-        `FN:${data.name}`,
+        `FN:${data.name} | Maksymilian Średniawa`,
         `ORG:${data.name}`,
         `TEL;TYPE=WORK,VOICE,CELL:${data.telephone}`,
       ]),
