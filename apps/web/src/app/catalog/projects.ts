@@ -86,6 +86,14 @@ export const projects: readonly Project[] = [
     links: [website('darek')],
   },
   {
+    name: $localize`Garage Filter Extras`,
+    icon: 'wot-garage-filter-extras',
+    kind: 'wot-mod',
+    section: 'building',
+    summary: $localize`Hides rented tanks from the garage, which the game always shows, and can show only tanks that are not premium.`,
+    links: [source('wot-garage-filter-extras')],
+  },
+  {
     name: $localize`Android starter`,
     icon: 'android-starter',
     kind: 'template',
