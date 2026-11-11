@@ -1,5 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, LOCALE_ID } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  LOCALE_ID,
+} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Button, Filter, type FilterOption, Idea, LedgerRow, Link } from '@maksforge/ui';
 import { ideaKindLabels } from '../catalog/idea';
@@ -7,6 +13,7 @@ import { ideas } from '../catalog/ideas';
 import {
   type Project,
   type ProjectPlatform,
+  type ProjectSection,
   projectKindLabels,
   projectPlatformLabels,
   projectPlatforms,
@@ -20,29 +27,53 @@ const siteUrl = 'https://maksforge.com/';
 
 const platformOf = (project: Project): ProjectPlatform => projectPlatforms[project.kind];
 
+const isFavourite = (project: Project): boolean => sectionStatus(project.section) === 'live';
+
+// Other repos still link to the sections this list replaced.
+const formerSections = new Map<string, ProjectSection | 'live'>([
+  ['live', 'live'],
+  ['building', 'building'],
+  ['tools', 'open-source'],
+  ['android-apps', 'android-apps'],
+  ['web-apps', 'web-apps'],
+  ['chrome-extensions', 'chrome-extensions'],
+  ['wot-mods', 'wot-mods'],
+]);
+
+const tabFor = (section: ProjectSection | 'live'): string => {
+  if (section === 'live') {
+    return 'favourites';
+  }
+  if (section === 'building') {
+    return 'all';
+  }
+  const [platform, ...others] = new Set(
+    projects.filter((project) => project.section === section).map(platformOf),
+  );
+  return platform && others.length === 0 ? platform : 'all';
+};
+
+export const formerSectionTabs: ReadonlyMap<string, string> = new Map(
+  [...formerSections].map(([id, section]) => [id, tabFor(section)]),
+);
+
 @Component({
   selector: 'mf-home-page',
   imports: [Button, Filter, Idea, LanguageMenu, LedgerRow, Link],
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '(window:hashchange)': 'selectTabForHash()' },
 })
 export class HomePage {
+  private readonly document = inject(DOCUMENT);
   protected readonly projects = projects;
   protected readonly ideas = ideas;
   protected readonly ideaKindLabels = ideaKindLabels;
   protected readonly kindLabels = projectKindLabels;
   protected readonly sectionStatus = sectionStatus;
   protected readonly platformOf = platformOf;
-  // Other repos still link to the sections this list replaced.
-  protected readonly formerSectionIds = [
-    'live',
-    'building',
-    'tools',
-    'android-apps',
-    'web-apps',
-    'chrome-extensions',
-    'wot-mods',
-  ];
+  protected readonly isFavourite = isFavourite;
+  protected readonly formerSectionIds = [...formerSectionTabs.keys()];
   protected readonly statusLabels = {
     live: $localize`Live`,
     building: $localize`Building`,
@@ -50,6 +81,11 @@ export class HomePage {
     idea: $localize`Idea`,
   };
   protected readonly platformFilter: readonly FilterOption[] = [
+    {
+      value: 'favourites',
+      label: $localize`:filter:Favourites`,
+      count: projects.filter(isFavourite).length,
+    },
     { value: 'all', label: $localize`:filter:All`, count: projects.length },
     ...Object.entries(projectPlatformLabels).map(([platform, label]) => ({
       value: platform,
@@ -81,7 +117,27 @@ export class HomePage {
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: `${siteUrl}assets/logo-512.jpg` },
     ]);
-    addLanguageLinks(inject(DOCUMENT), pageUrl);
+    addLanguageLinks(this.document, pageUrl);
+    afterNextRender(() => {
+      this.selectTabForHash();
+    });
+  }
+
+  protected selectTabForHash(): void {
+    const id = decodeURIComponent(this.document.location.hash.slice(1));
+    const target = id ? this.document.getElementById(id) : null;
+    if (!target) {
+      return;
+    }
+    const isHiddenRow = target.matches('.mf-ledger-row') && !target.checkVisibility();
+    const tab = formerSectionTabs.get(id) ?? (isHiddenRow ? 'all' : undefined);
+    const input = tab
+      ? this.document.querySelector<HTMLInputElement>(`.mf-filter input[value="${tab}"]`)
+      : null;
+    if (input) {
+      input.checked = true;
+      target.scrollIntoView();
+    }
   }
 }
 

@@ -201,6 +201,7 @@
   margin-bottom: 44px;
 }
 
+.catalogue:has(input[value='favourites']:checked) .mf-ledger-row:not([data-favourite]),
 .catalogue:has(input[value='android']:checked) .mf-ledger-row:not([data-platform='android']),
 .catalogue:has(input[value='browser']:checked) .mf-ledger-row:not([data-platform='browser']),
 .catalogue:has(input[value='wot']:checked) .mf-ledger-row:not([data-platform='wot']),

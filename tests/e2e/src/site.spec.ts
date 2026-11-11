@@ -52,7 +52,7 @@ test.describe('home page', () => {
     });
   }
 
-  test('filters the list by every platform without a script', async ({ browser }) => {
+  test('filters the list by every option without a script', async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();
     await page.goto('/');
@@ -61,27 +61,90 @@ test.describe('home page', () => {
     const values = await radios.evaluateAll((inputs) =>
       inputs.map((input) => (input as HTMLInputElement).value),
     );
-    const shownPlatforms = (): Promise<string[]> =>
+    const shownIds = (): Promise<string[]> =>
       rows.evaluateAll((elements) =>
-        elements
-          .filter((row) => row.checkVisibility())
-          .map((row) => row.getAttribute('data-platform') ?? ''),
+        elements.filter((row) => row.checkVisibility()).map((row) => row.id),
       );
-    const everyPlatform = await shownPlatforms();
+    const idsWhere = (selector: string): Promise<string[]> =>
+      page
+        .locator(`.mf-ledger-row${selector}`)
+        .evaluateAll((elements) => elements.map((row) => row.id));
+    const favourites = await idsWhere('[data-favourite]');
 
-    expect(everyPlatform).toHaveLength(await rows.count());
-    expect(values[0]).toBe('all');
-    expect(values.length).toBeGreaterThan(2);
+    expect(values.slice(0, 2)).toEqual(['favourites', 'all']);
+    expect(values.length).toBeGreaterThan(3);
+    expect(await shownIds()).toEqual(favourites);
     for (const value of values) {
       await radios.and(page.locator(`[value="${value}"]`)).check();
 
-      const expected =
-        value === 'all' ? everyPlatform : everyPlatform.filter((platform) => platform === value);
+      const expected = await idsWhere(
+        value === 'all'
+          ? ''
+          : value === 'favourites'
+            ? '[data-favourite]'
+            : `[data-platform="${value}"]`,
+      );
       expect(expected.length, value).toBeGreaterThan(0);
-      expect(await shownPlatforms(), value).toEqual(expected);
+      expect(await shownIds(), value).toEqual(expected);
     }
+    expect(favourites.length).toBeLessThan(await rows.count());
     await context.close();
   });
+
+  test('opens the full list for a link to an app outside the favourites', async ({ page }) => {
+    await page.goto('/#kozica');
+
+    await expect(page.locator('.mf-filter input[value="all"]')).toBeChecked();
+    await expect(page.locator('#kozica')).toBeInViewport();
+  });
+
+  test('a link to a favourite keeps the favourites', async ({ page }) => {
+    await page.goto('/#gloam');
+
+    await expect(page.locator('#gloam')).toBeInViewport();
+    await expect(page.locator('.mf-filter input[value="favourites"]')).toBeChecked();
+  });
+
+  test('a link to the app list keeps the favourites', async ({ page }) => {
+    await page.goto('/#apps');
+    await expect(page.locator('[ngh]')).toHaveCount(0);
+
+    await expect(page.locator('.mf-filter input[value="favourites"]')).toBeChecked();
+  });
+
+  test('the Apps link in the navigation keeps the chosen filter', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('[ngh]')).toHaveCount(0);
+    await page
+      .getByRole('group', { name: 'Show' })
+      .getByRole('radio', { name: /Android/ })
+      .check();
+    const hashChanged = page.evaluate(
+      () =>
+        new Promise((resolve) => {
+          addEventListener('hashchange', () => setTimeout(resolve), { once: true });
+        }),
+    );
+
+    await page
+      .getByRole('navigation', { name: 'Sections' })
+      .getByRole('link', { name: 'Apps' })
+      .click();
+    await hashChanged;
+
+    await expect(page.locator('.mf-filter input[value="android"]')).toBeChecked();
+  });
+
+  for (const [id, tab] of [
+    ['wot-mods', 'wot'],
+    ['tools', 'dev'],
+  ]) {
+    test(`the former #${id} link selects its platform`, async ({ page }) => {
+      await page.goto(`/#${id}`);
+
+      await expect(page.locator(`.mf-filter input[value="${tab}"]`)).toBeChecked();
+    });
+  }
 
   test('loads every image', async ({ page }) => {
     await page.goto('/');

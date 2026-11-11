@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ideas } from '../catalog/ideas';
 import { projects } from '../catalog/projects';
-import { HomePage } from './home-page';
+import { formerSectionTabs, HomePage } from './home-page';
 
 function render(): HTMLElement {
   const fixture = TestBed.createComponent(HomePage);
@@ -42,6 +42,18 @@ describe('HomePage', () => {
     }
   });
 
+  it('opens each former section on the filter that matches it', () => {
+    expect(Object.fromEntries(formerSectionTabs)).toEqual({
+      live: 'favourites',
+      building: 'all',
+      tools: 'dev',
+      'android-apps': 'android',
+      'web-apps': 'browser',
+      'chrome-extensions': 'browser',
+      'wot-mods': 'wot',
+    });
+  });
+
   it('counts the projects behind every filter option', () => {
     const page = render();
     const options = [...page.querySelectorAll('.mf-filter label')].map((label) => ({
@@ -50,11 +62,30 @@ describe('HomePage', () => {
     }));
     const rows = [...page.querySelectorAll<HTMLElement>('.mf-ledger-row')];
 
-    expect(options[0]).toEqual({ value: 'all', count: projects.length });
-    for (const { value, count } of options.slice(1)) {
+    expect(options[0]).toEqual({
+      value: 'favourites',
+      count: rows.filter((row) => row.hasAttribute('data-favourite')).length,
+    });
+    expect(options[0]?.count).toBeGreaterThan(0);
+    expect(options[1]).toEqual({ value: 'all', count: projects.length });
+    for (const { value, count } of options.slice(2)) {
       expect(rows.filter((row) => row.dataset['platform'] === value)).toHaveLength(count);
     }
-    expect(options.slice(1).reduce((sum, { count }) => sum + count, 0)).toBe(projects.length);
+    expect(options.slice(2).reduce((sum, { count }) => sum + count, 0)).toBe(projects.length);
+  });
+
+  it('starts on the favourites, which are the live projects', () => {
+    const page = render();
+
+    expect(page.querySelector<HTMLInputElement>('.mf-filter input')?.value).toBe('favourites');
+    expect(page.querySelector<HTMLInputElement>('.mf-filter input')?.checked).toBe(true);
+    expect(
+      [...page.querySelectorAll('.mf-ledger-row[data-favourite] h3')].map((h) => h.textContent),
+    ).toEqual(
+      projects
+        .filter((p) => p.section !== 'building' && p.section !== 'open-source')
+        .map((p) => p.name),
+    );
   });
 
   it('pre-fills the idea email', () => {
