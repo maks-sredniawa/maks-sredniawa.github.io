@@ -22,7 +22,7 @@ export default defineConfig({
     { name: 'phone', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: `scripts/build.sh && pnpm exec wrangler dev --ip 127.0.0.1 --port ${String(port)}`,
+    command: `node node_modules/wrangler/bin/wrangler.js dev --ip 127.0.0.1 --port ${String(port)}`,
     cwd: '../..',
     url: baseURL,
     timeout: 180_000,
