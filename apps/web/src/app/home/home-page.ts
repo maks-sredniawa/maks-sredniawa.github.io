@@ -1,5 +1,11 @@
 import { DOCUMENT } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, LOCALE_ID } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  LOCALE_ID,
+} from '@angular/core';
 import { Meta } from '@angular/platform-browser';
 import { Button, Filter, type FilterOption, Idea, LedgerRow, Link } from '@maksforge/ui';
 import { ideaKindLabels } from '../catalog/idea';
@@ -20,19 +26,24 @@ const siteUrl = 'https://maksforge.com/';
 
 const platformOf = (project: Project): ProjectPlatform => projectPlatforms[project.kind];
 
+const isFavourite = (project: Project): boolean => sectionStatus(project.section) === 'live';
+
 @Component({
   selector: 'mf-home-page',
   imports: [Button, Filter, Idea, LanguageMenu, LedgerRow, Link],
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  host: { '(window:hashchange)': 'showLinkedRow()' },
 })
 export class HomePage {
+  private readonly document = inject(DOCUMENT);
   protected readonly projects = projects;
   protected readonly ideas = ideas;
   protected readonly ideaKindLabels = ideaKindLabels;
   protected readonly kindLabels = projectKindLabels;
   protected readonly sectionStatus = sectionStatus;
   protected readonly platformOf = platformOf;
+  protected readonly isFavourite = isFavourite;
   // Other repos still link to the sections this list replaced.
   protected readonly formerSectionIds = [
     'live',
@@ -50,6 +61,11 @@ export class HomePage {
     idea: $localize`Idea`,
   };
   protected readonly platformFilter: readonly FilterOption[] = [
+    {
+      value: 'favourites',
+      label: $localize`:filter:Favourites`,
+      count: projects.filter(isFavourite).length,
+    },
     { value: 'all', label: $localize`:filter:All`, count: projects.length },
     ...Object.entries(projectPlatformLabels).map(([platform, label]) => ({
       value: platform,
@@ -81,7 +97,25 @@ export class HomePage {
       { property: 'og:type', content: 'website' },
       { property: 'og:image', content: `${siteUrl}assets/logo-512.jpg` },
     ]);
-    addLanguageLinks(inject(DOCUMENT), pageUrl);
+    addLanguageLinks(this.document, pageUrl);
+    afterNextRender(() => {
+      this.showLinkedRow();
+    });
+  }
+
+  /** A link to an app outside Favourites, or to a former section, opens the full list. */
+  protected showLinkedRow(): void {
+    const id = decodeURIComponent(this.document.location.hash.slice(1));
+    const target = id ? this.document.getElementById(id) : null;
+    if (!target?.closest('#apps')) {
+      return;
+    }
+    const hidden = target.matches('.mf-ledger-row') ? !target.checkVisibility() : id !== 'live';
+    const all = this.document.querySelector<HTMLInputElement>('.mf-filter input[value="all"]');
+    if (hidden && all) {
+      all.checked = true;
+      target.scrollIntoView();
+    }
   }
 }
 

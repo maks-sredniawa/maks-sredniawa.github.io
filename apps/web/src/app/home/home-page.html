@@ -43,6 +43,7 @@
             mfLedgerRow
             [id]="project.icon"
             [attr.data-platform]="platformOf(project)"
+            [attr.data-favourite]="isFavourite(project) ? '' : null"
             [iconSrc]="'/assets/icons/' + project.icon + '.webp'"
             [heading]="project.name"
             [kind]="kindLabels[project.kind]"
