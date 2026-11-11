@@ -33,7 +33,7 @@ test.describe('home page', () => {
 
     const targets = await page
       .getByRole('navigation', { name: 'Sections' })
-      .getByRole('link')
+      .locator('a[href^="#"]')
       .evaluateAll((links) => links.map((link) => link.getAttribute('href') ?? ''));
 
     expect(targets.length).toBeGreaterThan(0);
@@ -42,15 +42,45 @@ test.describe('home page', () => {
     }
   });
 
-  test('counts the live and in-development cards in About', async ({ page }) => {
+  for (const id of ['live', 'wot-mods']) {
+    test(`lands the former #${id} link on the app list`, async ({ page }) => {
+      await page.goto(`/#${id}`);
+
+      await expect
+        .poll(() => page.locator('#apps').evaluate((list) => list.getBoundingClientRect().top))
+        .toBeLessThanOrEqual(24);
+    });
+  }
+
+  test('filters the list by every platform without a script', async ({ browser }) => {
+    const context = await browser.newContext({ javaScriptEnabled: false });
+    const page = await context.newPage();
     await page.goto('/');
+    const rows = page.locator('.mf-ledger-row');
+    const radios = page.getByRole('group', { name: 'Show' }).getByRole('radio');
+    const values = await radios.evaluateAll((inputs) =>
+      inputs.map((input) => (input as HTMLInputElement).value),
+    );
+    const shownPlatforms = (): Promise<string[]> =>
+      rows.evaluateAll((elements) =>
+        elements
+          .filter((row) => row.checkVisibility())
+          .map((row) => row.getAttribute('data-platform') ?? ''),
+      );
+    const everyPlatform = await shownPlatforms();
 
-    const live = await page.locator('#live .mf-tile').count();
-    const building = await page.locator('#building .mf-tile').count();
-    const facts = page.locator('.mf-fact strong');
+    expect(everyPlatform).toHaveLength(await rows.count());
+    expect(values[0]).toBe('all');
+    expect(values.length).toBeGreaterThan(2);
+    for (const value of values) {
+      await radios.and(page.locator(`[value="${value}"]`)).check();
 
-    await expect(facts.nth(0)).toHaveText(String(live));
-    await expect(facts.nth(1)).toHaveText(String(building));
+      const expected =
+        value === 'all' ? everyPlatform : everyPlatform.filter((platform) => platform === value);
+      expect(expected.length, value).toBeGreaterThan(0);
+      expect(await shownPlatforms(), value).toEqual(expected);
+    }
+    await context.close();
   });
 
   test('loads every image', async ({ page }) => {
@@ -74,7 +104,7 @@ test.describe('home page', () => {
       'href',
       'https://github.com/CH4MPi/GUIFlash',
     );
-    await expect(page.locator('#building span[lang="pl"]')).toHaveText('"Darek, otwórz bramę"');
+    await expect(page.locator('#darek span[lang="pl"]')).toHaveText('"Darek, otwórz bramę"');
   });
 });
 
@@ -142,25 +172,24 @@ test.describe('translations', () => {
   });
 });
 
-test.describe('masthead top row', () => {
+test.describe('top bar', () => {
   const frauncesLoaded = (page: Page): Promise<boolean> =>
     page.evaluate(() => document.fonts.check('600 12px Fraunces'));
 
   for (const path of ['/', ...translations.map(({ path: page }) => page)]) {
-    test(`${path} fits on one row at 1220px beside a classic scrollbar`, async ({ page }) => {
-      const windowWidth = 1220;
+    test(`${path} fits on one row at 960px beside a classic scrollbar`, async ({ page }) => {
+      const windowWidth = 960;
       const classicScrollbar = 15;
       await page.setViewportSize({ width: windowWidth, height: 800 });
       await page.goto(path);
-      // A media query counts the scrollbar, so only the layout may narrow; a narrower viewport would switch the row to its optional face.
+      // A media query counts the scrollbar, so only the layout may narrow.
       await page.addStyleTag({
         content: `html { width: ${String(windowWidth - classicScrollbar)}px }`,
       });
       await page.evaluate(() => document.fonts.ready);
       expect(await frauncesLoaded(page)).toBe(true);
-      await expect(page.locator('.ears .mf-sc').first()).toHaveCSS('font-family', /^Fraunces,/);
 
-      const midlines = await page.locator('.ears > *').evaluateAll((children) =>
+      const midlines = await page.locator('.topbar > *').evaluateAll((children) =>
         children.map((child) => {
           const { top, height } = child.getBoundingClientRect();
           return top + height / 2;
@@ -171,37 +200,77 @@ test.describe('masthead top row', () => {
     });
   }
 
-  test('keeps its height when the fonts land after first layout', async ({ page }) => {
-    let fontRequested = (): void => undefined;
-    const firstFontRequest = new Promise<void>((resolve) => {
-      fontRequested = resolve;
-    });
-    let releaseFonts = (): void => undefined;
-    const fontsReleased = new Promise<void>((resolve) => {
-      releaseFonts = resolve;
-    });
-    await page.route('**/*.woff2', async (route) => {
-      fontRequested();
-      await fontsReleased;
-      await route.continue();
-    });
-    await page.setViewportSize({ width: 1000, height: 800 });
+  for (const width of [800, 1000]) {
+    test(`keeps its height at ${String(width)}px when the fonts land after first layout`, async ({
+      page,
+    }) => {
+      let fontRequested = (): void => undefined;
+      const firstFontRequest = new Promise<void>((resolve) => {
+        fontRequested = resolve;
+      });
+      let releaseFonts = (): void => undefined;
+      const fontsReleased = new Promise<void>((resolve) => {
+        releaseFonts = resolve;
+      });
+      await page.route('**/*.woff2', async (route) => {
+        fontRequested();
+        await fontsReleased;
+        await route.continue();
+      });
+      await page.setViewportSize({ width, height: 800 });
 
-    await page.goto('/es/', { waitUntil: 'domcontentloaded' });
-    await firstFontRequest;
-    // A font-display: optional face still applies if it lands inside its 100 ms block period.
-    await page.waitForTimeout(300);
-    const row = page.locator('.ears');
-    const heightBeforeFonts = await row.evaluate((ears) => ears.getBoundingClientRect().height);
+      await page.goto('/pt-br/', { waitUntil: 'domcontentloaded' });
+      await firstFontRequest;
+      const bar = page.locator('.topbar');
+      const heightBeforeFonts = await bar.evaluate((row) => row.getBoundingClientRect().height);
 
-    releaseFonts();
-    await expect.poll(() => frauncesLoaded(page)).toBe(true);
-    await page.evaluate(() => document.fonts.ready);
+      releaseFonts();
+      await expect.poll(() => frauncesLoaded(page)).toBe(true);
+      await page.evaluate(() => document.fonts.ready);
 
-    expect(await row.evaluate((ears) => ears.getBoundingClientRect().height)).toBe(
-      heightBeforeFonts,
-    );
-  });
+      expect(await bar.evaluate((row) => row.getBoundingClientRect().height)).toBe(
+        heightBeforeFonts,
+      );
+    });
+  }
+});
+
+test.describe('intro', () => {
+  const swapsThatMovedTheCap = [
+    { path: '/de/', width: 1280 },
+    { path: '/es/', width: 1280 },
+    { path: '/pt-br/', width: 1440 },
+    { path: '/cs/', width: 1600 },
+    { path: '/uk/', width: 1000 },
+  ];
+
+  for (const { path, width } of swapsThatMovedTheCap) {
+    test(`${path} keeps its height at ${String(width)}px with or without the webfonts`, async ({
+      browser,
+    }) => {
+      const introHeight = async (fonts: 'blocked' | 'loaded'): Promise<number> => {
+        const page = await browser.newPage({ viewport: { width, height: 800 } });
+        if (fonts === 'blocked') {
+          await page.route('**/*.woff2', (route) => route.abort());
+        }
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        const frauncesLoaded = await page.evaluate(() =>
+          [...document.fonts].some(
+            (face) => face.family === 'Fraunces' && face.status === 'loaded',
+          ),
+        );
+        expect(frauncesLoaded).toBe(fonts === 'loaded');
+        const height = await page
+          .locator('.intro')
+          .evaluate((intro) => intro.getBoundingClientRect().height);
+        await page.close();
+        return height;
+      };
+
+      expect(await introHeight('loaded')).toBe(await introHeight('blocked'));
+    });
+  }
 });
 
 test.describe('language detection', () => {
@@ -348,7 +417,7 @@ test.describe('language detection', () => {
     await page.locator('details.lang summary').click();
     await expect(page.locator('.lang-menu')).toBeVisible();
 
-    await page.getByRole('heading', { level: 1 }).click();
+    await page.locator('.mf-foot').click();
     await expect(page.locator('.lang-menu')).toBeHidden();
   });
 });

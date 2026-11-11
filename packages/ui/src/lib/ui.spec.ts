@@ -4,7 +4,10 @@ import { Aisle } from './aisle/aisle';
 import { Band } from './band/band';
 import { Button } from './button/button';
 import { Fact } from './fact/fact';
+import { Filter } from './filter/filter';
+import { Idea } from './idea/idea';
 import { IndexEntry } from './index-entry/index-entry';
+import { LedgerRow } from './ledger-row/ledger-row';
 import { Link } from './link/link';
 import { Notice } from './notice/notice';
 import { Pin } from './pin/pin';
@@ -13,7 +16,22 @@ import { Tag } from './tag/tag';
 import { Tile } from './tile/tile';
 
 @Component({
-  imports: [Aisle, Band, Button, Fact, IndexEntry, Link, Notice, Pin, ShelfItem, Tag, Tile],
+  imports: [
+    Aisle,
+    Band,
+    Button,
+    Fact,
+    Filter,
+    Idea,
+    IndexEntry,
+    LedgerRow,
+    Link,
+    Notice,
+    Pin,
+    ShelfItem,
+    Tag,
+    Tile,
+  ],
   template: `
     <a id="primary" mfButton href="#">Primary</a>
     <a id="brand" mfButton variant="brand" size="small" href="#">Brand</a>
@@ -61,9 +79,30 @@ import { Tile } from './tile/tile';
       Tips help.
       <a mfButton mfNoticeAction href="#">Tip</a>
     </aside>
+    <fieldset mfFilter name="platform" legend="Show" [options]="filterOptions"></fieldset>
+    <ul>
+      <li
+        id="row"
+        mfLedgerRow
+        iconSrc="icon.svg"
+        heading="Binky"
+        kind="Android app"
+        status="live"
+        statusLabel="Live"
+      >
+        <p>Summary</p>
+        <a mfLink mfLedgerRowAction href="#">Google Play</a>
+      </li>
+      <li mfIdea heading="Darts scorer" kind="Android app">Counts your darts score.</li>
+    </ul>
   `,
 })
-class Host {}
+class Host {
+  protected readonly filterOptions = [
+    { value: 'all', label: 'All', count: 2 },
+    { value: 'android', label: 'Android', count: 1 },
+  ];
+}
 
 function render(): HTMLElement {
   const fixture = TestBed.createComponent(Host);
@@ -130,5 +169,32 @@ describe('ui', () => {
 
   it('shows a fact with its value', () => {
     expect(render().querySelector('.mf-fact strong')?.textContent).toBe('5');
+  });
+
+  it('puts the summary, links and status of a ledger row in their own cells', () => {
+    const row = render().querySelector('#row');
+
+    expect(row?.className).toBe('mf-ledger-row');
+    expect(row?.querySelector('h3')?.textContent).toBe('Binky');
+    expect(row?.querySelector('.mf-ledger-row__summary p')?.textContent).toBe('Summary');
+    expect(row?.querySelector('.mf-ledger-row__links a')?.textContent).toBe('Google Play');
+    expect(row?.querySelector('.mf-ledger-row__status')?.className).toContain('mf-tag--live');
+  });
+
+  it('starts a filter on its first option, one radio group per name', () => {
+    const radios = [...render().querySelectorAll<HTMLInputElement>('.mf-filter input')];
+
+    expect(radios.map((radio) => radio.value)).toEqual(['all', 'android']);
+    expect(radios.map((radio) => radio.checked)).toEqual([true, false]);
+    expect(radios.every((radio) => radio.name === 'platform')).toBe(true);
+    expect(render().querySelector('.mf-filter legend')?.textContent).toBe('Show');
+  });
+
+  it('keeps the pitch of an idea closed under its name', () => {
+    const idea = render().querySelector('.mf-idea details');
+
+    expect(idea?.hasAttribute('open')).toBe(false);
+    expect(idea?.querySelector('summary .mf-idea__name')?.textContent).toBe('Darts scorer');
+    expect(idea?.querySelector('p')?.textContent).toBe('Counts your darts score.');
   });
 });

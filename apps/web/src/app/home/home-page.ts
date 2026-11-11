@@ -1,83 +1,62 @@
 import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, LOCALE_ID } from '@angular/core';
 import { Meta } from '@angular/platform-browser';
-import {
-  Aisle,
-  Band,
-  Button,
-  Fact,
-  IndexEntry,
-  Notice,
-  Pin,
-  ShelfItem,
-  Stamp,
-} from '@maksforge/ui';
+import { Button, Filter, type FilterOption, Idea, LedgerRow, Link } from '@maksforge/ui';
 import { ideaKindLabels } from '../catalog/idea';
 import { ideas } from '../catalog/ideas';
 import {
-  liveSections,
-  projectKindShortLabels,
-  type ProjectSection,
+  type Project,
+  type ProjectPlatform,
+  projectKindLabels,
+  projectPlatformLabels,
+  projectPlatforms,
   sectionStatus,
 } from '../catalog/project';
 import { projects } from '../catalog/projects';
 import { LanguageMenu } from '../language-menu/language-menu';
 import { languageFor, languages } from '../languages';
-import { ProjectTiles } from './project-tiles';
 
 const siteUrl = 'https://maksforge.com/';
 
-const projectsIn = (section: ProjectSection) => projects.filter((p) => p.section === section);
+const platformOf = (project: Project): ProjectPlatform => projectPlatforms[project.kind];
 
 @Component({
   selector: 'mf-home-page',
-  imports: [
-    Aisle,
-    Band,
-    Button,
-    Fact,
-    IndexEntry,
-    LanguageMenu,
-    Notice,
-    Pin,
-    ProjectTiles,
-    ShelfItem,
-    Stamp,
-  ],
+  imports: [Button, Filter, Idea, LanguageMenu, LedgerRow, Link],
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage {
-  protected readonly androidApps = projectsIn('android-apps');
-  protected readonly webApps = projectsIn('web-apps');
-  protected readonly chromeExtensions = projectsIn('chrome-extensions');
-  protected readonly wotMods = projectsIn('wot-mods');
-  protected readonly building = projectsIn('building');
-  protected readonly openSource = projectsIn('open-source');
+  protected readonly projects = projects;
   protected readonly ideas = ideas;
   protected readonly ideaKindLabels = ideaKindLabels;
-  protected readonly projects = projects;
-  protected readonly kindShortLabels = projectKindShortLabels;
+  protected readonly kindLabels = projectKindLabels;
   protected readonly sectionStatus = sectionStatus;
-  protected readonly indexGroups = [
-    {
-      heading: $localize`In production`,
-      projects: projects.filter((p) => liveSections.includes(p.section)),
-    },
-    { heading: $localize`In development`, projects: this.building },
-    { heading: $localize`Tools`, projects: this.openSource },
+  protected readonly platformOf = platformOf;
+  // Other repos still link to the sections this list replaced.
+  protected readonly formerSectionIds = [
+    'live',
+    'building',
+    'tools',
+    'android-apps',
+    'web-apps',
+    'chrome-extensions',
+    'wot-mods',
   ];
   protected readonly statusLabels = {
     live: $localize`Live`,
     building: $localize`Building`,
-    oss: $localize`Source`,
+    oss: $localize`Open source`,
     idea: $localize`Idea`,
   };
-
-  protected readonly liveCount = projects.filter((p) => liveSections.includes(p.section)).length;
-  protected readonly buildingCount = this.building.length;
-  protected readonly openSourceCount = this.openSource.length;
-  protected readonly ideaCount = ideas.length;
+  protected readonly platformFilter: readonly FilterOption[] = [
+    { value: 'all', label: $localize`:filter:All`, count: projects.length },
+    ...Object.entries(projectPlatformLabels).map(([platform, label]) => ({
+      value: platform,
+      label,
+      count: projects.filter((project) => platformOf(project) === platform).length,
+    })),
+  ];
 
   protected readonly ideaMailto = `mailto:ideas@maksforge.com?${new URLSearchParams({
     subject: $localize`App idea for MaksForge`,

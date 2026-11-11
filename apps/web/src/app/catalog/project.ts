@@ -23,13 +23,6 @@ export interface Project {
   readonly links: readonly ProjectLink[];
 }
 
-export const liveSections: readonly ProjectSection[] = [
-  'android-apps',
-  'web-apps',
-  'chrome-extensions',
-  'wot-mods',
-];
-
 export const projectKindLabels: Readonly<Record<ProjectKind, string>> = {
   'android-app': $localize`Android app`,
   'web-app': $localize`Web app`,
@@ -39,13 +32,22 @@ export const projectKindLabels: Readonly<Record<ProjectKind, string>> = {
   cli: $localize`Command-line tool`,
 };
 
-export const projectKindShortLabels: Readonly<Record<ProjectKind, string>> = {
-  'android-app': $localize`Android app`,
-  'web-app': $localize`Web app`,
-  'chrome-extension': $localize`:short project kind:Chrome`,
-  'wot-mod': $localize`WoT mod`,
-  template: $localize`Template`,
-  cli: $localize`:short project kind:CLI`,
+export type ProjectPlatform = 'android' | 'browser' | 'wot' | 'dev';
+
+export const projectPlatforms: Readonly<Record<ProjectKind, ProjectPlatform>> = {
+  'android-app': 'android',
+  'web-app': 'browser',
+  'chrome-extension': 'browser',
+  'wot-mod': 'wot',
+  template: 'dev',
+  cli: 'dev',
+};
+
+export const projectPlatformLabels: Readonly<Record<ProjectPlatform, string>> = {
+  android: $localize`:filter:Android`,
+  browser: $localize`:filter:Browser`,
+  wot: $localize`:filter:World of Tanks`,
+  dev: $localize`:filter:For developers`,
 };
 
 export const sectionStatus = (section: ProjectSection): Status =>
