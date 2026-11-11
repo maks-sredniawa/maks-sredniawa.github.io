@@ -63,6 +63,7 @@ export const themeClasses = [
   'mf-sheet__row',
   'mf-sheet__status',
   'mf-sheet__tabs',
+  'mf-sheet__title',
   'mf-sheet__toc',
   'mf-spec',
   'mf-stamp',

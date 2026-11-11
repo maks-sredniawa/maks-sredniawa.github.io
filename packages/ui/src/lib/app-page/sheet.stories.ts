@@ -10,9 +10,9 @@ const tabs = (current: 'overview' | 'privacy'): string => `
 `;
 
 const row = (name: string, pitch: string): string => `
-  <header class="mf-sheet__row">
+  <div class="mf-sheet__row">
     <img class="mf-sheet__icon" src="icons/sample.svg" alt="" width="64" height="64" />
-    <div>
+    <div class="mf-sheet__title">
       ${name}
       <span class="mf-sheet__kind mf-sc">Android app</span>
     </div>
@@ -23,7 +23,7 @@ const row = (name: string, pitch: string): string => `
       <span class="mf-mono">com.maksforge.kozica</span>
     </div>
     <span class="mf-sheet__status mf-tag mf-tag--live">Live</span>
-  </header>
+  </div>
 `;
 
 const toc = (contents: string[][]): string => `
@@ -57,6 +57,10 @@ export const Home: Story = {
               <p>Trails, huts and springs for the Polish mountains, stored on the device.</p>
             </div>`,
           )}
+          ${toc([
+            ['what-it-does', 'What it does'],
+            ['privacy', 'Privacy'],
+          ])}
           <main class="mf-sheet__body mf-prose">
             <h2 id="what-it-does">What it does</h2>
             <ul>
@@ -74,10 +78,6 @@ export const Home: Story = {
               <tbody><tr><td>Map</td><td>On the phone</td></tr></tbody>
             </table>
           </main>
-          ${toc([
-            ['what-it-does', 'What it does'],
-            ['privacy', 'Privacy'],
-          ])}
         </div>
       </div>
     `,
