@@ -74,28 +74,12 @@
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8579962063097991302" datatype="html">
-        <source>Gmail dark mode</source>
-        <target>Tmavý režim pro Gmail</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8581473025831189432" datatype="html">
-        <source>A proper dark mode for Gmail in the browser, for people who want the whole of it dark.</source>
-        <target>Opravdový tmavý režim pro Gmail v prohlížeči, pro ty, kdo ho chtějí celý tmavý.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="4431403168639456312" datatype="html">
         <source>Monitor brightness presets</source>
         <target>Předvolby jasu monitorů</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3880070079748838003" datatype="html">
@@ -103,7 +87,7 @@
         <target>Desktopová aplikace, která si pamatuje pár předvoleb jasu pro všechny tvoje monitory, ať jsou od kohokoli, a umožní ti přepnout všechny obrazovky najednou.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3611950599988366245" datatype="html">
@@ -111,7 +95,7 @@
         <target>Plánovač truhlářských projektů</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="971297306472335764" datatype="html">
@@ -119,7 +103,7 @@
         <target>Webová aplikace, ve které si naplánuješ truhlářský projekt a uvidíš ho jako 3D model, všechno spočítané na tvém vlastním počítači, ještě než uřízneš první prkno.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="425572623706522052" datatype="html">
@@ -127,7 +111,7 @@
         <target>Filtry do garáže navíc</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7671961317092575757" datatype="html">
@@ -135,7 +119,7 @@
         <target>Přidává filtry do garáže, které ve hře chybí: jeden skryje půjčené tanky, které se teď zobrazují vždy, a druhý ukáže jen tanky, které nejsou prémiové.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7968446012996376944" datatype="html">
@@ -143,7 +127,7 @@
         <target>Počítadlo šipek</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2377090649340978669" datatype="html">
@@ -151,7 +135,7 @@
         <target>Spočítá skóre v šipkách z několika fotek terče pořízených z různých úhlů, stačí jich tolik, kolik potřebuje, takže šipky nemusíš sčítat ručně.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3959129080819713984" datatype="html">
@@ -159,7 +143,7 @@
         <target>Počítadlo střelby z luku</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5173583988503347125" datatype="html">
@@ -167,7 +151,7 @@
         <target>Spočítá skóre ze střelby z luku z několika fotek terče pořízených z různých úhlů, stačí jich tolik, kolik potřebuje, takže šípy nemusíš sčítat ručně.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
@@ -175,7 +159,7 @@
         <target>Jednoduché ovládání světel</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
@@ -183,7 +167,7 @@
         <target>Jedna aplikace ve tvém jazyce pro chytrá světla, jejichž vlastní aplikace je jen v čínštině: přečte údaje každého světla, přidá jeho nastavení a pamatuje si je pro každé zařízení, takže je ovládáš na jednom místě.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
@@ -191,7 +175,7 @@
         <target>Evidence dluhů</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
@@ -199,7 +183,7 @@
         <target>Hlídá neformální půjčky, třeba 100 zł půjčených kamarádovi nebo peníze vzaté ze společných úspor, ať na vrácení nezapomeneš.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="218284361541799549" datatype="html">
@@ -207,7 +191,7 @@
         <target>Vezmi si léky</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7743370160029325198" datatype="html">
@@ -215,7 +199,7 @@
         <target>Připomene ti, že si máš vzít léky, a všechno zůstává v telefonu. Bez reklam, bez sledování.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -430,12 +414,28 @@
           <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2035450512055700976" datatype="html">
+        <source>Dark Mode for Gmail</source>
+        <target>Tmavý režim pro Gmail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4496829025746948283" datatype="html">
+        <source>Makes the whole of Gmail dark, message bodies included, where Gmail&apos;s own Dark theme leaves emails white. Unofficial, not affiliated with Google.</source>
+        <target>Ztmaví celý Gmail včetně obsahu e-mailů, který vlastní tmavý motiv Gmailu nechává bílý. Neoficiální, bez spojení s Googlem.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
         <source>Android starter</source>
         <target>Android starter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -443,7 +443,7 @@
         <target>Základ pro offline aplikace pro Android: kostra v Compose, release pipeline, kontroly v CI a testy UI na skutečném zařízení.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -451,7 +451,7 @@
         <target>Šablona modu pro WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -459,7 +459,7 @@
         <target>Základ pro mody do World of Tanks: sestavení v Pythonu 2.7, testy proti zástupným herním modulům, CI a vydání při každém tagu verze.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -467,7 +467,7 @@
         <target>Nahraje novou verzi modu pro World of Tanks na oficiální Mod Hub (wgmods.net) z terminálu. Neoficiální, bez spojení s Wargamingem.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">

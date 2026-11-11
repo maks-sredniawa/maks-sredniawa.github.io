@@ -86,6 +86,14 @@ export const projects: readonly Project[] = [
     links: [website('darek')],
   },
   {
+    name: $localize`Dark Mode for Gmail`,
+    icon: 'gmail-dark-mode',
+    kind: 'chrome-extension',
+    section: 'building',
+    summary: $localize`Makes the whole of Gmail dark, message bodies included, where Gmail's own Dark theme leaves emails white. Unofficial, not affiliated with Google.`,
+    links: [website('gmail-dark-mode')],
+  },
+  {
     name: $localize`Android starter`,
     icon: 'android-starter',
     kind: 'template',

@@ -74,28 +74,12 @@
           <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8579962063097991302" datatype="html">
-        <source>Gmail dark mode</source>
-        <target>Modo oscuro para Gmail</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8581473025831189432" datatype="html">
-        <source>A proper dark mode for Gmail in the browser, for people who want the whole of it dark.</source>
-        <target>Un modo oscuro de verdad para Gmail en el navegador, para quien lo quiere todo oscuro.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="4431403168639456312" datatype="html">
         <source>Monitor brightness presets</source>
         <target>Ajustes de brillo del monitor</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3880070079748838003" datatype="html">
@@ -103,7 +87,7 @@
         <target>Una app de escritorio que guarda unos cuantos ajustes de brillo para todos tus monitores, sean de la marca que sean, para cambiar todas las pantallas de uno a otro en un momento.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3611950599988366245" datatype="html">
@@ -111,7 +95,7 @@
         <target>Planificador de carpintería</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="971297306472335764" datatype="html">
@@ -119,7 +103,7 @@
         <target>Una app web para planear un proyecto de carpintería y verlo en 3D, todo calculado en tu propio ordenador, antes de cortar la primera tabla.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="425572623706522052" datatype="html">
@@ -127,7 +111,7 @@
         <target>Filtros extra del garaje</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7671961317092575757" datatype="html">
@@ -135,7 +119,7 @@
         <target>Añade los filtros del garaje que le faltan al juego: uno para ocultar los tanques de alquiler, que hoy se muestran siempre, y otro para ver solo los tanques que no son premium.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7968446012996376944" datatype="html">
@@ -143,7 +127,7 @@
         <target>Marcador de dardos</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2377090649340978669" datatype="html">
@@ -151,7 +135,7 @@
         <target>Cuenta tu puntuación de dardos a partir de unas pocas fotos de la diana tomadas desde distintos ángulos, las mínimas que necesite, para que no tengas que sumar los dardos a mano.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3959129080819713984" datatype="html">
@@ -159,7 +143,7 @@
         <target>Marcador de tiro con arco</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5173583988503347125" datatype="html">
@@ -167,7 +151,7 @@
         <target>Cuenta tu puntuación de tiro con arco a partir de unas pocas fotos de la diana tomadas desde distintos ángulos, las mínimas que necesite, para que no tengas que sumar las flechas a mano.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
@@ -175,7 +159,7 @@
         <target>Control de luces sin complicaciones</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
@@ -183,7 +167,7 @@
         <target>Una sola app en tu idioma para luces inteligentes cuya app solo está en chino: lee los datos de cada luz, le añade sus ajustes y los guarda por dispositivo, para que las controles todas desde un mismo sitio.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
@@ -191,7 +175,7 @@
         <target>Registro de deudas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
@@ -199,7 +183,7 @@
         <target>Lleva la cuenta de los préstamos informales, como 100 zł prestados a un amigo o dinero sacado de vuestros ahorros comunes, para que te acuerdes de devolverlo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="218284361541799549" datatype="html">
@@ -207,7 +191,7 @@
         <target>Toma tus medicinas</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7743370160029325198" datatype="html">
@@ -215,7 +199,7 @@
         <target>Te recuerda tomar tus medicinas, con todo guardado en tu teléfono. Sin anuncios ni rastreo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">55</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -430,12 +414,28 @@
           <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2035450512055700976" datatype="html">
+        <source>Dark Mode for Gmail</source>
+        <target>Modo oscuro para Gmail</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="4496829025746948283" datatype="html">
+        <source>Makes the whole of Gmail dark, message bodies included, where Gmail&apos;s own Dark theme leaves emails white. Unofficial, not affiliated with Google.</source>
+        <target>Oscurece todo Gmail, también el cuerpo de los mensajes, que el tema oscuro del propio Gmail deja con fondo blanco. No oficial, sin relación con Google.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
         <source>Android starter</source>
         <target>Base para apps de Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -443,7 +443,7 @@
         <target>Un punto de partida para apps de Android sin conexión: esqueleto en Compose, pipeline de publicación, controles de CI y pruebas de interfaz sobre un dispositivo real.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -451,7 +451,7 @@
         <target>Plantilla de mod de WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -459,7 +459,7 @@
         <target>Un punto de partida para mods de World of Tanks: compilación con Python 2.7, pruebas contra módulos del juego simulados, CI y una publicación con cada etiqueta de versión.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -467,7 +467,7 @@
         <target>Sube desde la terminal una versión nueva de un mod de World of Tanks al Mod Hub oficial (wgmods.net). No oficial, sin relación con Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">
