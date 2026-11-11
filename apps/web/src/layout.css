@@ -178,7 +178,7 @@
 }
 
 .intro h1 {
-  max-width: 15ch;
+  max-width: 9.65em;
   font-size: clamp(42px, 4.8vw, 80px);
   line-height: 1;
   text-wrap: balance;

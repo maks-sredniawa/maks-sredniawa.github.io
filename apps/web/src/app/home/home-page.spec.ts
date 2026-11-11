@@ -26,6 +26,22 @@ describe('HomePage', () => {
     }
   });
 
+  it('keeps every former section anchor on the app list', () => {
+    const page = render();
+
+    for (const id of [
+      'live',
+      'building',
+      'tools',
+      'android-apps',
+      'web-apps',
+      'chrome-extensions',
+      'wot-mods',
+    ]) {
+      expect(page.querySelector(`#apps #${id}`)).not.toBeNull();
+    }
+  });
+
   it('counts the projects behind every filter option', () => {
     const page = render();
     const options = [...page.querySelectorAll('.mf-filter label')].map((label) => ({

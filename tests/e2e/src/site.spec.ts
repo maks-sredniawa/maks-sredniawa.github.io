@@ -42,23 +42,44 @@ test.describe('home page', () => {
     }
   });
 
-  test('filters the list by platform without a script', async ({ browser }) => {
+  for (const id of ['live', 'wot-mods']) {
+    test(`lands the former #${id} link on the app list`, async ({ page }) => {
+      await page.goto(`/#${id}`);
+
+      await expect
+        .poll(() => page.locator('#apps').evaluate((list) => list.getBoundingClientRect().top))
+        .toBeLessThanOrEqual(24);
+    });
+  }
+
+  test('filters the list by every platform without a script', async ({ browser }) => {
     const context = await browser.newContext({ javaScriptEnabled: false });
     const page = await context.newPage();
     await page.goto('/');
     const rows = page.locator('.mf-ledger-row');
-    const filter = page.getByRole('group', { name: 'Show' });
-
-    await filter.getByText('Android').click();
-
-    await expect(rows.and(page.locator(':visible'))).toHaveCount(
-      await page.locator('.mf-ledger-row[data-platform="android"]').count(),
+    const radios = page.getByRole('group', { name: 'Show' }).getByRole('radio');
+    const values = await radios.evaluateAll((inputs) =>
+      inputs.map((input) => (input as HTMLInputElement).value),
     );
-    await expect(page.locator('.mf-ledger-row[data-platform="browser"]').first()).toBeHidden();
+    const shownPlatforms = (): Promise<string[]> =>
+      rows.evaluateAll((elements) =>
+        elements
+          .filter((row) => row.checkVisibility())
+          .map((row) => row.getAttribute('data-platform') ?? ''),
+      );
+    const everyPlatform = await shownPlatforms();
 
-    await filter.getByText('All').click();
+    expect(everyPlatform).toHaveLength(await rows.count());
+    expect(values[0]).toBe('all');
+    expect(values.length).toBeGreaterThan(2);
+    for (const value of values) {
+      await radios.and(page.locator(`[value="${value}"]`)).check();
 
-    await expect(rows.and(page.locator(':visible'))).toHaveCount(await rows.count());
+      const expected =
+        value === 'all' ? everyPlatform : everyPlatform.filter((platform) => platform === value);
+      expect(expected.length, value).toBeGreaterThan(0);
+      expect(await shownPlatforms(), value).toEqual(expected);
+    }
     await context.close();
   });
 
@@ -210,6 +231,44 @@ test.describe('top bar', () => {
       expect(await bar.evaluate((row) => row.getBoundingClientRect().height)).toBe(
         heightBeforeFonts,
       );
+    });
+  }
+});
+
+test.describe('intro', () => {
+  const swapsThatMovedTheCap = [
+    { path: '/de/', width: 1280 },
+    { path: '/es/', width: 1280 },
+    { path: '/pt-br/', width: 1440 },
+    { path: '/cs/', width: 1600 },
+    { path: '/uk/', width: 1000 },
+  ];
+
+  for (const { path, width } of swapsThatMovedTheCap) {
+    test(`${path} keeps its height at ${String(width)}px with or without the webfonts`, async ({
+      browser,
+    }) => {
+      const introHeight = async (fonts: 'blocked' | 'loaded'): Promise<number> => {
+        const page = await browser.newPage({ viewport: { width, height: 800 } });
+        if (fonts === 'blocked') {
+          await page.route('**/*.woff2', (route) => route.abort());
+        }
+        await page.goto(path);
+        await page.evaluate(() => document.fonts.ready);
+        const frauncesLoaded = await page.evaluate(() =>
+          [...document.fonts].some(
+            (face) => face.family === 'Fraunces' && face.status === 'loaded',
+          ),
+        );
+        expect(frauncesLoaded).toBe(fonts === 'loaded');
+        const height = await page
+          .locator('.intro')
+          .evaluate((intro) => intro.getBoundingClientRect().height);
+        await page.close();
+        return height;
+      };
+
+      expect(await introHeight('loaded')).toBe(await introHeight('blocked'));
     });
   }
 });

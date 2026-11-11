@@ -26,6 +26,9 @@
     </section>
 
     <section id="apps" class="catalogue" aria-labelledby="apps-heading">
+      @for (id of formerSectionIds; track id) {
+        <span [id]="id"></span>
+      }
       <h2 id="apps-heading" class="mf-sr" i18n>Apps and tools</h2>
       <fieldset
         mfFilter

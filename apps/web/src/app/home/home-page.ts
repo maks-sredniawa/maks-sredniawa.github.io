@@ -33,6 +33,16 @@ export class HomePage {
   protected readonly kindLabels = projectKindLabels;
   protected readonly sectionStatus = sectionStatus;
   protected readonly platformOf = platformOf;
+  // Other repos still link to the sections this list replaced.
+  protected readonly formerSectionIds = [
+    'live',
+    'building',
+    'tools',
+    'android-apps',
+    'web-apps',
+    'chrome-extensions',
+    'wot-mods',
+  ];
   protected readonly statusLabels = {
     live: $localize`Live`,
     building: $localize`Building`,
