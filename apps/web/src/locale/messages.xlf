@@ -571,53 +571,74 @@
           <context context-type="linenumber">102,103</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="771151654034641326" datatype="html">
+        <source>Paid work</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">115,116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5886043442875553624" datatype="html">
+        <source>Android apps, websites and automations, made to order. Quotes on request.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">117,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7663114596187255080" datatype="html">
+        <source>Save contact</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">124,125</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5986083220366996619" datatype="html">
         <source>© 2026 Maksymilian Średniawa · MaksForge · Set in Fraunces and Newsreader.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">112,113</context>
+          <context context-type="linenumber">133,134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5836279517453613441" datatype="html">
         <source>github.com/maks-sredniawa</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">113,114</context>
+          <context context-type="linenumber">134,135</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8610504659433544583" datatype="html">
         <source>Live</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5782981899482871069" datatype="html">
         <source>Building</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7589136797201485434" datatype="html">
         <source>Open source</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9208062061277346632" datatype="html">
         <source>Idea</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4158925728608139729" datatype="html">
         <source>Favourites</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <note priority="1" from="description">filter</note>
       </trans-unit>
@@ -625,7 +646,7 @@
         <source>All</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <note priority="1" from="description">filter</note>
       </trans-unit>
@@ -633,7 +654,7 @@
         <source>App idea for MaksForge</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8827703476802545413" datatype="html">
@@ -647,21 +668,21 @@ Anything else?
 </source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5314064497247393705" datatype="html">
         <source>Small, free Android apps and tools by Maksymilian Średniawa. No ads, no tracking.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5322775230628869478" datatype="html">
         <source>Small, free Android apps and tools. No ads, no tracking.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3579205080796663296" datatype="html">

@@ -20,6 +20,7 @@ import {
   sectionStatus,
 } from '../catalog/project';
 import { projects } from '../catalog/projects';
+import { studio, studioStructuredData } from '../catalog/studio';
 import { LanguageMenu } from '../language-menu/language-menu';
 import { languageFor, languages } from '../languages';
 
@@ -68,6 +69,7 @@ export class HomePage {
   private readonly document = inject(DOCUMENT);
   protected readonly projects = projects;
   protected readonly ideas = ideas;
+  protected readonly studio = studio;
   protected readonly ideaKindLabels = ideaKindLabels;
   protected readonly kindLabels = projectKindLabels;
   protected readonly sectionStatus = sectionStatus;
@@ -118,6 +120,7 @@ export class HomePage {
       { property: 'og:image', content: `${siteUrl}assets/logo-512.jpg` },
     ]);
     addLanguageLinks(this.document, pageUrl);
+    addStructuredData(this.document, studioStructuredData);
     afterNextRender(() => {
       this.selectTabForHash();
     });
@@ -159,4 +162,14 @@ function addLanguageLinks(document: Document, canonicalUrl: string): void {
   for (const language of languages) {
     addLink('alternate', new URL(language.path, siteUrl).href, language.code);
   }
+}
+
+function addStructuredData(document: Document, data: object): void {
+  if (document.head.querySelector('script[type="application/ld+json"]')) {
+    return;
+  }
+  const script = document.createElement('script');
+  script.type = 'application/ld+json';
+  script.textContent = JSON.stringify(data);
+  document.head.appendChild(script);
 }

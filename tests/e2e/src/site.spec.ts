@@ -513,6 +513,60 @@ test.describe('not found page', () => {
   });
 });
 
+test.describe('MaksForge Studio', () => {
+  test('shows the number of its Google listing on the home page', async ({ page }) => {
+    await page.goto('/');
+
+    const phone = page.locator('#studio a[href="tel:+48720855945"]');
+    await expect(phone).toBeVisible();
+    await expect(phone).toHaveText('+48 720 855 945');
+  });
+
+  test('serves its contact card as a vCard', async ({ request }) => {
+    const response = await request.get('/assets/maks-forge-studio.vcf');
+
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toMatch(/^text\/vcard/);
+    const lines = (await response.text()).split('\r\n');
+    expect(lines).toContain('FN:MaksForge Studio');
+    expect(lines).toContain('TEL;TYPE=WORK,VOICE,CELL:+48720855945');
+    expect(lines).toContain('ORG:MaksForge Studio');
+  });
+
+  test('gives its contact card the name and number the page publishes', async ({
+    page,
+    request,
+  }) => {
+    await page.goto('/');
+    const data = JSON.parse(
+      (await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}',
+    ) as { name: string; telephone: string };
+    const card = await request.get('/assets/maks-forge-studio.vcf');
+    const lines = (await card.text()).split('\r\n');
+
+    expect(lines).toEqual(
+      expect.arrayContaining([
+        `FN:${data.name}`,
+        `ORG:${data.name}`,
+        `TEL;TYPE=WORK,VOICE,CELL:${data.telephone}`,
+      ]),
+    );
+  });
+
+  test('describes itself in structured data on every language of the home page', async ({
+    page,
+  }) => {
+    for (const path of ['/', '/pl/']) {
+      await page.goto(path);
+      const data = JSON.parse(
+        (await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}',
+      ) as Record<string, unknown>;
+
+      expect(data).toMatchObject({ name: 'MaksForge Studio', telephone: '+48720855945' });
+    }
+  });
+});
+
 test.describe('shared assets', () => {
   test('serves the stylesheet the app sites load at a fixed URL', async ({ request }) => {
     const response = await request.get('/assets/style.css');
