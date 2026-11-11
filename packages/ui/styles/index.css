@@ -10,6 +10,7 @@
 @import './components.css' layer(components);
 @import './app-page.css' layer(components);
 @import './dossier.css' layer(components);
+@import './sheet.css' layer(components);
 
 @source '../src';
 
