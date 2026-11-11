@@ -26,12 +26,6 @@ export const ideas: readonly Idea[] = [
     added: '2026-11-07',
   },
   {
-    name: $localize`Garage filter extras`,
-    kind: 'wot-mod',
-    pitch: $localize`Adds the garage filters the game is missing: one to hide rented tanks, which always show today, and one to show only tanks that are not premium.`,
-    added: '2026-11-07',
-  },
-  {
     name: $localize`Darts scorer`,
     kind: 'android-app',
     pitch: $localize`Counts your darts score from a few photos of the board taken from different angles, as few as it needs, so you don't have to tally the darts by hand.`,
