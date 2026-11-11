@@ -97,6 +97,34 @@ describe('HomePage', () => {
     );
   });
 
+  it('gives the studio the phone, email and contact card of its Google listing', () => {
+    const studio = render().querySelector('#studio');
+
+    expect(studio?.querySelector('h2')?.textContent).toBe('MaksForge Studio');
+    expect(studio?.querySelector('a[href="tel:+48720855945"]')?.textContent).toBe(
+      '+48 720 855 945',
+    );
+    expect(studio?.querySelector('a[href="mailto:studio@maksforge.com"]')).not.toBeNull();
+    expect(
+      studio?.querySelector('a[href="/assets/maks-forge-studio.vcf"]')?.hasAttribute('download'),
+    ).toBe(true);
+  });
+
+  it('describes the studio to search engines with the same name and number', () => {
+    render();
+    const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+
+    expect(scripts).toHaveLength(1);
+    expect(JSON.parse(scripts[0]?.textContent ?? '{}')).toMatchObject({
+      '@type': 'Organization',
+      name: 'MaksForge Studio',
+      telephone: '+48720855945',
+      email: 'studio@maksforge.com',
+      url: 'https://maksforge.com/',
+    });
+    expect(JSON.stringify(JSON.parse(scripts[0]?.textContent ?? '{}'))).not.toContain('address');
+  });
+
   it('describes the page for search engines and link previews', () => {
     render();
 

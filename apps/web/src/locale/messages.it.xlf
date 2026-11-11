@@ -650,12 +650,36 @@
           <context context-type="linenumber">102,103</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="771151654034641326" datatype="html">
+        <source>Paid work</source>
+        <target>Lavoro a pagamento</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">115,116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5886043442875553624" datatype="html">
+        <source>Android apps, websites and automations, made to order. Quotes on request.</source>
+        <target>App Android, siti web e automazioni su misura. Preventivi su richiesta.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">117,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7663114596187255080" datatype="html">
+        <source>Save contact</source>
+        <target>Salva contatto</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">124,125</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="5986083220366996619" datatype="html">
         <source>© 2026 Maksymilian Średniawa · MaksForge · Set in Fraunces and Newsreader.</source>
         <target>© 2026 Maksymilian Średniawa · MaksForge · Composto in Fraunces e Newsreader.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">112,113</context>
+          <context context-type="linenumber">133,134</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5836279517453613441" datatype="html">
@@ -663,7 +687,7 @@
         <target>github.com/maks-sredniawa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">113,114</context>
+          <context context-type="linenumber">134,135</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8610504659433544583" datatype="html">
@@ -671,7 +695,7 @@
         <target>Online</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5782981899482871069" datatype="html">
@@ -679,7 +703,7 @@
         <target>Sviluppo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">81</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7589136797201485434" datatype="html">
@@ -687,7 +711,7 @@
         <target>Open source</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">60</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9208062061277346632" datatype="html">
@@ -695,7 +719,7 @@
         <target>Idea</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4158925728608139729" datatype="html">
@@ -703,7 +727,7 @@
         <target>Preferite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">88</context>
         </context-group>
         <note priority="1" from="description">filter</note>
       </trans-unit>
@@ -712,7 +736,7 @@
         <target>Tutte</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <note priority="1" from="description">filter</note>
       </trans-unit>
@@ -721,7 +745,7 @@
         <target>Idea di app per MaksForge</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8827703476802545413" datatype="html">
@@ -743,7 +767,7 @@ Altro da aggiungere?
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">79</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5314064497247393705" datatype="html">
@@ -751,7 +775,7 @@ Altro da aggiungere?
         <target>App Android e strumenti piccoli e gratuiti di Maksymilian Średniawa. Niente pubblicità, niente tracciamento.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5322775230628869478" datatype="html">
@@ -759,7 +783,7 @@ Altro da aggiungere?
         <target>App Android e strumenti piccoli e gratuiti. Niente pubblicità, niente tracciamento.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">116</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3579205080796663296" datatype="html">

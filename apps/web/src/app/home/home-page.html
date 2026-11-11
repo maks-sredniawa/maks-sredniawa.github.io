@@ -105,6 +105,27 @@
       </aside>
     </div>
   </section>
+
+  <section id="studio" class="studio" aria-labelledby="studio-heading">
+    <div class="mf-wrap">
+      <div class="studio-grid">
+        <div>
+          <div class="studio-head">
+            <h2 id="studio-heading">{{ studio.name }}</h2>
+            <span class="mf-sc" i18n>Paid work</span>
+          </div>
+          <p i18n>Android apps, websites and automations, made to order. Quotes on request.</p>
+        </div>
+        <address class="studio-contact">
+          <a class="studio-phone" [href]="'tel:' + studio.telephone">{{
+            studio.telephoneDisplay
+          }}</a>
+          <a class="studio-mail" [href]="'mailto:' + studio.email">{{ studio.email }}</a>
+          <a mfLink [href]="studio.vcard" download i18n>Save contact</a>
+        </address>
+      </div>
+    </div>
+  </section>
 </main>
 
 <div class="mf-wrap">
