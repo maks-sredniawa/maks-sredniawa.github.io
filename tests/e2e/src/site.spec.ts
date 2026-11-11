@@ -105,6 +105,47 @@ test.describe('home page', () => {
     await expect(page.locator('.mf-filter input[value="favourites"]')).toBeChecked();
   });
 
+  test('a link to the app list keeps the favourites', async ({ page }) => {
+    await page.goto('/#apps');
+    await expect(page.locator('[ngh]')).toHaveCount(0);
+
+    await expect(page.locator('.mf-filter input[value="favourites"]')).toBeChecked();
+  });
+
+  test('the Apps link in the navigation keeps the chosen filter', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('[ngh]')).toHaveCount(0);
+    await page
+      .getByRole('group', { name: 'Show' })
+      .getByRole('radio', { name: /Android/ })
+      .check();
+    const hashChanged = page.evaluate(
+      () =>
+        new Promise((resolve) => {
+          addEventListener('hashchange', () => setTimeout(resolve), { once: true });
+        }),
+    );
+
+    await page
+      .getByRole('navigation', { name: 'Sections' })
+      .getByRole('link', { name: 'Apps' })
+      .click();
+    await hashChanged;
+
+    await expect(page.locator('.mf-filter input[value="android"]')).toBeChecked();
+  });
+
+  for (const [id, tab] of [
+    ['wot-mods', 'wot'],
+    ['tools', 'dev'],
+  ]) {
+    test(`the former #${id} link selects its platform`, async ({ page }) => {
+      await page.goto(`/#${id}`);
+
+      await expect(page.locator(`.mf-filter input[value="${tab}"]`)).toBeChecked();
+    });
+  }
+
   test('loads every image', async ({ page }) => {
     await page.goto('/');
 

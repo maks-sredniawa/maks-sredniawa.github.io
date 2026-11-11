@@ -13,6 +13,7 @@ import { ideas } from '../catalog/ideas';
 import {
   type Project,
   type ProjectPlatform,
+  type ProjectSection,
   projectKindLabels,
   projectPlatformLabels,
   projectPlatforms,
@@ -28,12 +29,40 @@ const platformOf = (project: Project): ProjectPlatform => projectPlatforms[proje
 
 const isFavourite = (project: Project): boolean => sectionStatus(project.section) === 'live';
 
+// Other repos still link to the sections this list replaced.
+const formerSections = new Map<string, ProjectSection | 'live'>([
+  ['live', 'live'],
+  ['building', 'building'],
+  ['tools', 'open-source'],
+  ['android-apps', 'android-apps'],
+  ['web-apps', 'web-apps'],
+  ['chrome-extensions', 'chrome-extensions'],
+  ['wot-mods', 'wot-mods'],
+]);
+
+const tabFor = (section: ProjectSection | 'live'): string => {
+  if (section === 'live') {
+    return 'favourites';
+  }
+  if (section === 'building') {
+    return 'all';
+  }
+  const [platform, ...others] = new Set(
+    projects.filter((project) => project.section === section).map(platformOf),
+  );
+  return platform && others.length === 0 ? platform : 'all';
+};
+
+export const formerSectionTabs: ReadonlyMap<string, string> = new Map(
+  [...formerSections].map(([id, section]) => [id, tabFor(section)]),
+);
+
 @Component({
   selector: 'mf-home-page',
   imports: [Button, Filter, Idea, LanguageMenu, LedgerRow, Link],
   templateUrl: './home-page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  host: { '(window:hashchange)': 'showLinkedRow()' },
+  host: { '(window:hashchange)': 'selectTabForHash()' },
 })
 export class HomePage {
   private readonly document = inject(DOCUMENT);
@@ -44,16 +73,7 @@ export class HomePage {
   protected readonly sectionStatus = sectionStatus;
   protected readonly platformOf = platformOf;
   protected readonly isFavourite = isFavourite;
-  // Other repos still link to the sections this list replaced.
-  protected readonly formerSectionIds = [
-    'live',
-    'building',
-    'tools',
-    'android-apps',
-    'web-apps',
-    'chrome-extensions',
-    'wot-mods',
-  ];
+  protected readonly formerSectionIds = [...formerSectionTabs.keys()];
   protected readonly statusLabels = {
     live: $localize`Live`,
     building: $localize`Building`,
@@ -99,21 +119,23 @@ export class HomePage {
     ]);
     addLanguageLinks(this.document, pageUrl);
     afterNextRender(() => {
-      this.showLinkedRow();
+      this.selectTabForHash();
     });
   }
 
-  /** A link to an app outside Favourites, or to a former section, opens the full list. */
-  protected showLinkedRow(): void {
+  protected selectTabForHash(): void {
     const id = decodeURIComponent(this.document.location.hash.slice(1));
     const target = id ? this.document.getElementById(id) : null;
-    if (!target?.closest('#apps')) {
+    if (!target) {
       return;
     }
-    const hidden = target.matches('.mf-ledger-row') ? !target.checkVisibility() : id !== 'live';
-    const all = this.document.querySelector<HTMLInputElement>('.mf-filter input[value="all"]');
-    if (hidden && all) {
-      all.checked = true;
+    const isHiddenRow = target.matches('.mf-ledger-row') && !target.checkVisibility();
+    const tab = formerSectionTabs.get(id) ?? (isHiddenRow ? 'all' : undefined);
+    const input = tab
+      ? this.document.querySelector<HTMLInputElement>(`.mf-filter input[value="${tab}"]`)
+      : null;
+    if (input) {
+      input.checked = true;
       target.scrollIntoView();
     }
   }

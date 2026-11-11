@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { ideas } from '../catalog/ideas';
 import { projects } from '../catalog/projects';
-import { HomePage } from './home-page';
+import { formerSectionTabs, HomePage } from './home-page';
 
 function render(): HTMLElement {
   const fixture = TestBed.createComponent(HomePage);
@@ -40,6 +40,18 @@ describe('HomePage', () => {
     ]) {
       expect(page.querySelector(`#apps #${id}`)).not.toBeNull();
     }
+  });
+
+  it('opens each former section on the filter that matches it', () => {
+    expect(Object.fromEntries(formerSectionTabs)).toEqual({
+      live: 'favourites',
+      building: 'all',
+      tools: 'dev',
+      'android-apps': 'android',
+      'web-apps': 'browser',
+      'chrome-extensions': 'browser',
+      'wot-mods': 'wot',
+    });
   });
 
   it('counts the projects behind every filter option', () => {
