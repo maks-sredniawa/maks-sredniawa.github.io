@@ -6,6 +6,12 @@
   "tags": ["type:test"],
   "implicitDependencies": ["web"],
   "targets": {
+    "e2e": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "scripts/build.sh && scripts/e2e.sh"
+      }
+    },
     "typecheck": {
       "executor": "nx:run-commands",
       "cache": true,
