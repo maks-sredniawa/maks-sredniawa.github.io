@@ -15,9 +15,7 @@
     "typecheck": {
       "executor": "nx:run-commands",
       "cache": true,
-      "options": {
-        "command": "tsc -p tests/e2e/tsconfig.json --noEmit"
-      }
+      "options": { "command": "tsc -p tests/e2e/tsconfig.json --noEmit" }
     }
   }
 }

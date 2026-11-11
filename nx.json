@@ -15,7 +15,8 @@
       "{workspaceRoot}/wrangler.jsonc",
       "{workspaceRoot}/robots.txt",
       "{workspaceRoot}/scripts/build.sh",
-      "{workspaceRoot}/scripts/visual.sh"
+      "{workspaceRoot}/scripts/visual.sh",
+      "{workspaceRoot}/scripts/e2e.sh"
     ]
   },
   "targetDefaults": {
@@ -24,12 +25,8 @@
         "default",
         "^default",
         "site",
-        {
-          "externalDependencies": ["@playwright/test"]
-        },
-        {
-          "env": "CI"
-        }
+        { "externalDependencies": ["@playwright/test"] },
+        { "env": "CI" }
       ]
     },
     "visual": {

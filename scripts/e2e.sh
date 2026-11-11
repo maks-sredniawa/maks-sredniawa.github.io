@@ -1,6 +1,4 @@
 #!/usr/bin/env bash
-# Runs the e2e suite in the Playwright image, which carries the browsers and their system fonts, so CI
-# needs no apt step. Build the site first: the image has no pnpm and an older Node than this repo.
 # Usage: scripts/e2e.sh [playwright test options, e.g. --grep "home page"]
 set -euo pipefail
 cd "$(dirname "$0")/.."
