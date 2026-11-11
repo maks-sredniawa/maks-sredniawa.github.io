@@ -527,9 +527,30 @@ test.describe('MaksForge Studio', () => {
 
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toMatch(/^text\/vcard/);
-    const card = await response.text();
-    expect(card).toContain('TEL;TYPE=WORK,VOICE,CELL:+48720855945');
-    expect(card).toContain('ORG:MaksForge Studio');
+    const lines = (await response.text()).split('\r\n');
+    expect(lines).toContain('FN:MaksForge Studio');
+    expect(lines).toContain('TEL;TYPE=WORK,VOICE,CELL:+48720855945');
+    expect(lines).toContain('ORG:MaksForge Studio');
+  });
+
+  test('gives its contact card the name and number the page publishes', async ({
+    page,
+    request,
+  }) => {
+    await page.goto('/');
+    const data = JSON.parse(
+      (await page.locator('script[type="application/ld+json"]').textContent()) ?? '{}',
+    ) as { name: string; telephone: string };
+    const card = await request.get('/assets/maks-forge-studio.vcf');
+    const lines = (await card.text()).split('\r\n');
+
+    expect(lines).toEqual(
+      expect.arrayContaining([
+        `FN:${data.name}`,
+        `ORG:${data.name}`,
+        `TEL;TYPE=WORK,VOICE,CELL:${data.telephone}`,
+      ]),
+    );
   });
 
   test('describes itself in structured data on every language of the home page', async ({
