@@ -1,7 +1,14 @@
 import { expect, test } from '@playwright/test';
 import { urls } from '../playwright.config';
 
-for (const id of ['app-page--home', 'app-page--subpage', 'dossier--home', 'dossier--subpage']) {
+for (const id of [
+  'app-page--home',
+  'app-page--subpage',
+  'dossier--home',
+  'dossier--subpage',
+  'sheet--home',
+  'sheet--subpage',
+]) {
   test(id, async ({ page }) => {
     await page.goto(`${urls.storybook}/iframe.html?id=${id}&viewMode=story`);
 

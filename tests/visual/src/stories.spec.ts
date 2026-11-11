@@ -9,12 +9,13 @@ interface StoryIndex {
 const index = JSON.parse(
   readFileSync(new URL('../../../dist/storybook/ui/index.json', import.meta.url), 'utf8'),
 ) as StoryIndex;
-// app-page.spec.ts shoots the App page and Dossier stories at every width.
+// app-page.spec.ts shoots the App page, Dossier and Sheet stories at every width.
 const stories = Object.values(index.entries).filter(
   (entry) =>
     entry.type === 'story' &&
     !entry.id.startsWith('app-page--') &&
-    !entry.id.startsWith('dossier--'),
+    !entry.id.startsWith('dossier--') &&
+    !entry.id.startsWith('sheet--'),
 );
 
 test.describe('stories', () => {
