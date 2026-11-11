@@ -13,7 +13,7 @@ An [Nx](https://nx.dev) workspace on pnpm and Node 26 (`.nvmrc`):
 | `apps/web`     | The home page: Angular, prerendered to static HTML at build time. The app list and the ideas come from `src/app/catalog/`; the filter counts follow from it.                                                        |
 | `packages/ui`  | The design system: brand tokens and the global stylesheet (`styles/`, with Tailwind) and the Angular components built on them, each with Storybook stories. The app sites' `pages-theme` loads this stylesheet too. |
 | `apps/api`     | A Fastify skeleton for when the site needs a backend. Not deployed: the site has no API yet. `nx docker:build api` builds its image.                                                                                |
-| `tests/e2e`    | Playwright tests of the built site, served through wrangler so `_headers` and the 404 page behave as in production.                                                                                                 |
+| `tests/e2e`    | Playwright tests of the built site, served through wrangler so `_headers` and the 404 page behave as in production. Run in the Playwright Docker image, which brings the browsers and their fonts.                  |
 | `tests/visual` | Playwright screenshot tests of every story and page, in dark and light, run in the Playwright Docker image so the pixels match on every machine.                                                                    |
 
 ```bash

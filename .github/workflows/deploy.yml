@@ -99,9 +99,6 @@ jobs:
         run: pnpm nx affected -t lint typecheck test build build-storybook docker:build
 
       - if: steps.work.outputs.check == 'true'
-        run: pnpm exec playwright install --with-deps chromium
-
-      - if: steps.work.outputs.check == 'true'
         run: pnpm nx affected -t e2e visual --parallel=1
 
       - if: failure() && steps.work.outputs.check == 'true'
