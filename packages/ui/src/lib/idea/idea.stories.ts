@@ -13,7 +13,8 @@ const meta: Meta<Args> = {
   decorators: [
     moduleMetadata({ imports: [Idea] }),
     componentWrapperDecorator(
-      (story) => `<section class="mf-band mf-band--dark"><div class="mf-wrap">${story}</div></section>`,
+      (story) =>
+        `<section class="mf-band mf-band--dark"><div class="mf-wrap">${story}</div></section>`,
     ),
   ],
   args: {

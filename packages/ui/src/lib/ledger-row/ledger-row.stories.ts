@@ -65,7 +65,8 @@ export const Building: Story = {
     heading: 'Kozica',
     status: 'building',
     statusLabel: 'Building',
-    summary: 'An offline trail map of the Polish mountains, drawn in the colours of the trail signposts.',
+    summary:
+      'An offline trail map of the Polish mountains, drawn in the colours of the trail signposts.',
   },
   decorators: [componentWrapperDecorator((story) => `<div style="width: 1300px">${story}</div>`)],
 };
