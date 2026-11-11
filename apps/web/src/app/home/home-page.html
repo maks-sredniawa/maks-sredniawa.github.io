@@ -1,277 +1,103 @@
 <header class="mf-wrap" id="top">
-  <div class="ears">
-    <span class="mf-sc" i18n>Independent apps &amp; tools</span>
-    <span class="mf-sc" i18n>Price: <b>0.00</b> · No ads · No tracking · No accounts</span>
-    <details mfLanguageMenu></details>
-  </div>
-  <div class="masthead">
-    <nav i18n-aria-label aria-label="Sections">
-      <a href="#live" i18n>In production</a>
-      <a href="#building" i18n>In development</a>
-      <a href="#tools" i18n>Tools</a>
-    </nav>
+  <div class="topbar">
     <a class="wordmark" href="#top" i18n-aria-label aria-label="MaksForge home">
-      <img src="/assets/logo-mark-128.webp" alt="" width="44" height="44" />
+      <img src="/assets/logo-mark-128.webp" alt="" width="36" height="36" />
       <span i18n>MaksForge</span>
     </a>
-    <nav class="masthead-end" i18n-aria-label aria-label="More">
+    <nav i18n-aria-label aria-label="Sections">
+      <a href="#apps" i18n>Apps</a>
       <a href="#ideas" i18n>Ideas</a>
       <a href="#about" i18n>About</a>
       <a href="https://github.com/maks-sredniawa" i18n>GitHub</a>
-      <a class="masthead-cta" href="#support" i18n>Support</a>
+      <a class="topbar-cta" href="#support" i18n>Support</a>
     </nav>
+    <details mfLanguageMenu></details>
   </div>
-  <p class="folio">
-    <span class="mf-sc" i18n>maksforge.com</span>
-    <span class="mf-sc" i18n>
-      {{ liveCount }} live · {{ buildingCount }} in development ·
-      {ideaCount, plural, =1 {1 idea} other {{{ ideaCount }} ideas}}
-    </span>
-  </p>
 </header>
 
 <main>
   <div class="mf-wrap">
-    <section class="lead">
-      <div class="statement">
-        <h1 class="mf-display" i18n>Small apps that do one thing <em>well.</em></h1>
-        <p class="standfirst" i18n>
-          I build free Android apps, browser extensions and game mods that respect the people using
-          them. The Android apps keep your data on your device.
-        </p>
-        <ul class="principles" i18n-aria-label aria-label="Principles">
-          <li class="mf-sc" i18n>No ads</li>
-          <li class="mf-sc" i18n>No tracking</li>
-          <li class="mf-sc" i18n>No accounts</li>
-          <li class="mf-sc" i18n>Free</li>
-        </ul>
-        <div class="actions">
-          <a mfButton href="#live" i18n>See the apps</a>
-          <a mfButton variant="secondary" href="https://github.com/maks-sredniawa" i18n>GitHub</a>
-        </div>
-      </div>
-      <div class="shelf">
-        <span mfStamp i18n>Free</span>
-        <h2 class="shelf-head mf-sc" i18n>On the shelf</h2>
-        <ul class="mf-shelf">
-          @for (project of projects; track project.icon) {
-            <li
-              mfShelfItem
-              [iconSrc]="'/assets/icons/' + project.icon + '.webp'"
-              [name]="project.name"
-              [status]="sectionStatus(project.section)"
-              [statusLabel]="statusLabels[sectionStatus(project.section)]"
-              [href]="'#' + project.icon"
-            ></li>
-          }
-        </ul>
-        <p class="shelf-note" i18n>
-          Each one says whether it is live, in development or open source.
-        </p>
-      </div>
-      <nav class="index" i18n-aria-label aria-label="Index">
-        <h2 class="mf-sc" i18n>Index</h2>
-        <div class="index-groups">
-          @for (group of indexGroups; track group.heading) {
-            <div class="mf-index-group">
-              <h3 class="mf-sc">{{ group.heading }}</h3>
-              <ul>
-                @for (project of group.projects; track project.icon) {
-                  <li
-                    mfIndexEntry
-                    [name]="project.name"
-                    [kind]="kindShortLabels[project.kind]"
-                    [href]="'#' + project.icon"
-                    [status]="sectionStatus(project.section)"
-                    [statusLabel]="statusLabels[sectionStatus(project.section)]"
-                  ></li>
-                }
-              </ul>
-            </div>
-          }
-        </div>
-      </nav>
+    <section class="intro">
+      <h1 class="mf-display" i18n>Small apps that do one thing <em>well.</em></h1>
+      <p i18n>
+        Free Android apps, browser extensions and game mods, with no ads, no tracking and no
+        accounts. The Android apps keep your data on your device.
+      </p>
+    </section>
+
+    <section id="apps" class="catalogue" aria-labelledby="apps-heading">
+      <h2 id="apps-heading" class="mf-sr" i18n>Apps and tools</h2>
+      <fieldset
+        mfFilter
+        name="platform"
+        i18n-legend
+        legend="Show"
+        [options]="platformFilter"
+      ></fieldset>
+      <ul class="mf-ledger">
+        @for (project of projects; track project.icon) {
+          <li
+            mfLedgerRow
+            [id]="project.icon"
+            [attr.data-platform]="platformOf(project)"
+            [iconSrc]="'/assets/icons/' + project.icon + '.webp'"
+            [heading]="project.name"
+            [kind]="kindLabels[project.kind]"
+            [status]="sectionStatus(project.section)"
+            [statusLabel]="statusLabels[sectionStatus(project.section)]"
+          >
+            <p [innerHTML]="project.summary"></p>
+            @for (link of project.links; track link.href) {
+              <a mfLink mfLedgerRowAction [variant]="link.variant" [href]="link.href">{{
+                link.label
+              }}</a>
+            }
+          </li>
+        }
+      </ul>
     </section>
   </div>
 
-  <section
-    id="live"
-    mfBand
-    status="live"
-    i18n-heading
-    heading="In production"
-    i18n-blurb
-    blurb="Available now on Google Play, the Chrome Web Store, GitHub and the web."
-    i18n-statusLabel
-    statusLabel="Live · {{ liveCount }}"
-  >
-    <div
-      id="android-apps"
-      mfAisle
-      i18n-heading
-      heading="Android apps"
-      i18n-note
-      note="On Google Play. Your data stays on your device."
-    >
-      <ul mfProjectTiles [projects]="androidApps"></ul>
-    </div>
-    <div
-      id="web-apps"
-      mfAisle
-      i18n-heading
-      heading="Web apps"
-      i18n-note
-      note="Runs in your browser. Nothing to install."
-    >
-      <ul mfProjectTiles [projects]="webApps"></ul>
-    </div>
-    <div
-      id="chrome-extensions"
-      mfAisle
-      i18n-heading
-      heading="Chrome extensions"
-      i18n-note
-      note="On the Chrome Web Store."
-    >
-      <ul mfProjectTiles [projects]="chromeExtensions"></ul>
-    </div>
-    <div
-      id="wot-mods"
-      mfAisle
-      i18n-heading
-      heading="World of Tanks mods"
-      i18n-note
-      note="Free mods for the game client. Download the .wotmod file and drop it into your mods/&lt;game version&gt; folder."
-    >
-      <ul mfProjectTiles [projects]="wotMods"></ul>
-    </div>
-  </section>
-
-  <section
-    id="building"
-    mfBand
-    tone="tint"
-    status="building"
-    i18n-heading
-    heading="In development"
-    i18n-blurb
-    blurb="Being built and tested right now."
-    i18n-statusLabel
-    statusLabel="Building · {{ buildingCount }}"
-  >
-    <div
-      mfAisle
-      i18n-heading
-      heading="Coming next"
-      i18n-note
-      note="Not in a store yet. Each has a page you can follow."
-    >
-      <ul mfProjectTiles [projects]="building"></ul>
-    </div>
-  </section>
-
-  <section
-    id="tools"
-    mfBand
-    status="oss"
-    i18n-heading
-    heading="Tools"
-    i18n-blurb
-    blurb="Building blocks I use myself, free to reuse."
-    i18n-statusLabel
-    statusLabel="Open source · {{ openSourceCount }}"
-  >
-    <div
-      mfAisle
-      i18n-heading
-      heading="Templates &amp; CLI"
-      i18n-note
-      note="Source on GitHub, under each repo's licence."
-    >
-      <ul mfProjectTiles [projects]="openSource"></ul>
-    </div>
-  </section>
-
-  <section
-    id="ideas"
-    mfBand
-    tone="dark"
-    status="idea"
-    i18n-heading
-    heading="What should I build next?"
-    i18n-blurb
-    blurb="Small things I might build next. Yours could join them."
-    i18n-statusLabel
-    statusLabel="Ideas · {{ ideaCount }}"
-  >
-    <ul class="mf-pins" i18n-aria-label aria-label="Ideas">
-      @for (idea of ideas; track idea.name) {
-        <li mfPin [heading]="idea.name" [kind]="ideaKindLabels[idea.kind]" [added]="idea.added">
-          {{ idea.pitch }}
-        </li>
-      }
-    </ul>
-    <div class="mf-callout mf-paper">
-      <p i18n>
-        <strong>Got a small problem an app could fix?</strong> Tell me what it is and who it
-        affects. The best ideas end up on the workbench, and you'll see them here first. You can
-        also write to <a href="mailto:ideas@maksforge.com">ideas&#64;maksforge.com</a>.
-      </p>
-      <a mfButton variant="brand" [href]="ideaMailto" i18n>Send an idea</a>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="mf-wrap about-grid">
+  <section id="ideas" class="mf-band mf-band--dark" aria-labelledby="ideas-heading">
+    <div class="mf-wrap ideas">
       <div>
-        <p class="about-kicker mf-sc" i18n>About me</p>
-        <h2 i18n>Hi, I'm Maksymilian.</h2>
-        <p class="mf-dropcap" i18n>
-          MaksForge is where I build the small tools I wish existed. Each one solves a single
-          problem and never asks for an account or shows an ad. The Android apps also work without
-          an internet connection.
+        <h2 id="ideas-heading" i18n>What should I build next?</h2>
+        <p class="ideas-ask" i18n>
+          Got a small problem an app could fix? Tell me what it is and who it affects.
         </p>
-        <p i18n>
-          Every app is free. If one of them makes your day a little easier, a tip helps me keep
-          building, but it never unlocks anything.
-        </p>
-        <ul class="mf-facts">
-          <li mfFact [value]="liveCount" i18n>
-            {liveCount, plural,
-              =1 {app, extension or mod live}
-              other {apps, extensions and mods live}
-            }
-          </li>
-          <li mfFact [value]="buildingCount" i18n>
-            {buildingCount, plural, =1 {project in development} other {projects in development}}
-          </li>
-          <li mfFact [value]="0" i18n>ads or trackers</li>
-        </ul>
+        <div class="ideas-send">
+          <a mfButton variant="brand" [href]="ideaMailto" i18n>Send an idea</a>
+          <a class="mf-mono" href="mailto:ideas@maksforge.com" i18n>ideas&#64;maksforge.com</a>
+        </div>
       </div>
-      <aside
-        id="support"
-        mfNotice
-        i18n-kicker
-        kicker="Notice"
-        i18n-heading
-        heading="Like what I make?"
-        i18n-stamp
-        stamp="Free"
-      >
-        <ng-container i18n
-          >The apps stay free. Tips are optional and very appreciated.</ng-container
-        >
-        <a mfButton mfNoticeAction variant="brand" href="https://buymeacoffee.com/maksforge" i18n
-          >Buy me a coffee</a
-        >
-        <a
-          mfButton
-          mfNoticeAction
-          variant="secondary"
-          href="https://paypal.me/maksymiliansredniawa"
-          i18n
-          >PayPal</a
-        >
+      <ul class="mf-ideas" i18n-aria-label aria-label="Ideas">
+        @for (idea of ideas; track idea.name) {
+          <li mfIdea [heading]="idea.name" [kind]="ideaKindLabels[idea.kind]">{{ idea.pitch }}</li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="mf-wrap about-grid">
+      <div id="about">
+        <h2 i18n>Hi, I'm Maksymilian.</h2>
+        <p i18n>
+          MaksForge is where I build the small tools I wish existed. Each one solves a single
+          problem.
+        </p>
+      </div>
+      <aside id="support" aria-labelledby="support-heading">
+        <h2 id="support-heading" i18n>Like what I make?</h2>
+        <p i18n>A tip helps me keep building. It never unlocks anything.</p>
+        <div class="about-actions">
+          <a mfButton variant="brand" href="https://buymeacoffee.com/maksforge" i18n
+            >Buy me a coffee</a
+          >
+          <a mfButton variant="secondary" href="https://paypal.me/maksymiliansredniawa" i18n
+            >PayPal</a
+          >
+        </div>
       </aside>
     </div>
   </section>

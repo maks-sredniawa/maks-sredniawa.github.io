@@ -27,11 +27,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">40</context>
+          <context context-type="linenumber">27</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1698750782869625066" datatype="html">
@@ -43,7 +39,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">33</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2932360890997178383" datatype="html">
@@ -60,10 +56,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/idea.ts</context>
           <context context-type="linenumber">14</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">42</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2945089700400317868" datatype="html">
@@ -226,12 +218,20 @@
           <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="58291555423186355" datatype="html">
+        <source>Web app</source>
+        <target>App web</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="4275633150362943004" datatype="html">
         <source>World of Tanks mod</source>
         <target>Mod di World of Tanks</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">34</context>
+          <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5610425955750546094" datatype="html">
@@ -239,11 +239,7 @@
         <target>Modello</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3910334431549708288" datatype="html">
@@ -251,33 +247,51 @@
         <target>Strumento da riga di comando</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">32</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="4645690492252065749" datatype="html">
-        <source>Chrome</source>
-        <target>Chrome</target>
+      <trans-unit id="4743341466695708276" datatype="html">
+        <source>Android</source>
+        <target>Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">47</context>
         </context-group>
-        <note priority="1" from="description">short project kind</note>
+        <note priority="1" from="description">filter</note>
       </trans-unit>
-      <trans-unit id="3880922231014648112" datatype="html">
-        <source>CLI</source>
-        <target>CLI</target>
+      <trans-unit id="5855712980171403039" datatype="html">
+        <source>Browser</source>
+        <target>Browser</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">48</context>
         </context-group>
-        <note priority="1" from="description">short project kind</note>
+        <note priority="1" from="description">filter</note>
+      </trans-unit>
+      <trans-unit id="4619713765235036033" datatype="html">
+        <source>World of Tanks</source>
+        <target>World of Tanks</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">filter</note>
+      </trans-unit>
+      <trans-unit id="1275707396542562282" datatype="html">
+        <source>For developers</source>
+        <target>Per sviluppatori</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+        <note priority="1" from="description">filter</note>
       </trans-unit>
       <trans-unit id="4764767270165536588" datatype="html">
         <source>Google Play</source>
         <target>Google Play</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">59</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6917817711227459734" datatype="html">
@@ -285,7 +299,7 @@
         <target>Chrome Web Store</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3099741642167775297" datatype="html">
@@ -293,7 +307,7 @@
         <target>Scarica</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5481284030283031915" datatype="html">
@@ -301,7 +315,7 @@
         <target>Sito web</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">71</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9155608366859514313" datatype="html">
@@ -309,11 +323,7 @@
         <target>Codice</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">77</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="254749633765993545" datatype="html">
@@ -332,12 +342,20 @@
           <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="8864489090004463452" datatype="html">
+        <source>A free music player in your browser, in the style of the early 2000s, with an equaliser and a two-deck DJ mode. Your songs stay on your device.</source>
+        <target>Un lettore musicale gratuito nel tuo browser, in stile primi anni 2000, con equalizzatore e modalità DJ a due deck. I tuoi brani restano sul tuo dispositivo.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7665069683437319188" datatype="html">
         <source>Dark Theme for Play Console</source>
         <target>Tema scuro per Play Console</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">36</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3957114844585208660" datatype="html">
@@ -345,7 +363,7 @@
         <target>Attiva la palette scura che è già nascosta dentro Google Play Console. Non ufficiale, non affiliato a Google.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">32</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8144572367100586840" datatype="html">
@@ -353,7 +371,7 @@
         <target>Timer colpi autoloader</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1873483350223809925" datatype="html">
@@ -361,7 +379,7 @@
         <target>Mostra il tempo di caricamento di ogni colpo nel caricatore di un autoreloader, non solo di quello in caricamento adesso. Richiede <x id="START_LINK" ctype="x-a" equiv-text="&apos;&lt;a href=&quot;https://github.com/CH4MPi/GUIFlash&quot;&gt;&apos;"/>GUIFlash<x id="CLOSE_LINK" ctype="x-a" equiv-text="&apos;&lt;/a&gt;&apos;"/>, che la maggior parte dei modpack include.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5618700951293313592" datatype="html">
@@ -369,7 +387,7 @@
         <target>Distanza dei ping</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">57</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4185459033723491661" datatype="html">
@@ -377,7 +395,7 @@
         <target>Mantiene visibile la distanza sui ping di posizione sulla mappa, non solo finché il mirino ci è sopra.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9171395635597465720" datatype="html">
@@ -385,7 +403,7 @@
         <target>Chiamata urgente</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">65</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6088551831896592658" datatype="html">
@@ -393,7 +411,7 @@
         <target>Suona quando lo stesso numero chiama due volte nel giro di pochi minuti, anche con il telefono in silenzioso o in Non disturbare.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">61</context>
+          <context context-type="linenumber">69</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1778667315705644158" datatype="html">
@@ -401,7 +419,7 @@
         <target>Una mappa dei sentieri offline delle montagne polacche, disegnata con i colori della segnaletica dei sentieri.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6745904508755830237" datatype="html">
@@ -409,7 +427,7 @@
         <target>Un assistente vocale polacco. Di' <x id="START_POLISH" equiv-text="&apos;&lt;span lang=&quot;pl&quot;&gt;&apos;"/>"Darek, otwórz bramę"<x id="CLOSE_POLISH" equiv-text="&apos;&lt;/span&gt;&apos;"/> e lui chiama il tuo apricancello, con tutto che gira offline sul telefono.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
@@ -417,7 +435,7 @@
         <target>Android starter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -425,7 +443,7 @@
         <target>Un punto di partenza per app Android offline: scheletro Compose, pipeline di rilascio, controlli CI e verifiche dell'interfaccia guidate dal dispositivo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -433,7 +451,7 @@
         <target>Modello per mod WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">89</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -441,7 +459,7 @@
         <target>Un punto di partenza per le mod di World of Tanks: build con Python 2.7, test su moduli di gioco simulati, CI e una release a ogni tag di versione.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -449,23 +467,23 @@
         <target>Carica una nuova versione di una mod di World of Tanks sul Mod Hub ufficiale (wgmods.net) dal terminale. Non ufficiale, non affiliato a Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8763217267236853053" datatype="html">
-        <source>Independent apps &amp; tools</source>
-        <target>App e strumenti indipendenti</target>
+      <trans-unit id="5697990489745084532" datatype="html">
+        <source>MaksForge home</source>
+        <target>Home di MaksForge</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">3</context>
+          <context context-type="linenumber">3,4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3245442103801959969" datatype="html">
-        <source>Price: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>0.00<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> · No ads · No tracking · No accounts</source>
-        <target>Prezzo: <x id="START_BOLD_TEXT" ctype="x-b" equiv-text="&lt;b&gt;"/>0,00<x id="CLOSE_BOLD_TEXT" ctype="x-b" equiv-text="&lt;/b&gt;"/> · Niente pubblicità · Niente tracciamento · Niente account</target>
+      <trans-unit id="69372300342374401" datatype="html">
+        <source>MaksForge</source>
+        <target>MaksForge</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">4,6</context>
+          <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2471229163174544608" datatype="html">
@@ -476,68 +494,12 @@
           <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3747381764941110432" datatype="html">
-        <source>In production</source>
-        <target>Disponibili</target>
+      <trans-unit id="5650635157678221891" datatype="html">
+        <source>Apps</source>
+        <target>App</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">8,9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">101,102</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1800653213284171981" datatype="html">
-        <source>In development</source>
-        <target>In sviluppo</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">9,10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">145,146</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1684734235599362204" datatype="html">
-        <source>Tools</source>
-        <target>Strumenti</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">10,11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">168</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">53</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5697990489745084532" datatype="html">
-        <source>MaksForge home</source>
-        <target>Home di MaksForge</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">12,13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5937251202465808296" datatype="html">
-        <source>More</source>
-        <target>Altro</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1733032782702468487" datatype="html">
@@ -545,11 +507,11 @@
         <target>Idee</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">17,18</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">197</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1726363342938046830" datatype="html">
@@ -557,7 +519,15 @@
         <target>Info</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">18,19</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1534029177398918729" datatype="html">
+        <source>GitHub</source>
+        <target>GitHub</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2288513108450439427" datatype="html">
@@ -565,23 +535,7 @@
         <target>Sostieni</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">20,21</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="9191102165137649341" datatype="html">
-        <source> <x id="INTERPOLATION" equiv-text="{{ liveCount }}"/> live · <x id="INTERPOLATION_1" equiv-text="{{ buildingCount }}"/> in development · <x id="ICU" equiv-text="{ideaCount, plural, =1 {1 idea} other {{{ ideaCount }} ideas}}" xid="4766173006489218093"/> </source>
-        <target> <x id="INTERPOLATION" equiv-text="{{ liveCount }}"/> online · <x id="INTERPOLATION_1" equiv-text="{{ buildingCount }}"/> in sviluppo · <x id="ICU" equiv-text="{ideaCount, plural, =1 {1 idea} other {{{ ideaCount }} ideas}}" xid="4766173006489218093"/> </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">26,30</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3808557357024008808" datatype="html">
-        <source>{VAR_PLURAL, plural, =1 {1 idea} other {<x id="INTERPOLATION"/> ideas}}</source>
-        <target>{VAR_PLURAL, plural, =1 {1 idea} other {<x id="INTERPOLATION"/> idee}}</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">27,28</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4333729541921580819" datatype="html">
@@ -589,263 +543,31 @@
         <target>Piccole app che fanno una cosa <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>e la fanno bene.<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">36,37</context>
+          <context context-type="linenumber">21,23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3752514034788290175" datatype="html">
-        <source> I build free Android apps, browser extensions and game mods that respect the people using them. The Android apps keep your data on your device. </source>
-        <target> Costruisco app Android gratuite, estensioni per il browser e mod per giochi che rispettano le persone che le usano. Le app Android tengono i tuoi dati sul tuo dispositivo. </target>
+      <trans-unit id="8376640670946111884" datatype="html">
+        <source> Free Android apps, browser extensions and game mods, with no ads, no tracking and no accounts. The Android apps keep your data on your device. </source>
+        <target>App Android, estensioni per il browser e mod per giochi gratuite, senza pubblicità, senza tracciamento e senza account. Le app Android tengono i tuoi dati sul tuo dispositivo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="linenumber">23,24</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7546441377306134173" datatype="html">
-        <source>Principles</source>
-        <target>Principi</target>
+      <trans-unit id="7492441507078961323" datatype="html">
+        <source>Apps and tools</source>
+        <target>App e strumenti</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">41,42</context>
+          <context context-type="linenumber">29,30</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5216001594522675863" datatype="html">
-        <source>No ads</source>
-        <target>Niente pubblicità</target>
+      <trans-unit id="8461842260159597706" datatype="html">
+        <source>Show</source>
+        <target>Mostra</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">42,43</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6192364009110565890" datatype="html">
-        <source>No tracking</source>
-        <target>Niente tracciamento</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">43,44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3644774857440418802" datatype="html">
-        <source>No accounts</source>
-        <target>Niente account</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">44,45</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5891064527381218201" datatype="html">
-        <source>Free</source>
-        <target>Gratis</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">45,46</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">53,54</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">249,250</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2911923627202510401" datatype="html">
-        <source>See the apps</source>
-        <target>Vedi le app</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">48,49</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="181591879001023149" datatype="html">
-        <source>On the shelf</source>
-        <target>Sullo scaffale</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">54,55</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1000689893043874190" datatype="html">
-        <source> Each one says whether it is live, in development or open source. </source>
-        <target> Ognuno indica se è online, in sviluppo o open source. </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">68,69</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6410467948610503551" datatype="html">
-        <source>Index</source>
-        <target>Indice</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">72,73</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="58291555423186355" datatype="html">
-        <source>Web app</source>
-        <target>App web</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
           <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/project.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8864489090004463452" datatype="html">
-        <source>A free music player in your browser, in the style of the early 2000s, with an equaliser and a two-deck DJ mode. Your songs stay on your device.</source>
-        <target>Un lettore musicale gratuito nel tuo browser, in stile primi anni 2000, con equalizzatore e modalità DJ a due deck. I tuoi brani restano sul tuo dispositivo.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4842094864524083069" datatype="html">
-        <source>Available now on Google Play, the Chrome Web Store, GitHub and the web.</source>
-        <target>Disponibili ora su Google Play, Chrome Web Store, GitHub e sul web.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">104,105</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3931659218868558753" datatype="html">
-        <source>Web apps</source>
-        <target>App web</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">122,123</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6927912044623422874" datatype="html">
-        <source>Runs in your browser. Nothing to install.</source>
-        <target>Funziona nel tuo browser. Niente da installare.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">124,126</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1118898549063080005" datatype="html">
-        <source>Live · <x id="INTERPOLATION" equiv-text="{{ liveCount }}"/></source>
-        <target>Online · <x id="INTERPOLATION" equiv-text="{{ liveCount }}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">105,108</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2666011659091773553" datatype="html">
-        <source>Android apps</source>
-        <target>App Android</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">111,112</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2573127661890826303" datatype="html">
-        <source>On Google Play. Your data stays on your device.</source>
-        <target>Su Google Play. I tuoi dati restano sul tuo dispositivo.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">113,115</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2454291713620263023" datatype="html">
-        <source>Chrome extensions</source>
-        <target>Estensioni Chrome</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">121,122</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3202373046699143376" datatype="html">
-        <source>On the Chrome Web Store.</source>
-        <target>Sul Chrome Web Store.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">123,125</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6301043812793176510" datatype="html">
-        <source>World of Tanks mods</source>
-        <target>Mod di World of Tanks</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">131,132</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1707032796423662845" datatype="html">
-        <source>Free mods for the game client. Download the .wotmod file and drop it into your mods/&lt;game version&gt; folder.</source>
-        <target>Mod gratuite per il client del gioco. Scarica il file .wotmod e mettilo nella cartella mods/&lt;versione del gioco&gt;.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">133,134</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7853826619974453343" datatype="html">
-        <source>Being built and tested right now.</source>
-        <target>In costruzione e in prova proprio adesso.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">147,148</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5586227792460154246" datatype="html">
-        <source>Building · <x id="INTERPOLATION" equiv-text="{{ buildingCount }}"/></source>
-        <target>Sviluppo · <x id="INTERPOLATION" equiv-text="{{ buildingCount }}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">149,152</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1587877665869688950" datatype="html">
-        <source>Coming next</source>
-        <target>In arrivo</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">154,155</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="644778394886183077" datatype="html">
-        <source>Not in a store yet. Each has a page you can follow.</source>
-        <target>Non sono ancora in nessuno store. Ognuna ha una pagina che puoi seguire.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">156,158</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2234460007736910085" datatype="html">
-        <source>Building blocks I use myself, free to reuse.</source>
-        <target>Mattoni che uso io stesso, liberi da riutilizzare.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">169,170</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8283522343073648431" datatype="html">
-        <source>Open source · <x id="INTERPOLATION" equiv-text="{{ openSourceCount }}"/></source>
-        <target>Open source · <x id="INTERPOLATION" equiv-text="{{ openSourceCount }}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">171,174</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="6050388315531276320" datatype="html">
-        <source>Templates &amp; CLI</source>
-        <target>Modelli e CLI</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">176,177</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="679366904393528455" datatype="html">
-        <source>Source on GitHub, under each repo&apos;s licence.</source>
-        <target>Codice su GitHub, con la licenza di ciascun repository.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">178,180</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5445031343078813267" datatype="html">
@@ -853,31 +575,15 @@
         <target>Cosa dovrei costruire adesso?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">190,191</context>
+          <context context-type="linenumber">64,65</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="2331214141902222367" datatype="html">
-        <source>Small things I might build next. Yours could join them.</source>
-        <target>Piccole cose che potrei costruire. La tua potrebbe aggiungersi.</target>
+      <trans-unit id="4272245170125435399" datatype="html">
+        <source> Got a small problem an app could fix? Tell me what it is and who it affects. </source>
+        <target>Hai un piccolo problema che un'app potrebbe risolvere? Raccontami qual è e a chi capita.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">192,193</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3297314790018971319" datatype="html">
-        <source>Ideas · <x id="INTERPOLATION" equiv-text="{{ ideaCount }}"/></source>
-        <target>Idee · <x id="INTERPOLATION" equiv-text="{{ ideaCount }}"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">194,196</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8523809408838441322" datatype="html">
-        <source><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Got a small problem an app could fix?<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> Tell me what it is and who it affects. The best ideas end up on the workbench, and you&apos;ll see them here first. You can also write to <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:ideas@maksforge.com&quot;&gt;"/>ideas@maksforge.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. </source>
-        <target><x id="START_TAG_STRONG" ctype="x-strong" equiv-text="&lt;strong&gt;"/>Hai un piccolo problema che un'app potrebbe risolvere?<x id="CLOSE_TAG_STRONG" ctype="x-strong" equiv-text="&lt;/strong&gt;"/> Raccontami qual è e a chi capita. Le idee migliori finiscono sul banco di lavoro, e le vedrai qui per prime. Puoi anche scrivere a <x id="START_LINK" ctype="x-a" equiv-text="&lt;a href=&quot;mailto:ideas@maksforge.com&quot;&gt;"/>ideas@maksforge.com<x id="CLOSE_LINK" ctype="x-a" equiv-text="&lt;/a&gt;"/>. </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">205,209</context>
+          <context context-type="linenumber">66,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1848841023825612934" datatype="html">
@@ -885,15 +591,15 @@
         <target>Manda un'idea</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">209,210</context>
+          <context context-type="linenumber">69,70</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3562199946446423606" datatype="html">
-        <source>About me</source>
-        <target>Chi sono</target>
+      <trans-unit id="5170372062926703022" datatype="html">
+        <source>ideas@maksforge.com</source>
+        <target>ideas@maksforge.com</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">216,217</context>
+          <context context-type="linenumber">70,71</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6540703374370687146" datatype="html">
@@ -901,73 +607,15 @@
         <target>Ciao, sono Maksymilian.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">217,218</context>
+          <context context-type="linenumber">84,85</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7936475980563534411" datatype="html">
-        <source> MaksForge is where I build the small tools I wish existed. Each one solves a single problem and never asks for an account or shows an ad. The Android apps also work without an internet connection. </source>
-        <target> MaksForge è il posto dove costruisco i piccoli strumenti che vorrei esistessero. Ognuno risolve un solo problema e non chiede mai un account né mostra pubblicità. Le app Android funzionano anche senza connessione a internet. </target>
+      <trans-unit id="6365377750814621265" datatype="html">
+        <source> MaksForge is where I build the small tools I wish existed. Each one solves a single problem. </source>
+        <target>MaksForge è il posto dove costruisco i piccoli strumenti che vorrei esistessero. Ognuno risolve un solo problema.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">219,221</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3479495769921730204" datatype="html">
-        <source> Every app is free. If one of them makes your day a little easier, a tip helps me keep building, but it never unlocks anything. </source>
-        <target> Tutte le app sono gratuite. Se una di loro ti rende la giornata un po' più facile, una mancia mi aiuta a continuare a costruire, ma non sblocca mai niente. </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">224,225</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="8856905278208146821" datatype="html">
-        <source> <x id="ICU" equiv-text="{liveCount, plural,
-              =1 {app, extension or mod live}
-              other {apps, extensions and mods live}
-            }" xid="3849007432413743190"/> </source>
-        <target> <x id="ICU" equiv-text="{liveCount, plural,
-              =1 {app, extension or mod live}
-              other {apps, extensions and mods live}
-            }" xid="3849007432413743190"/> </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">229,234</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">235,237</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3849007432413743190" datatype="html">
-        <source>{VAR_PLURAL, plural, =1 {app, extension or mod live} other {apps, extensions and mods live}}</source>
-        <target>{VAR_PLURAL, plural, =1 {app, estensione o mod online} other {app, estensioni e mod online}}</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">229,231</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2682326979285466581" datatype="html">
-        <source>{VAR_PLURAL, plural, =1 {project in development} other {projects in development}}</source>
-        <target>{VAR_PLURAL, plural, =1 {progetto in sviluppo} other {progetti in sviluppo}}</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">235,236</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3460151056617681121" datatype="html">
-        <source>ads or trackers</source>
-        <target>pubblicità o tracker</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">237,238</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="3042471551767868839" datatype="html">
-        <source>Notice</source>
-        <target>Avviso</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">245</context>
+          <context context-type="linenumber">86,87</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2506863822827173818" datatype="html">
@@ -975,15 +623,15 @@
         <target>Ti piace quello che faccio?</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">246,247</context>
+          <context context-type="linenumber">91,92</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="664692977381558064" datatype="html">
-        <source>The apps stay free. Tips are optional and very appreciated.</source>
-        <target>Le app restano gratuite. Le mance sono facoltative e molto apprezzate.</target>
+      <trans-unit id="407589283434828100" datatype="html">
+        <source>A tip helps me keep building. It never unlocks anything.</source>
+        <target>Una mancia mi aiuta a continuare a costruire. Non sblocca mai niente.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">251</context>
+          <context context-type="linenumber">92,93</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3019539297535838163" datatype="html">
@@ -991,7 +639,15 @@
         <target>Offrimi un caffè</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">254,255</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="525378870317084455" datatype="html">
+        <source>PayPal</source>
+        <target>PayPal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">98,99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5986083220366996619" datatype="html">
@@ -999,7 +655,15 @@
         <target>© 2026 Maksymilian Średniawa · MaksForge · Composto in Fraunces e Newsreader.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">266,267</context>
+          <context context-type="linenumber">108,109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5836279517453613441" datatype="html">
+        <source>github.com/maks-sredniawa</source>
+        <target>github.com/maks-sredniawa</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
+          <context context-type="linenumber">109,110</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8610504659433544583" datatype="html">
@@ -1007,7 +671,7 @@
         <target>Online</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">56</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5782981899482871069" datatype="html">
@@ -1015,7 +679,15 @@
         <target>Sviluppo</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">57</context>
+          <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7589136797201485434" datatype="html">
+        <source>Open source</source>
+        <target>Open source</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
+          <context context-type="linenumber">39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="9208062061277346632" datatype="html">
@@ -1023,15 +695,24 @@
         <target>Idea</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">40</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="1616102757855967475" datatype="html">
+        <source>All</source>
+        <target>Tutte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">filter</note>
       </trans-unit>
       <trans-unit id="6483715362203373287" datatype="html">
         <source>App idea for MaksForge</source>
         <target>Idea di app per MaksForge</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8827703476802545413" datatype="html">
@@ -1053,7 +734,7 @@ Altro da aggiungere?
 </target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">53</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5314064497247393705" datatype="html">
@@ -1061,7 +742,7 @@ Altro da aggiungere?
         <target>App Android e strumenti piccoli e gratuiti di Maksymilian Średniawa. Niente pubblicità, niente tracciamento.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">63</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5322775230628869478" datatype="html">
@@ -1069,31 +750,7 @@ Altro da aggiungere?
         <target>App Android e strumenti piccoli e gratuiti. Niente pubblicità, niente tracciamento.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/home/home-page.ts</context>
-          <context context-type="linenumber">83</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5762284142097344827" datatype="html">
-        <source>Nothing forged here <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>yet.<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/></source>
-        <target>Qui non c'è ancora nulla <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>di forgiato.<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/></target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
-          <context context-type="linenumber">3,4</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="4871289172238012618" datatype="html">
-        <source>This page doesn&apos;t exist. The apps are on the home page.</source>
-        <target>Questa pagina non esiste. Le app sono nella home page.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
-          <context context-type="linenumber">4,5</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7925780443998397127" datatype="html">
-        <source>Back to MaksForge</source>
-        <target>Torna a MaksForge</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
-          <context context-type="linenumber">6,7</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3579205080796663296" datatype="html">
@@ -1101,7 +758,7 @@ Altro da aggiungere?
         <target>Lingua:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/language-menu/language-menu.ts</context>
-          <context context-type="linenumber">20,21</context>
+          <context context-type="linenumber">15,16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1949800099101277248" datatype="html">
@@ -1109,55 +766,39 @@ Altro da aggiungere?
         <target>Lingue</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/language-menu/language-menu.ts</context>
-          <context context-type="linenumber">23,24</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="69372300342374401" datatype="html">
-        <source>MaksForge</source>
-        <target>MaksForge</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">15,16</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1534029177398918729" datatype="html">
-        <source>GitHub</source>
-        <target>GitHub</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">20,21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">50,51</context>
+          <context context-type="linenumber">18,19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7805217564208419733" datatype="html">
         <source>maksforge.com</source>
         <target>maksforge.com</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">25,26</context>
-        </context-group>
-        <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
           <context context-type="linenumber">5,6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="525378870317084455" datatype="html">
-        <source>PayPal</source>
-        <target>PayPal</target>
+      <trans-unit id="5762284142097344827" datatype="html">
+        <source>Nothing forged here <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>yet.<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/></source>
+        <target>Qui non c'è ancora nulla <x id="START_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;em&gt;"/>di forgiato.<x id="CLOSE_EMPHASISED_TEXT" ctype="x-em" equiv-text="&lt;/em&gt;"/></target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">263,264</context>
+          <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
+          <context context-type="linenumber">9,10</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="5836279517453613441" datatype="html">
-        <source>github.com/maks-sredniawa</source>
-        <target>github.com/maks-sredniawa</target>
+      <trans-unit id="4871289172238012618" datatype="html">
+        <source>This page doesn&apos;t exist. The apps are on the home page.</source>
+        <target>Questa pagina non esiste. Le app sono nella home page.</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/home/home-page.html</context>
-          <context context-type="linenumber">273,274</context>
+          <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
+          <context context-type="linenumber">10,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7925780443998397127" datatype="html">
+        <source>Back to MaksForge</source>
+        <target>Torna a MaksForge</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
       </trans-unit>
     </body>

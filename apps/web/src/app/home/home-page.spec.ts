@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { ideas } from '../catalog/ideas';
-import { liveSections } from '../catalog/project';
 import { projects } from '../catalog/projects';
 import { HomePage } from './home-page';
 
@@ -11,48 +10,40 @@ function render(): HTMLElement {
 }
 
 describe('HomePage', () => {
-  it('shows a tile, a shelf item and an index entry for every project, and a pin for every idea', () => {
+  it('lists every project once and every idea once', () => {
     const page = render();
 
-    expect(page.querySelectorAll('.mf-tile')).toHaveLength(projects.length);
-    expect(page.querySelectorAll('.mf-shelf-item')).toHaveLength(projects.length);
-    expect(page.querySelectorAll('.mf-index-entry')).toHaveLength(projects.length);
-    expect(page.querySelectorAll('.mf-pin')).toHaveLength(ideas.length);
+    expect(page.querySelectorAll('.mf-ledger-row')).toHaveLength(projects.length);
+    expect(page.querySelectorAll('.mf-idea')).toHaveLength(ideas.length);
+    expect(page.querySelectorAll('.mf-tile, .mf-shelf-item, .mf-index-entry')).toHaveLength(0);
   });
 
-  it('links every shelf item and index entry to its tile', () => {
+  it('keeps each project reachable at its old anchor', () => {
     const page = render();
-    const targets = [...page.querySelectorAll('.mf-shelf-item, .mf-index-entry a')].map((link) =>
-      link.getAttribute('href'),
-    );
 
-    expect(targets).toHaveLength(projects.length * 2);
-    for (const target of targets) {
-      expect(page.querySelector(`.mf-tile${target}`)).not.toBeNull();
+    for (const project of projects) {
+      expect(page.querySelector(`.mf-ledger-row#${project.icon}`)).not.toBeNull();
     }
   });
 
-  it('counts the live and in-development projects', () => {
+  it('counts the projects behind every filter option', () => {
     const page = render();
-    const counts = [...page.querySelectorAll('.mf-fact strong')].map((fact) => fact.textContent);
+    const options = [...page.querySelectorAll('.mf-filter label')].map((label) => ({
+      value: label.querySelector('input')?.value,
+      count: Number(label.querySelector('small')?.textContent),
+    }));
+    const rows = [...page.querySelectorAll<HTMLElement>('.mf-ledger-row')];
 
-    expect(counts).toEqual([
-      String(projects.filter((p) => liveSections.includes(p.section)).length),
-      String(projects.filter((p) => p.section === 'building').length),
-      '0',
-    ]);
-  });
-
-  it('heads tiles one level below their aisle', () => {
-    const page = render();
-
-    expect(page.querySelectorAll('.mf-aisle h3').length).toBeGreaterThan(0);
-    expect(page.querySelectorAll('.mf-tile h4')).toHaveLength(projects.length);
+    expect(options[0]).toEqual({ value: 'all', count: projects.length });
+    for (const { value, count } of options.slice(1)) {
+      expect(rows.filter((row) => row.dataset['platform'] === value)).toHaveLength(count);
+    }
+    expect(options.slice(1).reduce((sum, { count }) => sum + count, 0)).toBe(projects.length);
   });
 
   it('pre-fills the idea email', () => {
     const page = render();
-    const send = page.querySelector<HTMLAnchorElement>('.mf-callout a.mf-btn');
+    const send = page.querySelector<HTMLAnchorElement>('#ideas a.mf-btn');
 
     expect(send?.getAttribute('href')).toBe(
       'mailto:ideas@maksforge.com?subject=App%20idea%20for%20MaksForge&body=What%20problem%20should%20the%20app%20solve%3F%0A%0A%0AWho%20would%20use%20it%3F%0A%0A%0AAnything%20else%3F%0A',

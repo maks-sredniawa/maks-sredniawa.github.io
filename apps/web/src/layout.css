@@ -1,58 +1,35 @@
-/* Optional, not swap: the top row wraps at a width that differs per font, so a swap mid-view moves the whole page. Above 1219px the longest translation fits on one line in either font, even beside a classic scrollbar. */
-
-@font-face {
-  font-family: 'Fraunces Unswapped';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: optional;
-  src: url('/assets/fonts/fraunces-latin-ext-normal.woff2') format('woff2');
-  unicode-range:
-    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
-    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
-    U+A720-A7FF;
-}
-
-@font-face {
-  font-family: 'Fraunces Unswapped';
-  font-style: normal;
-  font-weight: 100 900;
-  font-display: optional;
-  src: url('/assets/fonts/fraunces-latin-normal.woff2') format('woff2');
-  unicode-range:
-    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
-    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@media (min-width: 760px) and (max-width: 1219px) {
-  .ears .mf-sc {
-    font-family:
-      'Fraunces Unswapped', 'Fraunces Georgia', 'Fraunces Noto Serif', Georgia, 'Times New Roman',
-      serif;
-  }
-}
-
-.ears {
+.topbar {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px 24px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--color-rule);
-  color: var(--color-ink-3);
+  gap: 10px 28px;
+  padding: 16px 0 14px;
+  border-bottom: 3px double var(--color-rule-strong);
 }
 
-.ears > span:nth-child(2) {
+.topbar nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 24px;
   margin-left: auto;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.topbar nav a:hover,
+.topbar .topbar-cta {
+  color: var(--color-brand);
+}
+
+.topbar .lang {
+  padding-left: 24px;
+  border-left: 1px solid var(--color-rule);
 }
 
 .lang {
   position: relative;
   color: var(--color-ink);
-}
-
-.ears .lang {
-  padding-left: 24px;
-  border-left: 1px solid var(--color-rule);
 }
 
 .lang-toggle {
@@ -156,40 +133,6 @@
   gap: 24px;
 }
 
-.ears b {
-  color: var(--color-brand);
-}
-
-.masthead {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-  gap: 24px;
-  padding: 22px 0 18px;
-  border-bottom: 3px double var(--color-rule-strong);
-}
-
-.masthead nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 22px;
-}
-
-.masthead .masthead-end {
-  justify-content: flex-end;
-}
-
-.masthead nav a {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.masthead nav a:hover,
-.masthead .masthead-cta {
-  color: var(--color-brand);
-}
-
 .wordmark {
   display: flex;
   align-items: center;
@@ -209,6 +152,14 @@
   line-height: 1;
 }
 
+.topbar .wordmark {
+  gap: 12px;
+}
+
+.topbar .wordmark span {
+  font-size: 32px;
+}
+
 .folio {
   display: flex;
   justify-content: space-between;
@@ -218,30 +169,120 @@
   color: var(--color-ink-3);
 }
 
-.lead {
+.intro {
   display: grid;
-  grid-template-areas:
-    'statement shelf'
-    'index index';
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: 40px var(--layout-gap);
-  padding-top: 44px;
+  align-items: end;
+  gap: var(--layout-gap);
+  padding: 40px 0 34px;
 }
 
-.statement {
-  grid-area: statement;
-}
-
-.lead h1 {
-  max-width: 14ch;
-  font-size: clamp(48px, 6vw, 104px);
-  line-height: 0.98;
+.intro h1 {
+  max-width: 15ch;
+  font-size: clamp(42px, 4.8vw, 80px);
+  line-height: 1;
   text-wrap: balance;
 }
 
-.lead h1 em {
+.intro h1 em,
+.not-found h1 em {
   color: var(--color-brand);
   font-weight: 400;
+}
+
+.intro p {
+  max-width: 48ch;
+  color: var(--color-ink-2);
+  font-size: 20px;
+  line-height: 1.4;
+}
+
+.catalogue {
+  margin-bottom: 44px;
+}
+
+.catalogue:has(input[value='android']:checked) .mf-ledger-row:not([data-platform='android']),
+.catalogue:has(input[value='browser']:checked) .mf-ledger-row:not([data-platform='browser']),
+.catalogue:has(input[value='wot']:checked) .mf-ledger-row:not([data-platform='wot']),
+.catalogue:has(input[value='dev']:checked) .mf-ledger-row:not([data-platform='dev']) {
+  display: none;
+}
+
+.ideas {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+  gap: var(--layout-gap) calc(var(--layout-gap) * 2);
+}
+
+.ideas h2 {
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.ideas-ask {
+  max-width: 40ch;
+  margin: 12px 0 18px;
+  color: var(--color-ink-2);
+  font-size: 18px;
+}
+
+.ideas-send {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.ideas-send .mf-mono {
+  color: var(--color-ink-3);
+}
+
+.ideas-send .mf-mono:hover {
+  color: var(--color-ink);
+}
+
+.about {
+  border-top: 3px double var(--color-rule-strong);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: var(--layout-gap) calc(var(--layout-gap) * 2);
+  padding-top: 32px;
+  padding-bottom: 40px;
+}
+
+.about-grid > aside {
+  padding-left: calc(var(--layout-gap) * 2);
+  border-left: 1px solid var(--color-rule);
+}
+
+.about h2 {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.about p {
+  max-width: 56ch;
+  color: var(--color-ink-2);
+  font-size: 18px;
+}
+
+.about-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
 }
 
 .standfirst {
@@ -252,21 +293,6 @@
   line-height: 1.4;
 }
 
-.principles {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 22px;
-  margin: 22px 0 0;
-  padding: 0;
-  color: var(--color-ink-2);
-  list-style: none;
-}
-
-.principles li::before {
-  content: '— ' / '';
-  color: var(--color-brand);
-}
-
 .actions {
   display: flex;
   flex-wrap: wrap;
@@ -274,229 +300,76 @@
   margin-top: 30px;
 }
 
-.shelf {
-  grid-area: shelf;
-  position: relative;
-  padding-left: var(--layout-gap);
-  border-left: 1px solid var(--color-rule);
-}
-
-.shelf .mf-stamp {
-  top: -14px;
-  right: -12px;
-}
-
-.shelf-head {
-  margin-bottom: 14px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid var(--color-rule-strong);
-  color: var(--color-ink-3);
-}
-
-.shelf-note {
-  margin-top: 12px;
-  padding-top: 10px;
-  border-top: 1px solid var(--color-rule);
-  color: var(--color-ink-3);
-  font-size: 14px;
-  font-style: italic;
-}
-
-.index {
-  grid-area: index;
-  padding: 14px 0 36px;
-  border-top: 1px solid var(--color-rule-strong);
-}
-
-.index > h2 {
-  margin-bottom: 6px;
-  color: var(--color-ink-3);
-}
-
-.index-groups {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0 var(--layout-gap);
-}
-
-.index-groups > * + * {
-  padding-left: var(--layout-gap);
-  border-left: 1px solid var(--color-rule);
-}
-
-.about {
-  border-top: 3px double var(--color-rule-strong);
-}
-
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
-  align-items: start;
-  gap: var(--layout-gap) calc(var(--layout-gap) * 3);
-  padding-top: 36px;
-  padding-bottom: 48px;
-}
-
-.about-kicker {
-  color: var(--color-brand);
-}
-
-.about h2 {
-  margin: 8px 0 18px;
-  font-family: var(--font-display);
-  font-variation-settings: 'WONK' 1;
-  font-size: 44px;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.05;
-}
-
-.about-grid > div > p:not(.about-kicker) {
-  max-width: 62ch;
-  margin-bottom: 14px;
-  color: var(--color-ink-2);
-  font-size: 19px;
-}
-
-.about .mf-notice {
-  margin-top: 24px;
-}
-
-@media (min-width: 1700px) {
-  .lead {
-    grid-template-areas: 'statement shelf index';
-    grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
-    padding-bottom: 40px;
-  }
-
-  .lead .mf-shelf {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .index {
-    padding: 0 0 0 var(--layout-gap);
-    border-top: 0;
-    border-left: 1px solid var(--color-rule);
-  }
-
-  .index-groups {
-    grid-template-columns: 1fr;
-  }
-
-  .index-groups > * + * {
+/* Below 960px the longest translation of the nav no longer fits beside the wordmark in Fraunces, so it gets its own row in every language and either font. */
+@media (max-width: 959px) {
+  .topbar .lang {
+    margin-left: auto;
     padding-left: 0;
     border-left: 0;
+  }
+
+  .topbar nav {
+    flex-basis: 100%;
+    order: 3;
+    margin-left: 0;
   }
 }
 
 @media (max-width: 1099px) {
-  .masthead {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    gap: 10px;
-  }
-
-  .masthead nav,
-  .masthead .masthead-end {
-    justify-content: center;
-  }
-
-  .wordmark {
-    grid-row: 1;
-  }
-
-  .lead {
-    grid-template-areas: 'statement' 'shelf' 'index';
-    grid-template-columns: minmax(0, 1fr);
-    gap: 32px;
-  }
-
-  .shelf {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .index-groups {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .index-groups > :nth-child(odd) {
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .about-grid {
+  .ideas {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 759px) {
+  .topbar {
+    column-gap: 16px;
+  }
+
+  .topbar .wordmark span {
+    font-size: 28px;
+  }
+
+  .topbar nav {
+    gap: 4px 16px;
+    font-size: 14px;
+  }
+
   .folio {
     flex-direction: column;
     gap: 2px;
   }
 
-  .ears {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 2px 16px;
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 28px 0 24px;
   }
 
-  .ears > span:nth-child(2) {
-    margin-left: 0;
-  }
-
-  .ears .lang {
-    grid-row: 1 / span 2;
-    grid-column: 2;
-    align-self: start;
-    padding-left: 0;
-    border-left: 0;
-  }
-
-  .wordmark span {
-    font-size: 34px;
-  }
-
-  .wordmark img {
-    width: 36px;
-    height: 36px;
-  }
-
-  .masthead nav a {
-    font-size: 14px;
-  }
-
-  .lead {
-    padding-top: 28px;
-  }
-
-  .lead h1 {
-    font-size: 50px;
+  .intro p {
+    font-size: 18px;
   }
 
   .standfirst {
     font-size: 19px;
   }
 
-  .lead .mf-shelf {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 8px;
+  .ideas h2 {
+    font-size: 30px;
   }
 
-  .shelf .mf-stamp {
-    top: -10px;
-    right: 4px;
-    font-size: 15px;
+  .about-grid {
+    grid-template-columns: 1fr;
   }
 
-  .shelf-note,
-  .index {
-    display: none;
+  .about-grid > aside {
+    padding: 24px 0 0;
+    border-top: 1px solid var(--color-rule);
+    border-left: 0;
   }
 
   .about h2 {
-    font-size: 34px;
+    font-size: 26px;
   }
 }
 
@@ -510,16 +383,4 @@
   margin-top: 48px;
   font-size: clamp(48px, 6vw, 96px);
   line-height: 1;
-}
-
-.not-found h1 em {
-  color: var(--color-brand);
-  font-weight: 400;
-}
-
-/* A ch cap follows whichever font is current and moves at the swap; 427px is 14ch of unhinted Fraunces at the 50px phone h1. */
-@media (max-width: 599px) {
-  .lead h1 {
-    max-width: 427px;
-  }
 }

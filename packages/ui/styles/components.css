@@ -705,3 +705,255 @@
     font-size: 40px;
   }
 }
+
+.mf-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 2px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 2px solid var(--color-rule-strong);
+}
+
+.mf-filter label {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 9px 16px 8px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.mf-filter label:hover {
+  background: var(--color-surface-2);
+}
+
+.mf-filter input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mf-filter label:has(input:checked) {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.mf-filter label:has(input:focus-visible) {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.mf-filter small {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.mf-ledger {
+  display: grid;
+  grid-template-columns: 52px minmax(200px, 1.1fr) minmax(0, 2.8fr) auto auto;
+  column-gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mf-ledger-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  align-items: center;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--color-rule);
+  scroll-margin-top: 24px;
+}
+
+.mf-ledger-row__icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+}
+
+.mf-ledger-row h3 {
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.mf-ledger-row__name .mf-sc {
+  display: block;
+  margin-top: 3px;
+  color: var(--color-ink-3);
+  font-size: 11px;
+}
+
+.mf-ledger-row__summary p {
+  max-width: 70ch;
+  color: var(--color-ink-2);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.mf-ledger-row__summary a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mf-ledger-row__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.mf-ledger-row__status {
+  justify-self: end;
+}
+
+.mf-ideas {
+  columns: 2;
+  column-gap: calc(var(--layout-gap) * 1.5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mf-band--dark .mf-ideas {
+  --color-idea: var(--mf-violet-bright);
+}
+
+.mf-idea {
+  break-inside: avoid;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.mf-idea summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto 14px;
+  align-items: baseline;
+  gap: 14px;
+  padding: 10px 0;
+  list-style: none;
+  cursor: pointer;
+}
+
+.mf-idea summary::-webkit-details-marker {
+  display: none;
+}
+
+.mf-idea summary::after {
+  content: '+' / '';
+  font-family: var(--font-mono);
+  font-size: 15px;
+  text-align: center;
+}
+
+.mf-idea details[open] summary::after {
+  content: '−' / '';
+}
+
+.mf-idea summary:hover .mf-idea__name {
+  color: var(--color-idea);
+}
+
+.mf-idea__name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mf-idea__kind {
+  color: var(--color-idea);
+  font-size: 11px;
+}
+
+.mf-idea p {
+  max-width: 62ch;
+  padding: 0 28px 14px 0;
+  color: var(--color-ink-2);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+@media (min-width: 1700px) {
+  .mf-ideas {
+    columns: 3;
+  }
+}
+
+@media (max-width: 1099px) {
+  .mf-ledger {
+    display: block;
+  }
+
+  .mf-ledger-row {
+    grid-template-areas:
+      'icon name status'
+      'icon summary summary'
+      'icon links links';
+    grid-template-columns: 52px minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 8px 16px;
+    padding: 16px 0;
+  }
+
+  .mf-ledger-row__icon {
+    grid-area: icon;
+  }
+
+  .mf-ledger-row__name {
+    grid-area: name;
+  }
+
+  .mf-ledger-row__summary {
+    grid-area: summary;
+  }
+
+  .mf-ledger-row__links {
+    grid-area: links;
+  }
+
+  .mf-ledger-row__status {
+    grid-area: status;
+  }
+}
+
+@media (max-width: 759px) {
+  .mf-filter label {
+    padding: 8px 11px 7px;
+    font-size: 14px;
+  }
+
+  .mf-ledger-row {
+    grid-template-areas:
+      'icon name'
+      'summary summary'
+      'links links'
+      'status status';
+    grid-template-columns: 44px minmax(0, 1fr);
+  }
+
+  .mf-ledger-row__icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .mf-ledger-row__status {
+    justify-self: start;
+  }
+
+  .mf-ideas {
+    columns: 1;
+  }
+}
