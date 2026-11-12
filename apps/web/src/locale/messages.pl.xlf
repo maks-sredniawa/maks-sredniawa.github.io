@@ -154,22 +154,6 @@
           <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="218284361541799549" datatype="html">
-        <source>Take your meds</source>
-        <target>Weź leki</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7743370160029325198" datatype="html">
-        <source>Reminds you to take your meds, with everything kept on your phone. No ads, no tracking.</source>
-        <target>Przypomina o braniu leków, a wszystko zostaje na Twoim telefonie. Bez reklam, bez śledzenia.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">43</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
         <source>Web app</source>
         <target>Aplikacja webowa</target>
@@ -414,12 +398,28 @@
           <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="218284361541799549" datatype="html">
+        <source>Take your meds</source>
+        <target>Weź leki</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1876156767740206217" datatype="html">
+        <source>List your medicines with an amount and times, and it reminds you at each one and records every dose you take, with nothing leaving your phone and no medical advice.</source>
+        <target>Wpisz swoje leki z ilością i godzinami, a aplikacja przypomni Ci o każdej porze i zapisze każdą przyjętą dawkę, bez wysyłania czegokolwiek poza telefon i bez porad medycznych.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7705032215947940810" datatype="html">
         <source>Adds up your darts from a photo or two of the board, so you don&apos;t tally them by hand. The photos never leave the phone.</source>
         <target>Sumuje punkty w darta z jednego lub dwóch zdjęć tarczy, więc nie trzeba liczyć rzutek ręcznie. Zdjęcia nigdy nie opuszczają telefonu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
@@ -427,7 +427,7 @@
         <target>Starter aplikacji na Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -435,7 +435,7 @@
         <target>Punkt wyjścia dla aplikacji na Android działających offline: szkielet w Compose, pipeline wydań, bramki CI i testy interfejsu na prawdziwym urządzeniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -443,7 +443,7 @@
         <target>Szablon moda do WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">121</context>
+          <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -451,7 +451,7 @@
         <target>Punkt wyjścia dla modów do World of Tanks: build w Pythonie 2.7, testy na atrapach modułów gry, CI i wydanie przy każdym tagu wersji.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -459,7 +459,7 @@
         <target>Wysyła nową wersję moda do World of Tanks na oficjalny Mod Hub (wgmods.net) z terminala. Nieoficjalne, bez związku z Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">

@@ -37,10 +37,4 @@ export const ideas: readonly Idea[] = [
     pitch: $localize`Keeps track of informal loans, like 100 zł lent to a friend or money borrowed from your shared savings, so you remember to pay it back.`,
     added: '2026-11-07',
   },
-  {
-    name: $localize`Take your meds`,
-    kind: 'android-app',
-    pitch: $localize`Reminds you to take your meds, with everything kept on your phone. No ads, no tracking.`,
-    added: '2026-11-07',
-  },
 ];
