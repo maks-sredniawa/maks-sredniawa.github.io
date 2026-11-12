@@ -318,12 +318,28 @@
           <context context-type="linenumber">61</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2375426491293764618" datatype="html">
+        <source>Garage Filter Extras</source>
+        <target>Filtros extra del garaje</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="6336534538494436049" datatype="html">
+        <source>Hides every rented tank from the garage, WoT Plus ones too, and adds a Non-premium toggle to the garage filter popup. The toggle needs <x id="START_LINK" ctype="x-a" equiv-text="&apos;&lt;a href=&quot;https://gitlab.com/openwg/wot.gameface&quot;&gt;&apos;"/>OpenWG Gameface<x id="CLOSE_LINK" ctype="x-a" equiv-text="&apos;&lt;/a&gt;&apos;"/>, which most modpacks include.</source>
+        <target>Oculta en el garaje todos los tanques de alquiler, también los de WoT Plus, y añade a la ventana de filtros del garaje un interruptor para los tanques que no son premium. El interruptor necesita <x id="START_LINK" ctype="x-a" equiv-text="&apos;&lt;a href=&quot;https://gitlab.com/openwg/wot.gameface&quot;&gt;&apos;"/>OpenWG Gameface<x id="CLOSE_LINK" ctype="x-a" equiv-text="&apos;&lt;/a&gt;&apos;"/>, que incluyen la mayoría de los paquetes de mods.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="9171395635597465720" datatype="html">
         <source>Urgent call</source>
         <target>Llamada urgente</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">65</context>
+          <context context-type="linenumber">73</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6088551831896592658" datatype="html">
@@ -331,7 +347,7 @@
         <target>Suena cuando el mismo número llama dos veces en pocos minutos, aunque tengas el teléfono en silencio o en No molestar.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">77</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1778667315705644158" datatype="html">
@@ -339,28 +355,12 @@
         <target>Un mapa de senderos sin conexión de las montañas de Polonia, dibujado con los colores de las señales de los senderos.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">77</context>
+          <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="6745904508755830237" datatype="html">
         <source>A Polish voice assistant. Say <x id="START_POLISH" equiv-text="&apos;&lt;span lang=&quot;pl&quot;&gt;&apos;"/>&quot;Darek, otwórz bramę&quot;<x id="CLOSE_POLISH" equiv-text="&apos;&lt;/span&gt;&apos;"/> and he calls your gate opener, with everything running offline on the phone.</source>
         <target>Un asistente de voz en polaco. Di <x id="START_POLISH" equiv-text="&apos;&lt;span lang=&quot;pl&quot;&gt;&apos;"/>&quot;Darek, otwórz bramę&quot;<x id="CLOSE_POLISH" equiv-text="&apos;&lt;/span&gt;&apos;"/> y él llama a tu abridor de portón, con todo funcionando sin conexión en el teléfono.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">85</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2375426491293764618" datatype="html">
-        <source>Garage Filter Extras</source>
-        <target>Filtros extra del garaje</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">89</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5679295810263243676" datatype="html">
-        <source>Hides rented tanks from the garage, which the game always shows, and can show only tanks that are not premium.</source>
-        <target>Oculta en el garaje los tanques de alquiler, que el juego muestra siempre, y puede mostrar solo los tanques que no son premium.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
           <context context-type="linenumber">93</context>

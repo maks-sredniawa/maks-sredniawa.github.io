@@ -167,6 +167,10 @@ test.describe('home page', () => {
       'href',
       'https://github.com/CH4MPi/GUIFlash',
     );
+    await expect(page.getByRole('link', { name: 'OpenWG Gameface' })).toHaveAttribute(
+      'href',
+      'https://gitlab.com/openwg/wot.gameface',
+    );
     await expect(page.locator('#darek span[lang="pl"]')).toHaveText('"Darek, otwórz bramę"');
   });
 });
