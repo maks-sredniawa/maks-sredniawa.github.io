@@ -94,6 +94,14 @@ export const projects: readonly Project[] = [
     links: [source('wot-garage-filter-extras')],
   },
   {
+    name: $localize`Woodworking planner`,
+    icon: 'woodworking-planner',
+    kind: 'web-app',
+    section: 'building',
+    summary: $localize`Plan a woodworking project in 3D in your browser and catch mistakes before you cut the first board, with nothing leaving your computer.`,
+    links: [website('woodworking-planner'), source('woodworking-planner')],
+  },
+  {
     name: 'Darts Scorer',
     icon: 'darts-scorer',
     kind: 'android-app',

@@ -106,28 +106,12 @@
           <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3611950599988366245" datatype="html">
-        <source>Woodworking planner</source>
-        <target>Planer stolarski</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="971297306472335764" datatype="html">
-        <source>A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.</source>
-        <target>Aplikacja internetowa do planowania projektu stolarskiego i oglądania go jako renderu 3D. Wszystko liczy się na Twoim komputerze, zanim potniesz pierwszą deskę.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">25</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="3959129080819713984" datatype="html">
         <source>Archery scorer</source>
         <target>Licznik punktów w łucznictwie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5173583988503347125" datatype="html">
@@ -135,7 +119,7 @@
         <target>Liczy punkty w łucznictwie ze zdjęć tarczy zrobionych pod różnymi kątami, tylu, ilu potrzeba, więc nie trzeba liczyć strzał ręcznie.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
@@ -143,7 +127,7 @@
         <target>Proste sterowanie światłem</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
@@ -151,7 +135,7 @@
         <target>Jedna aplikacja w Twoim języku do inteligentnych lamp, których własna aplikacja jest tylko po chińsku: czyta dane każdej lampy, dodaje jej ustawienia i pamięta je osobno dla każdego urządzenia, więc wszystkimi sterujesz w jednym miejscu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
@@ -159,7 +143,7 @@
         <target>Rejestr długów</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
@@ -167,7 +151,7 @@
         <target>Pilnuje nieformalnych pożyczek, takich jak 100 zł pożyczone znajomemu albo pieniądze wzięte ze wspólnych oszczędności, żeby nie zapomnieć o oddaniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="218284361541799549" datatype="html">
@@ -175,7 +159,7 @@
         <target>Weź leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7743370160029325198" datatype="html">
@@ -183,7 +167,7 @@
         <target>Przypomina o braniu leków, a wszystko zostaje na Twoim telefonie. Bez reklam, bez śledzenia.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -414,12 +398,28 @@
           <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="3611950599988366245" datatype="html">
+        <source>Woodworking planner</source>
+        <target>Planer stolarski</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">97</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2866045852942258194" datatype="html">
+        <source>Plan a woodworking project in 3D in your browser and catch mistakes before you cut the first board, with nothing leaving your computer.</source>
+        <target>Zaplanuj projekt stolarski w 3D w przeglądarce i wyłap błędy, zanim przytniesz pierwszą deskę, a nic nie opuszcza Twojego komputera.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="7705032215947940810" datatype="html">
         <source>Adds up your darts from a photo or two of the board, so you don&apos;t tally them by hand. The photos never leave the phone.</source>
         <target>Sumuje punkty w darta z jednego lub dwóch zdjęć tarczy, więc nie trzeba liczyć rzutek ręcznie. Zdjęcia nigdy nie opuszczają telefonu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
@@ -427,7 +427,7 @@
         <target>Starter aplikacji na Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -435,7 +435,7 @@
         <target>Punkt wyjścia dla aplikacji na Android działających offline: szkielet w Compose, pipeline wydań, bramki CI i testy interfejsu na prawdziwym urządzeniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -443,7 +443,7 @@
         <target>Szablon moda do WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -451,7 +451,7 @@
         <target>Punkt wyjścia dla modów do World of Tanks: build w Pythonie 2.7, testy na atrapach modułów gry, CI i wydanie przy każdym tagu wersji.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -459,7 +459,7 @@
         <target>Wysyła nową wersję moda do World of Tanks na oficjalny Mod Hub (wgmods.net) z terminala. Nieoficjalne, bez związku z Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">

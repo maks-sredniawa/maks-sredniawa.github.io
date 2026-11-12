@@ -20,12 +20,6 @@ export const ideas: readonly Idea[] = [
     added: '2026-11-07',
   },
   {
-    name: $localize`Woodworking planner`,
-    kind: 'tool',
-    pitch: $localize`A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.`,
-    added: '2026-11-07',
-  },
-  {
     name: $localize`Archery scorer`,
     kind: 'android-app',
     pitch: $localize`Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don't have to tally the arrows by hand.`,
