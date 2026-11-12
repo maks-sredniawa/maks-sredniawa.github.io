@@ -790,6 +790,7 @@
   font-weight: 500;
   letter-spacing: -0.01em;
   line-height: 1.1;
+  overflow-wrap: break-word;
 }
 
 .mf-ledger-row__name .mf-sc {
