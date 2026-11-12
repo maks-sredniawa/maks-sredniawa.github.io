@@ -90,28 +90,12 @@
           <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="3959129080819713984" datatype="html">
-        <source>Archery scorer</source>
-        <target>Licznik punktów w łucznictwie</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5173583988503347125" datatype="html">
-        <source>Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don&apos;t have to tally the arrows by hand.</source>
-        <target>Liczy punkty w łucznictwie ze zdjęć tarczy zrobionych pod różnymi kątami, tylu, ilu potrzeba, więc nie trzeba liczyć strzał ręcznie.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
         <source>Plain light control</source>
         <target>Proste sterowanie światłem</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
@@ -119,7 +103,7 @@
         <target>Jedna aplikacja w Twoim języku do inteligentnych lamp, których własna aplikacja jest tylko po chińsku: czyta dane każdej lampy, dodaje jej ustawienia i pamięta je osobno dla każdego urządzenia, więc wszystkimi sterujesz w jednym miejscu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
@@ -127,7 +111,7 @@
         <target>Rejestr długów</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
@@ -135,7 +119,7 @@
         <target>Pilnuje nieformalnych pożyczek, takich jak 100 zł pożyczone znajomemu albo pieniądze wzięte ze wspólnych oszczędności, żeby nie zapomnieć o oddaniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -422,12 +406,20 @@
           <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="1754155080487077659" datatype="html">
+        <source>Counts your archery score from a few photos of the target, so you don&apos;t tally the arrows by hand. The photos never leave the phone.</source>
+        <target>Liczy punkty w łucznictwie z kilku zdjęć tarczy, więc nie trzeba liczyć strzał ręcznie. Zdjęcia nigdy nie opuszczają telefonu.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">133</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
         <source>Android starter</source>
         <target>Starter aplikacji na Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">129</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -435,7 +427,7 @@
         <target>Punkt wyjścia dla aplikacji na Android działających offline: szkielet w Compose, pipeline wydań, bramki CI i testy interfejsu na prawdziwym urządzeniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">133</context>
+          <context context-type="linenumber">141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -443,7 +435,7 @@
         <target>Szablon moda do WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">137</context>
+          <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -451,7 +443,7 @@
         <target>Punkt wyjścia dla modów do World of Tanks: build w Pythonie 2.7, testy na atrapach modułów gry, CI i wydanie przy każdym tagu wersji.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">141</context>
+          <context context-type="linenumber">149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -459,7 +451,7 @@
         <target>Wysyła nową wersję moda do World of Tanks na oficjalny Mod Hub (wgmods.net) z terminala. Nieoficjalne, bez związku z Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">149</context>
+          <context context-type="linenumber">157</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">

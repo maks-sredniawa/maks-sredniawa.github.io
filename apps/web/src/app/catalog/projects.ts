@@ -126,6 +126,14 @@ export const projects: readonly Project[] = [
     links: [website('gmail-dark-mode')],
   },
   {
+    name: 'Archery Scorer',
+    icon: 'archery-scorer',
+    kind: 'android-app',
+    section: 'building',
+    summary: $localize`Counts your archery score from a few photos of the target, so you don't tally the arrows by hand. The photos never leave the phone.`,
+    links: [website('archery-scorer')],
+  },
+  {
     name: $localize`Android starter`,
     icon: 'android-starter',
     kind: 'template',
