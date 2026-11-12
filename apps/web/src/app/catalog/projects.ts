@@ -102,6 +102,14 @@ export const projects: readonly Project[] = [
     links: [website('woodworking-planner'), source('woodworking-planner')],
   },
   {
+    name: $localize`Take your meds`,
+    icon: 'take-your-meds',
+    kind: 'android-app',
+    section: 'building',
+    summary: $localize`List your medicines with an amount and times, and it reminds you at each one and records every dose you take, with nothing leaving your phone and no medical advice.`,
+    links: [website('take-your-meds')],
+  },
+  {
     name: $localize`Android starter`,
     icon: 'android-starter',
     kind: 'template',
