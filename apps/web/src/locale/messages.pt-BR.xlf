@@ -182,16 +182,8 @@
         <source>Take your meds</source>
         <target>Hora do remédio</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">47</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="7743370160029325198" datatype="html">
-        <source>Reminds you to take your meds, with everything kept on your phone. No ads, no tracking.</source>
-        <target>Lembra você de tomar seus remédios, com tudo guardado no seu celular. Sem anúncios, sem rastreamento.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -411,7 +403,7 @@
         <target>Kit inicial Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -419,7 +411,7 @@
         <target>Um ponto de partida para apps Android offline: esqueleto em Compose, pipeline de release, verificações de CI e testes de interface rodando em dispositivo.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -427,7 +419,7 @@
         <target>Modelo de mod de WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">113</context>
+          <context context-type="linenumber">121</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -435,7 +427,7 @@
         <target>Um ponto de partida para mods de World of Tanks: build em Python 2.7, testes contra módulos do jogo simulados, CI e um release a cada tag de versão.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -443,7 +435,7 @@
         <target>Envia uma nova versão de mod de World of Tanks para o Mod Hub oficial (wgmods.net) pelo terminal. Não oficial, sem vínculo com a Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">125</context>
+          <context context-type="linenumber">133</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">
@@ -832,6 +824,14 @@ Alguma outra coisa?
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
           <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="1876156767740206217" datatype="html">
+        <source>List your medicines with an amount and times, and it reminds you at each one and records every dose you take, with nothing leaving your phone and no medical advice.</source>
+        <target>Cadastre seus remédios com a quantidade e os horários, e o app avisa você em cada horário e registra cada dose tomada, sem que nada saia do seu celular e sem conselhos médicos.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
     </body>
