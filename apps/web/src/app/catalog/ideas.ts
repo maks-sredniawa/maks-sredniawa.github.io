@@ -8,12 +8,6 @@ export const ideas: readonly Idea[] = [
     added: '2026-11-07',
   },
   {
-    name: $localize`Gmail dark mode`,
-    kind: 'chrome-extension',
-    pitch: $localize`A proper dark mode for Gmail in the browser, for people who want the whole of it dark.`,
-    added: '2026-11-07',
-  },
-  {
     name: $localize`Monitor brightness presets`,
     kind: 'tool',
     pitch: $localize`A desktop app that keeps a few brightness presets for all your monitors, whatever their make, so you can switch every screen between them in a moment.`,
