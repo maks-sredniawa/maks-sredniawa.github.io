@@ -110,16 +110,8 @@
         <source>Woodworking planner</source>
         <target>Holzprojekt-Planer</target>
         <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="971297306472335764" datatype="html">
-        <source>A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.</source>
-        <target>Eine Web-App, mit der du ein Holzprojekt planst und als 3D-Ansicht siehst, alles auf deinem eigenen Rechner, bevor du das erste Brett zusägst.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">97</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7968446012996376944" datatype="html">
@@ -127,7 +119,7 @@
         <target>Darts-Zähler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">29</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2377090649340978669" datatype="html">
@@ -135,7 +127,7 @@
         <target>Zählt deine Darts-Punkte anhand weniger Fotos der Scheibe aus verschiedenen Blickwinkeln, so wenigen wie nötig, damit du die Pfeile nicht von Hand zusammenrechnen musst.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3959129080819713984" datatype="html">
@@ -143,7 +135,7 @@
         <target>Bogenschieß-Zähler</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5173583988503347125" datatype="html">
@@ -151,7 +143,7 @@
         <target>Zählt deine Punkte beim Bogenschießen anhand weniger Fotos der Zielscheibe aus verschiedenen Blickwinkeln, so wenigen wie nötig, damit du die Pfeile nicht von Hand zusammenrechnen musst.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
@@ -159,7 +151,7 @@
         <target>Schlichte Lichtsteuerung</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
@@ -167,7 +159,7 @@
         <target>Eine App in deiner eigenen Sprache für smarte Lampen, deren eigene App es nur auf Chinesisch gibt: Sie liest die Daten jeder Lampe aus, ergänzt deren Einstellungen und merkt sie sich pro Gerät, sodass du alle an einem Ort steuern kannst.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
@@ -175,7 +167,7 @@
         <target>Schuldenbuch</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
@@ -183,7 +175,7 @@
         <target>Behält informelle Leihgaben im Blick, etwa 100 zł, die du einem Freund geliehen hast, oder Geld aus der gemeinsamen Haushaltskasse, damit du daran denkst, es zurückzugeben.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="218284361541799549" datatype="html">
@@ -191,7 +183,7 @@
         <target>Nimm deine Medis</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7743370160029325198" datatype="html">
@@ -199,7 +191,7 @@
         <target>Erinnert dich daran, deine Medis zu nehmen, und alles bleibt auf deinem Handy. Keine Werbung, kein Tracking.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -419,7 +411,7 @@
         <target>Android-Starter</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -427,7 +419,7 @@
         <target>Ein Ausgangspunkt für Offline-Android-Apps: Compose-Grundgerüst, Release-Pipeline, CI-Prüfungen und UI-Tests auf echten Geräten.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -435,7 +427,7 @@
         <target>WoT-Mod-Vorlage</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -443,7 +435,7 @@
         <target>Ein Ausgangspunkt für World-of-Tanks-Mods: Python-2.7-Build, Tests gegen nachgebildete Spielmodule, CI und ein Release bei jedem Versions-Tag.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -451,7 +443,7 @@
         <target>Lädt eine neue World-of-Tanks-Mod-Version vom Terminal aus in den offiziellen Mod Hub (wgmods.net) hoch. Inoffiziell, nicht mit Wargaming verbunden.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">
@@ -832,6 +824,14 @@ Sonst noch etwas?
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
           <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="2866045852942258194" datatype="html">
+        <source>Plan a woodworking project in 3D in your browser and catch mistakes before you cut the first board, with nothing leaving your computer.</source>
+        <target>Plane ein Holzprojekt in 3D in deinem Browser und finde Fehler, bevor du das erste Brett zusägst, ohne dass etwas deinen Rechner verlässt.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">101</context>
         </context-group>
       </trans-unit>
     </body>
