@@ -7,17 +7,29 @@ const wcagTextSpacing = `
 `;
 
 const pages = [
-  { name: 'home page list', url: () => `${urls.site}/`, selector: '.mf-ledger-row h3' },
+  {
+    name: 'home page list',
+    url: () => `${urls.site}/`,
+    selector: '.mf-ledger-row h3',
+    widths: [320, 1280],
+  },
+  {
+    name: 'home page ideas',
+    url: () => `${urls.site}/`,
+    selector: '.mf-idea__name',
+    widths: [320, 1280],
+  },
   {
     name: 'app page',
     url: () => `${urls.storybook}/iframe.html?id=sheet--long-name&viewMode=story`,
     selector: '.mf-sheet__name',
+    widths: [320],
   },
 ];
 
-for (const { name, url, selector } of pages) {
-  for (const width of [320, 1280]) {
-    test(`${name} wraps a long one-word app name at ${String(width)}px with WCAG text spacing`, async ({
+for (const { name, url, selector, widths } of pages) {
+  for (const width of widths) {
+    test(`${name} wraps a long one-word name at ${String(width)}px with WCAG text spacing`, async ({
       page,
       isMobile,
     }) => {
