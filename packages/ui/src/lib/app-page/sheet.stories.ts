@@ -84,6 +84,30 @@ export const Home: Story = {
   }),
 };
 
+export const LongName: Story = {
+  render: () => ({
+    template: `
+      <div class="mf-wrap">
+        ${tabs('overview')}
+        <div class="mf-sheet">
+          ${row(
+            '<h1 class="mf-sheet__name">Woodworking planner</h1>',
+            `<div class="mf-sheet__pitch mf-prose">
+              <p><strong>A free web app to plan a woodworking project and see it in 3D before you
+              cut the first board.</strong> Everything is worked out on your own computer: no
+              account and no online server.</p>
+            </div>`,
+          )}
+          <main class="mf-sheet__body mf-prose">
+            <h2 id="try-it">Try it</h2>
+            <p>Run it locally from the source.</p>
+          </main>
+        </div>
+      </div>
+    `,
+  }),
+};
+
 export const Subpage: Story = {
   render: () => ({
     template: `
