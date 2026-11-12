@@ -26,12 +26,6 @@ export const ideas: readonly Idea[] = [
     added: '2026-11-07',
   },
   {
-    name: $localize`Darts scorer`,
-    kind: 'android-app',
-    pitch: $localize`Counts your darts score from a few photos of the board taken from different angles, as few as it needs, so you don't have to tally the darts by hand.`,
-    added: '2026-11-07',
-  },
-  {
     name: $localize`Archery scorer`,
     kind: 'android-app',
     pitch: $localize`Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don't have to tally the arrows by hand.`,

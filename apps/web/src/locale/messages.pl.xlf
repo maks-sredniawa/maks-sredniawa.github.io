@@ -122,28 +122,12 @@
           <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7968446012996376944" datatype="html">
-        <source>Darts scorer</source>
-        <target>Licznik punktów do darta</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2377090649340978669" datatype="html">
-        <source>Counts your darts score from a few photos of the board taken from different angles, as few as it needs, so you don&apos;t have to tally the darts by hand.</source>
-        <target>Liczy punkty w darta ze zdjęć tarczy zrobionych pod różnymi kątami, tylu, ilu potrzeba, więc nie trzeba liczyć rzutek ręcznie.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">31</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="3959129080819713984" datatype="html">
         <source>Archery scorer</source>
         <target>Licznik punktów w łucznictwie</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">35</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5173583988503347125" datatype="html">
@@ -151,7 +135,7 @@
         <target>Liczy punkty w łucznictwie ze zdjęć tarczy zrobionych pod różnymi kątami, tylu, ilu potrzeba, więc nie trzeba liczyć strzał ręcznie.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">37</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
@@ -159,7 +143,7 @@
         <target>Proste sterowanie światłem</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
@@ -167,7 +151,7 @@
         <target>Jedna aplikacja w Twoim języku do inteligentnych lamp, których własna aplikacja jest tylko po chińsku: czyta dane każdej lampy, dodaje jej ustawienia i pamięta je osobno dla każdego urządzenia, więc wszystkimi sterujesz w jednym miejscu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
@@ -175,7 +159,7 @@
         <target>Rejestr długów</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
@@ -183,7 +167,7 @@
         <target>Pilnuje nieformalnych pożyczek, takich jak 100 zł pożyczone znajomemu albo pieniądze wzięte ze wspólnych oszczędności, żeby nie zapomnieć o oddaniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">49</context>
+          <context context-type="linenumber">43</context>
         </context-group>
       </trans-unit>
       <trans-unit id="218284361541799549" datatype="html">
@@ -191,7 +175,7 @@
         <target>Weź leki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7743370160029325198" datatype="html">
@@ -199,7 +183,7 @@
         <target>Przypomina o braniu leków, a wszystko zostaje na Twoim telefonie. Bez reklam, bez śledzenia.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
@@ -414,12 +398,36 @@
           <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="2375426491293764618" datatype="html">
+        <source>Garage Filter Extras</source>
+        <target>Dodatkowe filtry garażu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="5679295810263243676" datatype="html">
+        <source>Hides rented tanks from the garage, which the game always shows, and can show only tanks that are not premium.</source>
+        <target>Chowa w garażu czołgi z wynajmu, które gra zawsze pokazuje, i potrafi pokazać tylko czołgi niepremium.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="7705032215947940810" datatype="html">
+        <source>Adds up your darts from a photo or two of the board, so you don&apos;t tally them by hand. The photos never leave the phone.</source>
+        <target>Sumuje punkty w darta z jednego lub dwóch zdjęć tarczy, więc nie trzeba liczyć rzutek ręcznie. Zdjęcia nigdy nie opuszczają telefonu.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="3834310203554829101" datatype="html">
         <source>Android starter</source>
         <target>Starter aplikacji na Android</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="8748712484322938162" datatype="html">
@@ -427,7 +435,7 @@
         <target>Punkt wyjścia dla aplikacji na Android działających offline: szkielet w Compose, pipeline wydań, bramki CI i testy interfejsu na prawdziwym urządzeniu.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">101</context>
+          <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3953340564341868248" datatype="html">
@@ -435,7 +443,7 @@
         <target>Szablon moda do WoT</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">113</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4308434507082833297" datatype="html">
@@ -443,7 +451,7 @@
         <target>Punkt wyjścia dla modów do World of Tanks: build w Pythonie 2.7, testy na atrapach modułów gry, CI i wydanie przy każdym tagu wersji.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2622365120634251232" datatype="html">
@@ -451,7 +459,7 @@
         <target>Wysyła nową wersję moda do World of Tanks na oficjalny Mod Hub (wgmods.net) z terminala. Nieoficjalne, bez związku z Wargaming.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">125</context>
         </context-group>
       </trans-unit>
       <trans-unit id="5697990489745084532" datatype="html">
@@ -816,22 +824,6 @@ Coś jeszcze?
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/not-found/not-found-page.html</context>
           <context context-type="linenumber">12,13</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="2375426491293764618" datatype="html">
-        <source>Garage Filter Extras</source>
-        <target>Dodatkowe filtry garażu</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">89</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="5679295810263243676" datatype="html">
-        <source>Hides rented tanks from the garage, which the game always shows, and can show only tanks that are not premium.</source>
-        <target>Chowa w garażu czołgi z wynajmu, które gra zawsze pokazuje, i potrafi pokazać tylko czołgi niepremium.</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">93</context>
         </context-group>
       </trans-unit>
     </body>
