@@ -14,12 +14,6 @@ export const ideas: readonly Idea[] = [
     added: '2026-11-07',
   },
   {
-    name: $localize`Archery scorer`,
-    kind: 'android-app',
-    pitch: $localize`Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don't have to tally the arrows by hand.`,
-    added: '2026-11-07',
-  },
-  {
     name: $localize`Plain light control`,
     kind: 'android-app',
     pitch: $localize`One app in your own language for smart lights whose own app is only in Chinese: it reads each light's details, adds its settings and keeps them per device, so you can control them all in one place.`,
