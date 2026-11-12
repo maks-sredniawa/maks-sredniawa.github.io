@@ -110,6 +110,14 @@ export const projects: readonly Project[] = [
     links: [website('take-your-meds')],
   },
   {
+    name: 'Darts Scorer',
+    icon: 'darts-scorer',
+    kind: 'android-app',
+    section: 'building',
+    summary: $localize`Adds up your darts from a photo or two of the board, so you don't tally them by hand. The photos never leave the phone.`,
+    links: [website('darts-scorer')],
+  },
+  {
     name: $localize`Android starter`,
     icon: 'android-starter',
     kind: 'template',
