@@ -62,6 +62,14 @@ export const projects: readonly Project[] = [
     links: [latestRelease('wot-ping-distance'), source('wot-ping-distance')],
   },
   {
+    name: $localize`Garage Filter Extras`,
+    icon: 'wot-garage-filter-extras',
+    kind: 'wot-mod',
+    section: 'wot-mods',
+    summary: $localize`Hides every rented tank from the garage, WoT Plus ones too, and adds a Non-premium toggle to the garage filter popup. The toggle needs ${'<a href="https://gitlab.com/openwg/wot.gameface">'}:START_LINK:OpenWG Gameface${'</a>'}:CLOSE_LINK:, which most modpacks include.`,
+    links: [latestRelease('wot-garage-filter-extras'), source('wot-garage-filter-extras')],
+  },
+  {
     name: $localize`Urgent call`,
     icon: 'urgent',
     kind: 'android-app',
@@ -84,14 +92,6 @@ export const projects: readonly Project[] = [
     section: 'building',
     summary: $localize`A Polish voice assistant. Say ${'<span lang="pl">'}:START_POLISH:"Darek, otwórz bramę"${'</span>'}:CLOSE_POLISH: and he calls your gate opener, with everything running offline on the phone.`,
     links: [website('darek')],
-  },
-  {
-    name: $localize`Garage Filter Extras`,
-    icon: 'wot-garage-filter-extras',
-    kind: 'wot-mod',
-    section: 'building',
-    summary: $localize`Hides rented tanks from the garage, which the game always shows, and can show only tanks that are not premium.`,
-    links: [source('wot-garage-filter-extras')],
   },
   {
     name: $localize`Woodworking planner`,
