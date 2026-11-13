@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kozica · MaksForge · Tagged paper</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f1e8; --surface: #fbf8f2; --surface-2: #ede6d8;
+  --ink: #1c1a17; --ink-2: #4b4640; --ink-3: #857d73;
+  --rule: #d9d1c3; --rule-strong: #1c1a17; --shade: #cfc6b4;
+  --brand: #8e2a1f; --brand-ink: #fbf8f2; --brand-tint: #f1e1dc;
+  --live: #2d6a3e; --building: #a4571a; --oss: #2b4f9e; --idea: #6d3f8f;
+  --font-display: 'Fraunces', Georgia, serif; --font-text: 'Newsreader', Georgia, serif; --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --max: 1760px; --gutter: 40px; --shadow: 3px 3px 0 var(--shade); color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171411; --surface: #1f1b17; --surface-2: #272219; --ink: #efe7d9; --ink-2: #c3b8a7; --ink-3: #8f8577;
+    --rule: #352e27; --rule-strong: #efe7d9; --shade: #0d0b09; --brand: #e0705f; --brand-ink: #1b0b08; --brand-tint: #3a1e19;
+    --live: #6fbf85; --building: #e39a57; --oss: #86a4e8; --idea: #bb93d8; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171411; --surface: #1f1b17; --surface-2: #272219; --ink: #efe7d9; --ink-2: #c3b8a7; --ink-3: #8f8577;
+  --rule: #352e27; --rule-strong: #efe7d9; --shade: #0d0b09; --brand: #e0705f; --brand-ink: #1b0b08; --brand-tint: #3a1e19;
+  --live: #6fbf85; --building: #e39a57; --oss: #86a4e8; --idea: #bb93d8; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.55 var(--font-text); font-variation-settings: 'opsz' 18; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.sc { font-family: var(--font-display); font-variation-settings: 'opsz' 12; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; }
+.mono { font-family: var(--font-mono); font-size: 13px; }
+.display { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 1; font-weight: 300; letter-spacing: -0.01em; }
+.tag { display: inline-flex; align-items: center; height: 24px; padding: 0 10px 0 20px; background: var(--ink); color: var(--bg); font-family: var(--font-display); font-variation-settings: 'opsz' 12; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em; clip-path: polygon(9px 0, 100% 0, 100% 100%, 9px 100%, 0 50%); position: relative; white-space: nowrap; }
+.tag::before { content: ''; position: absolute; left: 9px; top: 50%; width: 4px; height: 4px; margin-top: -2px; border-radius: 50%; background: var(--bg); }
+.tag.building { background: var(--building); color: #fff; } .tag.plain { background: var(--surface-2); color: var(--ink-2); }
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 18px; border: 1px solid var(--rule-strong); background: var(--surface); color: var(--ink); font-family: var(--font-display); font-variation-settings: 'opsz' 14; font-weight: 600; font-size: 15px; white-space: nowrap; }
+.btn.primary { background: var(--ink); color: var(--bg); box-shadow: var(--shadow); }
+.btn.brand { background: var(--brand); color: var(--brand-ink); border-color: var(--brand); box-shadow: var(--shadow); }
+
+.top { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 1px solid var(--rule-strong); }
+.top .wrap { display: flex; align-items: stretch; justify-content: space-between; gap: 24px; height: 60px; }
+.logo { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-variation-settings: 'opsz' 48, 'WONK' 1; font-weight: 600; font-size: 24px; letter-spacing: -0.02em; }
+.logo img { width: 34px; height: 34px; border-radius: 4px; }
+.top nav { display: flex; }
+.top nav a { display: flex; align-items: center; padding: 0 16px; font-family: var(--font-display); font-variation-settings: 'opsz' 14; font-weight: 500; font-size: 15px; }
+.top nav a.cta { background: var(--brand); color: var(--brand-ink); margin-left: 12px; padding: 0 20px; }
+
+.head .wrap { display: grid; grid-template-columns: 150px minmax(0, 1fr) auto; gap: 40px; padding-top: 48px; padding-bottom: 40px; align-items: center; }
+.head .icon { position: relative; }
+.head .icon img { width: 150px; height: 150px; border: 1px solid var(--rule-strong); border-radius: 16px; box-shadow: var(--shadow); background: var(--surface); }
+.stamp { position: absolute; right: -20px; top: -16px; transform: rotate(8deg); padding: 4px 10px; border: 3px double var(--brand); color: var(--brand); font-family: var(--font-display); font-variation-settings: 'opsz' 48; font-weight: 700; font-size: 17px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--bg); }
+.head .tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.head h1 { font-size: clamp(48px, 5.6vw, 96px); line-height: 0.98; margin-top: 12px; }
+.head .standfirst { margin-top: 14px; font-size: 23px; line-height: 1.4; font-variation-settings: 'opsz' 24; color: var(--ink-2); max-width: 42ch; }
+.head .byline { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 6px 20px; color: var(--ink-3); font-style: italic; font-size: 16px; }
+.head .byline a { text-decoration: underline; text-underline-offset: 3px; }
+.head .actions { display: flex; flex-direction: column; gap: 12px; }
+
+.spec { border-top: 1px solid var(--rule-strong); border-bottom: 1px solid var(--rule-strong); background: var(--surface); }
+.spec .wrap { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.spec div { padding: 16px 16px 16px 0; border-right: 1px solid var(--rule); margin-right: 16px; }
+.spec div:last-child { border-right: 0; margin-right: 0; }
+.spec dt { color: var(--ink-3); margin-bottom: 6px; }
+.spec dd { font-family: var(--font-display); font-variation-settings: 'opsz' 18; font-weight: 600; font-size: 16px; line-height: 1.25; }
+.spec dd.mono { font-family: var(--font-mono); font-weight: 500; font-size: 14px; }
+.spec dd a { text-decoration: underline; text-underline-offset: 3px; }
+.spec .swatches { display: flex; gap: 4px; margin-top: 8px; }
+.spec .swatches i { width: 22px; height: 11px; border: 1px solid var(--rule-strong); }
+
+.body .wrap { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 80px; padding-top: 44px; padding-bottom: 64px; }
+.prose { max-width: 66ch; counter-reset: sec; }
+.prose > p:first-child { font-size: 21px; line-height: 1.5; font-variation-settings: 'opsz' 20; }
+.prose > p:first-child::first-letter { font-family: var(--font-display); font-variation-settings: 'opsz' 144; font-weight: 500; float: left; font-size: 80px; line-height: 0.78; padding: 8px 12px 0 0; color: var(--brand); }
+.prose h2 { display: flex; align-items: center; gap: 14px; margin: 40px 0 12px; padding-top: 12px; border-top: 1px solid var(--rule-strong); font-family: var(--font-display); font-variation-settings: 'opsz' 48, 'WONK' 1; font-size: 30px; font-weight: 500; letter-spacing: -0.01em; }
+.prose h2::before { counter-increment: sec; content: counter(sec, upper-roman); flex: none; display: inline-flex; align-items: center; height: 22px; padding: 0 8px 0 16px; background: var(--ink); color: var(--bg); font-size: 11px; letter-spacing: 0.14em; font-weight: 600; clip-path: polygon(8px 0, 100% 0, 100% 100%, 8px 100%, 0 50%); }
+.prose p, .prose ul { margin: 0 0 1em; color: var(--ink-2); }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose li { padding-left: 1.2em; text-indent: -1.2em; margin: 0.5em 0; }
+.prose li::before { content: '¶'; color: var(--brand); margin-right: 0.5em; font-family: var(--font-display); }
+.prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--brand) 40%, transparent); }
+
+.side { position: sticky; top: 84px; align-self: start; display: flex; flex-direction: column; gap: 22px; }
+.toc { border: 1px solid var(--rule-strong); background: var(--surface); box-shadow: var(--shadow); }
+.toc h2 { padding: 12px 16px; border-bottom: 1px solid var(--rule-strong); color: var(--ink-3); }
+.toc li a { display: grid; grid-template-columns: 2.4ch 1fr; gap: 8px; padding: 9px 16px; border-bottom: 1px solid var(--rule); font-size: 15.5px; }
+.toc li:last-child a { border-bottom: 0; }
+.toc li a:hover { background: var(--brand-tint); }
+.toc li a i { font-family: var(--font-display); font-style: normal; font-size: 11px; color: var(--brand); padding-top: 3px; letter-spacing: 0.1em; }
+.tip { position: relative; padding: 22px 22px 20px; border: 1px solid var(--rule-strong); outline: 1px solid var(--rule-strong); outline-offset: 3px; background: var(--surface); }
+.tip h2 { font-family: var(--font-display); font-variation-settings: 'opsz' 48, 'WONK' 1; font-weight: 400; font-size: 28px; letter-spacing: -0.01em; }
+.tip p { font-size: 16px; margin: 6px 0 16px; color: var(--ink-2); }
+.back { font-style: italic; color: var(--ink-3); }
+
+.foot { background: var(--ink); color: var(--bg); }
+.foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--gutter) 44px; font-size: 14px; font-style: italic; color: color-mix(in srgb, var(--bg) 70%, transparent); }
+.foot a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (min-width: 1700px) { .body .wrap { grid-template-columns: minmax(0, 1fr) 400px; gap: 140px; } .prose { max-width: 70ch; } }
+@media (max-width: 1099px) {
+  :root { --gutter: 24px; }
+  .head .wrap { grid-template-columns: 110px minmax(0, 1fr); gap: 24px; }
+  .head .icon img { width: 110px; height: 110px; }
+  .head .actions { grid-column: 1 / -1; flex-direction: row; }
+  .spec .wrap { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .spec div:nth-child(3n) { border-right: 0; }
+  .body .wrap { grid-template-columns: 1fr; gap: 32px; }
+  .side { position: static; }
+  .toc { display: none; }
+  .top nav a { padding: 0 10px; font-size: 14px; }
+}
+@media (max-width: 760px) {
+  :root { --gutter: 16px; }
+  .top .wrap { height: 52px; }
+  .top nav a:not(.cta) { display: none; }
+  .head .wrap { grid-template-columns: 84px minmax(0, 1fr); gap: 16px; padding-top: 28px; padding-bottom: 24px; align-items: start; }
+  .head .icon img { width: 84px; height: 84px; border-radius: 12px; }
+  .stamp { font-size: 12px; right: -10px; top: -12px; }
+  .head h1 { font-size: 48px; }
+  .head .standfirst { font-size: 19px; }
+  .spec .wrap { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec div { border-right: 0; margin-right: 0; padding-right: 0; border-bottom: 1px solid var(--rule); }
+  .spec div:nth-child(2n+1) { border-right: 1px solid var(--rule); margin-right: 12px; }
+  .prose h2 { font-size: 26px; margin-top: 32px; }
+  .prose > p:first-child { font-size: 19px; }
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" href="home.html"><img src="../../../../apps/web/public/assets/logo-mark-128.webp" alt="">MaksForge</a>
+  <nav><a href="home.html">All apps</a><a href="#">Privacy</a><a href="https://github.com/maks-sredniawa/kozica">Source</a><a class="cta" href="https://buymeacoffee.com/maksforge">Support</a></nav>
+</div></header>
+
+<section class="head"><div class="wrap">
+  <div class="icon"><img src="../../../../apps/web/public/assets/icons/kozica.webp" alt=""><span class="stamp">Free</span></div>
+  <div>
+    <div class="tags"><span class="tag building">In development</span><span class="tag plain">Android app</span></div>
+    <h1 class="display">Kozica</h1>
+    <p class="standfirst">A hiking map of the Polish mountains that works with no signal at all.</p>
+    <div class="byline"><span>By Maksymilian Średniawa</span><span>Source: <a href="https://github.com/maks-sredniawa/kozica">maks-sredniawa/kozica</a></span></div>
+  </div>
+  <div class="actions"><a class="btn primary" href="https://github.com/maks-sredniawa/kozica">Source on GitHub</a><a class="btn" href="#">Privacy policy</a></div>
+</div></section>
+
+<section class="spec"><dl class="wrap">
+  <div><dt class="sc">Status</dt><dd>In development</dd></div>
+  <div><dt class="sc">Package</dt><dd class="mono">com.maksforge.kozica</dd></div>
+  <div><dt class="sc">Internet</dt><dd>No permission requested</dd></div>
+  <div><dt class="sc">Your data</dt><dd>On the device only</dd></div>
+  <div><dt class="sc">Trail colours</dt><dd>As on the signposts<div class="swatches"><i style="background:#d7262d"></i><i style="background:#1b57c2"></i><i style="background:#1d8f3c"></i><i style="background:#f2c21b"></i><i style="background:#1a1a1a"></i></div></dd></div>
+  <div><dt class="sc">Support</dt><dd><a href="mailto:kozica.support@maksforge.com">kozica.support@maksforge.com</a></dd></div>
+</dl></section>
+
+<section class="body"><div class="wrap">
+  <article class="prose">
+    <p><strong>A hiking map of the Polish mountains that works with no signal at all.</strong> Free, ad-free, and entirely on your own phone: no account, no sign-up, and no permission to use the internet.</p>
+    <h2 id="does">What it does</h2>
+    <ul>
+      <li><strong>Trails in their signpost colours</strong> — red, blue, green, yellow and black, each with its symbol along the line, and two trails on one path drawn side by side so you can tell which one you are on.</li>
+      <li><strong>Everything else you look for on the way</strong> — paths, huts and shelters, peaks, passes, springs, viewpoints, car parks and stops, national-park boundaries and the state border, in a light and a dark style.</li>
+      <li><strong>Where you are</strong> — one tap shows your position, its accuracy and the direction you are facing, read on the phone and never sent anywhere.</li>
+    </ul>
+    <h2 id="not">What it does not do</h2>
+    <p>It draws the trails as OpenStreetMap records them, at the date shown on the map. It does not know about closures, avalanche warnings, the weather or the state of a path today. Check the national park's announcements and the forecast before you go, and turn back when the mountain says so.</p>
+    <h2 id="data">Your data stays on your device</h2>
+    <p>There is no backend to send anything to. Everything lives in the app's private storage on your phone. The details are in the <a href="#">Privacy Policy</a>.</p>
+    <h2 id="support">Support</h2>
+    <p><strong>kozica.support@maksforge.com</strong> — an ordinary mailbox that a person reads.</p>
+    <h2 id="source">The source</h2>
+    <p>Built in the open at <a href="https://github.com/maks-sredniawa/kozica">maks-sredniawa/kozica</a>. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, available under the Open Database License.</p>
+  </article>
+  <aside class="side">
+    <nav class="toc" aria-label="On this page">
+      <h2 class="sc">Contents</h2>
+      <ul>
+        <li><a href="#does"><i>I</i>What it does</a></li>
+        <li><a href="#not"><i>II</i>What it does not do</a></li>
+        <li><a href="#data"><i>III</i>Your data stays on your device</a></li>
+        <li><a href="#support"><i>IV</i>Support</a></li>
+        <li><a href="#source"><i>V</i>The source</a></li>
+      </ul>
+    </nav>
+    <div class="tip"><span class="sc" style="color:var(--brand)">Notice</span><h2>Like what I make?</h2><p>The apps stay free. Tips are optional and very appreciated.</p><a class="btn brand" href="https://buymeacoffee.com/maksforge">Buy me a coffee</a></div>
+    <a class="back" href="home.html">← All apps</a>
+  </aside>
+</div></section>
+
+<footer class="foot"><div class="wrap"><span>© 2026 Maksymilian Średniawa · <a href="home.html">MaksForge</a></span><span><a href="#">Privacy policy</a> · <a href="https://buymeacoffee.com/maksforge">Buy me a coffee</a></span></div></footer>
+</body>
+</html>

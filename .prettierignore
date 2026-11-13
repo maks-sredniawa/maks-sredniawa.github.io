@@ -8,3 +8,4 @@ tmp/
 .wrangler/
 pnpm-lock.yaml
 Gemfile.lock
+design/

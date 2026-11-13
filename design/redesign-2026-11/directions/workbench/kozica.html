@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kozica · MaksForge · Workbench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Martian+Mono:wght@300..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f3f3ef; --surface: #ffffff; --surface-2: #e9e9e3;
+  --ink: #161616; --ink-2: #4a4a46; --ink-3: #7a7a74;
+  --rule: #d6d6cf; --rule-strong: #161616;
+  --brand: #1f4fd8; --brand-ink: #ffffff; --brand-tint: #e4eafb;
+  --live: #17813d; --building: #b7640a; --oss: #1f4fd8; --idea: #7a3fb8;
+  --font-text: 'Archivo', system-ui, sans-serif; --font-data: 'Martian Mono', ui-monospace, monospace;
+  --radius: 2px; --rail: 264px; --aside: 320px; --gutter: 32px; color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121313; --surface: #1a1b1b; --surface-2: #222323; --ink: #ecece7; --ink-2: #b4b4ad; --ink-3: #85857f;
+    --rule: #2c2d2c; --rule-strong: #ecece7; --brand: #8aa6ff; --brand-ink: #0c1430; --brand-tint: #1a2240;
+    --live: #4ccf7a; --building: #f0a04b; --oss: #8aa6ff; --idea: #c08cf0; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121313; --surface: #1a1b1b; --surface-2: #222323; --ink: #ecece7; --ink-2: #b4b4ad; --ink-3: #85857f;
+  --rule: #2c2d2c; --rule-strong: #ecece7; --brand: #8aa6ff; --brand-ink: #0c1430; --brand-tint: #1a2240;
+  --live: #4ccf7a; --building: #f0a04b; --oss: #8aa6ff; --idea: #c08cf0; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.5 var(--font-text); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; }
+ul { padding: 0; list-style: none; }
+.label { font-family: var(--font-data); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); }
+
+.shell { display: grid; min-height: 100vh; grid-template-columns: var(--rail) minmax(0, 1fr); grid-template-areas: "rail main" "rail foot"; }
+.rail { grid-area: rail; position: sticky; top: 0; align-self: start; height: 100vh; overflow: auto; padding: 20px; display: flex; flex-direction: column; gap: 28px; }
+.main { grid-area: main; padding: 0 var(--gutter) 48px; min-width: 0; border-left: 1px solid var(--rule); }
+.foot { grid-area: foot; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; }
+.brand img { width: 32px; height: 32px; border-radius: 4px; }
+.index h2 { margin-bottom: 8px; }
+.index li a { display: flex; justify-content: space-between; padding: 6px 0; border-top: 1px solid var(--rule); font-size: 14px; }
+.index li:last-child a { border-bottom: 1px solid var(--rule); }
+.index li a:hover { color: var(--brand); }
+.index .n { font-family: var(--font-data); font-size: 11px; color: var(--ink-3); }
+.rail .back { font-size: 13px; color: var(--ink-2); }
+.rail .back:hover { color: var(--brand); }
+.rail .spacer { flex: 1; }
+.rail .foot-note { font-size: 12px; color: var(--ink-3); }
+.rail .foot-note a { text-decoration: underline; text-underline-offset: 2px; }
+
+.topbar { display: flex; justify-content: space-between; align-items: center; height: 56px; border-bottom: 1px solid var(--rule); }
+.topbar .crumbs { font-family: var(--font-data); font-size: 12px; color: var(--ink-3); }
+.topbar .crumbs b { color: var(--ink); font-weight: 500; }
+.topbar nav { display: flex; gap: 20px; font-size: 13px; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 16px; border: 1px solid var(--rule-strong); border-radius: var(--radius); font-weight: 600; font-size: 14px; background: var(--surface); color: var(--ink); }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.status { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-data); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c, var(--ink-2)); }
+.status::before { content: ''; width: 8px; height: 8px; background: var(--c); border-radius: 1px; }
+.status.building { --c: var(--building); }
+
+.app-head { display: grid; grid-template-columns: 88px minmax(0, 1fr) auto; gap: 24px; align-items: start; padding: 40px 0 28px; border-bottom: 2px solid var(--rule-strong); }
+.app-head img { width: 88px; height: 88px; border-radius: 10px; }
+.app-head h1 { font-weight: 700; font-variation-settings: 'wdth' 76; font-size: clamp(40px, 4.2vw, 64px); line-height: 0.95; letter-spacing: -0.015em; }
+.app-head .tagline { margin-top: 10px; font-size: 18px; color: var(--ink-2); max-width: 52ch; }
+.app-head .meta { display: flex; gap: 16px; align-items: center; margin-top: 14px; }
+.app-head .actions { display: flex; gap: 10px; padding-top: 6px; }
+
+.body { display: grid; grid-template-columns: minmax(0, 1fr) var(--aside); gap: 48px; padding-top: 32px; }
+.prose { max-width: 70ch; }
+.prose > p:first-child { font-size: 19px; line-height: 1.55; }
+.prose h2 { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: baseline; margin: 44px 0 14px; padding-top: 14px; border-top: 2px solid var(--rule-strong); font-size: 24px; font-weight: 700; letter-spacing: -0.02em; font-variation-settings: 'wdth' 88; }
+.prose h2::before { content: counter(sec, decimal-leading-zero); counter-increment: sec; font-family: var(--font-data); font-size: 12px; color: var(--brand); font-weight: 600; }
+.prose { counter-reset: sec; }
+.prose p, .prose ul { margin: 0 0 1em; font-size: 16px; color: var(--ink-2); }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose ul { padding-left: 0; }
+.prose li { display: grid; grid-template-columns: 24px 1fr; gap: 8px; margin: 0.5em 0; }
+.prose li::before { content: '—'; color: var(--brand); }
+.prose a { color: var(--brand); text-decoration: underline; text-underline-offset: 3px; }
+
+.sheet { position: sticky; top: 24px; align-self: start; }
+.sheet h2 { margin-bottom: 8px; }
+.sheet dl { border-top: 1px solid var(--rule); }
+.sheet dl > div { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--rule); font-size: 13px; }
+.sheet dt { font-family: var(--font-data); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; padding-top: 2px; }
+.sheet dd a { text-decoration: underline; text-underline-offset: 2px; }
+.sheet .swatches { display: flex; gap: 4px; margin-top: 6px; }
+.sheet .swatches i { width: 22px; height: 10px; }
+.sheet .note { margin-top: 20px; padding: 14px; border: 1px solid var(--rule-strong); font-size: 13px; color: var(--ink-2); }
+.sheet .note b { color: var(--ink); }
+
+.foot { border-top: 1px solid var(--rule); padding: 20px var(--gutter); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-family: var(--font-data); font-size: 11px; color: var(--ink-3); }
+.foot a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (min-width: 1700px) { :root { --aside: 380px; } .body { gap: 80px; } .prose { max-width: 74ch; } }
+@media (max-width: 1099px) {
+  .shell { grid-template-columns: 1fr; grid-template-areas: "rail" "main" "foot"; }
+  .main { border-left: 0; }
+  .rail { position: static; height: auto; border-bottom: 1px solid var(--rule); padding: 12px 20px; gap: 10px; flex-direction: row; align-items: center; flex-wrap: wrap; }
+  .rail .spacer, .rail .foot-note, .index h2 { display: none; }
+  .index { order: 3; width: 100%; }
+  .index ul { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; margin: 0 -20px; padding: 0 20px; }
+  .index li a, .index li:last-child a { border: 0; padding: 6px 10px; white-space: nowrap; gap: 6px; }
+  .rail .back { margin-left: auto; }
+  .topbar { display: none; }
+  .body { grid-template-columns: 1fr; gap: 24px; }
+  .sheet { position: static; }
+  .sheet dl { columns: 2; column-gap: 32px; }
+  .sheet div { break-inside: avoid; }
+}
+@media (max-width: 760px) {
+  :root { --gutter: 16px; }
+  .app-head { grid-template-columns: 56px 1fr; gap: 14px; padding: 24px 0 20px; }
+  .app-head img { width: 56px; height: 56px; border-radius: 8px; }
+  .app-head h1 { font-size: 36px; }
+  .app-head .tagline { font-size: 16px; }
+  .app-head .actions { grid-column: 1 / -1; }
+  .sheet dl { columns: 1; }
+  .prose h2 { font-size: 22px; margin-top: 36px; }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <aside class="rail">
+    <a class="brand" href="home.html"><img src="../../../../apps/web/public/assets/logo-mark-128.webp" alt=""><span>MaksForge</span></a>
+    <a class="back" href="home.html">← All apps</a>
+    <nav class="index" aria-label="On this page">
+      <h2 class="label">Kozica</h2>
+      <ul>
+        <li><a href="#does"><span>What it does</span><span class="n">01</span></a></li>
+        <li><a href="#not"><span>What it does not do</span><span class="n">02</span></a></li>
+        <li><a href="#data"><span>Your data</span><span class="n">03</span></a></li>
+        <li><a href="#support"><span>Support</span><span class="n">04</span></a></li>
+        <li><a href="#source"><span>The source</span><span class="n">05</span></a></li>
+        <li><a href="#"><span>Privacy policy</span><span class="n">↗</span></a></li>
+      </ul>
+    </nav>
+    <div class="spacer"></div>
+    <p class="foot-note">Maksymilian Średniawa<br><a href="https://github.com/maks-sredniawa">github.com/maks-sredniawa</a></p>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="crumbs"><b>maksforge.com</b> / kozica</div>
+      <nav><a href="home.html#about">About</a><a href="https://buymeacoffee.com/maksforge">Support</a><a href="https://github.com/maks-sredniawa/kozica">GitHub ↗</a></nav>
+    </div>
+
+    <header class="app-head">
+      <img src="../../../../apps/web/public/assets/icons/kozica.webp" alt="">
+      <div>
+        <h1>Kozica</h1>
+        <p class="tagline">A hiking map of the Polish mountains that works with no signal at all.</p>
+        <div class="meta"><span class="status building">In development</span><span class="label">Android app</span></div>
+      </div>
+      <div class="actions"><a class="btn primary" href="https://github.com/maks-sredniawa/kozica">Source ↗</a></div>
+    </header>
+
+    <div class="body">
+      <article class="prose">
+        <p><strong>A hiking map of the Polish mountains that works with no signal at all.</strong> Free, ad-free, and entirely on your own phone: no account, no sign-up, and no permission to use the internet.</p>
+
+        <h2 id="does">What it does</h2>
+        <ul>
+          <li><span><strong>Trails in their signpost colours</strong> — red, blue, green, yellow and black, each with its symbol along the line, and two trails on one path drawn side by side so you can tell which one you are on.</span></li>
+          <li><span><strong>Everything else you look for on the way</strong> — paths, huts and shelters, peaks, passes, springs, viewpoints, car parks and stops, national-park boundaries and the state border, in a light and a dark style.</span></li>
+          <li><span><strong>Where you are</strong> — one tap shows your position, its accuracy and the direction you are facing, read on the phone and never sent anywhere.</span></li>
+        </ul>
+
+        <h2 id="not">What it does not do</h2>
+        <p>It draws the trails as OpenStreetMap records them, at the date shown on the map. It does not know about closures, avalanche warnings, the weather or the state of a path today. Check the national park's announcements and the forecast before you go, and turn back when the mountain says so.</p>
+
+        <h2 id="data">Your data stays on your device</h2>
+        <p>There is no backend to send anything to. Everything lives in the app's private storage on your phone. The details are in the <a href="#">Privacy Policy</a>.</p>
+
+        <h2 id="support">Support</h2>
+        <p><strong>kozica.support@maksforge.com</strong> — an ordinary mailbox that a person reads.</p>
+
+        <h2 id="source">The source</h2>
+        <p>Built in the open at <a href="https://github.com/maks-sredniawa/kozica">maks-sredniawa/kozica</a>. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, available under the Open Database License.</p>
+      </article>
+
+      <aside class="sheet">
+        <h2 class="label">Datasheet</h2>
+        <dl>
+          <div><dt>Status</dt><dd>In development</dd></div>
+          <div><dt>Kind</dt><dd>Android app</dd></div>
+          <div><dt>Package</dt><dd>com.maksforge.kozica</dd></div>
+          <div><dt>Internet</dt><dd>No permission requested</dd></div>
+          <div><dt>Data</dt><dd>On the device only</dd></div>
+          <div><dt>Price</dt><dd>Free, no ads, no accounts</dd></div>
+          <div><dt>Map data</dt><dd>© OpenStreetMap contributors, ODbL</dd></div>
+          <div><dt>Trails</dt><dd>Signpost colours<div class="swatches"><i style="background:#d7262d"></i><i style="background:#1b57c2"></i><i style="background:#1d8f3c"></i><i style="background:#f2c21b"></i><i style="background:#1a1a1a"></i></div></dd></div>
+          <div><dt>Source</dt><dd><a href="https://github.com/maks-sredniawa/kozica">maks-sredniawa/kozica</a></dd></div>
+          <div><dt>Support</dt><dd><a href="mailto:kozica.support@maksforge.com">kozica.support@maksforge.com</a></dd></div>
+          <div><dt>Privacy</dt><dd><a href="#">Privacy policy</a></dd></div>
+        </dl>
+        <div class="note"><b>Like what I make?</b> The apps stay free. Tips are optional and very appreciated. <a href="https://buymeacoffee.com/maksforge" style="text-decoration:underline">Buy me a coffee</a>.</div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="foot"><span>© 2026 Maksymilian Średniawa · <a href="home.html">MaksForge</a></span><span><a href="#">Privacy policy</a> · <a href="https://buymeacoffee.com/maksforge">Buy me a coffee</a></span></footer>
+</div>
+</body>
+</html>
