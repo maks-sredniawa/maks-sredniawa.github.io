@@ -270,17 +270,9 @@
           <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="8144572367100586840" datatype="html">
-        <source>Autoloader Shell Timer</source>
-        <target>Zegar pocisków w autoloaderze</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="1873483350223809925" datatype="html">
-        <source>Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs <x id="START_LINK" ctype="x-a" equiv-text="&apos;&lt;a href=&quot;https://github.com/CH4MPi/GUIFlash&quot;&gt;&apos;"/>GUIFlash<x id="CLOSE_LINK" ctype="x-a" equiv-text="&apos;&lt;/a&gt;&apos;"/>, which most modpacks include.</source>
-        <target>Pokazuje czas ładowania każdego pocisku w magazynie autoloadera, a nie tylko tego, który ładuje się teraz. Potrzebuje <x id="START_LINK"/>GUIFlash<x id="CLOSE_LINK"/>, które ma większość paczek modów.</target>
+      <trans-unit id="9204172994466208002" datatype="html">
+        <source>Shows next to the crosshair the load time of every shell in an autoreloader magazine, the potential damage left in any magazine, how long an Ares gun needs to cool down, and an aim timer that also counts down the Type 71&apos;s dual accuracy. Needs <x id="START_LINK" ctype="x-a" equiv-text="&apos;&lt;a href=&quot;https://github.com/CH4MPi/GUIFlash&quot;&gt;&apos;"/>GUIFlash<x id="CLOSE_LINK" ctype="x-a" equiv-text="&apos;&lt;/a&gt;&apos;"/>, which most modpacks include.</source>
+        <target>Pokazuje przy celowniku czas ładowania każdego pocisku w magazynie autoloadera, potencjalne obrażenia pozostałe w każdym magazynie, ile czasu działo Aresa potrzebuje na ostygnięcie, oraz zegar celowania, który odlicza też podwójną celność Type 71. Potrzebuje <x id="START_LINK"/>GUIFlash<x id="CLOSE_LINK"/>, które ma większość paczek modów.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
           <context context-type="linenumber">53</context>

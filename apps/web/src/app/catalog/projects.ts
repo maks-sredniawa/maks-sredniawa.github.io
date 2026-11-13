@@ -46,12 +46,12 @@ export const projects: readonly Project[] = [
     ],
   },
   {
-    name: $localize`Autoloader Shell Timer`,
-    icon: 'wot-autoloader-timer',
+    name: 'Gunner HUD',
+    icon: 'wot-gunner-hud',
     kind: 'wot-mod',
     section: 'wot-mods',
-    summary: $localize`Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs ${'<a href="https://github.com/CH4MPi/GUIFlash">'}:START_LINK:GUIFlash${'</a>'}:CLOSE_LINK:, which most modpacks include.`,
-    links: [latestRelease('wot-autoloader-timer'), source('wot-autoloader-timer')],
+    summary: $localize`Shows next to the crosshair the load time of every shell in an autoreloader magazine, the potential damage left in any magazine, how long an Ares gun needs to cool down, and an aim timer that also counts down the Type 71's dual accuracy. Needs ${'<a href="https://github.com/CH4MPi/GUIFlash">'}:START_LINK:GUIFlash${'</a>'}:CLOSE_LINK:, which most modpacks include.`,
+    links: [latestRelease('wot-gunner-hud'), source('wot-gunner-hud')],
   },
   {
     name: $localize`Ping Distance`,
