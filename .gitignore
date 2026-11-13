@@ -13,3 +13,4 @@ vitest.config.*.timestamp*
 .vscode/*
 !.vscode/extensions.json
 tmp/
+design/**/*.png

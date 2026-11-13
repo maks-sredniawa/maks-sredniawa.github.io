@@ -1,0 +1,1904 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaksForge · Ledger</title>
+<style>
+/* Self-hosted so no page asks a third party for anything; OFL licences sit beside the files. */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-italic.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-ext-italic.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-ext-400.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-400.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-ext-500.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-500.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fraunces has an optical-size axis and narrows as it grows, so its light fallback is tiered by viewport. */
+
+@media (max-width: 599px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 98%;
+    ascent-override: 99.8%;
+    descent-override: 26.02%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 94%;
+    ascent-override: 104.04%;
+    descent-override: 27.13%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1535px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 84%;
+    ascent-override: 116.43%;
+    descent-override: 30.36%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 81.5%;
+    ascent-override: 120%;
+    descent-override: 31.29%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@media (min-width: 1536px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 80%;
+    ascent-override: 122.25%;
+    descent-override: 31.88%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 80%;
+    ascent-override: 122.25%;
+    descent-override: 31.88%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@font-face {
+  font-family: 'Fraunces Georgia';
+  font-style: normal;
+  font-weight: 400 599;
+  src: local('Georgia');
+  size-adjust: 106%;
+  ascent-override: 92.26%;
+  descent-override: 24.06%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Fraunces Georgia';
+  font-style: normal;
+  font-weight: 600 900;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 95%;
+  ascent-override: 102.95%;
+  descent-override: 26.84%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: normal;
+  font-weight: 200 599;
+  src: local('Georgia');
+  size-adjust: 94.2%;
+  ascent-override: 78.03%;
+  descent-override: 28.13%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: normal;
+  font-weight: 600 800;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 86.4%;
+  ascent-override: 85.07%;
+  descent-override: 30.67%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: italic;
+  font-weight: 200 800;
+  src: local('Georgia Italic'), local('Georgia-Italic');
+  size-adjust: 88.8%;
+  ascent-override: 82.77%;
+  descent-override: 29.84%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@media (max-width: 599px) {
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 90%;
+    ascent-override: 108.67%;
+    descent-override: 28.33%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 400 599;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 99.2%;
+    ascent-override: 98.59%;
+    descent-override: 25.71%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 600 900;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+    size-adjust: 99.4%;
+    ascent-override: 98.39%;
+    descent-override: 25.65%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+    size-adjust: 87%;
+    ascent-override: 112.41%;
+    descent-override: 29.31%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: normal;
+    font-weight: 200 599;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 87.2%;
+    ascent-override: 84.29%;
+    descent-override: 30.39%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: normal;
+    font-weight: 600 800;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+    size-adjust: 87.7%;
+    ascent-override: 83.81%;
+    descent-override: 30.22%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: italic;
+    font-weight: 200 800;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+    size-adjust: 86.6%;
+    ascent-override: 84.87%;
+    descent-override: 30.6%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+/* The theme-color metas in apps/web/src/index.html and pages-theme repeat --mf-paper-1 and --mf-night-1. */
+:root {
+  --mf-brand-hue: 30;
+  --mf-brand-chroma: 0.14;
+
+  --mf-brand-deep: oklch(0.44 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-bright: oklch(0.67 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-wash: oklch(0.92 calc(var(--mf-brand-chroma) * 0.14) var(--mf-brand-hue));
+  --mf-brand-shadow: oklch(0.27 calc(var(--mf-brand-chroma) * 0.32) var(--mf-brand-hue));
+  --mf-brand-night: oklch(0.17 calc(var(--mf-brand-chroma) * 0.2) var(--mf-brand-hue));
+
+  --mf-paper-0: #fbf8f2;
+  --mf-paper-1: #f6f1e8;
+  --mf-paper-2: #ede6d8;
+  --mf-paper-3: #d9d1c3;
+  --mf-paper-4: #cfc6b4;
+  --mf-ink-1: #1c1a17;
+  --mf-ink-2: #4b4640;
+  --mf-ink-3: #675f55;
+
+  --mf-night-0: #0e0c0a;
+  --mf-night-1: #171411;
+  --mf-night-2: #1f1b17;
+  --mf-night-3: #272219;
+  --mf-night-4: #352e27;
+  --mf-moon-1: #efe7d9;
+  --mf-moon-2: #c3b8a7;
+  --mf-moon-3: #9d9384;
+
+  --mf-green-deep: #2d6a3e;
+  --mf-green-bright: #6fbf85;
+  --mf-amber-deep: #9a5118;
+  --mf-amber-bright: #e39a57;
+  --mf-blue-deep: #2b4f9e;
+  --mf-blue-bright: #86a4e8;
+  --mf-violet-deep: #6d3f8f;
+  --mf-violet-bright: #bb93d8;
+
+  --font-display:
+    'Fraunces', 'Fraunces Georgia', 'Fraunces Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-text:
+    'Newsreader', 'Newsreader Georgia', 'Newsreader Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --layout-max: 1760px;
+  --layout-gutter: 40px;
+  --layout-label: 220px;
+  --layout-gap: 36px;
+  --layout-prose: 68ch;
+  --layout-bar: 60px;
+}
+
+/* A .mf-paper element keeps the light map in dark mode too, like the pins on the dark ideas band. */
+:root,
+.mf-paper {
+  --color-bg: var(--mf-paper-1);
+  --color-surface: var(--mf-paper-0);
+  --color-surface-2: var(--mf-paper-2);
+  --color-ink: var(--mf-ink-1);
+  --color-ink-2: var(--mf-ink-2);
+  --color-ink-3: var(--mf-ink-3);
+  --color-rule: var(--mf-paper-3);
+  --color-rule-strong: var(--mf-ink-1);
+  --color-shade: var(--mf-paper-4);
+  --color-brand: var(--mf-brand-deep);
+  --color-on-brand: var(--mf-paper-0);
+  --color-brand-tint: var(--mf-brand-wash);
+  --color-band-tint: var(--mf-paper-2);
+  --color-band-dark: var(--mf-ink-1);
+  --color-on-band-dark: var(--mf-paper-1);
+  --color-live: var(--mf-green-deep);
+  --color-building: var(--mf-amber-deep);
+  --color-oss: var(--mf-blue-deep);
+  --color-idea: var(--mf-violet-deep);
+  --color-on-status: var(--mf-paper-0);
+
+  --shadow-paper: 3px 3px 0 var(--color-shade);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--mf-night-1);
+    --color-surface: var(--mf-night-2);
+    --color-surface-2: var(--mf-night-3);
+    --color-ink: var(--mf-moon-1);
+    --color-ink-2: var(--mf-moon-2);
+    --color-ink-3: var(--mf-moon-3);
+    --color-rule: var(--mf-night-4);
+    --color-rule-strong: var(--mf-moon-1);
+    --color-shade: var(--mf-night-0);
+    --color-brand: var(--mf-brand-bright);
+    --color-on-brand: var(--mf-brand-night);
+    --color-brand-tint: var(--mf-brand-shadow);
+    --color-band-tint: var(--mf-night-2);
+    --color-band-dark: var(--mf-night-0);
+    --color-on-band-dark: var(--mf-moon-1);
+    --color-live: var(--mf-green-bright);
+    --color-building: var(--mf-amber-bright);
+    --color-oss: var(--mf-blue-bright);
+    --color-idea: var(--mf-violet-bright);
+    --color-on-status: var(--mf-night-0);
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 1099px) {
+  :root {
+    --layout-gutter: 24px;
+    --layout-gap: 24px;
+  }
+}
+
+@media (max-width: 759px) {
+  :root {
+    --layout-gutter: 16px;
+    --layout-bar: 52px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font: 400 17px/1.5 var(--font-text);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/*
+ * Every class carries the mf- prefix: pages-theme reuses these classes under its own markup,
+ * and an unprefixed name (.brand once) collides with page code.
+ */
+.mf-wrap {
+  max-width: var(--layout-max);
+  margin: 0 auto;
+  padding: 0 var(--layout-gutter);
+}
+
+.mf-sc {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mf-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.mf-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.mf-display {
+  font-family: var(--font-display);
+  font-variation-settings:
+    'SOFT' 30,
+    'WONK' 1;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+}
+
+.mf-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 20px;
+  border: 1px solid var(--color-rule-strong);
+  background: transparent;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.mf-btn:hover {
+  background: var(--color-surface-2);
+}
+
+.mf-btn--primary {
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+.mf-btn--primary:hover {
+  background: var(--color-ink-2);
+}
+
+.mf-btn--brand {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.mf-btn--brand:hover {
+  background: var(--color-brand);
+  opacity: 0.9;
+}
+
+.mf-btn--small {
+  height: 32px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+.mf-btn--raised {
+  box-shadow: var(--shadow-paper);
+}
+
+.mf-link {
+  padding-bottom: 1px;
+  border-bottom: 1px solid var(--color-rule-strong);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.mf-link:hover {
+  color: var(--color-brand);
+}
+
+.mf-link--go {
+  border-color: var(--color-brand);
+  color: var(--color-brand);
+}
+
+.mf-tag {
+  --tag-bg: var(--color-ink);
+  --tag-fg: var(--color-bg);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 10px 0 20px;
+  background: var(--tag-bg);
+  color: var(--tag-fg);
+  clip-path: polygon(9px 0, 100% 0, 100% 100%, 9px 100%, 0 50%);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.mf-tag::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 9px;
+  width: 4px;
+  height: 4px;
+  margin-top: -2px;
+  border-radius: 50%;
+  background: var(--tag-fg);
+}
+
+.mf-tag--live {
+  --tag-bg: var(--color-live);
+  --tag-fg: var(--color-on-status);
+}
+
+.mf-tag--building {
+  --tag-bg: var(--color-building);
+  --tag-fg: var(--color-on-status);
+}
+
+.mf-tag--oss {
+  --tag-bg: var(--color-oss);
+  --tag-fg: var(--color-on-status);
+}
+
+.mf-tag--idea {
+  --tag-bg: var(--color-idea);
+  --tag-fg: var(--color-on-status);
+}
+
+.mf-tag--plain {
+  --tag-bg: var(--color-surface-2);
+  --tag-fg: var(--color-ink-2);
+}
+
+.mf-stamp {
+  position: absolute;
+  z-index: 1;
+  padding: 5px 12px;
+  border: 3px double var(--color-brand);
+  background: var(--color-bg);
+  color: var(--color-brand);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(8deg);
+}
+
+.mf-band {
+  border-top: 1px solid var(--color-rule-strong);
+}
+
+.mf-band > .mf-wrap {
+  padding-top: 36px;
+  padding-bottom: 44px;
+}
+
+.mf-band--tint {
+  background: var(--color-band-tint);
+}
+
+.mf-band--dark {
+  --color-bg: var(--color-band-dark);
+  --color-ink: var(--color-on-band-dark);
+  --color-ink-2: color-mix(in srgb, var(--color-on-band-dark) 80%, transparent);
+  --color-ink-3: color-mix(in srgb, var(--color-on-band-dark) 66%, transparent);
+  --color-rule: color-mix(in srgb, var(--color-on-band-dark) 22%, transparent);
+  --color-rule-strong: var(--color-on-band-dark);
+  background: var(--color-band-dark);
+  color: var(--color-on-band-dark);
+}
+
+.mf-paper {
+  color: var(--color-ink);
+}
+
+.mf-band-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.mf-band-head h2 {
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.mf-band-head p {
+  max-width: 60ch;
+  margin-top: 6px;
+  color: var(--color-ink-3);
+  font-size: 17px;
+  font-style: italic;
+}
+
+.mf-band-head .mf-tag {
+  flex: none;
+  margin-bottom: 4px;
+}
+
+.mf-aisle {
+  display: grid;
+  grid-template-columns: var(--layout-label) minmax(0, 1fr);
+  gap: 28px;
+  padding: 22px 0 26px;
+  border-top: 1px solid var(--color-rule);
+}
+
+.mf-band-head + .mf-aisle {
+  border-top: 0;
+}
+
+.mf-aisle__label h3 {
+  padding-top: 2px;
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.mf-aisle__label p {
+  margin-top: 6px;
+  color: var(--color-ink-3);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.mf-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mf-tile {
+  container-type: inline-size;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface);
+}
+
+.mf-tile__body {
+  display: grid;
+  grid-template-areas:
+    'icon name'
+    'icon kind'
+    'summary summary'
+    'links links';
+  grid-template-columns: 56px minmax(0, 1fr);
+  gap: 4px 16px;
+  height: 100%;
+  padding: 18px 20px;
+}
+
+.mf-tile__icon {
+  grid-area: icon;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+}
+
+.mf-tile__name {
+  grid-area: name;
+  align-self: end;
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.mf-tile__kind {
+  grid-area: kind;
+  color: var(--color-ink-3);
+}
+
+.mf-tile__summary {
+  grid-area: summary;
+  max-width: 64ch;
+  margin-top: 10px;
+  color: var(--color-ink-2);
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.mf-tile__summary a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mf-tile__links {
+  grid-area: links;
+  display: flex;
+  flex-wrap: wrap;
+  align-self: end;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+@container (min-width: 820px) {
+  .mf-tile__body {
+    grid-template-areas:
+      'icon name summary links'
+      'icon kind summary links';
+    grid-template-columns: 56px minmax(200px, 1fr) minmax(0, 2fr) auto;
+    gap: 4px 24px;
+    align-items: center;
+  }
+
+  .mf-tile__summary {
+    margin-top: 0;
+  }
+
+  .mf-tile__links {
+    align-self: center;
+    margin-top: 0;
+  }
+}
+
+.mf-pins {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: 16px;
+  margin: 0;
+  padding: 20px 0 0;
+  list-style: none;
+}
+
+.mf-pins:not(:has(li)) {
+  display: none;
+}
+
+.mf-pin {
+  position: relative;
+  padding: 16px 20px 16px 36px;
+  border: 1px solid var(--color-rule-strong);
+  background: var(--color-surface);
+  clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%);
+}
+
+.mf-pin::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  width: 7px;
+  height: 7px;
+  margin-top: -3.5px;
+  border-radius: 50%;
+  background: var(--color-band-dark);
+  box-shadow: 0 0 0 1px var(--color-rule-strong);
+}
+
+.mf-pin h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mf-pin__meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 2px 0 8px;
+}
+
+.mf-pin__meta .mf-sc {
+  color: var(--color-idea);
+  font-size: 11px;
+}
+
+.mf-pin__meta .mf-mono {
+  color: var(--color-ink-3);
+  font-size: 11px;
+}
+
+.mf-pin p {
+  color: var(--color-ink-2);
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.mf-callout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 24px;
+  margin-top: 28px;
+  padding: 18px 24px;
+  border-top: 3px double var(--color-rule-strong);
+  border-bottom: 3px double var(--color-rule-strong);
+  background: var(--color-surface);
+}
+
+.mf-callout p {
+  max-width: 80ch;
+  color: var(--color-ink-2);
+  font-size: 16px;
+}
+
+.mf-callout strong {
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+.mf-callout a:not(.mf-btn) {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mf-notice {
+  position: relative;
+  padding: 22px 24px;
+  border: 1px solid var(--color-rule-strong);
+  outline: 1px solid var(--color-rule-strong);
+  outline-offset: 3px;
+  background: var(--color-surface);
+}
+
+.mf-notice .mf-notice__kicker {
+  margin: 0;
+  color: var(--color-brand);
+}
+
+.mf-notice h2 {
+  margin: 2px 0 10px;
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 30px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+.mf-notice p {
+  margin-bottom: 18px;
+  color: var(--color-ink-2);
+  font-size: 17px;
+}
+
+.mf-notice__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mf-notice .mf-stamp {
+  top: -24px;
+  right: 14px;
+}
+
+.mf-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 32px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mf-fact {
+  display: flex;
+  flex-direction: column;
+}
+
+.mf-fact strong {
+  font-family: var(--font-display);
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.mf-fact span {
+  max-width: 16ch;
+  margin-top: 4px;
+  color: var(--color-ink-3);
+  font-size: 15px;
+  font-style: italic;
+}
+
+.mf-shelf {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mf-shelf-item {
+  --shelf-status: var(--color-ink-3);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  padding: 14px 6px 10px;
+  border: 1px solid var(--color-rule);
+  background: var(--color-surface);
+}
+
+.mf-shelf-item:hover {
+  border-color: var(--color-rule-strong);
+}
+
+.mf-shelf-item img {
+  width: 60px;
+  height: 60px;
+  border-radius: 9px;
+}
+
+.mf-shelf-item b {
+  font-family: var(--font-display);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.mf-shelf-item__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: auto;
+  color: var(--shelf-status);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.mf-shelf-item__status::before {
+  content: '';
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.mf-shelf-item--live {
+  --shelf-status: var(--color-live);
+}
+
+.mf-shelf-item--building {
+  --shelf-status: var(--color-building);
+}
+
+.mf-shelf-item--oss {
+  --shelf-status: var(--color-oss);
+}
+
+.mf-index-group h3 {
+  padding: 10px 0 6px;
+  border-bottom: 2px solid var(--color-rule-strong);
+  color: var(--color-ink-3);
+}
+
+.mf-index-group ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mf-index-entry {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-rule);
+  font-size: 16px;
+}
+
+.mf-index-entry a:hover {
+  color: var(--color-brand);
+}
+
+.mf-index-entry__kind {
+  color: var(--color-ink-3);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.mf-index-entry__status {
+  color: var(--color-ink-3);
+  font-size: 11px;
+}
+
+.mf-index-entry--live .mf-index-entry__status {
+  color: var(--color-live);
+}
+
+.mf-index-entry--building .mf-index-entry__status {
+  color: var(--color-building);
+}
+
+.mf-index-entry--oss .mf-index-entry__status {
+  color: var(--color-oss);
+}
+
+.mf-dropcap::first-letter {
+  float: left;
+  padding: 8px 10px 0 0;
+  color: var(--color-brand);
+  font-family: var(--font-display);
+  font-size: 74px;
+  font-weight: 500;
+  line-height: 0.78;
+}
+
+.mf-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 18px 0 44px;
+  border-top: 3px double var(--color-rule-strong);
+  color: var(--color-ink-3);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.mf-foot a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 1099px) {
+  .mf-aisle {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+@media (max-width: 759px) {
+  .mf-band > .mf-wrap {
+    padding-top: 28px;
+    padding-bottom: 32px;
+  }
+
+  .mf-band-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .mf-band-head h2 {
+    font-size: 30px;
+  }
+
+  .mf-callout {
+    grid-template-columns: 1fr;
+  }
+
+  .mf-fact strong {
+    font-size: 40px;
+  }
+}
+
+/* Optional, not swap: the top row wraps at a width that differs per font, so a swap mid-view moves the whole page. Above 1219px the longest translation fits on one line in either font, even beside a classic scrollbar. */
+
+@font-face {
+  font-family: 'Fraunces Unswapped';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces Unswapped';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@media (min-width: 760px) and (max-width: 1219px) {
+  .ears .mf-sc {
+    font-family:
+      'Fraunces Unswapped', 'Fraunces Georgia', 'Fraunces Noto Serif', Georgia, 'Times New Roman',
+      serif;
+  }
+}
+
+.ears {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 24px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-rule);
+  color: var(--color-ink-3);
+}
+
+.ears > span:nth-child(2) {
+  margin-left: auto;
+}
+
+.lang {
+  position: relative;
+  color: var(--color-ink);
+}
+
+.ears .lang {
+  padding-left: 24px;
+  border-left: 1px solid var(--color-rule);
+}
+
+.lang-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: -12px 0;
+  padding: 12px 0;
+  list-style: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.lang-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.lang-toggle::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 2px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.15s;
+}
+
+.lang[open] > .lang-toggle::after {
+  margin-top: 3px;
+  transform: rotate(-135deg);
+}
+
+.lang-toggle:hover,
+.lang[open] > .lang-toggle {
+  color: var(--color-brand);
+}
+
+.lang-flag {
+  flex: none;
+  align-self: center;
+  width: 21px;
+  height: 14px;
+  outline: 1px solid color-mix(in srgb, var(--color-ink) 25%, transparent);
+  outline-offset: -1px;
+}
+
+.lang-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 10;
+  min-width: 220px;
+  max-width: calc(100vw - 2 * var(--layout-gutter));
+  margin: 0;
+  padding: 6px 0;
+  border: 1px solid var(--color-rule-strong);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-paper);
+  list-style: none;
+}
+
+.lang-menu a {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 7px 20px 7px 14px;
+  color: var(--color-ink);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.lang-menu a::before {
+  content: '—' / '';
+  color: var(--color-brand);
+  visibility: hidden;
+}
+
+.lang-menu a:hover {
+  background: var(--color-surface-2);
+  color: var(--color-brand);
+}
+
+.lang-menu a[aria-current='page'] {
+  color: var(--color-brand);
+}
+
+.lang-menu a[aria-current='page']::before {
+  visibility: visible;
+}
+
+.lang-menu a:focus-visible {
+  outline-offset: -3px;
+}
+
+.folio-end {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ears b {
+  color: var(--color-brand);
+}
+
+.masthead {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding: 22px 0 18px;
+  border-bottom: 3px double var(--color-rule-strong);
+}
+
+.masthead nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+}
+
+.masthead .masthead-end {
+  justify-content: flex-end;
+}
+
+.masthead nav a {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.masthead nav a:hover,
+.masthead .masthead-cta {
+  color: var(--color-brand);
+}
+
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.wordmark img {
+  border-radius: 4px;
+}
+
+.wordmark span {
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.folio {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--color-rule-strong);
+  color: var(--color-ink-3);
+}
+
+.lead {
+  display: grid;
+  grid-template-areas:
+    'statement shelf'
+    'index index';
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 40px var(--layout-gap);
+  padding-top: 44px;
+}
+
+.statement {
+  grid-area: statement;
+}
+
+.lead h1 {
+  max-width: 14ch;
+  font-size: clamp(48px, 6vw, 104px);
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.lead h1 em {
+  color: var(--color-brand);
+  font-weight: 400;
+}
+
+.standfirst {
+  max-width: 54ch;
+  margin-top: 24px;
+  color: var(--color-ink-2);
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.principles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 22px;
+  margin: 22px 0 0;
+  padding: 0;
+  color: var(--color-ink-2);
+  list-style: none;
+}
+
+.principles li::before {
+  content: '— ' / '';
+  color: var(--color-brand);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.shelf {
+  grid-area: shelf;
+  position: relative;
+  padding-left: var(--layout-gap);
+  border-left: 1px solid var(--color-rule);
+}
+
+.shelf .mf-stamp {
+  top: -14px;
+  right: -12px;
+}
+
+.shelf-head {
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--color-rule-strong);
+  color: var(--color-ink-3);
+}
+
+.shelf-note {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-rule);
+  color: var(--color-ink-3);
+  font-size: 14px;
+  font-style: italic;
+}
+
+.index {
+  grid-area: index;
+  padding: 14px 0 36px;
+  border-top: 1px solid var(--color-rule-strong);
+}
+
+.index > h2 {
+  margin-bottom: 6px;
+  color: var(--color-ink-3);
+}
+
+.index-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 var(--layout-gap);
+}
+
+.index-groups > * + * {
+  padding-left: var(--layout-gap);
+  border-left: 1px solid var(--color-rule);
+}
+
+.about {
+  border-top: 3px double var(--color-rule-strong);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  align-items: start;
+  gap: var(--layout-gap) calc(var(--layout-gap) * 3);
+  padding-top: 36px;
+  padding-bottom: 48px;
+}
+
+.about-kicker {
+  color: var(--color-brand);
+}
+
+.about h2 {
+  margin: 8px 0 18px;
+  font-family: var(--font-display);
+  font-variation-settings: 'WONK' 1;
+  font-size: 44px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+.about-grid > div > p:not(.about-kicker) {
+  max-width: 62ch;
+  margin-bottom: 14px;
+  color: var(--color-ink-2);
+  font-size: 19px;
+}
+
+.about .mf-notice {
+  margin-top: 24px;
+}
+
+@media (min-width: 1700px) {
+  .lead {
+    grid-template-areas: 'statement shelf index';
+    grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3fr);
+    padding-bottom: 40px;
+  }
+
+  .lead .mf-shelf {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .index {
+    padding: 0 0 0 var(--layout-gap);
+    border-top: 0;
+    border-left: 1px solid var(--color-rule);
+  }
+
+  .index-groups {
+    grid-template-columns: 1fr;
+  }
+
+  .index-groups > * + * {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 1099px) {
+  .masthead {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 10px;
+  }
+
+  .masthead nav,
+  .masthead .masthead-end {
+    justify-content: center;
+  }
+
+  .wordmark {
+    grid-row: 1;
+  }
+
+  .lead {
+    grid-template-areas: 'statement' 'shelf' 'index';
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .shelf {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .index-groups {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .index-groups > :nth-child(odd) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 759px) {
+  .folio {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .ears {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 2px 16px;
+  }
+
+  .ears > span:nth-child(2) {
+    margin-left: 0;
+  }
+
+  .ears .lang {
+    grid-row: 1 / span 2;
+    grid-column: 2;
+    align-self: start;
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .wordmark span {
+    font-size: 34px;
+  }
+
+  .wordmark img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .masthead nav a {
+    font-size: 14px;
+  }
+
+  .lead {
+    padding-top: 28px;
+  }
+
+  .lead h1 {
+    font-size: 50px;
+  }
+
+  .standfirst {
+    font-size: 19px;
+  }
+
+  .lead .mf-shelf {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .shelf .mf-stamp {
+    top: -10px;
+    right: 4px;
+    font-size: 15px;
+  }
+
+  .shelf-note,
+  .index {
+    display: none;
+  }
+
+  .about h2 {
+    font-size: 34px;
+  }
+}
+
+.not-found {
+  padding-top: 48px;
+  padding-bottom: 120px;
+}
+
+.not-found h1 {
+  max-width: 16ch;
+  margin-top: 48px;
+  font-size: clamp(48px, 6vw, 96px);
+  line-height: 1;
+}
+
+.not-found h1 em {
+  color: var(--color-brand);
+  font-weight: 400;
+}
+
+/* A ch cap follows whichever font is current and moves at the swap; 427px is 14ch of unhinted Fraunces at the 50px phone h1. */
+@media (max-width: 599px) {
+  .lead h1 {
+    max-width: 427px;
+  }
+}
+
+
+[hidden] { display: none !important; }
+.d-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 28px; padding: 16px 0 14px; border-bottom: 3px double var(--color-rule-strong); }
+.d-top .wordmark { gap: 12px; }
+.d-top .wordmark span { font-size: 32px; }
+.d-top nav { display: flex; flex-wrap: wrap; gap: 6px 24px; margin-left: auto; font-family: var(--font-display); font-size: 15px; font-weight: 500; }
+.d-top nav a:hover, .d-top nav .cta { color: var(--color-brand); }
+.d-top .lang { padding-left: 24px; border-left: 1px solid var(--color-rule); }
+.d-h1 { text-wrap: balance; }
+.d-h1 em { color: var(--color-brand); font-weight: 400; }
+.d-about { border-top: 3px double var(--color-rule-strong); }
+.d-about-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--layout-gap) calc(var(--layout-gap) * 2); padding-top: 32px; padding-bottom: 40px; }
+.d-about-grid > aside { padding-left: calc(var(--layout-gap) * 2); border-left: 1px solid var(--color-rule); }
+.d-about h2 { margin-bottom: 8px; font-family: var(--font-display); font-variation-settings: 'WONK' 1; font-size: 30px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
+.d-about p { max-width: 56ch; color: var(--color-ink-2); font-size: 18px; }
+.d-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+.mf-band--dark { --color-idea: var(--mf-violet-bright); }
+.d-mail { color: var(--color-ink-3); }
+.d-idea-list { columns: 2; column-gap: calc(var(--layout-gap) * 1.5); margin: 0; padding: 0; list-style: none; }
+.d-idea-list li { break-inside: avoid; border-bottom: 1px solid var(--color-rule); }
+.d-idea-list summary { display: grid; grid-template-columns: minmax(0, 1fr) auto 14px; align-items: baseline; gap: 14px; padding: 10px 0; list-style: none; cursor: pointer; }
+.d-idea-list summary::-webkit-details-marker { display: none; }
+.d-idea-list summary::after { content: '+' / ''; font-family: var(--font-mono); font-size: 15px; text-align: center; }
+.d-idea-list details[open] summary::after { content: '−' / ''; }
+.d-idea-list summary:hover b { color: var(--color-idea); }
+.d-idea-list b { font-family: var(--font-display); font-size: 18px; font-weight: 600; }
+.d-idea-list .mf-sc { color: var(--color-idea); font-size: 11px; }
+.d-idea-list details p { max-width: 62ch; padding: 0 28px 14px 0; color: var(--color-ink-2); font-size: 16px; line-height: 1.45; }
+@media (max-width: 759px) {
+  .d-top .wordmark span { font-size: 28px; }
+  .d-top .lang { margin-left: auto; padding-left: 0; border-left: 0; }
+  .d-top nav { order: 3; flex-basis: 100%; margin-left: 0; gap: 4px 20px; }
+  .d-about-grid { grid-template-columns: 1fr; }
+  .d-about-grid > aside { padding: 24px 0 0; border-left: 0; border-top: 1px solid var(--color-rule); }
+  .d-about h2 { font-size: 26px; }
+  .d-idea-list { columns: 1; }
+}
+
+
+.a-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: var(--layout-gap); padding: 40px 0 34px; }
+.a-intro h1 { max-width: 15ch; font-size: clamp(42px, 4.8vw, 80px); line-height: 1; }
+.a-intro p { max-width: 48ch; color: var(--color-ink-2); font-size: 20px; line-height: 1.4; }
+.a-filter { display: flex; flex-wrap: wrap; gap: 0 2px; min-width: 0; margin: 0; padding: 0; border: 0; border-bottom: 2px solid var(--color-rule-strong); }
+.a-filter label { position: relative; display: inline-flex; align-items: baseline; gap: 8px; padding: 9px 16px 8px; font-family: var(--font-display); font-size: 15px; font-weight: 600; cursor: pointer; }
+.a-filter label:hover { background: var(--color-surface-2); }
+.a-filter input { position: absolute; inset: 0; margin: 0; opacity: 0; cursor: pointer; }
+.a-filter label:has(input:checked) { background: var(--color-ink); color: var(--color-bg); }
+.a-filter label:has(input:focus-visible) { outline: 2px solid var(--color-brand); outline-offset: 2px; }
+.a-filter small { font-family: var(--font-mono); font-size: 12px; font-weight: 400; opacity: 0.75; }
+.a-list { display: grid; grid-template-columns: 52px minmax(200px, 1.1fr) minmax(0, 2.8fr) auto auto; column-gap: 28px; margin: 0 0 44px; padding: 0; list-style: none; }
+.a-row { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--color-rule); scroll-margin-top: 24px; }
+.a-row img { width: 52px; height: 52px; border-radius: 8px; }
+.a-row h3 { font-family: var(--font-display); font-variation-settings: 'WONK' 1; font-size: 22px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.a-row .mf-sc { display: block; margin-top: 3px; color: var(--color-ink-3); font-size: 11px; }
+.a-row p { max-width: 70ch; color: var(--color-ink-2); font-size: 16px; line-height: 1.4; }
+.a-row p a { text-decoration: underline; text-underline-offset: 3px; }
+.a-links { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+.a-row .mf-tag { justify-self: end; }
+body:has(#f-android:checked) .a-row:not([data-for='android']),
+body:has(#f-browser:checked) .a-row:not([data-for='browser']),
+body:has(#f-wot:checked) .a-row:not([data-for='wot']),
+body:has(#f-dev:checked) .a-row:not([data-for='dev']) { display: none; }
+.a-ideas { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: var(--layout-gap) calc(var(--layout-gap) * 2); }
+.a-ideas h2 { font-family: var(--font-display); font-variation-settings: 'WONK' 1; font-size: 36px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.05; }
+.a-ask { max-width: 40ch; margin: 12px 0 18px; color: var(--color-ink-2); font-size: 18px; }
+.a-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+@media (min-width: 1700px) { .d-idea-list { columns: 3; } }
+@media (max-width: 1099px) {
+  .a-list { display: block; }
+  .a-row { grid-template-columns: 52px minmax(0, 1fr) auto; grid-template-areas: 'icon name tag' 'icon summary summary' 'icon links links'; gap: 8px 16px; align-items: start; padding: 16px 0; }
+  .a-row img { grid-area: icon; }
+  .a-row > div:first-of-type { grid-area: name; }
+  .a-row p { grid-area: summary; }
+  .a-links { grid-area: links; }
+  .a-row .mf-tag { grid-area: tag; }
+  .a-ideas { grid-template-columns: 1fr; }
+}
+@media (max-width: 759px) {
+  .a-intro { grid-template-columns: 1fr; gap: 16px; padding: 28px 0 24px; }
+  .a-intro p { font-size: 18px; }
+  .a-filter label { padding: 8px 11px 7px; font-size: 14px; }
+  .a-row { grid-template-columns: 44px minmax(0, 1fr); grid-template-areas: 'icon name' 'summary summary' 'links links'; }
+  .a-row img { width: 44px; height: 44px; }
+  .a-row .mf-tag { grid-area: auto; grid-column: 1 / -1; grid-row: 4; justify-self: start; }
+  .a-ideas h2 { font-size: 30px; }
+}
+
+</style>
+</head>
+<body>
+<div class="mf-wrap" id="top"><header class="d-top"><a class="wordmark" href="#top" aria-label="MaksForge home"><img src="../../../../../apps/web/public/assets/logo-mark-128.webp" alt="" width="36" height="36"><span>MaksForge</span></a><nav aria-label="Sections"><a href="#apps">Apps</a><a href="#ideas">Ideas</a><a href="#about">About</a><a href="https://github.com/maks-sredniawa">GitHub</a><a href="#support" class="cta">Support</a></nav><details class="lang"><summary class="lang-toggle mf-sc"><img class="lang-flag" src="../../../../../apps/web/public/assets/flags/en.svg" alt="" width="21" height="14">English</summary><ul class="lang-menu"><li><a href="#" aria-current="page" lang="en">English</a></li><li><a href="#" lang="pl">Polski</a></li><li><a href="#" lang="de">Deutsch</a></li><li><a href="#" lang="es">Español</a></li><li><a href="#" lang="fr">Français</a></li><li><a href="#" lang="it">Italiano</a></li><li><a href="#" lang="pt-BR">Português (Brasil)</a></li><li><a href="#" lang="cs">Čeština</a></li><li><a href="#" lang="uk">Українська</a></li></ul></details></header></div>
+<main>
+  <div class="mf-wrap">
+    <section class="a-intro"><h1 class="mf-display d-h1">Small apps that do one thing <em>well.</em></h1><p>Free Android apps, browser extensions and game mods, with no ads, no tracking and no accounts. The Android apps keep your data on your device.</p></section>
+    <section id="apps" aria-label="Apps and tools">
+      <fieldset class="a-filter"><legend class="mf-sr">Show</legend><label><input type="radio" name="f" id="f-all" checked>All <small>12</small></label><label><input type="radio" name="f" id="f-android">Android <small>5</small></label><label><input type="radio" name="f" id="f-browser">Browser <small>2</small></label><label><input type="radio" name="f" id="f-wot">World of Tanks <small>2</small></label><label><input type="radio" name="f" id="f-dev">For developers <small>3</small></label></fieldset>
+      <ul class="a-list"><li class="a-row" id="binky" data-for="android"><img src="../../../../../apps/web/public/assets/icons/binky.webp" alt="" width="52" height="52"><div><h3>Binky</h3><span class="mf-sc">Android app</span></div><p>Track your rabbit's weight, health and care, so a slow change over weeks shows up instead of being forgotten.</p><div class="a-links"><a class="mf-link mf-link--go" href="https://play.google.com/store/apps/details?id=binky.bunny.and.rabbit.tracker">Google Play</a><a class="mf-link" href="https://maksforge.com/binky-app/">Website</a></div><span class="mf-tag mf-tag--live">Live</span></li><li class="a-row" id="gloam" data-for="android"><img src="../../../../../apps/web/public/assets/icons/gloam.webp" alt="" width="52" height="52"><div><h3>Gloam</h3><span class="mf-sc">Android app</span></div><p>Dim the screen below Android's lowest brightness, for reading in the dark without the glare.</p><div class="a-links"><a class="mf-link mf-link--go" href="https://play.google.com/store/apps/details?id=io.github.srednimax.gloam">Google Play</a><a class="mf-link" href="https://maksforge.com/gloam/">Website</a></div><span class="mf-tag mf-tag--live">Live</span></li><li class="a-row" id="bevel" data-for="browser"><img src="../../../../../apps/web/public/assets/icons/bevel.webp" alt="" width="52" height="52"><div><h3>Bevel</h3><span class="mf-sc">Web app</span></div><p>A free music player in your browser, in the style of the early 2000s, with an equaliser and a two-deck DJ mode. Your songs stay on your device.</p><div class="a-links"><a class="mf-link" href="https://maksforge.com/bevel/">Website</a><a class="mf-link" href="https://github.com/maks-sredniawa/bevel">Source</a></div><span class="mf-tag mf-tag--live">Live</span></li><li class="a-row" id="play-console-dark-theme" data-for="browser"><img src="../../../../../apps/web/public/assets/icons/play-console-dark-theme.webp" alt="" width="52" height="52"><div><h3>Dark Theme for Play Console</h3><span class="mf-sc">Chrome extension</span></div><p>Switches on the dark palette that is already hidden inside Google Play Console. Unofficial, not affiliated with Google.</p><div class="a-links"><a class="mf-link mf-link--go" href="https://chromewebstore.google.com/detail/dark-theme-for-play-conso/fgihoebnjomkgmhibmfcefkofiipfnnl">Chrome Web Store</a><a class="mf-link" href="https://maksforge.com/play-console-dark-theme/">Website</a></div><span class="mf-tag mf-tag--live">Live</span></li><li class="a-row" id="wot-autoloader-timer" data-for="wot"><img src="../../../../../apps/web/public/assets/icons/wot-autoloader-timer.webp" alt="" width="52" height="52"><div><h3>Autoloader Shell Timer</h3><span class="mf-sc">World of Tanks mod</span></div><p>Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs <a href="https://github.com/CH4MPi/GUIFlash">GUIFlash</a>, which most modpacks include.</p><div class="a-links"><a class="mf-link mf-link--go" href="https://github.com/maks-sredniawa/wot-autoloader-timer/releases/latest">Download</a><a class="mf-link" href="https://github.com/maks-sredniawa/wot-autoloader-timer">Source</a></div><span class="mf-tag mf-tag--live">Live</span></li><li class="a-row" id="wot-ping-distance" data-for="wot"><img src="../../../../../apps/web/public/assets/icons/wot-ping-distance.webp" alt="" width="52" height="52"><div><h3>Ping Distance</h3><span class="mf-sc">World of Tanks mod</span></div><p>Keeps the distance visible on map position pings, not only while your crosshair is on them.</p><div class="a-links"><a class="mf-link mf-link--go" href="https://github.com/maks-sredniawa/wot-ping-distance/releases/latest">Download</a><a class="mf-link" href="https://github.com/maks-sredniawa/wot-ping-distance">Source</a></div><span class="mf-tag mf-tag--live">Live</span></li><li class="a-row" id="urgent" data-for="android"><img src="../../../../../apps/web/public/assets/icons/urgent.webp" alt="" width="52" height="52"><div><h3>Urgent call</h3><span class="mf-sc">Android app</span></div><p>Rings when the same number calls twice within a few minutes, even with your phone on silent or Do Not Disturb.</p><div class="a-links"><a class="mf-link" href="https://maksforge.com/urgent/">Website</a></div><span class="mf-tag mf-tag--building">Building</span></li><li class="a-row" id="kozica" data-for="android"><img src="../../../../../apps/web/public/assets/icons/kozica.webp" alt="" width="52" height="52"><div><h3>Kozica</h3><span class="mf-sc">Android app</span></div><p>An offline trail map of the Polish mountains, drawn in the colours of the trail signposts.</p><div class="a-links"><a class="mf-link" href="https://maksforge.com/kozica/">Website</a></div><span class="mf-tag mf-tag--building">Building</span></li><li class="a-row" id="darek" data-for="android"><img src="../../../../../apps/web/public/assets/icons/darek.webp" alt="" width="52" height="52"><div><h3>Darek</h3><span class="mf-sc">Android app</span></div><p>A Polish voice assistant. Say <span lang="pl">"Darek, otwórz bramę"</span> and he calls your gate opener, with everything running offline on the phone.</p><div class="a-links"><a class="mf-link" href="https://maksforge.com/darek/">Website</a></div><span class="mf-tag mf-tag--building">Building</span></li><li class="a-row" id="android-starter" data-for="dev"><img src="../../../../../apps/web/public/assets/icons/android-starter.webp" alt="" width="52" height="52"><div><h3>Android starter</h3><span class="mf-sc">Template</span></div><p>A starting point for offline Android apps: Compose skeleton, release pipeline, CI gates and device-driven UI checks.</p><div class="a-links"><a class="mf-link" href="https://github.com/maks-sredniawa/android-starter">Source</a></div><span class="mf-tag mf-tag--oss">Open source</span></li><li class="a-row" id="wot-mod-template" data-for="dev"><img src="../../../../../apps/web/public/assets/icons/wot-mod-template.webp" alt="" width="52" height="52"><div><h3>WoT mod template</h3><span class="mf-sc">Template</span></div><p>A starting point for World of Tanks mods: Python 2.7 build, tests against stubbed game modules, CI, and a release on every version tag.</p><div class="a-links"><a class="mf-link" href="https://github.com/maks-sredniawa/wot-mod-template">Source</a></div><span class="mf-tag mf-tag--oss">Open source</span></li><li class="a-row" id="wgmods-cli" data-for="dev"><img src="../../../../../apps/web/public/assets/icons/wgmods-cli.webp" alt="" width="52" height="52"><div><h3>wgmods CLI</h3><span class="mf-sc">Command-line tool</span></div><p>Uploads a new World of Tanks mod version to the official Mod Hub (wgmods.net) from the terminal. Unofficial, not affiliated with Wargaming.</p><div class="a-links"><a class="mf-link" href="https://github.com/maks-sredniawa/wgmods-cli">Source</a></div><span class="mf-tag mf-tag--oss">Open source</span></li></ul>
+    </section>
+  </div>
+  <section id="ideas" class="mf-band mf-band--dark"><div class="mf-wrap a-ideas">
+    <div><h2>What should I build next?</h2><p class="a-ask">Got a small problem an app could fix? Tell me what it is and who it affects.</p>
+      <div class="a-cta"><a class="mf-btn mf-btn--brand" href="mailto:ideas@maksforge.com">Send an idea</a><span class="mf-mono d-mail">ideas@maksforge.com</span></div></div>
+    <ul class="d-idea-list" aria-label="Ideas"><li><details><summary><b>Brainstorm sticky notes</b><span class="mf-sc">Android app</span></summary><p>A simple sticky-notes board for brainstorming, where adding a note doesn't throw up pop-ups in your way. Free, no ads.</p></details></li><li><details><summary><b>Gmail dark mode</b><span class="mf-sc">Chrome extension</span></summary><p>A proper dark mode for Gmail in the browser, for people who want the whole of it dark.</p></details></li><li><details><summary><b>Monitor brightness presets</b><span class="mf-sc">Tool</span></summary><p>A desktop app that keeps a few brightness presets for all your monitors, whatever their make, so you can switch every screen between them in a moment.</p></details></li><li><details><summary><b>Woodworking planner</b><span class="mf-sc">Tool</span></summary><p>A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.</p></details></li><li><details><summary><b>Garage filter extras</b><span class="mf-sc">World of Tanks mod</span></summary><p>Adds the garage filters the game is missing: one to hide rented tanks, which always show today, and one to show only tanks that are not premium.</p></details></li><li><details><summary><b>Darts scorer</b><span class="mf-sc">Android app</span></summary><p>Counts your darts score from a few photos of the board taken from different angles, as few as it needs, so you don't have to tally the darts by hand.</p></details></li><li><details><summary><b>Archery scorer</b><span class="mf-sc">Android app</span></summary><p>Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don't have to tally the arrows by hand.</p></details></li><li><details><summary><b>Plain light control</b><span class="mf-sc">Android app</span></summary><p>One app in your own language for smart lights whose own app is only in Chinese: it reads each light's details, adds its settings and keeps them per device, so you can control them all in one place.</p></details></li><li><details><summary><b>IOU tracker</b><span class="mf-sc">Android app</span></summary><p>Keeps track of informal loans, like 100 zł lent to a friend or money borrowed from your shared savings, so you remember to pay it back.</p></details></li><li><details><summary><b>Take your meds</b><span class="mf-sc">Android app</span></summary><p>Reminds you to take your meds, with everything kept on your phone. No ads, no tracking.</p></details></li></ul>
+  </div></section>
+  <section class="d-about"><div class="mf-wrap d-about-grid">
+  <div id="about"><h2>Hi, I'm Maksymilian.</h2><p>MaksForge is where I build the small tools I wish existed. Each one solves a single problem.</p></div>
+  <aside id="support"><h2>Like what I make?</h2><p>A tip helps me keep building. It never unlocks anything.</p><div class="d-buttons"><a class="mf-btn mf-btn--brand" href="https://buymeacoffee.com/maksforge">Buy me a coffee</a><a class="mf-btn" href="https://paypal.me/maksymiliansredniawa">PayPal</a></div></aside>
+</div></section>
+</main>
+<div class="mf-wrap"><footer class="mf-foot"><span>© 2026 Maksymilian Średniawa · MaksForge</span><a href="https://github.com/maks-sredniawa">github.com/maks-sredniawa</a></footer></div>
+</body>
+</html>

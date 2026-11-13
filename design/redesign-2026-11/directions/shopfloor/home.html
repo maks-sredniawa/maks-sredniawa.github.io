@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaksForge · Shop floor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Hanken+Grotesk:ital,wght@0,300..800;1,300..800&family=Chivo+Mono:wght@300..700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #efe9dc; --surface: #fbf7ee; --surface-2: #e4dccb;
+  --ink: #15221f; --ink-2: #3d4a46; --ink-3: #6d7873;
+  --line: #15221f; --line-soft: #c9c2b2;
+  --brand: #1f5c52; --brand-ink: #f4ecd8; --brand-tint: #d6e6e1;
+  --tag: #f2c94c; --tag-ink: #15221f;
+  --live: #1f7a3e; --building: #c4641a; --oss: #2a5bb8; --idea: #7b45b0;
+  --font-display: 'Bricolage Grotesque', system-ui, sans-serif; --font-text: 'Hanken Grotesk', system-ui, sans-serif; --font-mono: 'Chivo Mono', ui-monospace, monospace;
+  --radius: 4px; --shadow: 4px 4px 0 var(--line); --shadow-sm: 3px 3px 0 var(--line);
+  --max: 1760px; --gutter: 40px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #101a18; --surface: #17241f; --surface-2: #1f2f2a; --ink: #f1ebdc; --ink-2: #c5bfae; --ink-3: #8a9490;
+    --line: #f1ebdc; --line-soft: #34443f; --brand: #6fc3b2; --brand-ink: #0f1f1b; --brand-tint: #1c3b35;
+    --live: #5ed38a; --building: #f0a05a; --oss: #86a9f0; --idea: #c39cf0; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #101a18; --surface: #17241f; --surface-2: #1f2f2a; --ink: #f1ebdc; --ink-2: #c5bfae; --ink-3: #8a9490;
+  --line: #f1ebdc; --line-soft: #34443f; --brand: #6fc3b2; --brand-ink: #0f1f1b; --brand-tint: #1c3b35;
+  --live: #5ed38a; --building: #f0a05a; --oss: #86a9f0; --idea: #c39cf0; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 16px/1.5 var(--font-text); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+h1, h2, h3, h4, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.mono { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+.display { font-family: var(--font-display); font-variation-settings: 'opsz' 96, 'wdth' 90; font-weight: 800; letter-spacing: -0.02em; line-height: 0.95; }
+
+/* tag: the price-tag shape from the logo */
+.tag { display: inline-flex; align-items: center; gap: 8px; height: 26px; padding: 0 10px 0 22px; background: var(--tag); color: var(--tag-ink); font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; clip-path: polygon(10px 0, 100% 0, 100% 100%, 10px 100%, 0 50%); position: relative; white-space: nowrap; }
+.tag::before { content: ''; position: absolute; left: 10px; top: 50%; width: 5px; height: 5px; margin-top: -2.5px; border-radius: 50%; background: var(--bg); }
+.tag.live { background: var(--live); color: #fff; } .tag.building { background: var(--building); color: #fff; } .tag.oss { background: var(--oss); color: #fff; } .tag.idea { background: var(--idea); color: #fff; }
+.tag.plain { background: var(--surface-2); color: var(--ink-2); }
+.tag.ink { background: var(--ink); color: var(--bg); }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border: 2px solid var(--line); border-radius: var(--radius); background: var(--surface); color: var(--ink); font-family: var(--font-display); font-variation-settings: 'opsz' 14, 'wdth' 100; font-weight: 700; font-size: 15px; box-shadow: var(--shadow); white-space: nowrap; transition: transform 0.08s, box-shadow 0.08s; }
+.btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--line); }
+.btn.primary { background: var(--brand); color: var(--brand-ink); }
+.btn.tagc { background: var(--tag); color: var(--tag-ink); }
+.btn.small { height: 34px; padding: 0 12px; font-size: 13px; box-shadow: var(--shadow-sm); }
+
+/* header */
+.top { position: sticky; top: 0; z-index: 10; background: var(--bg); border-bottom: 2px solid var(--line); }
+.top .wrap { display: flex; align-items: stretch; justify-content: space-between; gap: 24px; height: 60px; }
+.brand { display: flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+.brand img { width: 36px; height: 36px; border: 2px solid var(--line); border-radius: 4px; }
+.top nav { display: flex; }
+.top nav a { display: flex; align-items: center; padding: 0 16px; font-weight: 600; font-size: 15px; border-left: 2px solid transparent; }
+.top nav a:hover { background: var(--surface); }
+.top nav a.cta { background: var(--tag); color: var(--tag-ink); border-left: 2px solid var(--line); border-right: 2px solid var(--line); margin-left: 8px; font-family: var(--font-display); font-weight: 700; }
+
+/* hero */
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; padding: 56px var(--gutter) 64px; align-items: center; }
+.hero h1 { font-size: clamp(52px, 7vw, 124px); max-width: 12ch; }
+.hero h1 .well { position: relative; display: inline-block; background: var(--tag); padding: 0 0.12em; margin: 0 -0.06em; box-shadow: 0.06em 0.06em 0 var(--line); transform: rotate(-1.5deg); }
+.hero .lede { margin-top: 24px; max-width: 50ch; font-size: 20px; color: var(--ink-2); }
+.hero .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.hero .actions { display: flex; gap: 14px; margin-top: 30px; flex-wrap: wrap; }
+.shelf { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.shelf li { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 8px 12px; border: 2px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-sm); }
+.shelf img { width: 72px; height: 72px; border-radius: 10px; border: 1px solid var(--line-soft); }
+.shelf b { font-family: var(--font-display); font-size: 13px; font-weight: 700; text-align: center; line-height: 1.15; }
+.shelf i { position: absolute; top: -8px; right: -8px; width: 14px; height: 14px; border-radius: 50%; background: var(--c); border: 2px solid var(--line); }
+.shelf .live { --c: var(--live); } .shelf .building { --c: var(--building); } .shelf .oss { --c: var(--oss); }
+.shelf-note { grid-column: 1 / -1; display: flex; justify-content: space-between; color: var(--ink-3); padding-top: 4px; }
+.stamp { position: absolute; right: -14px; top: -28px; transform: rotate(8deg); padding: 6px 12px; border: 3px double var(--brand); color: var(--brand); font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--bg); }
+
+/* bands */
+.band { border-top: 2px solid var(--line); }
+.band.ink { --band-bg: var(--ink); background: var(--ink); color: var(--bg); --line: var(--bg); --ink-2: color-mix(in srgb, var(--bg) 78%, transparent); --ink-3: color-mix(in srgb, var(--bg) 60%, transparent); }
+.band.brand { --band-bg: var(--brand); background: var(--brand); color: var(--brand-ink); --ink-2: color-mix(in srgb, var(--brand-ink) 82%, transparent); --ink-3: color-mix(in srgb, var(--brand-ink) 65%, transparent); }
+.band .wrap { padding-top: 40px; padding-bottom: 48px; }
+.band-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 28px; }
+.band-head h2 { font-family: var(--font-display); font-variation-settings: 'opsz' 72, 'wdth' 90; font-weight: 800; font-size: 46px; letter-spacing: -0.02em; line-height: 1; }
+.band-head p { margin-top: 8px; color: var(--ink-2); font-size: 17px; max-width: 60ch; }
+.band-head .tag { margin-bottom: 6px; }
+
+.aisle { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 24px; padding: 24px 0; border-top: 2px dashed var(--line-soft); }
+.aisle:first-of-type { border-top: 0; padding-top: 0; }
+.aisle > h3 { font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.15; }
+.aisle > h3 small { display: block; font-family: var(--font-text); font-weight: 400; font-size: 14px; color: var(--ink-3); margin-top: 6px; }
+.tiles { display: flex; flex-wrap: wrap; gap: 20px; }
+.tile { flex: 1 1 320px; max-width: 420px; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 6px 16px; padding: 18px; border: 2px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); color: var(--ink); }
+.band.brand .tile, .band.ink .tile, .band.ink .pin, .band.ink .send { background: #fbf7ee; color: #15221f; --ink: #15221f; --ink-2: #3d4a46; --ink-3: #6d7873; --line: #15221f; --line-soft: #c9c2b2; }
+.band.ink .send { background: var(--tag); }
+.band.ink .send .btn { background: #fbf7ee; color: #15221f; }
+.band.brand .tile .btn, .band.ink .tile .btn { background: #fbf7ee; }
+.band.brand .tile .btn.primary { background: #1f5c52; color: #f4ecd8; }
+.band.ink .pin::before { background: var(--band-bg); }
+.tile img { width: 64px; height: 64px; border-radius: 10px; border: 1px solid var(--line-soft); grid-row: span 2; }
+.tile h4 { font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -0.01em; line-height: 1.05; align-self: end; }
+.tile .kind { align-self: start; }
+.tile p { grid-column: 1 / -1; font-size: 15px; color: var(--ink-2); margin-top: 8px; }
+.tile p a { text-decoration: underline; text-underline-offset: 2px; }
+.tile .links { grid-column: 1 / -1; display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+
+/* ideas pinboard */
+.pins { display: flex; flex-wrap: wrap; gap: 16px; }
+.pin { flex: 1 1 300px; max-width: 460px; position: relative; padding: 16px 18px 16px 34px; background: var(--surface); border: 2px solid var(--line); clip-path: polygon(18px 0, 100% 0, 100% 100%, 18px 100%, 0 50%); }
+.pin::before { content: ''; position: absolute; left: 10px; top: 50%; width: 8px; height: 8px; margin-top: -4px; border-radius: 50%; background: var(--bg); box-shadow: 0 0 0 2px var(--line); }
+.pin h4 { font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+.pin .meta { display: flex; justify-content: space-between; gap: 10px; color: var(--ink-3); margin: 2px 0 8px; }
+.pin .meta b { color: var(--idea); font-weight: 600; }
+.pin p { font-size: 14.5px; color: var(--ink-2); }
+.send { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-top: 28px; padding: 20px 24px; border: 2px solid var(--line); border-radius: var(--radius); background: var(--tag); color: var(--tag-ink); box-shadow: var(--shadow); }
+.send p { font-size: 16px; max-width: 80ch; }
+.send p a { text-decoration: underline; }
+
+/* about */
+.about .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 56px; align-items: start; }
+.about h2 { font-family: var(--font-display); font-variation-settings: 'opsz' 72, 'wdth' 90; font-weight: 800; font-size: 46px; letter-spacing: -0.02em; line-height: 1; margin: 10px 0 18px; }
+.about p { color: var(--ink-2); font-size: 18px; max-width: 58ch; margin-bottom: 14px; }
+.facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+.facts li { padding: 16px 16px 14px; border: 2px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow-sm); color: var(--ink); }
+.facts b { display: block; font-family: var(--font-display); font-variation-settings: 'opsz' 96, 'wdth' 85; font-weight: 800; font-size: 56px; line-height: 0.9; letter-spacing: -0.03em; }
+.facts span { display: block; margin-top: 8px; font-size: 13.5px; color: var(--ink-3); }
+.support { position: relative; padding: 28px; border: 2px solid var(--line); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); color: var(--ink); }
+.support h2 { font-size: 36px; margin-top: 6px; }
+.support .actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 8px; }
+.support .stamp { right: 18px; top: -18px; }
+
+/* footer */
+.foot { background: var(--ink); color: var(--bg); }
+.foot .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 22px var(--gutter) 40px; font-family: var(--font-mono); font-size: 12px; }
+.foot a { text-decoration: underline; text-underline-offset: 3px; }
+
+@media (min-width: 1700px) {
+  .tile { flex-basis: 340px; }
+}
+@media (max-width: 1099px) {
+  :root { --gutter: 24px; }
+  .hero .wrap { grid-template-columns: 1fr; gap: 36px; }
+  .aisle { grid-template-columns: 1fr; gap: 14px; }
+  .about .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .top nav a { padding: 0 10px; font-size: 14px; }
+}
+@media (max-width: 760px) {
+  :root { --gutter: 16px; }
+  .top .wrap { height: 52px; }
+  .top nav a:not(.cta) { display: none; }
+  .brand { font-size: 18px; }
+  .hero .wrap { padding-top: 32px; padding-bottom: 40px; }
+  .hero h1 { font-size: 54px; }
+  .hero .lede { font-size: 17px; }
+  .shelf { display: flex; overflow-x: auto; scrollbar-width: none; margin: 0 calc(-1 * var(--gutter)); padding: 12px var(--gutter) 6px; }
+  .shelf li { flex: 0 0 112px; }
+  .shelf-note { display: none; }
+  .stamp { right: 8px; top: -22px; font-size: 18px; }
+  .band .wrap { padding-top: 28px; padding-bottom: 32px; }
+  .band-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .band-head h2 { font-size: 36px; }
+  .tile { flex-basis: 100%; max-width: none; }
+  .pin { flex-basis: 100%; max-width: none; }
+  .send { grid-template-columns: 1fr; }
+  .about h2 { font-size: 36px; }
+  .facts { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .facts b { font-size: 40px; }
+  .facts li { padding: 12px 10px; }
+}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="#"><img src="../../../../apps/web/public/assets/logo-mark-128.webp" alt="">MaksForge</a>
+  <nav><a href="#live">Apps</a><a href="#wot">WoT mods</a><a href="#building">In development</a><a href="#ideas">Ideas</a><a href="#about">About</a><a class="cta" href="#support">Support</a></nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="tag">Independent apps &amp; tools</span>
+    <h1 class="display" style="margin-top:18px">Small apps that do one thing <span class="well">well.</span></h1>
+    <p class="lede">I build free Android apps, browser extensions and game mods that respect the people using them. The Android apps keep your data on your device.</p>
+    <div class="tags"><span class="tag plain">No ads</span><span class="tag plain">No tracking</span><span class="tag plain">No accounts</span><span class="tag">Free</span></div>
+    <div class="actions"><a class="btn primary" href="#live">See the apps</a><a class="btn" href="https://github.com/maks-sredniawa">GitHub</a></div>
+  </div>
+  <div style="position:relative">
+    <span class="stamp">Free</span>
+    <ul class="shelf" aria-label="Everything on the shelf">
+      <li><i class="live"></i><img src="../../../../apps/web/public/assets/icons/binky.webp" alt=""><b>Binky</b></li>
+      <li><i class="live"></i><img src="../../../../apps/web/public/assets/icons/gloam.webp" alt=""><b>Gloam</b></li>
+      <li><i class="live"></i><img src="../../../../apps/web/public/assets/icons/play-console-dark-theme.webp" alt=""><b>Dark Theme for Play Console</b></li>
+      <li><i class="live"></i><img src="../../../../apps/web/public/assets/icons/wot-autoloader-timer.webp" alt=""><b>Autoloader Shell Timer</b></li>
+      <li><i class="live"></i><img src="../../../../apps/web/public/assets/icons/wot-ping-distance.webp" alt=""><b>Ping Distance</b></li>
+      <li><i class="building"></i><img src="../../../../apps/web/public/assets/icons/urgent.webp" alt=""><b>Urgent call</b></li>
+      <li><i class="building"></i><img src="../../../../apps/web/public/assets/icons/kozica.webp" alt=""><b>Kozica</b></li>
+      <li><i class="building"></i><img src="../../../../apps/web/public/assets/icons/darek.webp" alt=""><b>Darek</b></li>
+      <li><i class="oss"></i><img src="../../../../apps/web/public/assets/icons/android-starter.webp" alt=""><b>Android starter</b></li>
+      <li><i class="oss"></i><img src="../../../../apps/web/public/assets/icons/wot-mod-template.webp" alt=""><b>WoT mod template</b></li>
+      <li><i class="oss"></i><img src="../../../../apps/web/public/assets/icons/wgmods-cli.webp" alt=""><b>wgmods CLI</b></li>
+      <li class="shelf-note mono"><span>● live · ● in development · ● open source</span><span>11 things on the shelf</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section class="band" id="live"><div class="wrap">
+  <div class="band-head"><div><h2>In production</h2><p>Available now on Google Play, the Chrome Web Store and GitHub.</p></div><span class="tag live">Live · 5</span></div>
+  <div class="aisle">
+    <h3>Android apps <small>On Google Play. Your data stays on your device.</small></h3>
+    <div class="tiles">
+      <article class="tile"><img src="../../../../apps/web/public/assets/icons/binky.webp" alt=""><h4>Binky</h4><span class="kind mono">Android app</span><p>Track your rabbit's weight, health and care, so a slow change over weeks shows up instead of being forgotten.</p><div class="links"><a class="btn small primary" href="#">Google Play</a><a class="btn small" href="#">Website</a></div></article>
+      <article class="tile"><img src="../../../../apps/web/public/assets/icons/gloam.webp" alt=""><h4>Gloam</h4><span class="kind mono">Android app</span><p>Dim the screen below Android's lowest brightness, for reading in the dark without the glare.</p><div class="links"><a class="btn small primary" href="#">Google Play</a><a class="btn small" href="#">Website</a></div></article>
+    </div>
+  </div>
+  <div class="aisle">
+    <h3>Chrome extensions <small>On the Chrome Web Store.</small></h3>
+    <div class="tiles">
+      <article class="tile"><img src="../../../../apps/web/public/assets/icons/play-console-dark-theme.webp" alt=""><h4>Dark Theme for Play Console</h4><span class="kind mono">Chrome extension</span><p>Switches on the dark palette that is already hidden inside Google Play Console. Unofficial, not affiliated with Google.</p><div class="links"><a class="btn small primary" href="#">Chrome Web Store</a><a class="btn small" href="#">Website</a></div></article>
+    </div>
+  </div>
+  <div class="aisle" id="wot">
+    <h3>World of Tanks mods <small>Free mods for the game client. Download the .wotmod file and drop it into your mods/&lt;game version&gt; folder.</small></h3>
+    <div class="tiles">
+      <article class="tile"><img src="../../../../apps/web/public/assets/icons/wot-autoloader-timer.webp" alt=""><h4>Autoloader Shell Timer</h4><span class="kind mono">World of Tanks mod</span><p>Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs <a href="https://github.com/CH4MPi/GUIFlash">GUIFlash</a>, which most modpacks include.</p><div class="links"><a class="btn small primary" href="#">Download</a><a class="btn small" href="#">Source</a></div></article>
+      <article class="tile"><img src="../../../../apps/web/public/assets/icons/wot-ping-distance.webp" alt=""><h4>Ping Distance</h4><span class="kind mono">World of Tanks mod</span><p>Keeps the distance visible on map position pings, not only while your crosshair is on them.</p><div class="links"><a class="btn small primary" href="#">Download</a><a class="btn small" href="#">Source</a></div></article>
+    </div>
+  </div>
+</div></section>
+
+<section class="band brand" id="building"><div class="wrap">
+  <div class="band-head"><div><h2>In development</h2><p>Being built and tested right now.</p></div><span class="tag building">Building · 3</span></div>
+  <div class="tiles">
+    <article class="tile"><img src="../../../../apps/web/public/assets/icons/urgent.webp" alt=""><h4>Urgent call</h4><span class="kind mono">Android app</span><p>Rings when the same number calls twice within a few minutes, even with your phone on silent or Do Not Disturb.</p><div class="links"><a class="btn small" href="#">Website</a></div></article>
+    <article class="tile"><img src="../../../../apps/web/public/assets/icons/kozica.webp" alt=""><h4>Kozica</h4><span class="kind mono">Android app</span><p>An offline trail map of the Polish mountains, drawn in the colours of the trail signposts.</p><div class="links"><a class="btn small" href="kozica.html">Website</a></div></article>
+    <article class="tile"><img src="../../../../apps/web/public/assets/icons/darek.webp" alt=""><h4>Darek</h4><span class="kind mono">Android app</span><p>A Polish voice assistant. Say <span lang="pl">"Darek, otwórz bramę"</span> and he calls your gate opener, with everything running offline on the phone.</p><div class="links"><a class="btn small" href="#">Website</a></div></article>
+  </div>
+</div></section>
+
+<section class="band" id="tools"><div class="wrap">
+  <div class="band-head"><div><h2>Tools</h2><p>Building blocks I use myself, free to reuse.</p></div><span class="tag oss">Open source · 3</span></div>
+  <div class="tiles">
+    <article class="tile"><img src="../../../../apps/web/public/assets/icons/android-starter.webp" alt=""><h4>Android starter</h4><span class="kind mono">Template</span><p>A starting point for offline Android apps: Compose skeleton, release pipeline, CI gates and device-driven UI checks.</p><div class="links"><a class="btn small" href="#">Source</a></div></article>
+    <article class="tile"><img src="../../../../apps/web/public/assets/icons/wot-mod-template.webp" alt=""><h4>WoT mod template</h4><span class="kind mono">Template</span><p>A starting point for World of Tanks mods: Python 2.7 build, tests against stubbed game modules, CI, and a release on every version tag.</p><div class="links"><a class="btn small" href="#">Source</a></div></article>
+    <article class="tile"><img src="../../../../apps/web/public/assets/icons/wgmods-cli.webp" alt=""><h4>wgmods CLI</h4><span class="kind mono">Command-line tool</span><p>Uploads a new World of Tanks mod version to the official Mod Hub (wgmods.net) from the terminal. Unofficial, not affiliated with Wargaming.</p><div class="links"><a class="btn small" href="#">Source</a></div></article>
+  </div>
+</div></section>
+
+<section class="band ink" id="ideas"><div class="wrap">
+  <div class="band-head"><div><h2>What should I build next?</h2><p>Small things I might build next. Yours could join them.</p></div><span class="tag idea">Ideas · 9</span></div>
+  <ul class="pins">
+    <li class="pin"><h4>Gmail dark mode</h4><div class="meta mono"><b>Chrome extension</b><span>7 Nov 2026</span></div><p>A proper dark mode for Gmail in the browser, for people who want the whole of it dark.</p></li>
+    <li class="pin"><h4>Monitor brightness presets</h4><div class="meta mono"><b>Tool</b><span>7 Nov 2026</span></div><p>A desktop app that keeps a few brightness presets for all your monitors, whatever their make, so you can switch every screen between them in a moment.</p></li>
+    <li class="pin"><h4>Woodworking planner</h4><div class="meta mono"><b>Tool</b><span>7 Nov 2026</span></div><p>A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.</p></li>
+    <li class="pin"><h4>Garage filter extras</h4><div class="meta mono"><b>WoT mod</b><span>7 Nov 2026</span></div><p>Adds the garage filters the game is missing: one to hide rented tanks, which always show today, and one to show only tanks that are not premium.</p></li>
+    <li class="pin"><h4>Darts scorer</h4><div class="meta mono"><b>Android app</b><span>7 Nov 2026</span></div><p>Counts your darts score from a few photos of the board taken from different angles, as few as it needs, so you don't have to tally the darts by hand.</p></li>
+    <li class="pin"><h4>Archery scorer</h4><div class="meta mono"><b>Android app</b><span>7 Nov 2026</span></div><p>Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don't have to tally the arrows by hand.</p></li>
+    <li class="pin"><h4>Plain light control</h4><div class="meta mono"><b>Android app</b><span>7 Nov 2026</span></div><p>One app in your own language for smart lights whose own app is only in Chinese: it reads each light's details, adds its settings and keeps them per device, so you can control them all in one place.</p></li>
+    <li class="pin"><h4>IOU tracker</h4><div class="meta mono"><b>Android app</b><span>7 Nov 2026</span></div><p>Keeps track of informal loans, like 100 zł lent to a friend or money borrowed from your shared savings, so you remember to pay it back.</p></li>
+    <li class="pin"><h4>Take your meds</h4><div class="meta mono"><b>Android app</b><span>7 Nov 2026</span></div><p>Reminds you to take your meds, with everything kept on your phone. No ads, no tracking.</p></li>
+  </ul>
+  <div class="send"><p><strong>Got a small problem an app could fix?</strong> Tell me what it is and who it affects. The best ideas end up on the workbench, and you'll see them here first. You can also write to <a href="mailto:ideas@maksforge.com">ideas@maksforge.com</a>.</p><a class="btn" href="mailto:ideas@maksforge.com">Send an idea</a></div>
+</div></section>
+
+<section class="band about" id="about"><div class="wrap">
+  <div>
+    <span class="tag plain">About me</span>
+    <h2>Hi, I'm Maksymilian.</h2>
+    <p>MaksForge is where I build the small tools I wish existed. Each one solves a single problem and never asks for an account or shows an ad. The Android apps also work without an internet connection.</p>
+    <p>Every app is free. If one of them makes your day a little easier, a tip helps me keep building, but it never unlocks anything.</p>
+    <ul class="facts"><li><b>5</b><span>apps, extensions and mods live</span></li><li><b>3</b><span>projects in development</span></li><li><b>0</b><span>ads or trackers</span></li></ul>
+  </div>
+  <div class="support" id="support">
+    <span class="stamp">Free</span>
+    <span class="tag plain">Support</span>
+    <h2>Like what I make?</h2>
+    <p>The apps stay free. Tips are optional and very appreciated.</p>
+    <div class="actions"><a class="btn tagc" href="https://buymeacoffee.com/maksforge">Buy me a coffee</a><a class="btn" href="https://paypal.me/maksymiliansredniawa">PayPal</a></div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="wrap"><span>© 2026 Maksymilian Średniawa · MaksForge</span><a href="https://github.com/maks-sredniawa">github.com/maks-sredniawa</a></div></footer>
+</body>
+</html>

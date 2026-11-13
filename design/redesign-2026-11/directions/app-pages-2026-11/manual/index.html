@@ -1,0 +1,697 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binky · MaksForge · Manual</title>
+<meta name="description" content="An Android app for keeping track of a bunny's health.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@200;300;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Self-hosted so no page asks a third party for anything; OFL licences sit beside the files. */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-italic.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-ext-italic.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-ext-400.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-400.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-ext-500.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-500.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fraunces has an optical-size axis and narrows as it grows, so its light fallback is tiered by viewport. */
+
+@media (max-width: 599px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 98%;
+    ascent-override: 99.8%;
+    descent-override: 26.02%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 94%;
+    ascent-override: 104.04%;
+    descent-override: 27.13%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1535px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 84%;
+    ascent-override: 116.43%;
+    descent-override: 30.36%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 81.5%;
+    ascent-override: 120%;
+    descent-override: 31.29%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@media (min-width: 1536px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 80%;
+    ascent-override: 122.25%;
+    descent-override: 31.88%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 80%;
+    ascent-override: 122.25%;
+    descent-override: 31.88%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@font-face {
+  font-family: 'Fraunces Georgia';
+  font-style: normal;
+  font-weight: 400 599;
+  src: local('Georgia');
+  size-adjust: 106%;
+  ascent-override: 92.26%;
+  descent-override: 24.06%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Fraunces Georgia';
+  font-style: normal;
+  font-weight: 600 900;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 95%;
+  ascent-override: 102.95%;
+  descent-override: 26.84%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: normal;
+  font-weight: 200 599;
+  src: local('Georgia');
+  size-adjust: 94.2%;
+  ascent-override: 78.03%;
+  descent-override: 28.13%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: normal;
+  font-weight: 600 800;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 86.4%;
+  ascent-override: 85.07%;
+  descent-override: 30.67%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: italic;
+  font-weight: 200 800;
+  src: local('Georgia Italic'), local('Georgia-Italic');
+  size-adjust: 88.8%;
+  ascent-override: 82.77%;
+  descent-override: 29.84%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@media (max-width: 599px) {
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 90%;
+    ascent-override: 108.67%;
+    descent-override: 28.33%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 400 599;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 99.2%;
+    ascent-override: 98.59%;
+    descent-override: 25.71%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 600 900;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+    size-adjust: 99.4%;
+    ascent-override: 98.39%;
+    descent-override: 25.65%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+    size-adjust: 87%;
+    ascent-override: 112.41%;
+    descent-override: 29.31%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: normal;
+    font-weight: 200 599;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 87.2%;
+    ascent-override: 84.29%;
+    descent-override: 30.39%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: normal;
+    font-weight: 600 800;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+    size-adjust: 87.7%;
+    ascent-override: 83.81%;
+    descent-override: 30.22%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: italic;
+    font-weight: 200 800;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+    size-adjust: 86.6%;
+    ascent-override: 84.87%;
+    descent-override: 30.6%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+/* The theme-color metas in apps/web/src/index.html and pages-theme repeat --mf-paper-1 and --mf-night-1. */
+:root {
+  --mf-brand-hue: 30;
+  --mf-brand-chroma: 0.14;
+
+  --mf-brand-deep: oklch(0.44 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-bright: oklch(0.67 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-wash: oklch(0.92 calc(var(--mf-brand-chroma) * 0.14) var(--mf-brand-hue));
+  --mf-brand-shadow: oklch(0.27 calc(var(--mf-brand-chroma) * 0.32) var(--mf-brand-hue));
+  --mf-brand-night: oklch(0.17 calc(var(--mf-brand-chroma) * 0.2) var(--mf-brand-hue));
+
+  --mf-paper-0: #fbf8f2;
+  --mf-paper-1: #f6f1e8;
+  --mf-paper-2: #ede6d8;
+  --mf-paper-3: #d9d1c3;
+  --mf-paper-4: #cfc6b4;
+  --mf-ink-1: #1c1a17;
+  --mf-ink-2: #4b4640;
+  --mf-ink-3: #675f55;
+
+  --mf-night-0: #0e0c0a;
+  --mf-night-1: #171411;
+  --mf-night-2: #1f1b17;
+  --mf-night-3: #272219;
+  --mf-night-4: #352e27;
+  --mf-moon-1: #efe7d9;
+  --mf-moon-2: #c3b8a7;
+  --mf-moon-3: #9d9384;
+
+  --mf-green-deep: #2d6a3e;
+  --mf-green-bright: #6fbf85;
+  --mf-amber-deep: #9a5118;
+  --mf-amber-bright: #e39a57;
+  --mf-blue-deep: #2b4f9e;
+  --mf-blue-bright: #86a4e8;
+  --mf-violet-deep: #6d3f8f;
+  --mf-violet-bright: #bb93d8;
+
+  --font-display:
+    'Fraunces', 'Fraunces Georgia', 'Fraunces Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-text:
+    'Newsreader', 'Newsreader Georgia', 'Newsreader Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --layout-max: 1760px;
+  --layout-gutter: 40px;
+  --layout-label: 220px;
+  --layout-gap: 36px;
+  --layout-prose: 68ch;
+  --layout-bar: 60px;
+}
+
+/* A .mf-paper element keeps the light map in dark mode too, like the pins on the dark ideas band. */
+:root,
+.mf-paper {
+  --color-bg: var(--mf-paper-1);
+  --color-surface: var(--mf-paper-0);
+  --color-surface-2: var(--mf-paper-2);
+  --color-ink: var(--mf-ink-1);
+  --color-ink-2: var(--mf-ink-2);
+  --color-ink-3: var(--mf-ink-3);
+  --color-rule: var(--mf-paper-3);
+  --color-rule-strong: var(--mf-ink-1);
+  --color-shade: var(--mf-paper-4);
+  --color-brand: var(--mf-brand-deep);
+  --color-on-brand: var(--mf-paper-0);
+  --color-brand-tint: var(--mf-brand-wash);
+  --color-band-tint: var(--mf-paper-2);
+  --color-band-dark: var(--mf-ink-1);
+  --color-on-band-dark: var(--mf-paper-1);
+  --color-live: var(--mf-green-deep);
+  --color-building: var(--mf-amber-deep);
+  --color-oss: var(--mf-blue-deep);
+  --color-idea: var(--mf-violet-deep);
+  --color-on-status: var(--mf-paper-0);
+
+  --shadow-paper: 3px 3px 0 var(--color-shade);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--mf-night-1);
+    --color-surface: var(--mf-night-2);
+    --color-surface-2: var(--mf-night-3);
+    --color-ink: var(--mf-moon-1);
+    --color-ink-2: var(--mf-moon-2);
+    --color-ink-3: var(--mf-moon-3);
+    --color-rule: var(--mf-night-4);
+    --color-rule-strong: var(--mf-moon-1);
+    --color-shade: var(--mf-night-0);
+    --color-brand: var(--mf-brand-bright);
+    --color-on-brand: var(--mf-brand-night);
+    --color-brand-tint: var(--mf-brand-shadow);
+    --color-band-tint: var(--mf-night-2);
+    --color-band-dark: var(--mf-night-0);
+    --color-on-band-dark: var(--mf-moon-1);
+    --color-live: var(--mf-green-bright);
+    --color-building: var(--mf-amber-bright);
+    --color-oss: var(--mf-blue-bright);
+    --color-idea: var(--mf-violet-bright);
+    --color-on-status: var(--mf-night-0);
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 1099px) {
+  :root {
+    --layout-gutter: 24px;
+    --layout-gap: 24px;
+  }
+}
+
+@media (max-width: 759px) {
+  :root {
+    --layout-gutter: 16px;
+    --layout-bar: 52px;
+  }
+}
+
+
+:root {
+  --font-display: 'IBM Plex Sans Condensed', 'Arial Narrow', sans-serif-condensed, sans-serif;
+  --font-text: 'IBM Plex Serif', Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--color-bg); color: var(--color-ink); font: 18px/1.6 var(--font-text); }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+h1, h2, h3, p, dl, dd, ul, ol { margin: 0; }
+.mono { font-family: var(--font-mono); font-size: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+.wrap { max-width: var(--layout-max); margin: 0 auto; padding: 0 var(--layout-gutter); }
+
+.topline { border-bottom: 1px solid var(--color-rule); }
+.topline .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 44px; }
+.crumb { display: flex; align-items: center; gap: 10px; color: var(--color-ink-3); }
+.crumb img { width: 22px; height: 22px; border-radius: 2px; }
+.crumb a { color: var(--color-ink); }
+.crumb a:hover, .topline nav a:hover { color: var(--color-brand); }
+.topline nav { display: flex; gap: 22px; }
+.topline nav .cta { color: var(--color-brand); }
+
+.cover { --color-bg: var(--color-band-dark); --color-ink: var(--color-on-band-dark); --color-ink-2: color-mix(in srgb, var(--color-on-band-dark) 80%, transparent); --color-ink-3: color-mix(in srgb, var(--color-on-band-dark) 62%, transparent); --color-rule: color-mix(in srgb, var(--color-on-band-dark) 22%, transparent); --color-rule-strong: var(--color-on-band-dark); --color-brand: var(--mf-brand-bright); --color-on-brand: var(--mf-brand-night); background: var(--color-band-dark); color: var(--color-ink); border-top: 8px solid var(--status); }
+.cover .wrap { display: grid; grid-template-columns: 220px minmax(0, 1fr) auto; gap: 24px 56px; align-items: end; padding-top: 52px; padding-bottom: 36px; }
+.cover .icon { position: relative; align-self: start; }
+.cover .icon img { width: 220px; height: 220px; border: 1px solid var(--color-rule); border-radius: 32px; }
+.stamp { position: absolute; top: -16px; right: -18px; z-index: 1; padding: 5px 12px; border: 3px double var(--color-brand); background: var(--color-bg); color: var(--color-brand); font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transform: rotate(8deg); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px 20px; color: var(--color-ink-3); }
+.tags .status { color: var(--status-on-dark); }
+.tags span::before { content: ''; display: inline-block; width: 8px; height: 8px; margin: 0 8px 1px 0; background: currentColor; }
+.cover h1 { margin: 14px 0 0 -0.03em; font-family: var(--font-display); font-size: clamp(64px, 8.6vw, 150px); font-weight: 700; letter-spacing: -0.015em; line-height: 0.88; text-transform: uppercase; }
+.standfirst { max-width: 40ch; margin-top: 22px; color: var(--color-ink-2); font-size: 24px; line-height: 1.35; }
+.actions { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; height: 46px; padding: 0 22px; border: 1px solid var(--color-rule-strong); color: var(--color-ink); font-family: var(--font-display); font-size: 17px; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; white-space: nowrap; }
+.btn:hover { background: color-mix(in srgb, var(--color-ink) 10%, transparent); }
+.btn--primary { background: var(--color-ink); color: var(--color-bg); }
+.btn--primary:hover { background: var(--color-ink-2); }
+.btn--brand { border-color: var(--color-brand); background: var(--color-brand); color: var(--color-on-brand); }
+.btn--brand:hover { opacity: 0.9; }
+.contents { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 32px; padding-top: 18px; border-top: 1px solid var(--color-rule); }
+.contents .label { color: var(--color-ink-3); }
+.contents a { display: inline-flex; align-items: baseline; gap: 8px; font-family: var(--font-display); font-size: 17px; font-weight: 500; }
+.contents a b { color: var(--color-brand); font-family: var(--font-mono); font-size: 12px; font-weight: 500; }
+.contents a:hover { color: var(--color-brand); }
+
+.row { border-top: 1px solid var(--color-rule-strong); }
+.row .wrap { display: grid; grid-template-columns: 96px 240px minmax(0, 1fr); gap: 0 40px; padding-top: 36px; padding-bottom: 44px; }
+.row .head { display: contents; }
+.num { color: var(--color-brand); font-family: var(--font-display); font-size: 76px; font-weight: 200; font-variant-numeric: tabular-nums; letter-spacing: -0.04em; line-height: 0.8; }
+.row h2 { padding-top: 4px; font-family: var(--font-display); font-size: 34px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.05; text-wrap: balance; }
+.body { max-width: 68ch; }
+.body p, .body ul { margin: 0 0 1em; color: var(--color-ink-2); }
+.body > :last-child { margin-bottom: 0; }
+.body strong { color: var(--color-ink); font-weight: 600; }
+.body ul { padding-left: 1.3em; list-style: none; }
+.body li { margin: 0.5em 0; }
+.body li::before { content: ''; display: inline-block; width: 8px; height: 8px; margin: 0 0.6em 2px -1.3em; background: var(--color-brand); }
+.body a { color: var(--color-brand); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--color-brand) 40%, transparent); text-underline-offset: 3px; }
+.body a:hover { text-decoration-color: var(--color-brand); }
+.body code { padding: 0.1em 0.35em; border: 1px solid var(--color-rule); background: var(--color-surface); font: 0.85em/1.5 var(--font-mono); }
+.body a.btn { color: var(--color-on-brand); text-decoration: none; }
+.lead { font-size: 23px; line-height: 1.45; }
+.glance .body { max-width: none; }
+.glance .body > p { max-width: 68ch; }
+.notes { display: none; color: var(--color-ink-3); font-size: 15px; font-style: italic; line-height: 1.5; }
+.notes a { text-decoration: underline; text-underline-offset: 3px; }
+.notes a:hover { color: var(--color-brand); }
+
+.glance { background: var(--color-surface); }
+.glance .wrap { padding-bottom: 36px; }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px 32px; margin-top: 28px; }
+.facts dt { padding-bottom: 6px; border-bottom: 1px solid var(--color-rule-strong); color: var(--color-ink-3); }
+.facts dd { margin-top: 8px; font-family: var(--font-display); font-size: 21px; font-weight: 600; line-height: 1.2; overflow-wrap: anywhere; }
+.facts dd.mono { font-family: var(--font-mono); font-size: 13px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.facts dd a { border-bottom: 1px solid var(--color-rule-strong); }
+.facts dd a:hover { color: var(--color-brand); border-color: var(--color-brand); }
+
+.tip h2 { font-weight: 300; }
+.tip .body p { font-size: 20px; }
+.tip .body .btn { margin-top: 4px; }
+.tip .back { color: var(--color-ink-3); font-style: italic; }
+.tip .back:hover { color: var(--color-brand); }
+
+.foot { border-top: 1px solid var(--color-rule-strong); }
+.foot .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 24px; padding-top: 18px; padding-bottom: 48px; color: var(--color-ink-3); }
+.foot a:hover { color: var(--color-brand); }
+
+@media (min-width: 1700px) {
+  .row .wrap { grid-template-columns: 120px 300px minmax(0, 1fr) 320px; gap: 0 48px; }
+  .notes { display: block; }
+  .body { max-width: 72ch; }
+  .cover .wrap { grid-template-columns: 260px minmax(0, 1fr) auto; }
+  .cover .icon img { width: 260px; height: 260px; }
+}
+
+@media (max-width: 1099px) {
+  .cover .wrap { grid-template-columns: 140px minmax(0, 1fr); align-items: start; }
+  .cover .icon img { width: 140px; height: 140px; border-radius: 22px; }
+  .actions { grid-column: 1 / -1; flex-flow: row wrap; }
+  .row .wrap { grid-template-columns: 72px minmax(0, 1fr); gap: 16px 28px; }
+  .num { font-size: 56px; }
+  .row .body, .row .notes { grid-column: 2; }
+}
+
+@media (max-width: 759px) {
+  .topline nav a:not(.cta) { display: none; }
+  .cover .wrap { grid-template-columns: minmax(0, 1fr); gap: 20px; padding-top: 32px; padding-bottom: 28px; }
+  .cover .icon img { width: 96px; height: 96px; border-radius: 16px; }
+  .cover .icon { width: 96px; }
+  .stamp { top: -12px; right: -16px; font-size: 13px; }
+  .cover h1 { font-size: 60px; }
+  .standfirst { font-size: 20px; }
+  .actions { flex-direction: column; }
+  .contents { flex-direction: column; gap: 8px; }
+  .row .wrap { grid-template-columns: minmax(0, 1fr); gap: 12px; padding-top: 26px; padding-bottom: 30px; }
+  .row .head { display: flex; align-items: baseline; gap: 14px; }
+  .num { font-size: 44px; }
+  .row h2 { padding-top: 0; font-size: 28px; }
+  .row .body, .row .notes { grid-column: 1; }
+  .lead { font-size: 20px; }
+  .facts { grid-template-columns: 1fr 1fr; }
+  .facts > div:has(.mono) { grid-column: 1 / -1; }
+  .foot .wrap { flex-direction: column; }
+}
+
+</style>
+</head>
+<body>
+<header class="topline"><div class="wrap">
+  <p class="crumb mono"><a href="/" aria-label="MaksForge home"><img src="../../../../../apps/web/public/assets/logo-mark-128.webp" alt="" width="22" height="22"></a><a href="/">MaksForge</a><span>/</span><a href="/#live">Apps</a><span>/</span><span>binky-app</span></p>
+  <nav class="mono" aria-label="Binky"><a href="/#live">All apps</a><a href="privacy-policy">Privacy</a><a href="https://github.com/maks-sredniawa/binky-app">Source</a><a class="cta" href="https://buymeacoffee.com/maksforge">Support</a></nav>
+</div></header>
+
+<section class="cover" style="--status: var(--color-live); --status-on-dark: var(--mf-green-bright)"><div class="wrap">
+  <div class="icon"><img src="../../../../../apps/web/public/assets/icons/binky.webp" alt="" width="220" height="220"><span class="stamp" aria-hidden="true">Free</span></div>
+  <div>
+    <p class="tags mono"><span class="status">Live</span><span>Android app</span><span>Free, no ads</span></p>
+    <h1>Binky</h1>
+    <p class="standfirst">An Android app for keeping track of a bunny's health.</p>
+  </div>
+  <div class="actions">
+<a class="btn btn--primary" href="https://play.google.com/store/apps/details?id=binky.bunny.and.rabbit.tracker">Google Play</a>
+<a class="btn" href="https://github.com/maks-sredniawa/binky-app">Source on GitHub</a>
+  </div>
+  <nav class="contents" aria-label="On this page"><span class="label mono">Contents</span><a href="#what-it-keeps-track-of"><b>01</b>What it keeps track of</a><a href="#a-record-not-a-diagnosis"><b>02</b>A record, not a diagnosis</a><a href="#your-data-stays-on-your-device"><b>03</b>Your data stays on your device</a><a href="#support"><b>04</b>Support</a><a href="#the-source"><b>05</b>The source</a></nav>
+</div></section>
+
+<main>
+  <section class="row glance" id="at-a-glance"><div class="wrap">
+    <div class="head"><span class="num">00</span><h2>At a glance</h2></div>
+    <div class="body"><p class="lead"><strong>An Android app for keeping track of a bunny's health.</strong> Free, ad-free, and entirely on your own phone: no account, no sign-up, no server, and nothing you record is ever uploaded anywhere.</p><p>Rabbits hide illness. By the time something is obvious it is often urgent, and the early signs — a little less weight, smaller droppings, a skipped meal — are easy to miss and easy to forget. Binky is somewhere to write them down, for one rabbit or several, so a change over weeks is visible instead of remembered.</p><dl class="facts">
+<div><dt>Status</dt><dd>Live</dd></div>
+<div><dt>Price</dt><dd>Free, no ads</dd></div>
+<div><dt>Package</dt><dd class="mono">binky.bunny.and.rabbit.tracker</dd></div>
+<div><dt>Source</dt><dd class="mono"><a href="https://github.com/maks-sredniawa/binky-app">maks-sredniawa/binky-app</a></dd></div>
+<div><dt>Privacy</dt><dd><a href="privacy-policy">Privacy policy</a></dd></div>
+    </dl></div>
+    <p class="notes">Nothing you record leaves the phone. The three things that happen outside the app are listed in the <a href="privacy-policy">privacy policy</a>.</p>
+  </div></section>
+<section class="row" id="what-it-keeps-track-of"><div class="wrap"><div class="head"><span class="num">01</span><h2>What it keeps track of</h2></div><div class="body">
+<ul>
+<li><strong>Weight over time</strong>, entered in grams because that is what scales show, charted against real dates rather than evenly spaced entries, with the change since last time always shown in grams.</li>
+<li><strong>Observations</strong> — droppings, cecotropes, appetite, mood, activity, water, symptoms, notes — logged when you notice something, not on a schedule.</li>
+<li><strong>Vet visits</strong>, and scans of the paperwork that comes back from them.</li>
+<li><strong>Medication courses</strong>, with every dose worked out and a reminder before each one, and a record of what was actually given.</li>
+<li><strong>Reminders for recurring care</strong> — nail trims, vaccinations, weigh-ins, or anything you name yourself.</li>
+<li><strong>Photos</strong>, because you will take them anyway.</li>
+</ul>
+<p>Rabbits that live together share a litter tray, so one observation can honestly cover all of them rather than pretending the droppings belonged to whichever name you tapped. A rabbit that has died or been rehomed is archived, never quietly deleted.</p>
+<p>Nine languages, switchable inside the app without changing your phone: English, Polski, Deutsch, Español, Français, Italiano, Português (Brasil), Čeština, Українська.</p></div></div></section>
+<section class="row" id="a-record-not-a-diagnosis"><div class="wrap"><div class="head"><span class="num">02</span><h2>A record, not a diagnosis</h2></div><div class="body">
+<p>Binky will not tell you whether your rabbit is ill, and it never infers a problem from missing entries. Silence means nobody looked, not that everything is fine. It shows you what you recorded, clearly enough to notice a change and take it to someone qualified. If you are worried about your rabbit, see a vet experienced with rabbits.</p></div></div></section>
+<section class="row" id="your-data-stays-on-your-device"><div class="wrap"><div class="head"><span class="num">03</span><h2>Your data stays on your device</h2></div><div class="body">
+<p>There is no backend to send anything to. Everything lives in the app's private storage on your phone, and backups are exported to storage you choose. The details, including the three things that happen outside the app because the operating system or Google does them, are in the <strong><a href="privacy-policy">Privacy Policy</a></strong>.</p></div></div></section>
+<section class="row" id="support"><div class="wrap"><div class="head"><span class="num">04</span><h2>Support</h2></div><div class="body">
+<p><strong><code>binky.support@maksforge.com</code></strong> — an ordinary mailbox that a person reads. Questions, bug reports and feature requests all go to the same place.</p></div></div></section>
+<section class="row" id="the-source"><div class="wrap"><div class="head"><span class="num">05</span><h2>The source</h2></div><div class="body">
+<p>The app is built in the open at <strong><a href="https://github.com/maks-sredniawa/binky-app">github.com/maks-sredniawa/binky-app</a></strong>, under the <a href="https://github.com/maks-sredniawa/binky-app/blob/main/LICENSE">PolyForm Noncommercial</a> licence: use it, change it, share it, build it for your own rabbits — for any noncommercial purpose.</p></div></div></section>
+  <section class="row tip"><div class="wrap">
+    <div class="head"><span class="num">06</span><h2>Like what I make?</h2></div>
+    <div class="body"><p>The apps stay free. Tips are optional and very appreciated.</p><a class="btn btn--brand" href="https://buymeacoffee.com/maksforge">Buy me a coffee</a></div>
+    <p class="notes"><a class="back" href="/#live">← All apps</a></p>
+  </div></section>
+</main>
+
+<footer class="foot"><div class="wrap mono">
+  <span>© 2026 Maksymilian Średniawa · <a href="/">MaksForge</a></span>
+  <span><a href="privacy-policy">Privacy policy</a> · <a href="https://buymeacoffee.com/maksforge">Buy me a coffee</a></span>
+</div></footer>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaksForge · Broadsheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,100..900,0..100,0..1;1,9..144,100..900,0..100,0..1&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f6f1e8; --surface: #fbf8f2; --surface-2: #ede6d8;
+  --ink: #1c1a17; --ink-2: #4b4640; --ink-3: #857d73;
+  --rule: #d9d1c3; --rule-strong: #1c1a17;
+  --brand: #8e2a1f; --brand-ink: #fbf8f2; --brand-tint: #f1e1dc;
+  --live: #2d6a3e; --building: #a4571a; --oss: #2b4f9e; --idea: #6d3f8f;
+  --font-display: 'Fraunces', Georgia, serif; --font-text: 'Newsreader', Georgia, serif;
+  --max: 1720px; --gutter: 40px; --col-gap: 36px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #171411; --surface: #1f1b17; --surface-2: #272219; --ink: #efe7d9; --ink-2: #c3b8a7; --ink-3: #8f8577;
+    --rule: #352e27; --rule-strong: #efe7d9; --brand: #e0705f; --brand-ink: #1b0b08; --brand-tint: #3a1e19;
+    --live: #6fbf85; --building: #e39a57; --oss: #86a4e8; --idea: #bb93d8; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #171411; --surface: #1f1b17; --surface-2: #272219; --ink: #efe7d9; --ink-2: #c3b8a7; --ink-3: #8f8577;
+  --rule: #352e27; --rule-strong: #efe7d9; --brand: #e0705f; --brand-ink: #1b0b08; --brand-tint: #3a1e19;
+  --live: #6fbf85; --building: #e39a57; --oss: #86a4e8; --idea: #bb93d8; color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 18px/1.5 var(--font-text); font-variation-settings: 'opsz' 18; -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+h1, h2, h3, h4, p, ul { margin: 0; }
+ul { padding: 0; list-style: none; }
+.page { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+.sc { font-family: var(--font-display); font-variation-settings: 'opsz' 12; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; }
+.display { font-family: var(--font-display); font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 1; font-weight: 300; letter-spacing: -0.01em; }
+
+/* masthead */
+.ears { display: flex; justify-content: space-between; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--rule); color: var(--ink-3); }
+.ears .sc { color: var(--ink-3); }
+.ears .sc b { color: var(--brand); }
+.masthead { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 24px; padding: 22px 0 18px; border-bottom: 3px double var(--rule-strong); }
+.masthead nav { display: flex; gap: 22px; }
+.masthead nav.r { justify-content: flex-end; }
+.masthead nav a { font-family: var(--font-display); font-variation-settings: 'opsz' 14; font-size: 15px; font-weight: 500; }
+.masthead nav a:hover { color: var(--brand); }
+.masthead .wordmark { display: flex; align-items: center; gap: 14px; }
+.masthead .wordmark img { width: 44px; height: 44px; border-radius: 4px; }
+.masthead .wordmark span { font-family: var(--font-display); font-variation-settings: 'opsz' 72, 'WONK' 1; font-size: 44px; font-weight: 600; letter-spacing: -0.02em; line-height: 1; }
+.folio { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--rule-strong); color: var(--ink-3); }
+
+/* lead */
+.lead { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: var(--col-gap); padding: 44px 0 40px; border-bottom: 1px solid var(--rule-strong); }
+.lead h1 { font-size: clamp(48px, 6.2vw, 108px); line-height: 0.98; max-width: 14ch; text-wrap: balance; }
+.lead h1 em { font-style: italic; font-weight: 400; color: var(--brand); }
+.lead .standfirst { margin-top: 26px; max-width: 58ch; font-size: 23px; line-height: 1.4; font-variation-settings: 'opsz' 24; color: var(--ink-2); }
+.lead .standfirst::first-letter { font-family: var(--font-display); }
+.lead .principles { display: flex; flex-wrap: wrap; gap: 6px 22px; margin-top: 22px; color: var(--ink-2); }
+.lead .principles .sc { color: var(--ink-2); }
+.lead .principles .sc::before { content: '— '; color: var(--brand); }
+.lead .actions { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+.listing { border-left: 1px solid var(--rule); padding-left: var(--col-gap); }
+.listing h2 { padding-bottom: 8px; border-bottom: 2px solid var(--rule-strong); margin-bottom: 4px; }
+.listing li { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: baseline; padding: 7px 0; border-bottom: 1px solid var(--rule); font-size: 16px; }
+.listing li .k { color: var(--ink-3); font-size: 14px; font-style: italic; }
+.listing li .st { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--c); font-weight: 600; }
+.listing li a:hover { color: var(--brand); }
+.listing .grp { padding: 14px 0 4px; color: var(--ink-3); }
+.st.live { --c: var(--live); } .st.building { --c: var(--building); } .st.oss { --c: var(--oss); } .st.idea { --c: var(--idea); }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; height: 42px; padding: 0 20px; border: 1px solid var(--rule-strong); border-radius: 0; font-family: var(--font-display); font-variation-settings: 'opsz' 14; font-weight: 600; font-size: 15px; color: var(--ink); background: transparent; white-space: nowrap; }
+.btn:hover { background: var(--surface-2); }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn.primary:hover { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.btn.brand { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.btn.small { height: 32px; padding: 0 12px; font-size: 13px; }
+
+/* sections */
+.sec { padding: 28px 0 36px; border-bottom: 1px solid var(--rule-strong); }
+.sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding-bottom: 10px; border-bottom: 1px solid var(--rule); margin-bottom: 24px; }
+.sec-head h2 { font-family: var(--font-display); font-variation-settings: 'opsz' 48, 'WONK' 1; font-size: 34px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.1; }
+.sec-head p { font-style: italic; color: var(--ink-3); font-size: 17px; }
+.sec-head .sc { color: var(--c, var(--ink-3)); }
+.sec-head .sc.live { --c: var(--live); } .sec-head .sc.building { --c: var(--building); } .sec-head .sc.oss { --c: var(--oss); } .sec-head .sc.idea { --c: var(--idea); }
+
+.cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
+.cols > .col { padding: 0 var(--col-gap); border-left: 1px solid var(--rule); }
+.cols > .col:first-child { padding-left: 0; border-left: 0; }
+.cols > .col:last-child { padding-right: 0; }
+.col > h3 { font-family: var(--font-display); font-variation-settings: 'opsz' 20; font-size: 19px; font-weight: 600; padding-bottom: 6px; border-bottom: 2px solid var(--rule-strong); }
+.col > h3 small { display: block; font-family: var(--font-text); font-style: italic; font-weight: 400; color: var(--ink-3); font-size: 15px; margin-top: 2px; }
+.story { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 16px; padding: 18px 0; border-bottom: 1px solid var(--rule); }
+.story:last-child { border-bottom: 0; }
+.story img { width: 56px; height: 56px; border-radius: 6px; }
+.story h4 { font-family: var(--font-display); font-variation-settings: 'opsz' 36, 'WONK' 1; font-size: 26px; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; }
+.story .dateline { margin: 4px 0 8px; color: var(--ink-3); }
+.story p { font-size: 17px; line-height: 1.45; color: var(--ink-2); }
+.story p a { text-decoration: underline; text-underline-offset: 3px; }
+.story .links { display: flex; gap: 18px; margin-top: 10px; }
+.story .links a { font-family: var(--font-display); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; border-bottom: 1px solid var(--rule-strong); padding-bottom: 1px; }
+.story .links a.go { color: var(--brand); border-color: var(--brand); }
+.story .links a:hover { color: var(--brand); }
+
+.twin { display: grid; grid-template-columns: 1fr 1fr; }
+.twin > div { padding: 0 var(--col-gap); }
+.twin > div:first-child { padding-left: 0; }
+.twin > div:last-child { border-left: 1px solid var(--rule); padding-right: 0; }
+.twin .sec-head { margin-bottom: 4px; }
+.twin .story { grid-template-columns: 56px minmax(0, 1fr); }
+.twin .story p, .twin .story .links { grid-column: 2; }
+@media (min-width: 1700px) { .twin .story { grid-template-columns: 64px minmax(0, 1.2fr) minmax(0, 2fr); align-items: start; } .twin .story img { width: 64px; height: 64px; } .twin .story .body { grid-column: 2; } .twin .story p { grid-column: 3; padding-top: 6px; } .twin .story .links { grid-column: 2 / -1; } }
+
+/* ideas as classifieds */
+.classifieds { columns: 3; column-gap: var(--col-gap); column-rule: 1px solid var(--rule); }
+.classifieds li { break-inside: avoid; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 16px; line-height: 1.45; color: var(--ink-2); }
+.classifieds li b { font-family: var(--font-display); font-variation-settings: 'opsz' 18; font-weight: 600; color: var(--ink); font-size: 17px; }
+.classifieds li i { color: var(--ink-3); }
+.classifieds li .d { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); margin-left: 6px; white-space: nowrap; }
+@media (min-width: 1700px) { .classifieds { columns: 4; } }
+.notice { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: center; margin-top: 28px; padding: 18px 22px; border-top: 3px double var(--rule-strong); border-bottom: 3px double var(--rule-strong); }
+.notice p { font-size: 17px; color: var(--ink-2); max-width: 80ch; }
+.notice p b { color: var(--ink); font-family: var(--font-display); font-variation-settings: 'opsz' 18; }
+.notice p a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* about + support */
+.about { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 1fr) minmax(0, 4fr); gap: var(--col-gap); padding: 36px 0 44px; }
+.about h2 { font-family: var(--font-display); font-variation-settings: 'opsz' 72, 'WONK' 1; font-size: 44px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.05; margin: 8px 0 18px; }
+.about p { color: var(--ink-2); max-width: 62ch; margin-bottom: 14px; font-size: 19px; }
+.about p.dc::first-letter { font-family: var(--font-display); font-variation-settings: 'opsz' 144; font-weight: 500; float: left; font-size: 74px; line-height: 0.78; padding: 8px 10px 0 0; color: var(--brand); }
+.facts { display: flex; gap: 32px; margin-top: 10px; }
+.facts li { display: flex; flex-direction: column; }
+.facts b { font-family: var(--font-display); font-variation-settings: 'opsz' 96; font-size: 54px; font-weight: 300; line-height: 1; color: var(--ink); }
+.facts span { font-size: 15px; color: var(--ink-3); font-style: italic; margin-top: 4px; max-width: 16ch; }
+.support { grid-column: 3; padding: 22px 24px; border: 1px solid var(--rule-strong); outline: 1px solid var(--rule-strong); outline-offset: 3px; align-self: start; }
+.support h2 { font-size: 32px; margin: 2px 0 10px; }
+.support p { font-size: 17px; margin-bottom: 18px; }
+.support .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+/* footer */
+.foot { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 18px 0 44px; border-top: 3px double var(--rule-strong); color: var(--ink-3); font-size: 14px; font-style: italic; }
+.foot a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* responsive */
+@media (max-width: 1099px) {
+  :root { --gutter: 24px; --col-gap: 24px; }
+  .masthead { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
+  .masthead nav, .masthead nav.r { justify-content: center; flex-wrap: wrap; gap: 12px 18px; }
+  .lead { grid-template-columns: 1fr; }
+  .listing { border-left: 0; padding-left: 0; }
+  .cols { grid-template-columns: 1fr; }
+  .cols > .col { padding: 0 0 20px; border-left: 0; }
+  .twin { grid-template-columns: 1fr; }
+  .twin > div:last-child { border-left: 0; padding: 20px 0 0; }
+  .classifieds { columns: 2; }
+  .about { grid-template-columns: 1fr; }
+  .support { grid-column: 1; }
+}
+@media (max-width: 760px) {
+  :root { --gutter: 16px; }
+  body { font-size: 17px; }
+  .ears { flex-direction: column; gap: 4px; }
+  .masthead .wordmark span { font-size: 34px; }
+  .masthead .wordmark img { width: 36px; height: 36px; }
+  .masthead nav a { font-size: 14px; }
+  .lead { padding: 28px 0 28px; gap: 28px; }
+  .lead h1 { font-size: 50px; }
+  .lead .standfirst { font-size: 19px; }
+  .sec-head { flex-direction: column; gap: 4px; }
+  .sec-head h2 { font-size: 28px; }
+  .story h4 { font-size: 22px; }
+  .classifieds { columns: 1; }
+  .notice { grid-template-columns: 1fr; }
+  .about h2 { font-size: 34px; }
+  .facts { gap: 20px; }
+  .facts b { font-size: 40px; }
+  .folio { flex-direction: column; gap: 2px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="ears">
+    <span class="sc">Independent apps &amp; tools · Est. 2024</span>
+    <span class="sc">Price: <b>0.00</b> · No ads · No tracking · No accounts</span>
+  </div>
+  <header class="masthead">
+    <nav><a href="#live">In production</a><a href="#building">In development</a><a href="#tools">Tools</a></nav>
+    <a class="wordmark" href="#"><img src="../../../../apps/web/public/assets/logo-mark-128.webp" alt=""><span>MaksForge</span></a>
+    <nav class="r"><a href="#ideas">Ideas</a><a href="#about">About</a><a href="#support">Support</a><a href="https://github.com/maks-sredniawa">GitHub</a></nav>
+  </header>
+  <div class="folio"><span class="sc">Vol. 1 · maksforge.com</span><span class="sc">Saturday, 7 November 2026</span><span class="sc">5 live · 3 in development · 9 ideas</span></div>
+
+  <section class="lead">
+    <div>
+      <h1 class="display">Small apps that do one thing <em>well.</em></h1>
+      <p class="standfirst">I build free Android apps, browser extensions and game mods that respect the people using them. The Android apps keep your data on your device.</p>
+      <ul class="principles"><li class="sc">No ads</li><li class="sc">No tracking</li><li class="sc">No accounts</li><li class="sc">Free</li></ul>
+      <div class="actions"><a class="btn primary" href="#live">See the apps</a><a class="btn" href="https://github.com/maks-sredniawa">GitHub</a></div>
+    </div>
+    <aside class="listing" aria-label="Index">
+      <h2 class="sc">Index</h2>
+      <ul>
+        <li class="grp sc">In production</li>
+        <li><a href="#live">Binky <span class="k">Android app</span></a><span class="st live">Live</span></li>
+        <li><a href="#live">Gloam <span class="k">Android app</span></a><span class="st live">Live</span></li>
+        <li><a href="#live">Dark Theme for Play Console <span class="k">Chrome</span></a><span class="st live">Live</span></li>
+        <li><a href="#live">Autoloader Shell Timer <span class="k">WoT mod</span></a><span class="st live">Live</span></li>
+        <li><a href="#live">Ping Distance <span class="k">WoT mod</span></a><span class="st live">Live</span></li>
+        <li class="grp sc">In development</li>
+        <li><a href="#building">Urgent call <span class="k">Android app</span></a><span class="st building">Building</span></li>
+        <li><a href="kozica.html">Kozica <span class="k">Android app</span></a><span class="st building">Building</span></li>
+        <li><a href="#building">Darek <span class="k">Android app</span></a><span class="st building">Building</span></li>
+        <li class="grp sc">Tools</li>
+        <li><a href="#tools">Android starter <span class="k">Template</span></a><span class="st oss">Source</span></li>
+        <li><a href="#tools">WoT mod template <span class="k">Template</span></a><span class="st oss">Source</span></li>
+        <li><a href="#tools">wgmods CLI <span class="k">CLI</span></a><span class="st oss">Source</span></li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="sec" id="live">
+    <div class="sec-head"><div><h2>In production</h2><p>Available now on Google Play, the Chrome Web Store and GitHub.</p></div><span class="sc live">Live · 5</span></div>
+    <div class="cols">
+      <div class="col">
+        <h3>Android apps <small>On Google Play. Your data stays on your device.</small></h3>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/binky.webp" alt=""><div class="body"><h4>Binky</h4><div class="dateline sc">Android app</div><p>Track your rabbit's weight, health and care, so a slow change over weeks shows up instead of being forgotten.</p><div class="links"><a class="go" href="#">Google Play</a><a href="#">Website</a></div></div></article>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/gloam.webp" alt=""><div class="body"><h4>Gloam</h4><div class="dateline sc">Android app</div><p>Dim the screen below Android's lowest brightness, for reading in the dark without the glare.</p><div class="links"><a class="go" href="#">Google Play</a><a href="#">Website</a></div></div></article>
+      </div>
+      <div class="col">
+        <h3>Chrome extensions <small>On the Chrome Web Store.</small></h3>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/play-console-dark-theme.webp" alt=""><div class="body"><h4>Dark Theme for Play Console</h4><div class="dateline sc">Chrome extension</div><p>Switches on the dark palette that is already hidden inside Google Play Console. Unofficial, not affiliated with Google.</p><div class="links"><a class="go" href="#">Chrome Web Store</a><a href="#">Website</a></div></div></article>
+      </div>
+      <div class="col">
+        <h3>World of Tanks mods <small>Free mods for the game client. Download the .wotmod file and drop it into your mods/&lt;game version&gt; folder.</small></h3>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/wot-autoloader-timer.webp" alt=""><div class="body"><h4>Autoloader Shell Timer</h4><div class="dateline sc">World of Tanks mod</div><p>Shows the load time of every shell in an autoreloader magazine, not just the one loading now. Needs <a href="https://github.com/CH4MPi/GUIFlash">GUIFlash</a>, which most modpacks include.</p><div class="links"><a class="go" href="#">Download</a><a href="#">Source</a></div></div></article>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/wot-ping-distance.webp" alt=""><div class="body"><h4>Ping Distance</h4><div class="dateline sc">World of Tanks mod</div><p>Keeps the distance visible on map position pings, not only while your crosshair is on them.</p><div class="links"><a class="go" href="#">Download</a><a href="#">Source</a></div></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec twin-sec">
+    <div class="twin">
+      <div id="building">
+        <div class="sec-head"><div><h2>In development</h2><p>Being built and tested right now.</p></div><span class="sc building">Building · 3</span></div>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/urgent.webp" alt=""><div class="body"><h4>Urgent call</h4><div class="dateline sc">Android app</div></div><p>Rings when the same number calls twice within a few minutes, even with your phone on silent or Do Not Disturb.</p><div class="links"><a href="#">Website</a></div></article>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/kozica.webp" alt=""><div class="body"><h4>Kozica</h4><div class="dateline sc">Android app</div></div><p>An offline trail map of the Polish mountains, drawn in the colours of the trail signposts.</p><div class="links"><a href="kozica.html">Website</a></div></article>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/darek.webp" alt=""><div class="body"><h4>Darek</h4><div class="dateline sc">Android app</div></div><p>A Polish voice assistant. Say <span lang="pl">"Darek, otwórz bramę"</span> and he calls your gate opener, with everything running offline on the phone.</p><div class="links"><a href="#">Website</a></div></article>
+      </div>
+      <div id="tools">
+        <div class="sec-head"><div><h2>Tools</h2><p>Building blocks I use myself, free to reuse.</p></div><span class="sc oss">Open source · 3</span></div>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/android-starter.webp" alt=""><div class="body"><h4>Android starter</h4><div class="dateline sc">Template</div></div><p>A starting point for offline Android apps: Compose skeleton, release pipeline, CI gates and device-driven UI checks.</p><div class="links"><a class="go" href="#">Source</a></div></article>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/wot-mod-template.webp" alt=""><div class="body"><h4>WoT mod template</h4><div class="dateline sc">Template</div></div><p>A starting point for World of Tanks mods: Python 2.7 build, tests against stubbed game modules, CI, and a release on every version tag.</p><div class="links"><a class="go" href="#">Source</a></div></article>
+        <article class="story"><img src="../../../../apps/web/public/assets/icons/wgmods-cli.webp" alt=""><div class="body"><h4>wgmods CLI</h4><div class="dateline sc">Command-line tool</div></div><p>Uploads a new World of Tanks mod version to the official Mod Hub (wgmods.net) from the terminal. Unofficial, not affiliated with Wargaming.</p><div class="links"><a class="go" href="#">Source</a></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="ideas">
+    <div class="sec-head"><div><h2>What should I build next?</h2><p>Small things I might build next. Yours could join them.</p></div><span class="sc idea">Ideas · 9</span></div>
+    <ul class="classifieds">
+      <li><b>Gmail dark mode</b> <i>(Chrome extension)</i> — A proper dark mode for Gmail in the browser, for people who want the whole of it dark.<span class="d">7 Nov</span></li>
+      <li><b>Monitor brightness presets</b> <i>(Tool)</i> — A desktop app that keeps a few brightness presets for all your monitors, whatever their make, so you can switch every screen between them in a moment.<span class="d">7 Nov</span></li>
+      <li><b>Woodworking planner</b> <i>(Tool)</i> — A web app to plan a woodworking project and see it as a 3D render, all worked out on your own computer, before you cut the first board.<span class="d">7 Nov</span></li>
+      <li><b>Garage filter extras</b> <i>(WoT mod)</i> — Adds the garage filters the game is missing: one to hide rented tanks, which always show today, and one to show only tanks that are not premium.<span class="d">7 Nov</span></li>
+      <li><b>Darts scorer</b> <i>(Android app)</i> — Counts your darts score from a few photos of the board taken from different angles, as few as it needs, so you don't have to tally the darts by hand.<span class="d">7 Nov</span></li>
+      <li><b>Archery scorer</b> <i>(Android app)</i> — Counts your archery score from a few photos of the target taken from different angles, as few as it needs, so you don't have to tally the arrows by hand.<span class="d">7 Nov</span></li>
+      <li><b>Plain light control</b> <i>(Android app)</i> — One app in your own language for smart lights whose own app is only in Chinese: it reads each light's details, adds its settings and keeps them per device, so you can control them all in one place.<span class="d">7 Nov</span></li>
+      <li><b>IOU tracker</b> <i>(Android app)</i> — Keeps track of informal loans, like 100 zł lent to a friend or money borrowed from your shared savings, so you remember to pay it back.<span class="d">7 Nov</span></li>
+      <li><b>Take your meds</b> <i>(Android app)</i> — Reminds you to take your meds, with everything kept on your phone. No ads, no tracking.<span class="d">7 Nov</span></li>
+    </ul>
+    <div class="notice"><p><b>Got a small problem an app could fix?</b> Tell me what it is and who it affects. The best ideas end up on the workbench, and you'll see them here first. You can also write to <a href="mailto:ideas@maksforge.com">ideas@maksforge.com</a>.</p><a class="btn brand" href="mailto:ideas@maksforge.com">Send an idea</a></div>
+  </section>
+
+  <section class="about" id="about">
+    <div>
+      <span class="sc" style="color:var(--brand)">About me</span>
+      <h2>Hi, I'm Maksymilian.</h2>
+      <p class="dc">MaksForge is where I build the small tools I wish existed. Each one solves a single problem and never asks for an account or shows an ad. The Android apps also work without an internet connection.</p>
+      <p>Every app is free. If one of them makes your day a little easier, a tip helps me keep building, but it never unlocks anything.</p>
+      <ul class="facts"><li><b>5</b><span>apps, extensions and mods live</span></li><li><b>3</b><span>projects in development</span></li><li><b>0</b><span>ads or trackers</span></li></ul>
+    </div>
+    <div></div>
+    <div class="support" id="support">
+      <span class="sc" style="color:var(--brand)">Notice</span>
+      <h2 class="display" style="font-weight:400">Like what I make?</h2>
+      <p>The apps stay free. Tips are optional and very appreciated.</p>
+      <div class="actions"><a class="btn brand" href="https://buymeacoffee.com/maksforge">Buy me a coffee</a><a class="btn" href="https://paypal.me/maksymiliansredniawa">PayPal</a></div>
+    </div>
+  </section>
+
+  <footer class="foot"><span>© 2026 Maksymilian Średniawa · MaksForge · Set in Fraunces and Newsreader.</span><a href="https://github.com/maks-sredniawa">github.com/maks-sredniawa</a></footer>
+</div>
+</body>
+</html>

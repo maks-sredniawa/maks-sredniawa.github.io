@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kozica · MaksForge · Dossier</title>
+<meta name="description" content="A hiking map of the Polish mountains that works with no signal at all.">
+<meta name="color-scheme" content="light dark">
+
+<style>
+/* Self-hosted so no page asks a third party for anything; OFL licences sit beside the files. */
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-ext-italic.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/fraunces-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-ext-normal.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-normal.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-ext-italic.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'Newsreader';
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/newsreader-latin-italic.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-ext-400.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-400.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-ext-500.woff2') format('woff2');
+  unicode-range:
+    U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329,
+    U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F,
+    U+A720-A7FF;
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../../../../../packages/ui/assets/fonts/plex-mono-latin-500.woff2') format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329,
+    U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* Fraunces has an optical-size axis and narrows as it grows, so its light fallback is tiered by viewport. */
+
+@media (max-width: 599px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 98%;
+    ascent-override: 99.8%;
+    descent-override: 26.02%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 94%;
+    ascent-override: 104.04%;
+    descent-override: 27.13%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@media (min-width: 600px) and (max-width: 1535px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 84%;
+    ascent-override: 116.43%;
+    descent-override: 30.36%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 81.5%;
+    ascent-override: 120%;
+    descent-override: 31.29%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@media (min-width: 1536px) {
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Georgia');
+    size-adjust: 80%;
+    ascent-override: 122.25%;
+    descent-override: 31.88%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Georgia';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Georgia Italic'), local('Georgia-Italic');
+    size-adjust: 80%;
+    ascent-override: 122.25%;
+    descent-override: 31.88%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+@font-face {
+  font-family: 'Fraunces Georgia';
+  font-style: normal;
+  font-weight: 400 599;
+  src: local('Georgia');
+  size-adjust: 106%;
+  ascent-override: 92.26%;
+  descent-override: 24.06%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Fraunces Georgia';
+  font-style: normal;
+  font-weight: 600 900;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 95%;
+  ascent-override: 102.95%;
+  descent-override: 26.84%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: normal;
+  font-weight: 200 599;
+  src: local('Georgia');
+  size-adjust: 94.2%;
+  ascent-override: 78.03%;
+  descent-override: 28.13%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: normal;
+  font-weight: 600 800;
+  src: local('Georgia Bold'), local('Georgia-Bold');
+  size-adjust: 86.4%;
+  ascent-override: 85.07%;
+  descent-override: 30.67%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@font-face {
+  font-family: 'Newsreader Georgia';
+  font-style: italic;
+  font-weight: 200 800;
+  src: local('Georgia Italic'), local('Georgia-Italic');
+  size-adjust: 88.8%;
+  ascent-override: 82.77%;
+  descent-override: 29.84%;
+  unicode-range:
+    U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+    U+2022, U+2026, U+20AC, U+2122;
+}
+
+@media (max-width: 599px) {
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 100 399;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 90%;
+    ascent-override: 108.67%;
+    descent-override: 28.33%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 400 599;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 99.2%;
+    ascent-override: 98.59%;
+    descent-override: 25.71%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: normal;
+    font-weight: 600 900;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+    size-adjust: 99.4%;
+    ascent-override: 98.39%;
+    descent-override: 25.65%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Fraunces Noto Serif';
+    font-style: italic;
+    font-weight: 100 900;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+    size-adjust: 87%;
+    ascent-override: 112.41%;
+    descent-override: 29.31%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: normal;
+    font-weight: 200 599;
+    src: local('Noto Serif'), local('NotoSerif-Regular'), local('Noto Serif Regular');
+    size-adjust: 87.2%;
+    ascent-override: 84.29%;
+    descent-override: 30.39%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: normal;
+    font-weight: 600 800;
+    src: local('Noto Serif Bold'), local('NotoSerif-Bold');
+    size-adjust: 87.7%;
+    ascent-override: 83.81%;
+    descent-override: 30.22%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+  @font-face {
+    font-family: 'Newsreader Noto Serif';
+    font-style: italic;
+    font-weight: 200 800;
+    src: local('Noto Serif Italic'), local('NotoSerif-Italic');
+    size-adjust: 86.6%;
+    ascent-override: 84.87%;
+    descent-override: 30.6%;
+    unicode-range:
+      U+0020-007E, U+00A0-0131, U+0134-0148, U+014A-017E, U+2013-2014, U+2018-201A, U+201C-201E,
+      U+2022, U+2026, U+20AC, U+2122;
+  }
+}
+
+/* The theme-color metas in apps/web/src/index.html and pages-theme repeat --mf-paper-1 and --mf-night-1. */
+:root {
+  --mf-brand-hue: 30;
+  --mf-brand-chroma: 0.14;
+
+  --mf-brand-deep: oklch(0.44 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-bright: oklch(0.67 var(--mf-brand-chroma) var(--mf-brand-hue));
+  --mf-brand-wash: oklch(0.92 calc(var(--mf-brand-chroma) * 0.14) var(--mf-brand-hue));
+  --mf-brand-shadow: oklch(0.27 calc(var(--mf-brand-chroma) * 0.32) var(--mf-brand-hue));
+  --mf-brand-night: oklch(0.17 calc(var(--mf-brand-chroma) * 0.2) var(--mf-brand-hue));
+
+  --mf-paper-0: #fbf8f2;
+  --mf-paper-1: #f6f1e8;
+  --mf-paper-2: #ede6d8;
+  --mf-paper-3: #d9d1c3;
+  --mf-paper-4: #cfc6b4;
+  --mf-ink-1: #1c1a17;
+  --mf-ink-2: #4b4640;
+  --mf-ink-3: #675f55;
+
+  --mf-night-0: #0e0c0a;
+  --mf-night-1: #171411;
+  --mf-night-2: #1f1b17;
+  --mf-night-3: #272219;
+  --mf-night-4: #352e27;
+  --mf-moon-1: #efe7d9;
+  --mf-moon-2: #c3b8a7;
+  --mf-moon-3: #9d9384;
+
+  --mf-green-deep: #2d6a3e;
+  --mf-green-bright: #6fbf85;
+  --mf-amber-deep: #9a5118;
+  --mf-amber-bright: #e39a57;
+  --mf-blue-deep: #2b4f9e;
+  --mf-blue-bright: #86a4e8;
+  --mf-violet-deep: #6d3f8f;
+  --mf-violet-bright: #bb93d8;
+
+  --font-display:
+    'Fraunces', 'Fraunces Georgia', 'Fraunces Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-text:
+    'Newsreader', 'Newsreader Georgia', 'Newsreader Noto Serif', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
+
+  --layout-max: 1760px;
+  --layout-gutter: 40px;
+  --layout-label: 220px;
+  --layout-gap: 36px;
+  --layout-prose: 68ch;
+  --layout-bar: 60px;
+}
+
+/* A .mf-paper element keeps the light map in dark mode too, like the pins on the dark ideas band. */
+:root,
+.mf-paper {
+  --color-bg: var(--mf-paper-1);
+  --color-surface: var(--mf-paper-0);
+  --color-surface-2: var(--mf-paper-2);
+  --color-ink: var(--mf-ink-1);
+  --color-ink-2: var(--mf-ink-2);
+  --color-ink-3: var(--mf-ink-3);
+  --color-rule: var(--mf-paper-3);
+  --color-rule-strong: var(--mf-ink-1);
+  --color-shade: var(--mf-paper-4);
+  --color-brand: var(--mf-brand-deep);
+  --color-on-brand: var(--mf-paper-0);
+  --color-brand-tint: var(--mf-brand-wash);
+  --color-band-tint: var(--mf-paper-2);
+  --color-band-dark: var(--mf-ink-1);
+  --color-on-band-dark: var(--mf-paper-1);
+  --color-live: var(--mf-green-deep);
+  --color-building: var(--mf-amber-deep);
+  --color-oss: var(--mf-blue-deep);
+  --color-idea: var(--mf-violet-deep);
+  --color-on-status: var(--mf-paper-0);
+
+  --shadow-paper: 3px 3px 0 var(--color-shade);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--mf-night-1);
+    --color-surface: var(--mf-night-2);
+    --color-surface-2: var(--mf-night-3);
+    --color-ink: var(--mf-moon-1);
+    --color-ink-2: var(--mf-moon-2);
+    --color-ink-3: var(--mf-moon-3);
+    --color-rule: var(--mf-night-4);
+    --color-rule-strong: var(--mf-moon-1);
+    --color-shade: var(--mf-night-0);
+    --color-brand: var(--mf-brand-bright);
+    --color-on-brand: var(--mf-brand-night);
+    --color-brand-tint: var(--mf-brand-shadow);
+    --color-band-tint: var(--mf-night-2);
+    --color-band-dark: var(--mf-night-0);
+    --color-on-band-dark: var(--mf-moon-1);
+    --color-live: var(--mf-green-bright);
+    --color-building: var(--mf-amber-bright);
+    --color-oss: var(--mf-blue-bright);
+    --color-idea: var(--mf-violet-bright);
+    --color-on-status: var(--mf-night-0);
+    color-scheme: dark;
+  }
+}
+
+@media (max-width: 1099px) {
+  :root {
+    --layout-gutter: 24px;
+    --layout-gap: 24px;
+  }
+}
+
+@media (max-width: 759px) {
+  :root {
+    --layout-gutter: 16px;
+    --layout-bar: 52px;
+  }
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--color-bg); color: var(--color-ink); font: 18px/1.55 var(--font-text); }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+h1, h2, h3, p, dl, dd, ul, ol { margin: 0; }
+.sc { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.mono { font-family: var(--font-mono); font-size: 14px; font-weight: 500; }
+
+.wrap { max-width: var(--layout-max); margin: 0 auto; padding: 0 var(--layout-gutter); }
+.page { display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 0 72px; }
+
+.rail { display: flex; flex-direction: column; padding: 28px 44px 56px 0; border-right: 1px solid var(--color-rule-strong); }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-variation-settings: 'WONK' 1; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+.brand img { width: 28px; height: 28px; border-radius: 3px; }
+.rail-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 14px; border-bottom: 1px solid var(--color-rule); }
+.rail-top .back { color: var(--color-ink-3); font-style: italic; font-size: 16px; }
+.rail-top .back:hover { color: var(--color-brand); }
+
+.plate { position: relative; display: grid; place-items: center; aspect-ratio: 1; margin-top: 28px; border: 1px solid var(--color-rule-strong); outline: 1px solid var(--color-rule-strong); outline-offset: 3px; background: var(--color-surface); background-image: radial-gradient(var(--color-rule) 1px, transparent 1px); background-size: 14px 14px; background-position: 7px 7px; }
+.plate img { width: 176px; height: 176px; border: 1px solid var(--color-rule-strong); border-radius: 26px; box-shadow: var(--shadow-paper); }
+.stamp { position: absolute; top: -14px; right: -12px; z-index: 1; padding: 5px 12px; border: 3px double var(--color-brand); background: var(--color-bg); color: var(--color-brand); font-family: var(--font-display); font-size: 18px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; transform: rotate(8deg); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 30px; }
+.tag { --tag-bg: var(--color-ink); --tag-fg: var(--color-bg); position: relative; display: inline-flex; align-items: center; height: 24px; padding: 0 10px 0 20px; background: var(--tag-bg); color: var(--tag-fg); clip-path: polygon(9px 0, 100% 0, 100% 100%, 9px 100%, 0 50%); font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap; }
+.tag::before { content: ''; position: absolute; top: 50%; left: 9px; width: 4px; height: 4px; margin-top: -2px; border-radius: 50%; background: var(--tag-fg); }
+.tag--live { --tag-bg: var(--color-live); --tag-fg: var(--color-on-status); }
+.tag--building { --tag-bg: var(--color-building); --tag-fg: var(--color-on-status); }
+.tag--oss { --tag-bg: var(--color-oss); --tag-fg: var(--color-on-status); }
+.tag--plain { --tag-bg: var(--color-surface-2); --tag-fg: var(--color-ink-2); }
+
+.rail h1 { margin-top: 12px; font-family: var(--font-display); font-variation-settings: 'SOFT' 30, 'WONK' 1; font-size: 60px; font-weight: 400; letter-spacing: -0.015em; line-height: 0.98; }
+.standfirst { margin-top: 12px; color: var(--color-ink-2); font-size: 20px; line-height: 1.4; }
+
+.actions { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 44px; padding: 0 20px; border: 1px solid var(--color-rule-strong); background: transparent; color: var(--color-ink); font-family: var(--font-display); font-size: 15px; font-weight: 600; white-space: nowrap; }
+.btn:hover { background: var(--color-surface-2); }
+.btn--primary { background: var(--color-ink); color: var(--color-bg); box-shadow: var(--shadow-paper); }
+.btn--primary:hover { background: var(--color-ink-2); }
+.btn--brand { border-color: var(--color-brand); background: var(--color-brand); color: var(--color-on-brand); box-shadow: var(--shadow-paper); }
+.btn--brand:hover { opacity: 0.9; }
+
+.facts { margin-top: 30px; border-top: 2px solid var(--color-rule-strong); }
+.facts > div { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 12px; padding: 9px 0; border-bottom: 1px solid var(--color-rule); }
+.facts dt { padding-top: 3px; color: var(--color-ink-3); }
+.facts dd { font-family: var(--font-display); font-size: 16px; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+.facts dd.mono { padding-top: 3px; font-size: 13px; }
+.facts dd a { border-bottom: 1px solid var(--color-rule-strong); }
+.facts dd a:hover { color: var(--color-brand); border-color: var(--color-brand); }
+
+.pinned { position: sticky; top: 24px; margin-top: 36px; }
+.toc h2 { padding-bottom: 8px; border-bottom: 2px solid var(--color-rule-strong); color: var(--color-ink-3); }
+.toc ol { padding: 0; list-style: none; counter-reset: toc; }
+.toc li a { display: grid; grid-template-columns: 3ch 1fr; gap: 10px; padding: 7px 0; border-bottom: 1px solid var(--color-rule); font-size: 16px; }
+.toc li a::before { counter-increment: toc; content: '§' counter(toc); padding-top: 2px; color: var(--color-brand); font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; }
+.toc li a:hover { color: var(--color-brand); }
+
+.notice { position: relative; margin-top: 28px; padding: 20px 22px; border: 1px solid var(--color-rule-strong); outline: 1px solid var(--color-rule-strong); outline-offset: 3px; background: var(--color-surface); }
+.notice .kicker { color: var(--color-brand); }
+.notice h2 { margin: 2px 0 8px; font-family: var(--font-display); font-variation-settings: 'WONK' 1; font-size: 28px; font-weight: 400; letter-spacing: -0.01em; line-height: 1.1; }
+.notice p { margin-bottom: 16px; color: var(--color-ink-2); font-size: 16px; }
+
+.rail-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 26px; color: var(--color-ink-3); }
+.rail-links a { border-bottom: 1px solid var(--color-rule-strong); }
+.rail-links a:hover { color: var(--color-brand); border-color: var(--color-brand); }
+
+.body { padding: 28px 0 72px; }
+.running { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-bottom: 14px; border-bottom: 1px solid var(--color-rule); color: var(--color-ink-3); }
+.running b { color: var(--color-brand); }
+
+.row { display: grid; grid-template-columns: 200px minmax(0, 66ch); gap: 0 44px; padding: 30px 0 14px; }
+.row + .row { border-top: 1px solid var(--color-rule-strong); }
+.row > .margin { position: sticky; top: 24px; align-self: start; }
+.row .num { display: block; margin-bottom: 6px; color: var(--color-brand); }
+.row h2 { font-family: var(--font-display); font-variation-settings: 'WONK' 1; font-size: 26px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.2; text-wrap: balance; }
+.row .kicker { color: var(--color-ink-3); }
+
+.lead { font-size: 23px; line-height: 1.45; color: var(--color-ink-2); }
+.lead strong { color: var(--color-ink); font-weight: 600; }
+.prose p, .prose ul { margin: 0 0 1em; color: var(--color-ink-2); }
+.prose > :last-child { margin-bottom: 0; }
+.prose strong { color: var(--color-ink); font-weight: 600; }
+.prose ul { padding-left: 1.4em; list-style: none; }
+.prose li { margin: 0.5em 0; }
+.prose li::before { content: '—'; margin: 0 0.5em 0 -1.4em; color: var(--color-brand); }
+.prose a { color: var(--color-brand); text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--color-brand) 40%, transparent); text-underline-offset: 3px; }
+.prose a:hover { text-decoration-color: var(--color-brand); }
+.prose code { padding: 0.1em 0.35em; border: 1px solid var(--color-rule); background: var(--color-surface); font: 0.85em/1.5 var(--font-mono); }
+
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; padding: 18px 0 48px; border-top: 3px double var(--color-rule-strong); color: var(--color-ink-3); font-size: 14px; font-style: italic; }
+.foot a { text-decoration: underline; text-underline-offset: 3px; }
+.foot a:hover { color: var(--color-brand); }
+
+@media (min-width: 1700px) {
+  .page { grid-template-columns: 440px minmax(0, 1fr); gap: 0 110px; }
+  .plate img { width: 208px; height: 208px; }
+  .rail h1 { font-size: 68px; }
+  .row { grid-template-columns: 280px minmax(0, 70ch); gap: 0 56px; }
+}
+
+@media (max-width: 1099px) {
+  .page { grid-template-columns: minmax(0, 1fr); }
+  .rail { padding: 20px 0 28px; border-right: 0; border-bottom: 1px solid var(--color-rule-strong); }
+  .rail-main { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 0 32px; align-items: start; }
+  .plate { margin-top: 26px; }
+  .plate img { width: 128px; height: 128px; border-radius: 20px; }
+  .rail h1 { font-size: 52px; }
+  .actions { flex-flow: row wrap; }
+  .facts { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 0 32px; }
+  .pinned { position: static; margin-top: 24px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 32px; align-items: start; }
+  .notice { margin-top: 0; }
+  .rail-links { grid-column: 1 / -1; }
+  .body { padding-top: 20px; }
+  .row { grid-template-columns: minmax(0, 1fr); gap: 10px 0; }
+  .row > .margin { position: static; }
+  .row .num { display: inline; margin-right: 10px; }
+}
+
+@media (max-width: 759px) {
+  .rail-main { grid-template-columns: minmax(0, 1fr); }
+  .plate { width: 150px; aspect-ratio: 1; margin-top: 22px; }
+  .plate img { width: 96px; height: 96px; border-radius: 16px; }
+  .stamp { top: -12px; right: -14px; font-size: 13px; }
+  .rail h1 { font-size: 46px; }
+  .standfirst { font-size: 18px; }
+  .facts { grid-template-columns: 1fr; }
+  .pinned { grid-template-columns: minmax(0, 1fr); }
+  .notice { margin-top: 22px; }
+  .lead { font-size: 20px; }
+  .row h2 { font-size: 24px; }
+  .foot { flex-direction: column; }
+}
+
+</style>
+</head>
+<body>
+<div class="wrap page">
+  <aside class="rail">
+    <div class="rail-top">
+      <a class="brand" href="/" aria-label="MaksForge home"><img src="../../../../../apps/web/public/assets/logo-mark-128.webp" alt="" width="28" height="28"><span>MaksForge</span></a>
+      <a class="back" href="/#live">← All apps</a>
+    </div>
+    <div class="rail-main">
+      <div class="plate">
+        <img src="../../../../../apps/web/public/assets/icons/kozica.webp" alt="" width="176" height="176">
+        <span class="stamp" aria-hidden="true">Free</span>
+      </div>
+      <div>
+        <div class="tags"><span class="tag tag--building">In development</span><span class="tag tag--plain">Android app</span></div>
+        <h1>Kozica</h1>
+        <p class="standfirst">A hiking map of the Polish mountains that works with no signal at all.</p>
+        <div class="actions">
+<a class="btn btn--primary" href="https://github.com/maks-sredniawa/kozica">Source on GitHub</a>
+        </div>
+      </div>
+      <dl class="facts">
+<div><dt>Status</dt><dd>In development</dd></div>
+<div><dt>Price</dt><dd>Free, no ads</dd></div>
+<div><dt>Source</dt><dd class="mono"><a href="https://github.com/maks-sredniawa/kozica">maks-sredniawa/kozica</a></dd></div>
+<div><dt>Privacy</dt><dd><a href="privacy-policy">Privacy policy</a></dd></div>
+      </dl>
+    </div>
+    <div class="pinned">
+      <nav class="toc" aria-label="On this page">
+        <h2 class="sc">Contents</h2>
+        <ol>
+<li><a href="#what-it-does">What it does</a></li>
+<li><a href="#what-it-does-not-do">What it does not do</a></li>
+<li><a href="#your-data-stays-on-your-device">Your data stays on your device</a></li>
+<li><a href="#support">Support</a></li>
+<li><a href="#the-source">The source</a></li>
+        </ol>
+      </nav>
+      <aside class="notice">
+        <p class="kicker sc">Notice</p>
+        <h2>Like what I make?</h2>
+        <p>The apps stay free. Tips are optional and very appreciated.</p>
+        <a class="btn btn--brand" href="https://buymeacoffee.com/maksforge">Buy me a coffee</a>
+      </aside>
+      <p class="rail-links sc"><a href="privacy-policy">Privacy policy</a><a href="https://github.com/maks-sredniawa/kozica">Source</a><a href="https://buymeacoffee.com/maksforge">Support</a></p>
+    </div>
+  </aside>
+
+  <main class="body">
+    <p class="running sc"><span>maksforge.com <b>/</b> kozica</span><span>Android app · In development · Free</span></p>
+    <article>
+      <div class="row">
+        <div class="margin"><span class="kicker sc">In brief</span></div>
+        <div class="prose"><p class="lead"><strong>A hiking map of the Polish mountains that works with no signal at all.</strong> Free, ad-free, and entirely on your own phone: no account, no sign-up, and no permission to use the internet.</p></div>
+      </div>
+<section class="row" id="what-it-does"><div class="margin"><span class="num sc">§1</span><h2>What it does</h2></div><div class="prose">
+<ul>
+<li><strong>Trails in their signpost colours</strong> — red, blue, green, yellow and black, each with its symbol along the line, and two trails on one path drawn side by side so you can tell which one you are on.</li>
+<li><strong>Everything else you look for on the way</strong> — paths, huts and shelters, peaks, passes, springs, viewpoints, car parks and stops, national-park boundaries and the state border, in a light and a dark style.</li>
+<li><strong>Where you are</strong> — one tap shows your position, its accuracy and the direction you are facing, read on the phone and never sent anywhere.</li>
+</ul></div></section>
+<section class="row" id="what-it-does-not-do"><div class="margin"><span class="num sc">§2</span><h2>What it does not do</h2></div><div class="prose">
+<p>It draws the trails as OpenStreetMap records them, at the date shown on the map. It does not know about closures, avalanche warnings, the weather or the state of a path today. Check the national park's announcements and the forecast before you go, and turn back when the mountain says so.</p></div></section>
+<section class="row" id="your-data-stays-on-your-device"><div class="margin"><span class="num sc">§3</span><h2>Your data stays on your device</h2></div><div class="prose">
+<p>There is no backend to send anything to. Everything lives in the app's private storage on your phone. The details are in the <strong><a href="privacy-policy">Privacy Policy</a></strong>.</p></div></section>
+<section class="row" id="support"><div class="margin"><span class="num sc">§4</span><h2>Support</h2></div><div class="prose">
+<p><strong>kozica.support@maksforge.com</strong> — an ordinary mailbox that a person reads.</p></div></section>
+<section class="row" id="the-source"><div class="margin"><span class="num sc">§5</span><h2>The source</h2></div><div class="prose">
+<p>Built in the open at <strong><a href="https://github.com/maks-sredniawa/kozica">maks-sredniawa/kozica</a></strong>. Map data © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>, available under the Open Database License.</p></div></section>
+    </article>
+  </main>
+</div>
+<footer class="wrap"><div class="foot">
+  <span>© 2026 Maksymilian Średniawa · <a href="/">MaksForge</a></span>
+  <span><a href="privacy-policy">Privacy policy</a> · <a href="https://buymeacoffee.com/maksforge">Buy me a coffee</a></span>
+</div></footer>
+</body>
+</html>
