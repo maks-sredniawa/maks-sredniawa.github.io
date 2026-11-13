@@ -459,6 +459,14 @@
   }
 }
 
+@media (max-width: 599px) {
+  .topbar nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    gap: 8px 24px;
+  }
+}
+
 .not-found {
   padding-top: 48px;
   padding-bottom: 120px;
