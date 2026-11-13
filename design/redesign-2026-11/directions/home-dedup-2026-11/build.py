@@ -5,8 +5,9 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 STYLES = REPO / 'packages/ui/styles'
-ASSETS = 'file://' + str(REPO / 'apps/web/public/assets')
-FONTS = 'file://' + str(REPO / 'packages/ui/assets/fonts')
+REPO_FROM_PAGE = '../../../../..'
+ASSETS = f'{REPO_FROM_PAGE}/apps/web/public/assets'
+FONTS = f'{REPO_FROM_PAGE}/packages/ui/assets/fonts'
 GH = 'https://github.com/maks-sredniawa'
 SITE = 'https://maksforge.com'
 MAILTO = 'mailto:ideas@maksforge.com'
@@ -214,7 +215,6 @@ SHARED_CSS = '''
 }
 '''
 
-# ---------------------------------------------------------------- A: ledger
 
 A_CSS = '''
 .a-intro { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: var(--layout-gap); padding: 40px 0 34px; }
@@ -305,7 +305,6 @@ def build_a():
 {footer()}'''
 
 
-# --------------------------------------------------------------- B: shelves
 
 B_CSS = '''
 .b-hero { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); align-items: end; gap: var(--layout-gap); padding: 44px 0 40px; }
@@ -419,7 +418,6 @@ def build_b():
 <script>{B_JS}</script>'''
 
 
-# --------------------------------------------------------------- C: counter
 
 C_CSS = '''
 .c-page { display: grid; grid-template-columns: minmax(0, 400px) minmax(0, 1fr); gap: 0; max-width: var(--layout-max); margin: 0 auto; padding: 0 var(--layout-gutter); }

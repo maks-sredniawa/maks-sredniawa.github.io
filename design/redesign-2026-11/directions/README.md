@@ -1,14 +1,14 @@
 # maksforge.com redesign: research, directions, tokens, components
 
-Status: proposals only. Nothing in a repo was edited.
+Status: proposals, archived for reference. Nothing here is built or deployed; the site changes that came out of them went in through their own PRs.
+
+Screenshots (`*.png`) were not kept in this archive; the file names below are what `shot.mjs` writes. Re-render them from the repo root with `node design/redesign-2026-11/shot.mjs "$PWD"/<html files…>`. It needs `python3` with Pillow to cap long shots at 8000px; without it, it says so and keeps them at full size. New shots use today's fonts and icons from this repo, so they can differ a little from what was reviewed.
 
 Folders beside this file:
 
-Screenshots (`*.png`) were not kept in this archive; the file names below are what `shot.mjs` writes. Re-render them from the repo root with `node design/redesign-2026-11/shot.mjs "$PWD"/<html files…>`. New shots use today's fonts and icons from this repo, so they can differ a little from what was reviewed.
-
 - `workbench/`, `broadsheet/`, `shopfloor/`: one folder per direction, each with `home.html`, `kozica.html` and, when rendered, screenshots (`home-1440.png`, `home-1920.png`, `home-390.png`, `home-1440-dark.png`, `kozica-*.png`). The mockups are self-contained (inline CSS, Google Fonts link, icons referenced by relative path into this repo).
 - `tagged-paper/`, `forge-gazette/`: the two hybrid variants in section 8.
-- Later rounds, not described below, each with its mockups and the script that generated them: `home-dedup-2026-11/` (de-duplicated home page: counter, ledger, shelves), `app-pages-2026-11/` (app pages: dossier, leaflet, manual), `app-pages-ledger-2026-11/` (app pages that follow the Ledger home page: band, fold, row) and `studio-contact-2026-11/` (where the MaksForge Studio contact sits on the home page: band, footer-line, third-column).
+- Later rounds, not described below, each with its mockups and the script that generated them: `home-dedup-2026-11/` (de-duplicated home page: counter, ledger, shelves), `app-pages-2026-11/` (app pages: dossier, leaflet, manual), `app-pages-ledger-2026-11/` (app pages that follow the Ledger home page: band, fold, row) and `studio-contact-2026-11/` (where the MaksForge Studio contact sits on the home page: band, footer-line, third-column). A re-run `build.py` inlines today's CSS from `packages/ui/` and `apps/web/`, so its output differs from the committed mockups wherever that CSS has changed since. `app-pages-ledger-2026-11/build.py` also reads each app's `docs/` from sibling clones under `~/repos/maks-sredniawa/` (`kozica`, `gloam`, `binky-app`) and runs with `uv run --with markdown build.py`.
 - `../current/`: screenshots of the site before the redesign, cited below by file name and not kept; render them by building a pre-redesign commit of this repo and shooting it. `../current/2026-11-11/live-shot.mjs` shoots the live home page.
 
 ---
@@ -144,7 +144,7 @@ Each folder holds `home.html`, `kozica.html`; `shot.mjs` renders the screenshots
 - `design/redesign-2026-11/directions/broadsheet/`
 - `design/redesign-2026-11/directions/shopfloor/`
 
-The mockups are plain HTML with inline CSS, a Google Fonts link, and icons referenced by relative path into `apps/web/public/assets/icons/`. Shoot from the repo root with `node design/redesign-2026-11/shot.mjs "$PWD"/<html files…>` (it takes absolute paths). Issues found and fixed in review: sticky rail rule stopping at viewport height (Workbench), 4-column ideas orphan at 1920 (Workbench), summary falling into the icon column in the two-up block (Broadsheet), unreadable tiles inside coloured bands and a 5-column shelf orphan (Shop floor).
+The mockups are plain HTML with inline CSS, a Google Fonts link, and icons referenced by relative path into `apps/web/public/assets/icons/`. Shoot from the repo root with `node design/redesign-2026-11/shot.mjs "$PWD"/<html files…>` (it takes absolute paths, and caps long shots only when `python3` has Pillow). Issues found and fixed in review: sticky rail rule stopping at viewport height (Workbench), 4-column ideas orphan at 1920 (Workbench), summary falling into the icon column in the two-up block (Broadsheet), unreadable tiles inside coloured bands and a 5-column shelf orphan (Shop floor).
 
 ---
 

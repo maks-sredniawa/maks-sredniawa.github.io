@@ -4,9 +4,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 HOME_REPO = HERE.parents[3]
-ICONS = f'file://{HOME_REPO}/apps/web/public/assets/icons'
-LOGO = f'file://{HOME_REPO}/apps/web/public/assets/logo-mark-128.webp'
-FONT_DIR = f'file://{HOME_REPO}/packages/ui/assets/fonts'
+REPO_FROM_PAGE = '../../../../..'
+ICONS = f'{REPO_FROM_PAGE}/apps/web/public/assets/icons'
+LOGO = f'{REPO_FROM_PAGE}/apps/web/public/assets/logo-mark-128.webp'
+FONT_DIR = f'{REPO_FROM_PAGE}/packages/ui/assets/fonts'
 
 TOKENS = (HOME_REPO / 'packages/ui/styles/tokens.css').read_text()
 FONTS = (HOME_REPO / 'packages/ui/styles/fonts.css').read_text().replace("url('/assets/fonts/", f"url('{FONT_DIR}/")
@@ -117,7 +118,6 @@ def head(app, title_suffix, extra_css, extra_links=''):
 </head>"""
 
 
-# ---------------------------------------------------------------- A. Dossier
 DOSSIER_CSS = """
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -325,7 +325,6 @@ def render_dossier(app):
         buttons=store_buttons(app, 'btn btn--primary', 'btn'), facts=facts(app), toc=toc, sections=sections, **{k: v for k, v in app.items() if isinstance(v, str) and k != 'icon'})
 
 
-# ---------------------------------------------------------------- B. Manual (IBM Plex)
 MANUAL_LINKS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@200;300;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap">'
 
 MANUAL_CSS = """
@@ -514,7 +513,6 @@ def render_manual(app):
         **{k: v for k, v in app.items() if isinstance(v, str) and k != 'icon'})
 
 
-# ---------------------------------------------------------------- C. Leaflet (Alegreya)
 LEAFLET_LINKS = '<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,500;0,700;1,400;1,500&family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Alegreya+Sans+SC:wght@500;700&display=swap">'
 
 LEAFLET_CSS = """

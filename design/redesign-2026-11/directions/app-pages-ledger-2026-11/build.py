@@ -9,8 +9,9 @@ HERE = Path(__file__).resolve().parent
 REPO = HERE.parents[3]
 REPOS = REPO.parent
 STYLES = REPO / 'packages/ui/styles'
-ASSETS = 'file://' + str(REPO / 'apps/web/public/assets')
-FONTS = 'file://' + str(REPO / 'packages/ui/assets/fonts')
+REPO_FROM_PAGE = '../../../../..'
+ASSETS = f'{REPO_FROM_PAGE}/apps/web/public/assets'
+FONTS = f'{REPO_FROM_PAGE}/packages/ui/assets/fonts'
 GH = 'https://github.com/maks-sredniawa'
 BMC = 'https://buymeacoffee.com/maksforge'
 PAYPAL = 'https://paypal.me/maksymiliansredniawa'
@@ -158,7 +159,6 @@ SHARED_CSS = '''
 }
 '''
 
-# ------------------------------------------------------------------ A: row
 
 ROW_CSS = '''
 .r-tabs { display: flex; flex-wrap: wrap; gap: 0 2px; margin-top: 26px; border-bottom: 2px solid var(--color-rule-strong); font-family: var(--font-display); font-size: 15px; font-weight: 600; }
@@ -248,7 +248,6 @@ def build_row(app, page, is_home):
 {footer()}'''
 
 
-# ----------------------------------------------------------------- B: fold
 
 FOLD_CSS = '''
 .f-crumb { display: flex; flex-wrap: wrap; gap: 4px 10px; padding-top: 20px; color: var(--color-ink-3); }
@@ -346,7 +345,6 @@ def build_fold(app, page, is_home):
 {footer()}'''
 
 
-# ----------------------------------------------------------------- C: band
 
 BAND_CSS = '''
 .d-top { border-bottom: 0; }
