@@ -462,8 +462,13 @@
 @media (max-width: 599px) {
   .topbar nav {
     display: grid;
-    grid-template-columns: repeat(3, max-content);
+    grid-template-columns: repeat(3, minmax(0, max-content));
     gap: 8px 24px;
+  }
+
+  .topbar nav a {
+    overflow-wrap: anywhere;
+    hyphens: auto;
   }
 }
 
