@@ -514,6 +514,10 @@
           <context context-type="linenumber">11,12</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="7922989125096435449" datatype="html">
+        <source>Contact</source>
+        <target>Contato</target>
+      </trans-unit>
       <trans-unit id="2288513108450439427" datatype="html">
         <source>Support</source>
         <target>Apoio</target>
