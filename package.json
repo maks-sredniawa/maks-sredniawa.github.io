@@ -35,7 +35,7 @@
     "fastify": "^5.12.8",
     "rxjs": "~7.8.2",
     "tslib": "^2.9.1",
-    "typebox": "^1.4.5"
+    "typebox": "^1.4.6"
   },
   "devDependencies": {
     "@analogjs/vite-plugin-angular": "~2.9.6",
@@ -63,16 +63,16 @@
     "@nx/vitest": "24.0.5",
     "@nx/web": "24.0.5",
     "@nx/workspace": "24.0.5",
-    "@oxc-project/runtime": "^0.115.0",
+    "@oxc-project/runtime": "^0.158.0",
     "@playwright/test": "1.65.0",
     "@schematics/angular": "~22.2.6",
-    "@storybook/addon-a11y": "^10.6.6",
-    "@storybook/addon-docs": "^10.6.6",
-    "@storybook/angular": "^10.6.6",
+    "@storybook/addon-a11y": "^10.6.7",
+    "@storybook/addon-docs": "^10.6.7",
+    "@storybook/angular": "^10.6.7",
     "@swc/helpers": "~0.5.24",
     "@tailwindcss/postcss": "^4.3.5",
     "@types/node": "^26.6.6",
-    "@typescript-eslint/utils": "^8.72.1",
+    "@typescript-eslint/utils": "^8.72.2",
     "@vitest/coverage-v8": "^5.1.0",
     "@vitest/ui": "^5.1.0",
     "angular-eslint": "^22.6.0",
@@ -83,15 +83,15 @@
     "jsdom": "^31.0.0",
     "nx": "24.0.5",
     "postcss": "^8.5.32",
-    "prettier": "^3.9.10",
-    "storybook": "^10.6.6",
+    "prettier": "^3.10.0",
+    "storybook": "^10.6.7",
     "tailwindcss": "^4.3.5",
-    "ts-node": "10.9.1",
+    "ts-node": "10.9.2",
     "tsx": "^4.23.15",
     "typescript": "~6.0.3",
-    "typescript-eslint": "^8.72.1",
-    "vite": "^8.3.6",
+    "typescript-eslint": "^8.72.2",
+    "vite": "^8.3.8",
     "vitest": "^5.1.0",
-    "wrangler": "^4.158.0"
+    "wrangler": "^4.160.1"
   }
 }
