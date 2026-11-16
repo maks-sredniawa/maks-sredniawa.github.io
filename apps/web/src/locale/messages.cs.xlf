@@ -58,6 +58,22 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="3533099130564923742" datatype="html">
+        <source>Tank setup simulator</source>
+        <target>Simulátor nastavení tanku</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="512808075542034881" datatype="html">
+        <source>Simulates a World of Tanks tank with the crew skills and equipment you pick, and shows the real values the game&apos;s own stats leave out or get wrong, like how long the gun takes to fully aim again after a shot and how its magazine reloads.</source>
+        <target>Simuluje tank z World of Tanks s vybranými dovednostmi posádky a vybavením a ukáže skutečné hodnoty, které vlastní statistiky hry vynechávají nebo uvádějí špatně, například jak dlouho dělu po výstřelu trvá, než se znovu plně zamíří, a jak se nabíjí jeho zásobník.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2945089700400317868" datatype="html">
         <source>Brainstorm sticky notes</source>
         <target>Lepicí papírky na brainstorming</target>

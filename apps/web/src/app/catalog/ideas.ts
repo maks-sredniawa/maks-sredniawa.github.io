@@ -2,6 +2,12 @@ import type { Idea } from './idea';
 
 export const ideas: readonly Idea[] = [
   {
+    name: $localize`Tank setup simulator`,
+    kind: 'wot-mod',
+    pitch: $localize`Simulates a World of Tanks tank with the crew skills and equipment you pick, and shows the real values the game's own stats leave out or get wrong, like how long the gun takes to fully aim again after a shot and how its magazine reloads.`,
+    added: '2026-11-16',
+  },
+  {
     name: $localize`Brainstorm sticky notes`,
     kind: 'android-app',
     pitch: $localize`A simple sticky-notes board for brainstorming, where adding a note doesn't throw up pop-ups in your way. Free, no ads.`,
