@@ -52,60 +52,74 @@
           <context context-type="linenumber">14</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="3533099130564923742" datatype="html">
+        <source>Tank setup simulator</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="512808075542034881" datatype="html">
+        <source>Simulates a World of Tanks tank with the crew skills and equipment you pick, and shows the real values the game&apos;s own stats leave out or get wrong, like how long the gun takes to fully aim again after a shot and how its magazine reloads.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="2945089700400317868" datatype="html">
         <source>Brainstorm sticky notes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">5</context>
+          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2998136091009580540" datatype="html">
         <source>A simple sticky-notes board for brainstorming, where adding a note doesn&apos;t throw up pop-ups in your way. Free, no ads.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">13</context>
         </context-group>
       </trans-unit>
       <trans-unit id="4431403168639456312" datatype="html">
         <source>Monitor brightness presets</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">17</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3880070079748838003" datatype="html">
         <source>A desktop app that keeps a few brightness presets for all your monitors, whatever their make, so you can switch every screen between them in a moment.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="3551429498557571039" datatype="html">
         <source>Plain light control</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">17</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="7426673153522129301" datatype="html">
         <source>One app in your own language for smart lights whose own app is only in Chinese: it reads each light&apos;s details, adds its settings and keeps them per device, so you can control them all in one place.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="2992012051441622405" datatype="html">
         <source>IOU tracker</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="1008543517333874946" datatype="html">
         <source>Keeps track of informal loans, like 100 zł lent to a friend or money borrowed from your shared savings, so you remember to pay it back.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/ideas.ts</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="58291555423186355" datatype="html">
