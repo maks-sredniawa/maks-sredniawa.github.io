@@ -390,9 +390,9 @@
           <context context-type="linenumber">109</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="7705032215947940810" datatype="html">
-        <source>Adds up your darts from a photo or two of the board, so you don&apos;t tally them by hand. The photos never leave the phone.</source>
-        <target>Sečte tvoje šipky z jedné nebo dvou fotek terče, takže je nemusíš počítat ručně. Fotky nikdy neopustí telefon.</target>
+      <trans-unit id="1852497564948562992" datatype="html">
+        <source>Scores your darts from a photo of the board, so you don&apos;t tally them by hand. The photos never leave the phone.</source>
+        <target>Spočítá body tvých šipek z fotky terče, takže je nemusíš sčítat ručně. Fotky nikdy neopustí telefon.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">apps/web/src/app/catalog/projects.ts</context>
           <context context-type="linenumber">117</context>
