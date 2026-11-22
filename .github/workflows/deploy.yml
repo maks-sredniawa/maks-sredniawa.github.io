@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
   pull_request:
-  # A fallback: GitHub fires this only every few hours. The Worker's cron dispatches a refresh every 15 minutes.
+  # Fallback for the refresh Worker's cron; see README, Build and deploy.
   schedule:
     - cron: '7,37 * * * *'
   workflow_dispatch:
@@ -139,3 +139,9 @@ jobs:
         with:
           path: .deployed
           key: site-${{ steps.apps.outputs.fingerprint }}
+
+      - if: github.event_name == 'push'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+        run: pnpm exec wrangler deploy -c workers/refresh/wrangler.jsonc
