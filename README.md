@@ -32,7 +32,9 @@ The design tokens are in `packages/ui/styles/tokens.css`, in two layers: primiti
 
 ## Build and deploy
 
-`.github/workflows/deploy.yml` checks what a change affects (`nx affected`), then builds and deploys on every push to `main`, and every 15 minutes checks the app repos and the theme for changes, deploying only a commit whose push run passed. Only `main` deploys. On a pull request it only checks and builds. It needs the `CLOUDFLARE_API_TOKEN` secret and the `CLOUDFLARE_ACCOUNT_ID` variable.
+`.github/workflows/deploy.yml` checks what a change affects (`nx affected`), then builds and deploys on every push to `main`. Only `main` deploys. On a pull request it only checks and builds. It needs the `CLOUDFLARE_API_TOKEN` secret and the `CLOUDFLARE_ACCOUNT_ID` variable.
+
+A refresh run picks up changes to the app repos' `docs/` and the theme: it skips the checks and deploys only when the site's fingerprint (`scripts/fingerprint.sh`) changed, and only a commit whose push run passed. The Worker's Cloudflare cron (`worker/index.js`, `triggers` in `wrangler.jsonc`) starts one every 15 minutes by dispatching the workflow with `refresh` set. It needs the Worker secret `GITHUB_DISPATCH_TOKEN`, a fine-grained token for this repo alone with Actions read and write; without it the cron only logs a warning. GitHub's own schedule in `deploy.yml` stays as a fallback, though GitHub fires it only every few hours. Everything else the Worker passes to the static assets unchanged.
 
 To build the whole site locally:
 

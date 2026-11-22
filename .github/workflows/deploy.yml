@@ -4,9 +4,15 @@ on:
   push:
     branches: [main]
   pull_request:
+  # A fallback: GitHub fires this only every few hours. The Worker's cron dispatches a refresh every 15 minutes.
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '7,37 * * * *'
   workflow_dispatch:
+    inputs:
+      refresh:
+        description: Deploy only if an app site or the theme changed, skipping the checks
+        type: boolean
+        default: false
 
 concurrency:
   group: ${{ github.event_name == 'pull_request' && github.ref || 'deploy' }}
@@ -21,13 +27,14 @@ jobs:
     runs-on: ubuntu-latest
     env:
       NX_NO_CLOUD: true
+      REFRESH: ${{ github.event_name == 'schedule' || (github.event_name == 'workflow_dispatch' && inputs.refresh) }}
     defaults:
       run:
         shell: bash
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
-          fetch-depth: ${{ github.event_name == 'schedule' && 1 || 0 }}
+          fetch-depth: ${{ env.REFRESH == 'true' && 1 || 0 }}
           persist-credentials: false
 
       # GitHub disables a public repo's schedule after 60 days without a commit; re-enabling resets that clock.
@@ -58,7 +65,7 @@ jobs:
           lookup-only: true
 
       - id: verified
-        if: github.event_name == 'schedule' && steps.deployed.outputs.cache-hit != 'true'
+        if: env.REFRESH == 'true' && steps.deployed.outputs.cache-hit != 'true'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -66,13 +73,13 @@ jobs:
           if [ "$passes" -gt 0 ]; then
             echo "passed=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::warning::$GITHUB_SHA has no passing push run, so the schedule will not deploy it."
+            echo "::warning::$GITHUB_SHA has no passing push run, so the refresh will not deploy it."
           fi
 
       - id: work
         run: |
-          echo "build=${{ github.event_name != 'schedule' || (steps.deployed.outputs.cache-hit != 'true' && steps.verified.outputs.passed == 'true') }}" >> "$GITHUB_OUTPUT"
-          echo "check=${{ github.event_name != 'schedule' }}" >> "$GITHUB_OUTPUT"
+          echo "build=${{ env.REFRESH != 'true' || (steps.deployed.outputs.cache-hit != 'true' && steps.verified.outputs.passed == 'true') }}" >> "$GITHUB_OUTPUT"
+          echo "check=${{ env.REFRESH != 'true' }}" >> "$GITHUB_OUTPUT"
 
       - if: steps.work.outputs.build == 'true'
         uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115 # v6
