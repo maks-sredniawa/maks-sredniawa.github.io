@@ -114,7 +114,7 @@ export const projects: readonly Project[] = [
     icon: 'darts-scorer',
     kind: 'android-app',
     section: 'building',
-    summary: $localize`Adds up your darts from a photo or two of the board, so you don't tally them by hand. The photos never leave the phone.`,
+    summary: $localize`Scores your darts from a photo of the board, so you don't tally them by hand. The photos never leave the phone.`,
     links: [website('darts-scorer')],
   },
   {
