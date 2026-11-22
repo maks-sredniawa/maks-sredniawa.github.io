@@ -1,0 +1,14 @@
+{
+  "name": "maksforge-refresh",
+  "account_id": "5ff216b7669942495772ffdd9d141ac1",
+  "main": "./index.js",
+  "compatibility_date": "2026-10-01",
+  "triggers": {
+    "crons": ["*/15 * * * *"],
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "workers_dev": false,
+  "preview_urls": false,
+}
