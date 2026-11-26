@@ -25,6 +25,14 @@ export const projects: readonly Project[] = [
     links: [googlePlay('io.github.srednimax.gloam'), website('gloam')],
   },
   {
+    name: $localize`Urgent call`,
+    icon: 'urgent',
+    kind: 'android-app',
+    section: 'android-apps',
+    summary: $localize`Rings when the same number calls twice within a few minutes, even with your phone on silent or Do Not Disturb.`,
+    links: [googlePlay('io.github.srednimax.urgent'), website('urgent')],
+  },
+  {
     name: 'Bevel',
     icon: 'bevel',
     kind: 'web-app',
@@ -68,14 +76,6 @@ export const projects: readonly Project[] = [
     section: 'wot-mods',
     summary: $localize`Hides every rented tank from the garage, WoT Plus ones too, and adds a Non-premium toggle to the garage filter popup. The toggle needs ${'<a href="https://gitlab.com/openwg/wot.gameface">'}:START_LINK:OpenWG Gameface${'</a>'}:CLOSE_LINK:, which most modpacks include.`,
     links: [latestRelease('wot-garage-filter-extras'), source('wot-garage-filter-extras')],
-  },
-  {
-    name: $localize`Urgent call`,
-    icon: 'urgent',
-    kind: 'android-app',
-    section: 'building',
-    summary: $localize`Rings when the same number calls twice within a few minutes, even with your phone on silent or Do Not Disturb.`,
-    links: [website('urgent')],
   },
   {
     name: 'Kozica',
